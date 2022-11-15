@@ -53,6 +53,7 @@ export default defineConfig({
       autoInstall: true, // change `package.json`
     }),
     components({  // https://github.com/antfu/unplugin-vue-components#configuration
+      dirs: ['src/components', 'src/widgets'],
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: true,

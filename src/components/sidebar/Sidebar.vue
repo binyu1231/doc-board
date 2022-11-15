@@ -16,7 +16,8 @@ export default {
 
     const sidebar = ref(null)
 
-    const currentRoute = useRouter().currentRoute.value
+    const router = useRouter()
+    const currentRoute = router.currentRoute.value
 
     // close on click outside
     const clickHandler = ({ target }) => {
@@ -93,7 +94,7 @@ export default {
                   v-for="(nav, i) in navs"
                   :key="i"
                   v-slot="parentLink" 
-                  :activeCondition="currentRoute.fullPath.includes('guides')">
+                  :activeCondition="currentRoute.fullPath.includes(nav.name.toLowerCase())">
                   <a
                     class="sidebar-root-link"
                     :class="{ 'before:hidden': !currentRoute.fullPath.includes('guides') }"
@@ -109,17 +110,21 @@ export default {
                     <span>{{ nav.name }}</span>
                   </a>
                   <ul class="mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800" :class="{ 'hidden': !parentLink.expanded }">                    
-                    <!-- <li class="mt-3" v-for="(navChild, j) in nav.children" :key="j">
-                      <router-link to="/guides/marketing-api" custom v-slot="{ href, navigate, isExactActive }">
-                        <a class="flex items-center space-x-3 font-medium" :class="isExactActive ? 'text-blue-600' : 'text-slate-800 dark:text-slate-200'" :href="href" @click="navigate">{{ navChild.name }}</a>
-                      </router-link>
-                    </li> -->
-                    <SidebarLinkSubgroup v-for="(navChild, j) in nav.children" :key="j" :title="navChild.name" :open="currentRoute.fullPath.includes('alternative-scheme')">
+                    <SidebarLinkSubgroup 
+                      v-for="(navChild, j) in nav.children" 
+                      :key="j" 
+                      :title="navChild.name" 
+                      :open="currentRoute.fullPath.includes('alternative-scheme')"
+                    >
                       <li class="mt-3" v-for="(navSon, k) in navChild.children" :key="k">
-                        <router-link :to="navSon.value" custom v-slot="{ href, navigate, isExactActive }">
+                        <router-link
+                          :to="'/' + navSon.value"
+                          custom
+                          v-slot="{ href, navigate, isExactActive }"
+                        >
                           <a
                             class="sidebar-son-link"
-                            :class="{ active: isExactActive}"
+                            :class="{ active: isExactActive }"
                             :href="href"
                             @click="navigate"
                           >{{ navSon.name }}</a>
