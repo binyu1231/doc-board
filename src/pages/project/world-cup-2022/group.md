@@ -1,8 +1,4 @@
-# World Cup 2022
-
-[[toc]]
-
-## 分组
+## World Cup 2022 分组
 
 ### Group A
 
@@ -13,6 +9,8 @@
   <StateCard state="nl" />
 </CardGroup>
 
+---
+
 ### Group B
 
 <CardGroup>
@@ -21,6 +19,8 @@
 <StateCard state="us" />
 <StateCard state="gb-wls" />
 </CardGroup>
+
+---
 
 ### Group C
 
@@ -31,6 +31,8 @@
 <StateCard state="pl" />
 </CardGroup>
 
+---
+
 ### Group D
 
 <CardGroup>
@@ -39,6 +41,8 @@
 <StateCard state="dk" />
 <StateCard state="tn" />
 </CardGroup>
+
+---
 
 ### Group E
 
@@ -49,6 +53,8 @@
 <StateCard state="jp" />
 </CardGroup>
 
+---
+
 ### Group F
 
 <CardGroup>
@@ -57,6 +63,8 @@
 <StateCard state="ma" />
 <StateCard state="hr" />
 </CardGroup>
+
+---
 
 ### Group G
 
@@ -67,6 +75,8 @@
 <StateCard state="cm" />
 </CardGroup>
 
+---
+
 ### Group H
 
 <CardGroup>
@@ -76,5 +86,4 @@
 <StateCard state="kr" />
 </CardGroup>
 
-
-## 赛程
+---

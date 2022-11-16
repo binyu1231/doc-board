@@ -35,6 +35,7 @@ const stateMap: Record<string, [string, string]> = {
   'gh': ['加纳', 'Ghana'],
   'uy': ['乌拉圭', 'Uruguay'],
   'kr': ['韩国', 'South Korea'],
+  '': ['待定', 'TBD']
 }
 
 const props = defineProps<{
@@ -53,18 +54,25 @@ const stateName = computed(() => {
 </script>
 <template>
   <div class="state-card" :class="{ win }">
-    <Icon :icon="stateKey" class="icon" /> 
-    <div>
-      {{ stateName[0] }} <br />
-      {{ stateName[1] }}
+    <div class="state-card-content">
+      <Icon :icon="props.state ? stateKey : ''" class="icon" /> 
+      <div>
+        <div class="state-name">{{ stateName[0] }}</div>
+        <div class="state-en">{{ stateName[1] }}</div>
+      </div>
+    </div>
+    <div class="state-card-slot">
+      <slot />
     </div>
   </div>
 </template>
 <style lang="postcss">
 .state-card {
+  @apply flex flex-col border-1 rounded border-slate-200 dark:border-slate-600 flex-1;
+}
+.state-card-content {
   @apply
-    border-1 rounded border-slate-200 dark:border-slate-600
-    inline-flex items-center px-4 py-2 gap-2 flex-1 flex;
+    inline-flex items-center pl-4 py-2 gap-2 ;
 
     & > .icon {
       @apply w-7 h-7 mr-1;
@@ -75,5 +83,16 @@ const stateName = computed(() => {
       
       bg-violet-100 dark:bg-slate-800;
     }
+}
+
+.state-name {
+  @apply font-semibold;
+}
+
+.state-en {
+  @apply text-sm text-slate-500 dark:text-slate-600 whitespace-nowrap;
+}
+
+.state-card-slot {
 }
 </style>

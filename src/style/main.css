@@ -83,7 +83,7 @@ blockquote {
 }
 
 hr {
-    @apply mb-4 border-gray-100 dark:border-gray-700;
+    @apply mt-6 mb-4 border-b border-gray-100 dark:border-gray-700;
 }
 
 /* a {

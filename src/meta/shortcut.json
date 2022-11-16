@@ -1,5 +1,23 @@
 [
   {
+    "name": "Project",
+    "children": [
+      {
+        "name": "World Cup 2022",
+        "children": [
+          {
+            "name": "分组",
+            "value": "project/world-cup-2022/group"
+          },
+          {
+            "name": "赛程",
+            "value": "project/world-cup-2022/race"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Framework",
     "children": [
       {

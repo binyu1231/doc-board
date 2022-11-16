@@ -1,0 +1,18 @@
+<script lang="ts" setup>
+defineProps<{
+  expand?: boolean
+}>()
+</script>
+<template>
+<h3 class="col-title">
+  <slot />
+
+  <i-ant-design-caret-down-filled v-if="expand === false" />
+  <i-ant-design-caret-up-filled v-else-if="expand === true "/>
+</h3>
+</template>
+<style lang="postcss">
+.col-title {
+  @apply flex justify-between;
+}
+</style>

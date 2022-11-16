@@ -110,27 +110,43 @@ export default {
                     <span>{{ nav.name }}</span>
                   </a>
                   <ul class="mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800" :class="{ 'hidden': !parentLink.expanded }">                    
-                    <SidebarLinkSubgroup 
-                      v-for="(navChild, j) in nav.children" 
-                      :key="j" 
-                      :title="navChild.name" 
-                      :open="currentRoute.fullPath.includes('alternative-scheme')"
-                    >
-                      <li class="mt-3" v-for="(navSon, k) in navChild.children" :key="k">
+                    <template
+                        v-for="(navChild, j) in nav.children" 
+                        :key="j" 
+                      >
+                      
+                      <SidebarLinkSubgroup 
+                        v-if="navChild.children"
+                        :title="navChild.name" 
+                        :open="currentRoute.fullPath.includes('alternative-scheme')"
+                      >
+                        <li class="mt-3" v-for="(navSon, k) in navChild.children" :key="k">
+                          <router-link
+                            :to="'/' + navSon.value"
+                            custom
+                            v-slot="{ href, navigate, isExactActive }"
+                          >
+                            <a
+                              class="sidebar-son-link"
+                              :class="{ active: isExactActive }"
+                              :href="href"
+                              @click="navigate"
+                            >{{ navSon.name }}</a>
+                          </router-link>
+                        </li>
+                      </SidebarLinkSubgroup>
+                      <li v-else class="mt-3">
                         <router-link
-                          :to="'/' + navSon.value"
-                          custom
-                          v-slot="{ href, navigate, isExactActive }"
-                        >
-                          <a
-                            class="sidebar-son-link"
-                            :class="{ active: isExactActive }"
-                            :href="href"
-                            @click="navigate"
-                          >{{ navSon.name }}</a>
+                          :to="'/' + navChild.value" 
+                          custom v-slot="{ href, navigate, isExactActive }">
+                          <a 
+                            class="flex items-center space-x-3 font-medium" 
+                            :class="isExactActive ? 'text-blue-600' : 'text-slate-800 dark:text-slate-200'" 
+                            :href="href" 
+                            @click="navigate">{{ navChild.name }}</a>
                         </router-link>
                       </li>
-                    </SidebarLinkSubgroup>
+                    </template>
                   </ul>
                 </SidebarLinkGroup>
               </ul>

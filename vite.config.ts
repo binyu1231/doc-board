@@ -54,8 +54,8 @@ export default defineConfig({
     }),
     components({  // https://github.com/antfu/unplugin-vue-components#configuration
       dirs: ['src/components', 'src/widgets'],
-      extensions: ['vue', 'md'],
-      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+      extensions: ['vue', 'md', 'ts'],
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/, /\.ts$/],
       dts: true,
 
       // auto import icons
