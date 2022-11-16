@@ -1,7 +1,5 @@
-
-
 <h2>
-赛程
+2022 卡塔尔世界杯赛程
 <a class="text-sm underline ml-2 text-slate-500" href="/project/world-cup-2022/calendar">(日历版赛程)</a>
 </h2>
 

@@ -12,6 +12,10 @@
           {
             "name": "赛程",
             "value": "project/world-cup-2022/race"
+          },
+          {
+            "name": "赛程日历",
+            "value": "project/world-cup-2022/calendar"
           }
         ]
       }
