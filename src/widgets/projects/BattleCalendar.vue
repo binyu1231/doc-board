@@ -1,9 +1,54 @@
 <script lang="ts" setup>
+import { Icon } from '@iconify/vue'
+import { stateMap } from './type';
 const firstDate = new Date('2022-11-21 00:00:00')
 
 function getDate(rowOffset: number) {
   return new Date(firstDate.getTime() + (rowOffset - 1) * 24 * 3600000).getDate()
 }
+
+const races = [
+  'qa:ec,,,gb-eng:ir',
+  'sn:nl,us:gb-wls,ar:sa,dk:tn',
+  'mx:pl,fr:au,ma:hr,de:jp',
+  'es:cr,be:ca,ch:cm,uy:kr',
+  'pt:gh,br:rs,bg-wls:ir,qa:sn',
+  'nl:ec,gb-eng:us,tn:au,pl:sa',
+  'fr:dk,ar:mx,jp:au,pl:cr',
+  // ---
+  'hr:ca,es:de,jp:au,cm:rs',
+  'br:ch,pt:uy,nl:qa,ec:sn',
+  'gb-wls:gb-eng,ir:us,tn:fr,au:dk',
+  'pl:ar,sa:mx,hr:be,ca:ma',
+  'jp:es,cr:de,kr:pt,gh:uy',
+  'cm:br,rs:ch,,',
+  '',
+  // ---
+  'qa:ar,qa:mx,,',
+  'jp:kr,de:dk,nl,br',
+  '',
+  '',
+  '',
+  '',
+  '',
+  // ---
+  'qa:ar,qa:mx,,',
+  'jp:kr,de:dk,nl,br',
+  '',
+  '',
+  '',
+  '',
+  '',
+  // ---
+  'qa:ar,qa:mx,,',
+  'jp:kr,de:dk,nl,br',
+  '',
+  '',
+  '',
+  '',
+  '',
+  // ---
+]
 </script>
 
 <template>
@@ -21,48 +66,30 @@ function getDate(rowOffset: number) {
       
       class="border-l border-t border-slate-400 dark:border-slate-700 grid-cols-7 grid">
       <div
-        v-for="i in 35"
+        v-for="(r, i) in races"
         :key="i"
         class="relative h-38 border-b border-r border-slate-400 dark:border-slate-700"
         >
-        <div class="text-xs whitespace-nowrap relative bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-200 text-shadow-sm overflow-hidden py-1 m-1 rounded">
-          <i-circle-flags:qa class="absolute text-4xl -left-4 -top-3 opacity-25"/>
-          <i-circle-flags:ar class="absolute text-4xl -right-4 -top-3 opacity-25" />
-          <div class="relative px-1 w-full z-10 flex justify-between items-center">
-            <span class="">卡塔尔</span>
-            <span class="">阿根廷</span>
+        <template v-if="r">
+          <div
+            :key="j"
+            v-for="(race, j) in r.split(',')"
+          >
+            <div
+              v-if="race"
+              class="text-xs whitespace-nowrap relative bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-200 text-shadow-sm overflow-hidden py-1 m-1 rounded">
+              <Icon :icon="`circle-flags:${race.split(':')[0]}`" class="icon" /> 
+              <Icon :icon="`circle-flags:${race.split(':')[1]}`" class="icon" /> 
+              <div class="relative px-1 w-full z-10 flex justify-between items-center">
+                <span class="">{{ stateMap[race.split(':')[0]][0] }}</span>
+                <span class="">{{ stateMap[race.split(':')[1]][0] }}</span>
+              </div>
+            </div>
+            <div v-else>
+              <span>{{ '\u00A0' }}</span>
+            </div>
           </div>
-        </div>
-
-        <div class="text-xs relative bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-200 text-shadow-sm overflow-hidden py-1 m-1 rounded">
-          <i-circle-flags:jp class="absolute text-4xl -left-4 -top-3 opacity-25"/>
-          <i-circle-flags:de class="absolute text-4xl -right-4 -top-3 opacity-25" />
-          <div class="relative px-1 w-full z-10 flex justify-between items-center">
-            <span class="">日本</span>
-            <span class="">德国</span>
-          </div>
-        </div>
-
-        <div class="border-b border-slate-200 dark:border-slate-800 mx-2 my-2"></div>
-
-        <div class="text-xs relative bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-200 text-shadow-sm overflow-hidden py-1 m-1 rounded">
-          <i-circle-flags:dk class="absolute text-4xl -left-4 -top-3 opacity-25"/>
-          <i-circle-flags:pt class="absolute text-4xl -right-4 -top-3 opacity-25" />
-          <div class="relative px-1 w-full z-10 flex justify-between items-center">
-            <span class="">丹麦</span>
-            <span class="">葡萄牙</span>
-          </div>
-        </div>
-
-        <div class="text-xs relative bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-200 text-shadow-sm overflow-hidden py-1 m-1 rounded">
-          <i-circle-flags:br class="absolute text-4xl -left-4 -top-3 opacity-25"/>
-          <i-circle-flags:ca class="absolute text-4xl -right-4 -top-3 opacity-25" />
-          <div class="relative px-1 w-full z-10 flex justify-between items-center">
-            <span class="">巴西</span>
-            <span class="">加拿大</span>
-          </div>
-        </div>
-
+        </template>
         <div class="absolute left-0 bottom-0 right-0  text-right px-2 pb-1 flex justify-between items-center">
           <span class="text-xs">第三轮</span>
           <span>{{ getDate(i)}}</span>
