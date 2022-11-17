@@ -472,7 +472,7 @@ for name, cc, pop, (latitude, longitude) in metro_areas:
 
 ### 切片
 
-`[start:stop:step]` => `seq.__getitem__(slice(start, stop, step))`
+`\[start:stop:step\]` => `seq.__getitem__(slice(start, stop, step))`
 
 ``` py
 s = 'bicycle'
