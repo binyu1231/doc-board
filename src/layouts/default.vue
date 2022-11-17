@@ -15,11 +15,11 @@ function handleChange(key: string, i: number) {
     @change="handleChange" 
   />
   <div class="doc-container">
-    <!-- <Sidebar 
+    <Sidebar 
       :sidebarOpen="sidebarOpen"
       @close-sidebar="sidebarOpen = false" 
       :navs="navs"
-    /> -->
+    />
     <div class="doc-body">
       <router-view></router-view>
     </div>
