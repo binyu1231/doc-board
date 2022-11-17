@@ -4,14 +4,15 @@
     "children": [
       {
         "name": "World Cup 2022",
+        "value": "/project/world-cup-2022",
         "children": [
+          {
+            "name": "赛程",
+            "value": "project/world-cup-2022"
+          },
           {
             "name": "分组",
             "value": "project/world-cup-2022/group"
-          },
-          {
-            "name": "赛程",
-            "value": "project/world-cup-2022/race"
           },
           {
             "name": "赛程日历",

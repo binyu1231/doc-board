@@ -94,10 +94,10 @@ export default {
                   v-for="(nav, i) in navs"
                   :key="i"
                   v-slot="parentLink" 
-                  :activeCondition="currentRoute.fullPath.includes(nav.name.toLowerCase())">
+                  :activeCondition="currentRoute.fullPath.startsWith(nav.value)">
                   <a
                     class="sidebar-root-link"
-                    :class="{ 'before:hidden': !currentRoute.fullPath.includes('guides') }"
+                    :class="{ 'before:hidden': !currentRoute.fullPath.startsWith(nav.value) }"
                     href="#0"
                     @click.prevent="parentLink.handleClick()"
                   >
@@ -141,7 +141,7 @@ export default {
                           custom v-slot="{ href, navigate, isExactActive }">
                           <a 
                             class="flex items-center space-x-3 font-medium" 
-                            :class="isExactActive ? 'text-blue-600' : 'text-slate-800 dark:text-slate-200'" 
+                            :class="isExactActive ? 'text-violet-600' : 'text-slate-800 dark:text-slate-200'" 
                             :href="href" 
                             @click="navigate">{{ navChild.name }}</a>
                         </router-link>
@@ -176,14 +176,20 @@ export default {
 }
 
 .sidebar-root-link {
-  @apply relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200;
+
+  @apply relative flex items-center font-[650] text-slate-800 p-1 
+  before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200;
+
+  &::before {
+    content: "";
+  }
 }
 
 .sidebar-son-link {
   @apply flex items-center space-x-3 font-normal text-slate-600 dark:text-slate-400;
 
   &.active {
-    @apply text-blue-600;
+    @apply text-violet-600;
   }
 }
 </style>
