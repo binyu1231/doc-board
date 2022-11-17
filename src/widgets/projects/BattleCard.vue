@@ -37,7 +37,7 @@ const countD = ref('00');
 const countH = ref('00');
 const countM = ref('00');
 const countS = ref('00'); // computed(() => count.value % 60)
-let timer: ReturnType<typeof setInterval> = 0
+let timer: ReturnType<typeof setInterval>
 
 function calc() {
   countS.value = dbl(count.value % 60)

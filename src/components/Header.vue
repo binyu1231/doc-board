@@ -67,10 +67,9 @@ watch(key, () => {
 
 .header-select {
   
-  @apply text-slate-400 inline-flex items-center justify-between leading-5 px-3 whitespace-nowrap dark:text-slate-500
+  @apply text-slate-400 inline-flex items-center justify-between leading-5 px-3 whitespace-nowrap dark:text-slate-500;
 
   & select {
-    @apply bg-red-500;
   }
 
   & > svg {

@@ -114,7 +114,6 @@ const races = [
 
 <style lang="postcss">
 .battle-calendar {
-  @apply;
 }
 
 .battle-calendar-day {

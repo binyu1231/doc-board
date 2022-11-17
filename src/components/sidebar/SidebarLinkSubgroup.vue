@@ -1,18 +1,27 @@
 <script lang="ts" setup>
-withDefaults(
+// @ts-ignore
+const props = withDefaults(
   defineProps<{
     title?: string,
     open?: boolean,
   }>(),
   {}
 )
+
+function handleClick() {
+  /* eslint-disable */
+  // @ts-ignore 
+  props.open = !props.open 
+}
 </script>
 <template>
+  <!-- eslint-disable -->
+  <!-- @ts-ignore -->
   <li class="sidebar-link-subgroup">
     <a
       class="sidebar-sub-link"
       href="#0"
-      @click.prevent="open = !open"
+      @click.prevent="handleClick"
       aria-haspopup="true"
       :aria-expanded="open"
     >

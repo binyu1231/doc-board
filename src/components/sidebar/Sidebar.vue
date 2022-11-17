@@ -1,4 +1,5 @@
 <script lang="ts">
+// ts-ignore
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -12,7 +13,7 @@ export default {
     SidebarLinkGroup,
     SidebarLinkSubgroup,
   },
-  setup(props, { emit }) {
+  setup(props: any, { emit }: any) {
 
     const sidebar = ref(null)
 
@@ -20,17 +21,17 @@ export default {
     const currentRoute = router.currentRoute.value
 
     // close on click outside
-    const clickHandler = ({ target }) => {
+    const clickHandler = ({ target }: any) => {
       if (!sidebar.value) return
       if (
         !props.sidebarOpen ||
-        sidebar.value.contains(target)
+        (sidebar.value as any).contains(target)
       ) return
       emit('close-sidebar')
     }
 
     // close if the esc key is pressed
-    const keyHandler = ({ keyCode }) => {
+    const keyHandler = ({ keyCode }: any) => {
       if (!props.sidebarOpen || keyCode !== 27) return
       emit('close-sidebar')
     } 

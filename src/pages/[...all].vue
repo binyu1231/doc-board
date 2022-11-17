@@ -15,7 +15,6 @@ meta:
 <style lang="postcss">
 .page-not-found {
   & span {
-    @apply bg-red-500;
   }
 }
 </style>
