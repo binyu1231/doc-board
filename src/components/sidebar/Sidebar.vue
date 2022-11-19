@@ -1,6 +1,6 @@
 <script lang="ts">
 // ts-ignore
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 
 import SidebarLinkGroup from './SidebarLinkGroup.vue'
@@ -46,9 +46,16 @@ export default {
       document.removeEventListener('keydown', keyHandler)
     })
     
+    function handleNavigate(navigate: any) {
+      navigate()
+      nextTick(() => {
+        emit('close-sidebar')
+      })
+    }
     return {
       currentRoute,
       sidebar,
+      handleNavigate,
     }
   },  
 }
@@ -65,7 +72,7 @@ export default {
     >            
       <div v-show="sidebarOpen" class="sidebar-mobile-shadow" aria-hidden="true"></div>
     </transition>
-  
+    
     <transition
       enter-active-class="transition ease-out duration-200 transform"
       enter-from-class="opacity-0 -translate-x-full"
@@ -104,7 +111,7 @@ export default {
                   >
                     <svg class="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path class="fill-purple-400" d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z" />
-                      <path class="fill-white dark:fill-slate-800" d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z" />
+                      <path class="fill-purple-200 dark:fill-slate-800" d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z" />
                       <path class="fill-purple-600" d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z" />
                     </svg>
                     
@@ -119,7 +126,7 @@ export default {
                       <SidebarLinkSubgroup 
                         v-if="navChild.children"
                         :title="navChild.name" 
-                        :open="currentRoute.fullPath.includes('alternative-scheme')"
+                        :default-open="currentRoute.fullPath.includes('alternative-scheme')"
                       >
                         <li class="mt-3" v-for="(navSon, k) in navChild.children" :key="k">
                           <router-link
@@ -131,7 +138,7 @@ export default {
                               class="sidebar-son-link"
                               :class="{ active: isExactActive }"
                               :href="href"
-                              @click="navigate"
+                              @click="handleNavigate(navigate)"
                             >{{ navSon.name }}</a>
                           </router-link>
                         </li>
@@ -144,7 +151,7 @@ export default {
                             class="flex items-center space-x-3 font-medium" 
                             :class="isExactActive ? 'text-violet-600' : 'text-slate-800 dark:text-slate-200'" 
                             :href="href" 
-                            @click="navigate">{{ navChild.name }}</a>
+                            @click="handleNavigate(navigate)">{{ navChild.name }}</a>
                         </router-link>
                       </li>
                     </template>
@@ -154,7 +161,8 @@ export default {
             </nav>
           </div>
         </div>
-  
+        
+        <slot></slot>
       </aside>
     </transition>
   </div>
@@ -163,22 +171,24 @@ export default {
 .sidebar-mobile-shadow {
   @apply 
     md:hidden 
-    fixed inset-0 z-10 
+    fixed inset-0 z-80 
     bg-slate-900 bg-opacity-20 transition-opacity;
 }
 
+
+
 .sidebar {
   @apply 
-    fixed left-0 top-0 bottom-0 box-border
+    fixed left-0 top-0 bottom-0 box-border z-90
     w-64 h-screen border-r border-slate-200 
     
-    md:left-auto md:shrink-0 z-10 md:!opacity-100 md:!block 
+    md:left-auto md:shrink-0 md:!opacity-100 md:!block 
     dark:border-slate-800 dark:bg-slate-900;
 }
 
 .sidebar-root-link {
-
-  @apply relative flex items-center font-[650] text-slate-800 p-1 
+  font-family: lobster;
+  @apply relative flex items-center text-xl text-slate-800 p-1 
   before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200;
 
   &::before {

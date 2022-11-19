@@ -10,6 +10,11 @@ body {
         Segoe UI, Rototo, Emoji, Helvetica, Arial, sans-serif; /*兜底字体*/
 }
 
+@font-face {
+    font-family: lobster;
+    src: url('@/assets/Lobster-Regular.ttf');
+}
+
 h1 {
     @apply mb-8 text-gray-900 dark:text-gray-100
         font-extrabold text-4xl tracking-tight

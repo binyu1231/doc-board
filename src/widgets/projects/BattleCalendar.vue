@@ -18,16 +18,16 @@ function isToday(rowOffset: number) {
 }
 
 const races = [
-  'qa:ec,,,gb-eng:ir@第一轮',
+  'qa:ec,,,gb-eng:ir@第1轮',
   'sn:nl,us:gb-wls,ar:sa,dk:tn',
   'mx:pl,fr:au,ma:hr,de:jp',
   'es:cr,be:ca,ch:cm,uy:kr',
-  'pt:gh,br:rs,gb-wls:ir,qa:sn@第二轮', // 第二轮
+  'pt:gh,br:rs,gb-wls:ir,qa:sn@第2轮', // 第二轮
   'nl:ec,gb-eng:us,tn:au,pl:sa',
   'fr:dk,ar:mx,jp:au,pl:cr',
   // ---
   'hr:ca,es:de,jp:au,cm:rs',
-  'br:ch,pt:uy,nl:qa,ec:sn@第三轮', // 第三轮
+  'br:ch,pt:uy,nl:qa,ec:sn@第1轮', // 第三轮
   'gb-wls:gb-eng,ir:us,tn:fr,au:dk',
   'pl:ar,sa:mx,hr:be,ca:ma',
   'jp:es,cr:de,kr:pt,gh:uy',
@@ -70,41 +70,34 @@ const races = [
         {{ r }}
       </div>
     </div>
+
+
     <div 
-      class="border-l border-t border-slate-400 dark:border-slate-700 grid-cols-7 grid">
+      class="battle-calendar-cell">
       <div
         v-for="(day, i) in races"
         :key="i"
         class="battle-calendar-day"
         :class="{ active: isToday(i) }"
         >
-          <div
-            :key="j"
-            v-for="(race, j) in day.children"
-          >
-            <div v-if="j === 2" class="border-b border-slate-400 dark:border-slate-700 m-1" />
-            <div
-              v-if="race.length > 0"
-              class="text-xs h-6 border-box whitespace-nowrap relative bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-200 text-shadow-sm overflow-hidden py-1 m-1 rounded">
-
-              <Icon :icon="`circle-flags:${race[0]}`" class="absolute text-4xl -left-4 -top-3 opacity-25" /> 
-              <Icon :icon="`circle-flags:${race[1]}`" class="absolute text-4xl -right-4 -top-3 opacity-25" /> 
-              <div class="relative px-1 w-full z-10 flex justify-between items-center">
-                <span class="">{{ stateMap[race[0]]?.[0] ?? 'TBD' }}</span>
-                <span class="">{{ stateMap[race[1]]?.[0] ?? 'TBD' }}</span>
-              </div>
-            </div>
-            <div v-else class="h-6 m-1">
-              <span>{{ '\u00A0' }}</span>
-            </div>
+        <div class="bcd-content">
+          <div class="battle-calendar-halfday">
+            <BattleCalendarRace :race="day.children[0]" />
+            <BattleCalendarRace :race="day.children[1]" />
           </div>
-        <div class="absolute left-0 bottom-0 right-0  text-right px-2 pb-1 flex justify-between items-center">
-          <span class="text-xs">{{ day.name }}</span>
-          <span class="font-semibold absolute right-1 bottom-0.5">
-            <span class="text-xs" v-if="i === 0">Nov.</span>
-            <span class="text-xs" v-if="i === 10">Dec.</span>
-            {{ getDate(i).getDate() }}
-          </span>
+          <div class="battle-calendar-hr" />
+          <div class="battle-calendar-halfday">
+            <BattleCalendarRace :race="day.children[2]" />
+            <BattleCalendarRace :race="day.children[3]" />
+          </div>
+        </div>
+        <div class="battle-calendar-footer">
+          <div class="transform -translate-y-[1px]">{{ day.name }}</div>
+          <div :class="{ 'has-name': day.name }">
+            <span v-if="i === 0">Nov.</span>
+            <span v-if="i === 10">Dec.</span>
+            <span class="date">{{ getDate(i).getDate() }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -116,11 +109,52 @@ const races = [
 .battle-calendar {
 }
 
+.battle-calendar-hr {
+  @apply border-b border-slate-400 dark:border-slate-700 m-1;
+}
+
 .battle-calendar-day {
-  @apply relative h-38 border-b border-r border-slate-400 dark:border-slate-700;
+  @apply 
+    flex flex-col
+    h-68 md:h-38 border-b border-r border-slate-400 dark:border-slate-700;
 
   &.active {
-    @apply bg-gradient-to-t from-indigo-500 via-purple-500 to-pink-500 text-slate-100;
+    @apply 
+      bg-gradient-to-t from-indigo-500 via-purple-500 to-pink-500 text-slate-100;
   }
 }
+
+.battle-calendar-cell {
+  @apply
+    border-l border-t 
+    border-slate-400 dark:border-slate-700 
+    grid-cols-7 grid
+    ;
+}
+
+.bcd-content {
+  @apply flex-1 flex flex-col md:block;
+}
+
+.battle-calendar-halfday {
+  @apply flex items-stretch md:flex-col flex-1 p-0.5 md:p-1 gap-0.5 md:gap-1;
+}
+
+.battle-calendar-footer {
+  @apply text-right h-6 px-2 pb-1 flex justify-between items-end text-xs whitespace-nowrap;
+
+  & > div {
+    @apply flex items-end;
+  }
+
+  & .date {
+    @apply font-semibold text-sm ml-1;
+  }
+
+  & .has-name {
+    @apply hidden md:block;
+  }
+}
+
+
 </style>

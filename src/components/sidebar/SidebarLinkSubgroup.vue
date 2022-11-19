@@ -1,17 +1,25 @@
 <script lang="ts" setup>
+import { ref, watch } from 'vue';
+
 // @ts-ignore
 const props = withDefaults(
   defineProps<{
     title?: string,
-    open?: boolean,
+    defaultOpen?: boolean,
   }>(),
   {}
 )
 
+const open = ref(props.defaultOpen);
+
+watch(() => props.defaultOpen, () => {
+  open.value = props.defaultOpen
+}, { immediate: true });
+
 function handleClick() {
   /* eslint-disable */
   // @ts-ignore 
-  props.open = !props.open 
+  open.value = !open.value
 }
 </script>
 <template>

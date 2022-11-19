@@ -39,13 +39,16 @@ const countM = ref('00');
 const countS = ref('00'); // computed(() => count.value % 60)
 let timer: ReturnType<typeof setInterval>
 
+console.log('count???', Math.floor((beginTime.value.getTime() - now.getTime()) / 1000))
+console.log('count', count.value)
+
 function calc() {
   countS.value = dbl(count.value % 60)
   const restMinutes = Math.floor(count.value / 60)
   countM.value = dbl(restMinutes % 60)
   const restHours = Math.floor(restMinutes / 60)
-  countH.value = dbl(restHours & 24)
   countD.value = dbl(Math.floor(restHours / 24))
+  countH.value = dbl(restHours % 24)
 }
 
 onMounted(() => {
@@ -72,7 +75,14 @@ onBeforeUnmount(() => {
     <div class="battle-card-date">
       <div class="battle-date">{{ beginTimeString }}</div>
       <span class="battle-date-desc" v-if="isOver">已结束 ({{g}})</span>
-      <span class="battle-date-desc" v-else>距开始: {{ countD }} 天 {{ countH }} 时 {{ countM }} 分 {{ countS }} 秒 ({{g}})</span>
+      <span class="battle-date-desc" v-else>
+        <span class="battle-lg-deco">距开始:</span> 
+        {{ countD }} 天 
+        {{ countH }} 时 
+        {{ countM }} 分 
+        <span class="battle-lg-deco">{{ countS }} 秒</span>
+        ({{g}})
+      </span>
     </div>
     <div class="battle-card-content">
       <StateCard :state="states[0]" :win="isOver && primaryWin">
@@ -106,7 +116,7 @@ onBeforeUnmount(() => {
 }
 
 .battle-word {
-  @apply text-xl mx-4 text-slate-400 dark:text-slate-700;
+  @apply hidden md:block text-xl mx-4 text-slate-400 dark:text-slate-700;
 }
 
 .battle-date {
@@ -114,7 +124,7 @@ onBeforeUnmount(() => {
 }
 
 .battle-score {
-  @apply text-4xl mx-4;
+  @apply text-2xl md:text-4xl mx-2 md:mx-4;
 }
 
 .battle-date-desc {
@@ -138,5 +148,9 @@ onBeforeUnmount(() => {
 
 .battle-card-goal-name {
   @apply ;
+}
+
+.battle-lg-deco {
+  @apply hidden md:inline-block;
 }
 </style>

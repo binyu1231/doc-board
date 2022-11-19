@@ -3,7 +3,7 @@ import { useHead } from '@vueuse/head'
 import { useNprogress, useAos } from '@/composables'
 
 useHead({
-  title: 'V Page Template',
+  title: 'Binyu.me',
   meta: [
     { name: 'description', content: 'template' },
   ],
