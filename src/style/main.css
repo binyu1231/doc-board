@@ -44,32 +44,13 @@ p {
     @apply mb-6;
 }
 
-/* li {
-    @apply mb-2 tracking-normal;
-    & li {
-        @apply mb-1;
-    }
-} */
+
 
 b, strong {
     @apply font-medium text-gray-900 dark:text-gray-100;
 }
 
-/* ul, ol {
-    @apply mb-6;
-}
 
-ul ul, ul ol, ol ul, ol ol {
-    @apply pt-1;
-}
-
-ul {
-    @apply list-disc pl-4;
-}
-
-ol {
-    @apply list-zero-decimal pl-7;
-} */
 
 i {
     @apply italic;
@@ -91,9 +72,7 @@ hr {
     @apply mt-6 mb-4 border-b border-gray-100 dark:border-gray-700;
 }
 
-/* a {
-    @apply underline underline-dark-50 underline-offset-2 dark:underline-light-50;
-} */
+
 
 table {
     @apply w-full mb-6;
@@ -115,5 +94,38 @@ table {
 
     & tbody tr td:first-of-type {
         @apply whitespace-nowrap pr-4;
+    }
+}
+
+.mk {
+    & p {
+        @apply mb-4;
+    }
+
+    & li:not(.table-of-contents li) {
+        @apply mb-2 tracking-normal;
+        & li {
+            @apply mb-1;
+        }
+    }
+
+    & ul, & ol {
+        @apply mb-6;
+    }
+
+    & ul ul, & ul ol, & ol ul, & ol ol {
+        @apply pt-1;
+    }
+
+    & ul {
+        @apply list-disc pl-4;
+    }
+
+    & ol:not(.table-of-contents ol) {
+        @apply list-zero-decimal pl-7;
+    }
+
+    & a ol:not(.table-of-contents a) {
+        @apply underline underline-dark-50 underline-offset-2 dark:underline-light-50;
     }
 }

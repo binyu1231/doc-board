@@ -15,6 +15,9 @@ function openSidebar(e: Event) {
 }
 </script>
 <template>
+<div class="bg">
+  <img src="@/assets/hero-illustration.svg" alt="">
+</div>
 <div class="doc">
   <Header 
     :metadata="metadata" 
@@ -36,18 +39,21 @@ function openSidebar(e: Event) {
 </div>
 </template>
 <style lang="postcss">
+.bg {
+  @apply fixed;
+}
 .doc-container {
-  @apply pt-24 md:pt-28 pb-8 px-4 sm:px-6 lg:pr-12 xl:pr-60;
+  @apply relative pt-24 lg:pt-28 pb-8 px-4 sm:px-6 lg:pr-12 xl:pr-60;
 }
 
 .doc-body {
-  @apply md:grow md:pl-76 lg:pr-6 xl:pr-0;
+  @apply lg:grow lg:pl-76 lg:pr-6 xl:pr-0;
 }
 
 .sidebar-flat-btn {
   @apply
     flex items-center justify-center text-xl
-    md:hidden fixed bottom-4 z-80 
+    lg:hidden fixed bottom-4 z-80 
     w-10 h-10 rounded-full bg-white dark:bg-slate-900 border-1 border-slate-500;
     ;
 }

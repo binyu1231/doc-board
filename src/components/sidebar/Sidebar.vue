@@ -48,9 +48,9 @@ export default {
     
     function handleNavigate(navigate: any) {
       navigate()
-      nextTick(() => {
-        emit('close-sidebar')
-      })
+      // nextTick(() => {
+      //   emit('close-sidebar')
+      // })
     }
     return {
       currentRoute,
@@ -90,11 +90,11 @@ export default {
         <!-- Gradient bg displaying on light layout only -->
         <div class="absolute inset-0 -left-[9999px] bg-gradient-to-b from-slate-50 to-white pointer-events-none -z-10 dark:hidden" aria-hidden="true"></div>
   
-        <div class="fixed top-0 bottom-0 w-64 px-4 sm:px-6 md:pl-0 md:pr-8 overflow-y-auto no-scrollbar">
-          <div class="pt-24 md:pt-28 pb-8">
+        <div class="fixed top-0 bottom-0 w-64 px-4 sm:px-6 lg:pl-0 lg:pr-8 overflow-y-auto no-scrollbar">
+          <div class="pt-24 lg:pt-28 pb-8">
   
             <!-- Docs nav -->
-            <nav class="md:block">
+            <nav class="lg:block">
               <ul class="text-sm">
                   
                 <!-- 1st level -->
@@ -102,7 +102,7 @@ export default {
                   v-for="(nav, i) in navs"
                   :key="i"
                   v-slot="parentLink" 
-                  :activeCondition="currentRoute.fullPath.startsWith(nav.value)">
+                  :activeCondition="i === 0 || currentRoute.fullPath.startsWith(nav.value)">
                   <a
                     class="sidebar-root-link"
                     :class="{ 'before:hidden': !currentRoute.fullPath.startsWith(nav.value) }"
@@ -138,7 +138,7 @@ export default {
                               class="sidebar-son-link"
                               :class="{ active: isExactActive }"
                               :href="href"
-                              @click="handleNavigate(navigate)"
+                              @click="navigate"
                             >{{ navSon.name }}</a>
                           </router-link>
                         </li>
@@ -151,7 +151,7 @@ export default {
                             class="flex items-center space-x-3 font-medium" 
                             :class="isExactActive ? 'text-violet-600' : 'text-slate-800 dark:text-slate-200'" 
                             :href="href" 
-                            @click="handleNavigate(navigate)">{{ navChild.name }}</a>
+                            @click="navigate">{{ navChild.name }}</a>
                         </router-link>
                       </li>
                     </template>
@@ -170,7 +170,7 @@ export default {
 <style lang="postcss">
 .sidebar-mobile-shadow {
   @apply 
-    md:hidden 
+    lg:hidden 
     fixed inset-0 z-80 
     bg-slate-900 bg-opacity-20 transition-opacity;
 }
@@ -182,7 +182,7 @@ export default {
     fixed left-0 top-0 bottom-0 box-border z-90
     w-64 h-screen border-r border-slate-200 
     
-    md:left-auto md:shrink-0 md:!opacity-100 md:!block 
+    lg:left-auto lg:shrink-0 lg:!opacity-100 lg:!block 
     dark:border-slate-800 dark:bg-slate-900;
 }
 

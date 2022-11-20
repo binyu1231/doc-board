@@ -39,9 +39,6 @@ const countM = ref('00');
 const countS = ref('00'); // computed(() => count.value % 60)
 let timer: ReturnType<typeof setInterval>
 
-console.log('count???', Math.floor((beginTime.value.getTime() - now.getTime()) / 1000))
-console.log('count', count.value)
-
 function calc() {
   countS.value = dbl(count.value % 60)
   const restMinutes = Math.floor(count.value / 60)

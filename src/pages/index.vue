@@ -2,14 +2,21 @@
   
 </script>
 <template>
-<div class="home">
-  home page
+<div class="home mk">
 
-  <router-link to="/demo">go demo</router-link>
-  <br>
-  <router-link to="/docs">go docs</router-link>
-  <br>
-  <router-link to="/css-background">css background</router-link>
+
+  <h2>2022卡塔尔世界杯</h2>
+  <ul>
+    <li>
+      <router-link to="/project/world-cup-2022">赛程</router-link>
+    </li>
+    <li>
+      <router-link to="/project/world-cup-2022/group">分组</router-link>
+    </li>
+    <li>
+      <router-link to="/project/world-cup-2022/calendar">赛程日历</router-link>
+    </li>
+  </ul>
 </div>
 </template>
 <style lang="postcss">

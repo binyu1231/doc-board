@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useDark, useToggle } from '@vueuse/core';
+import { useRoute } from 'vue-router';
 
 const props = withDefaults(
   defineProps<{ metadata: any[] }>(),
@@ -13,6 +14,7 @@ const emit = defineEmits<{
   (e: 'change', key: string, i: number): void
 }>()
 
+const route = useRoute()
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 const key = ref(props.metadata.length > 0 ? props.metadata[0].name : '')
@@ -20,6 +22,22 @@ const key = ref(props.metadata.length > 0 ? props.metadata[0].name : '')
 watch(key, () => {
   emit('change', key.value, props.metadata.findIndex(opt => opt.name === key.value))
 })
+
+watch(() => route, () => {
+
+}, { immediate: true })
+
+
+onMounted(() => {
+  console.log(route.path)
+  props.metadata.some((meta) => {
+    const active = route.path.startsWith('/' + meta.name.toLowerCase())
+    if (active) key.value = meta.name
+    return active
+    console.log(meta, meta.name.toLowerCase())
+  })
+})
+
 </script>
 <template>
   <div class="header">
@@ -35,7 +53,7 @@ watch(key, () => {
           <i-akar-icons-triangle-down />
         </div>
         <div class="header-search-container">
-          <Search />
+          <!-- <Search /> -->
         </div>
         <div class="header-theme-switch" @click="() => toggleDark()">
           <i-akar-icons-moon-fill v-if="isDark" />
