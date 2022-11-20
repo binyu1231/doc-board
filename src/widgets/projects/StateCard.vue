@@ -22,7 +22,12 @@ const stateName = computed(() => {
     <div class="state-card-content">
       <Icon :icon="props.state ? stateKey : ''" class="icon" /> 
       <div>
-        <div class="state-name">{{ stateName[0] }}</div>
+        <div class="state-name">
+          {{ stateName[0] }}
+          <span>
+            <slot name="rank"></slot>
+          </span>
+        </div>
         <div class="state-en">{{ stateName[1] }}</div>
       </div>
     </div>
@@ -51,7 +56,11 @@ const stateName = computed(() => {
 }
 
 .state-name {
-  @apply font-semibold;
+  @apply font-semibold whitespace-nowrap;
+
+  & span {
+    @apply text-xs font-medium text-slate-400 dark:text-slate-600;
+  }
 }
 
 .state-en {
@@ -59,5 +68,13 @@ const stateName = computed(() => {
 }
 
 .state-card-slot {
+}
+
+.battle-card-rank {
+  @apply lg:text-sm xl:text-base text-right flex-1 pr-4 font-semibold whitespace-nowrap;
+
+  & > span {
+    @apply lg:hidden xl:inline-block ;
+  }
 }
 </style>

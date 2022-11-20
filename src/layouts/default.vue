@@ -1,14 +1,23 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import metadata from '@/meta/shortcut.json'
-const sidebarOpen = ref(true)
+const sidebarOpen = ref(false)
 const navs = ref(metadata[0].children)
 
 function handleChange(key: string, i: number) {
   navs.value = metadata[i].children
+  sidebarOpen.value = true
+}
+
+function openSidebar(e: Event) {
+  e.stopPropagation()
+  sidebarOpen.value = true
 }
 </script>
 <template>
+<div class="bg">
+  <img src="@/assets/hero-illustration.svg" alt="">
+</div>
 <div class="doc">
   <Header 
     :metadata="metadata" 
@@ -20,6 +29,9 @@ function handleChange(key: string, i: number) {
       @close-sidebar="sidebarOpen = false" 
       :navs="navs"
     />
+    <div class="sidebar-flat-btn" @click="openSidebar">
+      <i-akar-icons:book />
+    </div>
     <div class="doc-body">
       <router-view></router-view>
     </div>
@@ -27,12 +39,23 @@ function handleChange(key: string, i: number) {
 </div>
 </template>
 <style lang="postcss">
+.bg {
+  @apply fixed;
+}
 .doc-container {
-  @apply pt-24 md:pt-28 pb-8 px-4 sm:px-6 lg:pr-12 xl:pr-60;
+  @apply relative pt-24 lg:pt-28 pb-8 px-4 sm:px-6 lg:pr-12 xl:pr-60;
 }
 
 .doc-body {
-  @apply md:grow md:pl-76 lg:pr-6 xl:pr-0;
+  @apply lg:grow lg:pl-76 lg:pr-6 xl:pr-0;
+}
+
+.sidebar-flat-btn {
+  @apply
+    flex items-center justify-center text-xl
+    lg:hidden fixed bottom-4 z-80 
+    w-10 h-10 rounded-full bg-white dark:bg-slate-900 border-1 border-slate-500;
+    ;
 }
 
 .table-of-contents {
@@ -49,7 +72,7 @@ function handleChange(key: string, i: number) {
   & a {
     @apply 
       relative block font-normal 
-      text-indigo-600 pl-4 py-1.5 
+      text-violet-600 pl-4 py-1.5 
       before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5
       decoration-none;
   }

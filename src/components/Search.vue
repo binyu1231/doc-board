@@ -32,6 +32,7 @@ const searchModalOpen = ref(false);
 }
 
 .search-container {
+  font-family: lobster;
   @apply w-full sm:w-[380px] text-[15px] bg-white text-slate-400 inline-flex items-center justify-between leading-5 pl-3 pr-2 py-[7px] rounded border border-slate-200 hover:border-slate-300 shadow-sm whitespace-nowrap dark:text-slate-500 dark:bg-slate-800 dark:border-slate-700 dark:hover:border-slate-600;
 }
 

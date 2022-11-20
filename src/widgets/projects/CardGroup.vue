@@ -8,6 +8,6 @@
 </template>
 <style lang="postcss">
 .card-group {
-  @apply flex justify-between gap-4;
+  @apply grid grid-cols-2 lg:grid-cols-4 gap-4;
 }
 </style>
