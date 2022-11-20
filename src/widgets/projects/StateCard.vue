@@ -39,7 +39,16 @@ const stateName = computed(() => {
 <style lang="postcss">
 .state-card {
   @apply flex flex-col border-1 rounded border-slate-200 dark:border-slate-600 flex-1;
+
+  &.win {
+    @apply border-slate-400 dark:border-slate-500
+    
+    bg-violet-100 dark:bg-slate-800;
+  }
 }
+
+
+
 .state-card-content {
   @apply
     inline-flex items-center pl-4 py-2 gap-2 ;
@@ -48,11 +57,7 @@ const stateName = computed(() => {
       @apply w-7 h-7 mr-1;
     }
 
-    &.win {
-      @apply border-slate-400 dark:border-slate-500
-      
-      bg-violet-100 dark:bg-slate-800;
-    }
+    
 }
 
 .state-name {

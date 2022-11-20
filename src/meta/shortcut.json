@@ -11,12 +11,16 @@
             "value": "project/world-cup-2022"
           },
           {
+            "name": "赛程日历",
+            "value": "project/world-cup-2022/calendar"
+          },
+          {
             "name": "分组",
             "value": "project/world-cup-2022/group"
           },
           {
-            "name": "赛程日历",
-            "value": "project/world-cup-2022/calendar"
+            "name": "射手榜",
+            "value": "project/world-cup-2022/rank"
           }
         ]
       }

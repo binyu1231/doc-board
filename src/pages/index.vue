@@ -16,6 +16,9 @@
     <li>
       <router-link to="/project/world-cup-2022/calendar">赛程日历</router-link>
     </li>
+    <li>
+      <router-link to="/project/world-cup-2022/rank">射手榜</router-link>
+    </li>
   </ul>
 </div>
 </template>

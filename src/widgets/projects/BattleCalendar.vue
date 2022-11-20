@@ -18,7 +18,7 @@ function isToday(rowOffset: number) {
 }
 
 const races = [
-  'qa:ec,,,gb-eng:ir@第1轮',
+  'qa0:ec2,,,gb-eng:ir@第1轮',
   'sn:nl,us:gb-wls,ar:sa,dk:tn',
   'mx:pl,fr:au,ma:hr,de:jp',
   'es:cr,be:ca,ch:cm,uy:kr',

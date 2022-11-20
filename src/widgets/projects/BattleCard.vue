@@ -5,7 +5,7 @@ const dbl = (n: number) => n < 10 ? `0${n}` : `${n}`
 const formatGoal = (str: string) => {
   return str.split(',').filter(i => i).map((goal) => {
     const [time, name] = goal.split('@')
-    return { name, time: time.replace(/:/g, '\'') + '"' }
+    return { name, time: time + '\'' }
   })
 }
 const props = withDefaults(
@@ -30,6 +30,7 @@ const beginTimeString = computed(() => {
 })
 const isOver = ref(now > beginTime.value);
 const primaryWin = computed(() => Number(props.scores[0]) > Number(props.scores[1]))
+const secondaryWin = computed(() => Number(props.scores[1]) > Number(props.scores[0]))
 const leftGoals = computed(() => formatGoal(props.goals?.[0] ?? ''))
 const rightGoals = computed(() => formatGoal(props.goals?.[1] ?? ''))
 const count = ref(isOver.value ? 0 : Math.floor((beginTime.value.getTime() - now.getTime()) / 1000));
@@ -93,7 +94,7 @@ onBeforeUnmount(() => {
         <div class="battle-word">VS</div>
         <div class="battle-score">{{ scores[1] }}</div>
       </div>
-      <StateCard :state="states[1]" :win="isOver && !primaryWin">
+      <StateCard :state="states[1]" :win="isOver && secondaryWin">
         <div class="battle-card-goal" v-for="(g, i) in rightGoals" :key="i">
           <span class="battle-card-goal-name">{{ g.name }}</span>
           <span>{{ g.time }}</span>
