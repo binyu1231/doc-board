@@ -183,7 +183,8 @@ export default {
     w-64 h-screen border-r border-slate-200 
     
     lg:left-auto lg:shrink-0 lg:!opacity-100 lg:!block 
-    dark:border-slate-800 dark:bg-slate-900;
+    dark:border-slate-800 dark:bg-slate-900
+    bg-white dark:bg-slate-900;
 }
 
 .sidebar-root-link {

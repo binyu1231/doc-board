@@ -34,7 +34,6 @@ onMounted(() => {
     const active = route.path.startsWith('/' + meta.name.toLowerCase())
     if (active) key.value = meta.name
     return active
-    console.log(meta, meta.name.toLowerCase())
   })
 })
 
@@ -84,11 +83,11 @@ onMounted(() => {
 }
 
 .header-select {
-  font-family: lobster;
   @apply text-slate-400 text-lg inline-flex items-center justify-between leading-5 px-1 md:px-3 whitespace-nowrap dark:text-slate-500
   ;
   & select {
-    @apply;
+    font-family: lobster;
+    @apply text-slate-400 text-lg leading-5 whitespace-nowrap dark:text-slate-500;
   }
 
   & option {
