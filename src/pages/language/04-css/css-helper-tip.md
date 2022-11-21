@@ -3,6 +3,28 @@ title: Tips
 index: Language.CSS.Practice
 ---
 
+
+20. `::first-line` 与 `::first-letter` 伪类都被视为行内块，背景绘制不会充满一行（就算是块级元素包裹也不会）
+
+19. 如果 `<html>` 没有指定颜色，则会用 `<body>` 的背景色填充页面
+
+18. 登录窗口全屏居中 
+
+``` css
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #eee;
+
+  margin: auto;
+}
+```
+
 17. 设置图片的长宽比 <https://caniuse.com/?search=aspect-ratio>
 
 ``` css
