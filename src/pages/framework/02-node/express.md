@@ -21,6 +21,10 @@ app.use((req, res, next) => {
 app.use(blogCommentRouter)
 
 
+app.get('/', (req, res) => {
+  res.send('hello~')
+})
+
 app.listen(7788, (err) => {
   if (err) {
 

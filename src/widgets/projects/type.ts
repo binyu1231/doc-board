@@ -7,7 +7,7 @@ export const stateMap: Record<string, [string, string]> = {
     'ir': ['伊朗', 'Iran'],
     'us': ['美国', 'USA'],
     'gb-wls': ['威尔士', 'Wales'],
-    'ar': ['阿根廷', 'argentina'],
+    'ar': ['阿根廷', 'Argentina'],
     'sa': ['沙特', 'Saudi Arabia'],
     'mx': ['墨西哥', 'Mexico'],
     'pl': ['波兰', 'Poland'],

@@ -40,11 +40,6 @@ p {
     @apply mb-2 tracking-wide;
 }
 
-> p {
-    @apply mb-6;
-}
-
-
 
 b, strong {
     @apply font-medium text-gray-900 dark:text-gray-100;

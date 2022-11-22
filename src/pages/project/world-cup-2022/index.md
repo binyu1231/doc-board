@@ -36,9 +36,9 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<BattleCard :states="['sn', 'nl']" g="A1" time="2022-11-22 00:00:00" />
-<BattleCard :states="['us', 'gb-wls']" g="B1" time="2022-11-22 03:00:00" />
-<BattleCard :states="['ar', 'sa']" g="C1" time="2022-11-22 18:00:00" />
+<BattleCard :states="['sn', 'nl']" g="A1" :goals="['', '84@加克波,90@克拉森']" :scores="[0, 2]" time="2022-11-22 00:00:00" />
+<BattleCard :states="['us', 'gb-wls']" :goals="['36@维阿', '82@贝尔(点球)']" :scores="[1, 1]" g="B1" time="2022-11-22 03:00:00" />
+<BattleCard :states="['ar', 'sa']" :goals="['10@梅西(点球)', '48@谢赫里,53@多萨里']" :scores="[1, 2]" g="C1" time="2022-11-22 18:00:00" />
 <BattleCard :states="['dk', 'tn']" g="D1" time="2022-11-22 21:00:00" />
 
 ---

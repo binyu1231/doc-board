@@ -269,6 +269,8 @@ class Response
 (venv)$ pip install flask-sqlalchemy
 ```
 
+#### 配置数据库
+
 ```py
 import os
 from flask_sqlalchemy import SQLAlchemy
@@ -326,6 +328,49 @@ db = SQLAlchemy(app)
 - `order_by`: 指定关系中记录的排序方式
 - `secondary`: 指定多对多关系中关联表的名称
 - `secondaryjoin`: SQLAlchemy 无法自行决定时，指定多对多关系中的二级联结条件
+
+
+#### 命令行操作
+
+``` py
+# database.py
+db = SQLAlchemy(app)
+
+class Role (db.Model):
+  __tablename__ = 'roles'
+  id = db.Column(db.Integer, primary_key = True)
+  name = db.Column(db.String(64), unique = True)
+
+  def __repr__(self):
+    return '<Role %r>' % self.name
+
+
+class User (db.Model):
+  __tablename__ = 'users'
+  id = db.Column(db.Integer, primary_key = True)
+  username = db.Column(db.String(64), unique = True, index = True)
+
+  def __repr__(self):
+    return '<User %r>' % self.username
+```
+
+```bash
+$ source ve-name/bin/activate
+(ve-name) $ export FLASK_APP=database # 文件名
+(ve-name) $ flask shell
+>>> from database import db
+## 创建
+>>> db.create_all()
+
+## 删除
+>>> db.drop_all()
+
+## 插入行
+>>> from database import Role, User
+>>> admin_role = Role(name = 'Admin')
+ 
+```
+
 
 
 ### Flask-CORS

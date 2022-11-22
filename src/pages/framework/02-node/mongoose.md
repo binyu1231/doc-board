@@ -5,13 +5,21 @@
 import mongoose from 'mongoose'
 
 const uri = 'mongodb://localhost:27017/blog'
+
+const options = {
+  useNewParser: true
+}
+
 mongoose.Promise = global.Promise
 
-mongoose.connect(uri)
+mongoose.connect(uri, options)
+.then(db => console.log('连接数据库成功'))
+.catch(err => console.log('连接数据失败'))
 
 export default mongoose
 ```
 
+### router
 
 ``` js
 // model.js
@@ -82,4 +90,84 @@ router.route('/blog/comment/:aid')
   })
 })
 
+```
+
+
+### CRUD
+
+``` js
+const options = {}
+
+const schema = new db.Schema({
+  title: {
+    type: String
+  }
+}, options)
+
+// Model
+const Event = db.model('Event', schema)
+```
+
+#### Create
+
+``` js
+const event1 = new Event({
+  title: 'Nodejs 开发者大会'
+})
+
+event1.save()
+.then(document => console.log(document))
+.catch(err => console.log(err))
+
+const data = [
+  { title: 'Nodejs 开发者大会' },
+  { title: 'Rails 开发者大会' },
+  { title: 'Google I/O大会' }
+]
+
+Event.insertMany(data)
+.then(() => console.log('数据插入成功'))
+.catch(err => console.log(err))
+```
+
+
+#### Read
+
+``` js
+Event.find()
+.then(documents => console.log('\n所有文档\n' + documents))
+
+Event.find({ title: 'Nodejs 开发者大会'})
+.then(documents => console.log('\n指定标题的文档\n' + documents))
+
+Event.findOne({ title: 'Nodejs 开发者大会'})
+.then(document => console.log('\n findOne 指定标题的文档\n' + document))
+
+Event.findOne({ _id: '5c6241f5f40486052c465662' })
+.then(document => console.log('\n findOne 指定_id的文档\n' + document))
+
+
+// Event.findById({ _id: '5c6241f5f40486052c465662' })
+// or
+Event.findById('5c6241f5f40486052c465662')
+.then(document => console.log('\n findById d的文档\n' + document))
+```
+
+
+#### Update
+
+``` js
+Event.findByIdAndUpdate(
+  '5c623c47ee4b35049f899db7', 
+  { $set: { title: '吐槽大会' + new Date().getTime() } }, 
+  { new: true } // 返回更新之后的文档
+)
+.then(doc => console.log(doc))
+``` 
+
+#### Delete 
+
+``` js
+Event.findOneAndDelete('5c623c6954975e04a55b4cf9')
+.then(removedDoc => console.log(removedDoc))
 ```

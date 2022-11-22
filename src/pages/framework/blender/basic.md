@@ -54,3 +54,26 @@ index: Framework.Blender.Syntax
 | 【编辑】反选 | ctrl + i |  |  |
 | 【编辑】取消/隐藏选中节点 | h  / alt + h |  |  |
 | 【雕刻】笔刷大小 | f |  |  |
+
+
+Alt + G: 模型居中
+Num 1 Num6 Num6 Num8 Num8
+Ctrl + Alt + Num0 摄像机视角
+
+G + Z, Ctrl + 滑动鼠标
+
+编辑模式(Tab)
+	- 点模式 Ctrl + 1
+	- 线模式 Ctrl + 2
+	- 面模式 Ctrl + 3
+
+选择面
+	i 收缩面
+	e 挤压
+
+独显模式 / 
+
+倒角: 有的面大有的面小，模型拉伸(S)需要应用拉伸
+
+Ctrl + 左键：分块
+Ctrl + 滚轮 + 左键: 多级分块

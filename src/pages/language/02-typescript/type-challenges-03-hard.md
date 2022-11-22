@@ -81,5 +81,45 @@ const five = curriedAdd(2)(3)
 答案
 
 ``` ts
-declare function Currying(fn: any): any
+declare function Currying<T>(args: T):
+  T extends (...args: infer P) => infer R
+    ? P extends [infer P1, ...infer PR]
+      ? (arg: P1) => ReturnType<typeof Currying<(...args: PR) => R>>
+      : R
+    : never
+```
+
+## Union to Intersection
+
+`Hard`, `#utils`, `#infer`
+
+实现高级util类型`UnionToIntersection<U>`
+
+
+```ts
+type I = Union2Intersection<'foo' | 42 | true> // expected to be 'foo' & 42 & true
+```
+
+答案
+
+```ts
+type UnionToIntersection<T> = 
+	(T extends any ? (x: T) => any : never) extends (x: infer V) => any ? V : never
+```
+
+## Get Required
+
+`Hard`, `#utils`, `#infer`
+
+实现高级util类型`GetRequired<T>`，该类型保留所有必填字段
+
+```ts
+type I = GetRequired<{ foo: number, bar?: string }> 
+// expected to be { foo: number }
+```
+
+答案
+
+```ts
+type GetRequired<T, P = Partial<T>> = {[K in keyof T as P extends Pick<T, K> ? never : K ]: T[K]}
 ```
