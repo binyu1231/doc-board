@@ -86,15 +86,16 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 <BattleCard :states="['fr', 'dk']" g="D2" time="2022-11-27 00:00:00" />
 <BattleCard :states="['ar', 'mx']" g="C2" time="2022-11-27 03:00:00" />
-<BattleCard :states="['jp', 'au']" g="D2" time="2022-11-27 18:00:00" />
-<BattleCard :states="['pl', 'cr']" g="E2" time="2022-11-27 21:00:00" />
+<BattleCard :states="['jp', 'cr']" g="D2" time="2022-11-27 18:00:00" />
+<BattleCard :states="['be', 'ma']" g="E2" time="2022-11-27 21:00:00" />
 
 ---
 
 <BattleCard :states="['hr', 'ca']" g="F2" time="2022-11-28 00:00:00" />
 <BattleCard :states="['es', 'de']" g="E2" time="2022-11-28 03:00:00" />
-<BattleCard :states="['jp', 'au']" g="G2" time="2022-11-28 18:00:00" />
-<BattleCard :states="['cm', 'rs']" g="E2" time="2022-11-28 21:00:00" />
+<BattleCard :states="['cm', 'rs']" g="G2" time="2022-11-28 18:00:00" />
+<BattleCard :states="['kr', 'gh']" g="G2" time="2022-11-28 18:00:00" />
+
 
 ---
 
