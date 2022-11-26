@@ -23,7 +23,7 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<ScopeToggle v-slot="{ toggle, value }">
+<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
 <ColTitle @click="toggle" :expand="value">小组赛第一轮</ColTitle>
 
 <div v-if="value">
@@ -67,7 +67,7 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
+<ScopeToggle v-slot="{ toggle, value }">
 <ColTitle @click="toggle" :expand="value">小组赛第二轮</ColTitle>
 
 <div v-if="value">
@@ -79,7 +79,7 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 <BattleCard :states="['nl', 'ec']" :goals="['5@加克波', '48@瓦伦西亚']" :scores="[1, 1]" g="A2" time="2022-11-26 00:00:00" />
 <BattleCard :states="['gb-eng', 'us']" g="B2" time="2022-11-26 03:00:00" />
-<BattleCard :states="['tn', 'au']" g="D2" time="2022-11-26 18:00:00" />
+<BattleCard :states="['tn', 'au']" :goals="['', '22@杜克']" :scores="[0, 1]" g="D2" time="2022-11-26 18:00:00" />
 <BattleCard :states="['pl', 'sa']" g="C2" time="2022-11-26 21:00:00" />
 
 ---
