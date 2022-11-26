@@ -21,9 +21,9 @@ const races = [
   'qa0:ec2,,,gb-eng6:ir2@第1轮',
   'sn0:nl2,us1:gb-wls1,ar1:sa2,dk0:tn0',
   'mx0:pl0,fr4:au1,ma0:hr0,de1:jp2',
-  'es7:cr0,be1:ca0,ch:cm,uy:kr',
-  'pt:gh,br:rs,gb-wls:ir,qa:sn@第2轮', // 第二轮
-  'nl:ec,gb-eng:us,tn:au,pl:sa',
+  'es7:cr0,be1:ca0,ch1:cm0,uy0:kr0',
+  'pt3:gh2,br2:rs0,gb-wls0:ir2,qa1:sn3@第2轮', // 第二轮
+  'nl1:ec1,gb-eng0:us0,tn0:au1,pl:sa',
   'fr:dk,ar:mx,jp:au,pl:cr',
   // ---
   'hr:ca,es:de,jp:au,cm:rs',
