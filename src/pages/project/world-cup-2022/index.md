@@ -80,12 +80,12 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 <BattleCard :states="['nl', 'ec']" :goals="['5@加克波', '48@瓦伦西亚']" :scores="[1, 1]" g="A2" time="2022-11-26 00:00:00" />
 <BattleCard :states="['gb-eng', 'us']" g="B2" time="2022-11-26 03:00:00" />
 <BattleCard :states="['tn', 'au']" :goals="['', '22@杜克']" :scores="[0, 1]" g="D2" time="2022-11-26 18:00:00" />
-<BattleCard :states="['pl', 'sa']" g="C2" time="2022-11-26 21:00:00" />
+<BattleCard :states="['pl', 'sa']" :goals="['38@泽林斯基,81@莱万多夫斯基', '']" :scores="[2, 0]" g="C2" time="2022-11-26 21:00:00" />
 
 ---
 
-<BattleCard :states="['fr', 'dk']" g="D2" time="2022-11-27 00:00:00" />
-<BattleCard :states="['ar', 'mx']" g="C2" time="2022-11-27 03:00:00" />
+<BattleCard :states="['fr', 'dk']" :goals="['60@姆巴佩,85@姆巴佩', '67@克里斯滕森']" :scores="[2, 1]" g="D2" time="2022-11-27 00:00:00" />
+<BattleCard :states="['ar', 'mx']" :goals="['63@梅西,86@费尔南德斯', '']" :scores="[2, 0]" g="C2" time="2022-11-27 03:00:00" />
 <BattleCard :states="['jp', 'cr']" g="D2" time="2022-11-27 18:00:00" />
 <BattleCard :states="['be', 'ma']" g="E2" time="2022-11-27 21:00:00" />
 
