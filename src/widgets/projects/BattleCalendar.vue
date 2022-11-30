@@ -23,16 +23,16 @@ const races = [
   'mx0:pl0,fr4:au1,ma0:hr0,de1:jp2',
   'es7:cr0,be1:ca0,ch1:cm0,uy0:kr0',
   'pt3:gh2,br2:rs0,gb-wls0:ir2,qa1:sn3@第2轮', // 第二轮
-  'nl1:ec1,gb-eng0:us0,tn0:au1,pl:sa',
-  'fr:dk,ar:mx,jp:au,pl:cr',
+  'nl1:ec1,gb-eng0:us0,tn0:au1,pl2:sa0',
+  'fr2:dk1,ar2:mx0,jp0:cr1,be0:ma2',
   // ---
-  'hr:ca,es:de,jp:au,cm:rs',
-  'br:ch,pt:uy,nl:qa,ec:sn@第1轮', // 第三轮
-  'gb-wls:gb-eng,ir:us,tn:fr,au:dk',
+  'hr4:ca1,es1:de1,cm3:rs3,kr2:gh3',
+  'br1:ch0,pt2:uy0,nl2:qa0,ec1:sn2@第3轮', // 第三轮
+  'gb-wls0:gb-eng3,ir0:us1,tn:fr,au:dk',
   'pl:ar,sa:mx,hr:be,ca:ma',
   'jp:es,cr:de,kr:pt,gh:uy',
-  'cm:br,rs:ch,,:@1/8决赛', // 1/8
-  ',:,,:',
+  'cm:br,rs:ch,,nl:us@1/8决赛', // 1/8
+  ',gb-eng:sn,,:',
   // ---
   ',:,,:',
   ',:,,:',
