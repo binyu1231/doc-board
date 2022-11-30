@@ -67,7 +67,7 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<ScopeToggle v-slot="{ toggle, value }">
+<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
 <ColTitle @click="toggle" :expand="value">小组赛第二轮</ColTitle>
 
 <div v-if="value">
@@ -94,13 +94,13 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 <BattleCard :states="['hr', 'ca']" :goals="['35@克拉马里奇,43@里瓦亚,69@克拉马里奇,93@马耶尔', '1@戴维斯']" :scores="[4, 1]" g="F2" time="2022-11-28 00:00:00" />
 <BattleCard :states="['es', 'de']" :goals="['61@莫拉塔', '81@菲尔克鲁格']" :scores="[1, 1]" g="E2" time="2022-11-28 03:00:00" />
 <BattleCard :states="['cm', 'rs']" :goals="['28@卡斯特莱托,62@巴布巴卡尔,65@艾里克', '45@帕夫洛维奇,47@萨维奇,52@米特罗维奇']" :scores="[3, 3]" g="G2" time="2022-11-28 18:00:00" />
-<BattleCard :states="['kr', 'gh']" g="G2" time="2022-11-28 18:00:00" />
+<BattleCard :states="['kr', 'gh']" :goals="['57@曹圭成,60@曹圭成', '23@萨利苏,33@库杜斯,67@库杜斯']" :scores="[2, 3]" g="G2" time="2022-11-28 18:00:00" />
 
 
 ---
 
-<BattleCard :states="['br', 'ch']" g="G2" time="2022-11-29 00:00:00" />
-<BattleCard :states="['pt', 'uy']" g="H2" time="2022-11-29 03:00:00" />
+<BattleCard :states="['br', 'ch']" :goals="['82@卡塞米罗', '']" :scores="[1, 0]" g="G2" time="2022-11-29 00:00:00" />
+<BattleCard :states="['pt', 'uy']" :goals="['53@费尔南德斯,92@费尔南德斯(点球)', '']" :scores="[2, 0]" g="H2" time="2022-11-29 03:00:00" />
 
 </div>
 
@@ -108,7 +108,7 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
+<ScopeToggle v-slot="{ toggle, value }">
 <ColTitle @click="toggle" :expand="value">小组赛第三轮</ColTitle>
 
 
@@ -116,13 +116,13 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 <div v-if="value">
 
-<BattleCard :states="['nl', 'qa']" g="A3" time="2022-11-29 23:00:00" />
-<BattleCard :states="['ec', 'sn']" g="A3" time="2022-11-29 23:00:00" />
+<BattleCard :states="['nl', 'qa']" :goals="['25@加克波,48@德容', '']" :scores="[2, 0]" g="A3" time="2022-11-29 23:00:00" />
+<BattleCard :states="['ec', 'sn']" :goals="['66@凯塞多', '43@萨尔(点球),69@库利巴利']" :scores="[1, 2]" g="A3" time="2022-11-29 23:00:00" />
 
 ---
 
-<BattleCard :states="['gb-wls', 'gb-eng']" g="B3" time="2022-11-30 03:00:00" />
-<BattleCard :states="['ir', 'us']" g="B3" time="2022-11-30 03:00:00" />
+<BattleCard :states="['gb-wls', 'gb-eng']" :goals="['', '49@拉什福德,50@福登,67@拉什福德']" :scores="[0, 3]" g="B3" time="2022-11-30 03:00:00" />
+<BattleCard :states="['ir', 'us']" :goals="['', '37@普利西奇']" :scores="[0, 1]" g="B3" time="2022-11-30 03:00:00" />
 <BattleCard :states="['tn', 'fr']" g="D3" time="2022-11-30 23:00:00" />
 <BattleCard :states="['au', 'dk']" g="D3" time="2022-11-30 23:00:00" />
 
@@ -151,12 +151,12 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
+<ScopeToggle v-slot="{ toggle, value }">
 <ColTitle @click="toggle" :expand="value">1/8 决赛</ColTitle>
 
 <div v-if="value">
 
-<BattleCard :states="['', '']" g="1/8" time="2022-12-03 23:00:00" />
+<BattleCard :states="['nl', 'us']" g="1/8" time="2022-12-03 23:00:00" />
 
 ---
 
@@ -165,7 +165,7 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<BattleCard :states="['', '']" g="1/8" time="2022-12-05 03:00:00" />
+<BattleCard :states="['gb-eng', 'sn']" g="1/8" time="2022-12-05 03:00:00" />
 <BattleCard :states="['', '']" g="1/8" time="2022-12-05 23:00:00" />
 
 ---
