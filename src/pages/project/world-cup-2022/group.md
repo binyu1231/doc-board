@@ -11,10 +11,10 @@
   <StateCard state="ec">
     <template #rank>No.44</template>
   </StateCard>
-  <StateCard state="sn">
+  <StateCard state="sn" win>
     <template #rank>No.18</template>
   </StateCard>
-  <StateCard state="nl">
+  <StateCard state="nl" win>
     <template #rank>No.08</template>
   </StateCard>
 </CardGroup>
@@ -24,13 +24,13 @@
 ### Group B
 
 <CardGroup>
-<StateCard state="gb-eng">
+<StateCard state="gb-eng" win>
     <template #rank>No.05</template>
   </StateCard>
 <StateCard state="ir">
     <template #rank>No.20</template>
   </StateCard>
-<StateCard state="us">
+<StateCard state="us" win>
     <template #rank>No.16</template>
   </StateCard>
 <StateCard state="gb-wls">
@@ -43,7 +43,7 @@
 ### Group C
 
 <CardGroup>
-<StateCard state="ar">
+<StateCard state="ar" win>
     <template #rank>No.03</template>
   </StateCard>
 <StateCard state="sa">
@@ -52,7 +52,7 @@
 <StateCard state="mx">
     <template #rank>No.13</template>
   </StateCard>
-<StateCard state="pl">
+<StateCard state="pl" win>
     <template #rank>No.26</template>
   </StateCard>
 </CardGroup>
@@ -62,10 +62,10 @@
 ### Group D
 
 <CardGroup>
-<StateCard state="fr">
+<StateCard state="fr" win>
     <template #rank>No.04</template>
   </StateCard>
-<StateCard state="au">
+<StateCard state="au" win>
     <template #rank>No.38</template>
   </StateCard>
 <StateCard state="dk">
