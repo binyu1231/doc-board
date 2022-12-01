@@ -1,7 +1,9 @@
 
+[[toc]]
+
 node API
 
-EventEmitter
+## EventEmitter
 
 ``` js
 const EventEmitter = require('event')
@@ -13,7 +15,7 @@ emitter.once([eventName],  [callback])
 emitter.emit([eventName], callbackArguments)
 ```
 
-Fs
+## Fs
 
 ``` javascript
 const fs = require('fs')
@@ -74,7 +76,7 @@ writeStream.write([dataChunk])
 ```
 
 
-Zlib
+## Zlib
 
 ```js
 const zlib = require('zlib')
@@ -82,7 +84,7 @@ const zlib = require('zlib')
 zlib.createGzip() => ???  可传入pipe
 ```
 
-http
+## http
 
 ```js
 const http = require('http')
@@ -111,7 +113,7 @@ server.listen([port])
 ```
 
 
-path
+## path
 
 ```js
 const path = require('path')

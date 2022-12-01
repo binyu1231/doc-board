@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import metadata from '@/meta/shortcut.json'
+import metadata from '@/meta/short.json'
 const sidebarOpen = ref(false)
 const navs = ref(metadata[0].children)
 
@@ -22,7 +22,7 @@ function openSidebar(e: Event) {
   <Header 
     :metadata="metadata" 
     @change="handleChange" 
-  />
+  ></Header>
   <div class="doc-container">
     <Sidebar 
       :sidebarOpen="sidebarOpen"

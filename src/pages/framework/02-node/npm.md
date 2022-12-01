@@ -57,7 +57,7 @@ $ nrm use taobao
 
 ## 切换 Node 版本
 
-### Windows NVM
+### NVM (Windows)
 
 下载安装: <https://github.com/coreybutler/nvm-windows>
 
@@ -86,7 +86,7 @@ $ nvm use 16.18.0
     2. `sysdm.cpl`
     3. 高级 - 环境变量
 
-### Mac Linux N
+### N (Mac Linux)
 
 ``` bash
 # 安装
