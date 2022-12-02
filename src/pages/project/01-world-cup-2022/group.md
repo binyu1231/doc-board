@@ -85,7 +85,7 @@ title: 分组
 ### Group E
 
 <CardGroup>
-<StateCard state="es">
+<StateCard state="es" win>
     <template #rank>No.07</template>
   </StateCard>
 <StateCard state="cr">
@@ -94,7 +94,7 @@ title: 分组
 <StateCard state="de">
     <template #rank>No.11</template>
   </StateCard>
-<StateCard state="jp">
+<StateCard state="jp" win>
     <template #rank>No.24</template>
   </StateCard>
 </CardGroup>
@@ -110,10 +110,10 @@ title: 分组
 <StateCard state="ca">
     <template #rank>No.41</template>
   </StateCard>
-<StateCard state="ma">
+<StateCard state="ma" win>
     <template #rank>No.22</template>
   </StateCard>
-<StateCard state="hr">
+<StateCard state="hr" win>
     <template #rank>No.12</template>
   </StateCard>
 </CardGroup>

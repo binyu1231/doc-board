@@ -29,13 +29,13 @@ const races = [
   'hr4:ca1,es1:de1,cm3:rs3,kr2:gh3',
   'br1:ch0,pt2:uy0,nl2:qa0,ec1:sn2@第3轮', // 第三轮
   'gb-wls0:gb-eng3,ir0:us1,tn0:fr1,au1:dk0',
-  'pl0:ar2,sa1:mx2,hr:be,ca:ma',
-  'jp:es,cr:de,kr:pt,gh:uy',
+  'pl0:ar2,sa1:mx2,hr0:be0,ca1:ma2',
+  'jp2:es1,cr2:de4,kr:pt,gh:uy',
   'cm:br,rs:ch,,nl:us@1/8决赛', // 1/8
   ',ar:au,,fr:pl',
   // ---
-  ',gb-eng:sn,,:',
-  ',:,,:',
+  ',gb-eng:sn,,jp:hr',
+  ',:,,ma:es',
   ',:,,',
   '',
   ',,,:@1/4决赛', // 1/4
