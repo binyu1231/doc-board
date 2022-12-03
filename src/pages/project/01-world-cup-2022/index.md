@@ -111,7 +111,7 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<ScopeToggle v-slot="{ toggle, value }">
+<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
 <ColTitle @click="toggle" :expand="value">小组赛第三轮</ColTitle>
 
 
@@ -140,13 +140,13 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 <BattleCard :states="['jp', 'es']" :goals="['47@堂安律,50@田中碧', '11@莫拉塔']" :scores="[2, 1]" g="E3" time="2022-12-02 03:00:00" />
 <BattleCard :states="['cr', 'de']" :goals="['57@特赫达', '9@格纳布里,69@诺伊尔(乌龙),72@哈弗茨,84@哈弗茨,88@菲尔克鲁格']" :scores="[2, 4]" g="E3" time="2022-12-02 03:00:00" />
-<BattleCard :states="['kr', 'pt']" g="H3" time="2022-12-02 23:00:00" />
-<BattleCard :states="['gh', 'uy']" g="H3" time="2022-12-02 23:00:00" />
+<BattleCard :states="['kr', 'pt']" :goals="['26@金英权,90@黄喜灿', '4@奥尔塔']" :scores="[2, 1]" g="H3" time="2022-12-02 23:00:00" />
+<BattleCard :states="['gh', 'uy']" :goals="['', '25@德阿拉斯凯塔,31@德阿拉斯凯塔']" :scores="[0, 2]" g="H3" time="2022-12-02 23:00:00" />
 
 ---
 
-<BattleCard :states="['cm', 'br']" g="G3" time="2022-12-03 03:00:00" />
-<BattleCard :states="['rs', 'ch']" g="G3" time="2022-12-03 03:00:00" />
+<BattleCard :states="['cm', 'br']" :goals="['91@阿布巴卡尔', '']" :scores="[1, 0]" g="G3" time="2022-12-03 03:00:00" />
+<BattleCard :states="['rs', 'ch']" :goals="['25@米特罗维奇,34@弗拉霍维奇,', '19@沙奇里,43@恩博洛,47@弗罗伊勒']" :scores="[2, 3]" g="G3" time="2022-12-03 03:00:00" />
 
 </div>
 
@@ -173,12 +173,12 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<BattleCard :states="['', '']" g="1/8" time="2022-12-06 03:00:00" />
+<BattleCard :states="['br', 'kr']" g="1/8" time="2022-12-06 03:00:00" />
 <BattleCard :states="['ma', 'es']" g="1/8" time="2022-12-06 23:00:00" />
 
 ---
 
-<BattleCard :states="['', '']" g="1/8" time="2022-12-07 03:00:00" />
+<BattleCard :states="['pt', 'ch']" g="1/8" time="2022-12-07 03:00:00" />
 
 </div>
 

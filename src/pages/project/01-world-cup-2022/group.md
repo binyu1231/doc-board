@@ -123,13 +123,13 @@ title: 分组
 ### Group G
 
 <CardGroup>
-<StateCard state="br">
+<StateCard state="br" win>
     <template #rank>No.01</template>
   </StateCard>
 <StateCard state="rs">
     <template #rank>No.21</template>
   </StateCard>
-<StateCard state="ch">
+<StateCard state="ch" win>
     <template #rank>No.15</template>
   </StateCard>
 <StateCard state="cm">
@@ -142,7 +142,7 @@ title: 分组
 ### Group H
 
 <CardGroup>
-<StateCard state="pt">
+<StateCard state="pt" win>
     <template #rank>No.09</template>
   </StateCard>
 <StateCard state="gh">
@@ -151,7 +151,7 @@ title: 分组
 <StateCard state="uy">
     <template #rank>No.14</template>
   </StateCard>
-<StateCard state="kr">
+<StateCard state="kr" win>
     <template #rank>No.28</template>
   </StateCard>
 </CardGroup>
