@@ -98,3 +98,7 @@ title: 射手榜
 <GoalRank rank="23" name="弗拉霍维奇" state="rs" goals="1" />
 <GoalRank rank="23" name="沙奇里" state="ch" goals="1" />
 <GoalRank rank="23" name="弗罗伊勒" state="ch" goals="1" />
+<GoalRank rank="23" name="德佩" state="nl" goals="1" />
+<GoalRank rank="23" name="布林德" state="nl" goals="1" />
+<GoalRank rank="23" name="邓弗里斯" state="nl" goals="1" />
+<GoalRank rank="23" name="赖特" state="us" goals="1" />
