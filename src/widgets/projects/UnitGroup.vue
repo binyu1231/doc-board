@@ -27,7 +27,7 @@ function handleChange(val: string, rate: number) {
 <div class="unit-group">
   <label v-for="(conf, i) in configs" :key="i">
     <span>{{ conf.name }}</span>
-    <input :value="(value * conf.rate)" @input="(e: Event) => handleChange(e.target!.value!, conf.rate)" type="text">
+    <input :value="(value * conf.rate)" @input="(e: any) => handleChange(e.target.value, conf.rate)" type="text">
   </label>
 </div>
 </template>

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue'
-import { stateMap } from './type';
 const firstDate = new Date('2022-11-21 00:00:00')
 
 function getDate(rowOffset: number) {
@@ -32,15 +30,15 @@ const races = [
   'pl0:ar2,sa1:mx2,hr0:be0,ca1:ma2',
   'jp2:es1,cr2:de4,kr2:pt1,gh0:uy2',
   'cm1:br0,rs2:ch3,,nl3:us1@1/8决赛', // 1/8
-  ',ar:au,,fr:pl',
+  ',ar2:au1,,fr3:pl1',
   // ---
-  ',gb-eng:sn,,jp:hr',
+  ',gb-eng3:sn0,,jp:hr',
   ',br:kr,,ma:es',
   ',pt:ch,,',
   '',
   ',,,:@1/4决赛', // 1/4
-  ',nl:,,:',
-  ',:,,',
+  ',nl:ar,,:',
+  ',gb-eng:fr,,',
   // ---
   '',
   '',

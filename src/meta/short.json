@@ -1166,6 +1166,22 @@
         ]
       },
       {
+        "name": "Japanese",
+        "children": [
+          {
+            "name": "助词",
+            "value": "language/99-japanese/aux",
+            "title": "助词",
+            "date": ""
+          },
+          {
+            "name": "Index",
+            "value": "language/99-japanese",
+            "date": ""
+          }
+        ]
+      },
+      {
         "name": "Cpp",
         "children": [
           {
