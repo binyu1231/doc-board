@@ -1169,14 +1169,19 @@
         "name": "Japanese",
         "children": [
           {
+            "name": "01 Index",
+            "value": "language/99-japanese/01-index",
+            "date": ""
+          },
+          {
             "name": "助词",
             "value": "language/99-japanese/aux",
             "title": "助词",
             "date": ""
           },
           {
-            "name": "Index",
-            "value": "language/99-japanese",
+            "name": "Song",
+            "value": "language/99-japanese/song",
             "date": ""
           }
         ]

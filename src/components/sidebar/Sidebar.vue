@@ -1,6 +1,6 @@
 <script lang="ts">
 // ts-ignore
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 import SidebarLinkGroup from './SidebarLinkGroup.vue'
