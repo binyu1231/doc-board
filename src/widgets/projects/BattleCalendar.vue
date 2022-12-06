@@ -32,12 +32,12 @@ const races = [
   'cm1:br0,rs2:ch3,,nl3:us1@1/8决赛', // 1/8
   ',ar2:au1,,fr3:pl1',
   // ---
-  ',gb-eng3:sn0,,jp:hr',
-  ',br:kr,,ma:es',
+  ',gb-eng3:sn0,,jp1:hr1',
+  ',br4:kr1,,ma0:es0',
   ',pt:ch,,',
   '',
-  ',,,:@1/4决赛', // 1/4
-  ',nl:ar,,:',
+  ',,,hr:br@1/4决赛', // 1/4
+  ',nl:ar,,ma:',
   ',gb-eng:fr,,',
   // ---
   '',

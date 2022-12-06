@@ -29,7 +29,6 @@ watch(() => route, () => {
 
 
 onMounted(() => {
-  console.log(route.path)
   props.metadata.some((meta) => {
     const active = route.path.startsWith('/' + meta.name.toLowerCase())
     if (active) key.value = meta.name
@@ -52,7 +51,7 @@ onMounted(() => {
           <i-akar-icons-triangle-down />
         </div>
         <div class="header-search-container">
-          <!-- <Search /> -->
+          <Search />
         </div>
         <div class="header-theme-switch" @click="() => toggleDark()">
           <i-akar-icons-moon-fill v-if="isDark" />

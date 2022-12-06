@@ -14,7 +14,8 @@ const props = withDefaults(
     scores?: [string, string],
     time: string
     g: string,
-    goals?: string[]
+    goals?: string[],
+    win?: number
   }>(),
   {
     scores: () => ['0', '0'],
@@ -83,7 +84,7 @@ onBeforeUnmount(() => {
       </span>
     </div>
     <div class="battle-card-content">
-      <StateCard :state="states[0]" :win="isOver && primaryWin">
+      <StateCard :state="states[0]" :win="isOver && (primaryWin || win === 0)">
         <div class="battle-card-goal" v-for="(g, i) in leftGoals" :key="i">
           <span class="battle-card-goal-name">{{ g.name }}</span>
           <span>{{ g.time }}</span>
@@ -94,7 +95,7 @@ onBeforeUnmount(() => {
         <div class="battle-word">VS</div>
         <div class="battle-score">{{ scores[1] }}</div>
       </div>
-      <StateCard :state="states[1]" :win="isOver && secondaryWin">
+      <StateCard :state="states[1]" :win="isOver && (secondaryWin || win === 1)">
         <div class="battle-card-goal" v-for="(g, i) in rightGoals" :key="i">
           <span class="battle-card-goal-name">{{ g.name }}</span>
           <span>{{ g.time }}</span>

@@ -22,7 +22,12 @@ const searchModalOpen = ref(false);
   </button>
   <div>
     <!-- Search modal -->
-    <!-- <SearchModal id="search-modal" searchId="search" :modalOpen="searchModalOpen" @open-modal="searchModalOpen = true" @close-modal="searchModalOpen = false" /> -->
+    <SearchModal 
+      id="search-modal"
+      searchId="search"
+      :modalOpen="searchModalOpen"
+      @open-modal="searchModalOpen = true" 
+      @close-modal="searchModalOpen = false" />
   </div>
 </div>
 </template>
