@@ -83,3 +83,10 @@ sudo chown www:www -R $DEPLOY_PATH
 # git remote add origin <server>
 $ git remote add origin git@xx.xxx.xx.xx:~/xxx.git
 ```
+
+### 拉取代码时报错 `error: invalid path <path>`
+
+
+``` bash
+$ git config --global core.protectNTFS false
+```
