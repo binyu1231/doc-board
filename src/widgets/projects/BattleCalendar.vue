@@ -34,10 +34,10 @@ const races = [
   // ---
   ',gb-eng3:sn0,,jp1:hr1',
   ',br4:kr1,,ma0:es0',
-  ',pt:ch,,',
+  ',pt6:ch1,,',
   '',
   ',,,hr:br@1/4决赛', // 1/4
-  ',nl:ar,,ma:',
+  ',nl:ar,,ma:pt',
   ',gb-eng:fr,,',
   // ---
   '',

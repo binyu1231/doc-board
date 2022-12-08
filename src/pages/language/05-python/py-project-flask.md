@@ -25,7 +25,7 @@ $ cd <project>
 <p>$ <venvName>\Scripts\activate
 
 ## <p>$ <venvName>\Scripts\activate
-<venvName>$ pip install Flas
+<venvName>$ pip install Flask
 ```
 
 ## Startup
