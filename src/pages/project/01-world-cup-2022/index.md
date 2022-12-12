@@ -194,16 +194,16 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 <div v-if="value">
 
 
-<BattleCard :states="['hr', 'br']" g="1/4" time="2022-12-09 23:00:00" />
+<BattleCard :states="['hr', 'br']" :goals="['115@佩特科维奇,120@弗拉西奇(点球),120@马耶尔(点球),120@莫德里奇(点球),120@奥尔西奇(点球)', '105@内马尔,120@卡塞米罗(点球),120@佩德罗(点球)']" :scores="[1, 1]" :win="0" g="1/4" time="2022-12-09 23:00:00" />
 
 ---
 
-<BattleCard :states="['nl', 'ar']" g="1/4" time="2022-12-10 03:00:00" />
-<BattleCard :states="['ma', 'pt']" g="1/4" time="2022-12-10 23:00:00" />
+<BattleCard :states="['nl', 'ar']" :goals="['82@维格霍斯特,100@维格霍斯特,120@库普梅纳斯(点球),120@维格霍斯特(点球),120@德容(点球)', '34@莫利纳,72@梅西(点球),120@梅西(点球),120@梅西(点球),120@帕雷德斯(点球),120@蒙蒂尔(点球),120@费尔南德斯(点球),120@劳塔罗(点球)']" :scores="[2, 2]" :win="1" g="1/4" time="2022-12-10 03:00:00" />
+<BattleCard :states="['ma', 'pt']" :goals="['41@内斯里', '']" :scores="[1, 0]" g="1/4" time="2022-12-10 23:00:00" />
 
 ---
 
-<BattleCard :states="['gb-eng', 'fr']" g="1/4" time="2022-12-11 03:00:00" />
+<BattleCard :states="['gb-eng', 'fr']" :goals="['53@凯恩(点球)', '16@琼阿梅尼,77@吉鲁']" :scores="[1, 2]" g="1/4" time="2022-12-11 03:00:00" />
 
 </div>
 
@@ -211,18 +211,18 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
+<ScopeToggle v-slot="{ toggle, value }">
 <ColTitle @click="toggle" :expand="value">半决赛</ColTitle>
 
 与1/4决赛相隔三天
 
 <div v-if="value">
 
-<BattleCard :states="['', '']" g="1/2" time="2022-12-14 03:00:00" />
+<BattleCard :states="['ar', 'hr']" g="1/2" time="2022-12-14 03:00:00" />
 
 ---
 
-<BattleCard :states="['', '']" g="1/2" time="2022-12-15 03:00:00" />
+<BattleCard :states="['fr', 'ma']" g="1/2" time="2022-12-15 03:00:00" />
 
 </div>
 
