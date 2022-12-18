@@ -23,8 +23,9 @@ watch(key, () => {
   emit('change', key.value, props.metadata.findIndex(opt => opt.name === key.value))
 })
 
-watch(() => route, () => {
-
+watch(() => route.fullPath, () => {
+  const kind = route.fullPath.match(/^\/(\w+)/)![1].replace(/^(\w)/, (s) => s.toUpperCase())
+  if (key.value !== kind) key.value = kind
 }, { immediate: true })
 
 

@@ -186,7 +186,7 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<ScopeToggle v-slot="{ toggle, value }">
+<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
 <ColTitle @click="toggle" :expand="value">1/4 决赛</ColTitle>
 
 与1/8决赛相隔一天
@@ -211,18 +211,18 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<ScopeToggle v-slot="{ toggle, value }">
+<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
 <ColTitle @click="toggle" :expand="value">半决赛</ColTitle>
 
 与1/4决赛相隔三天
 
 <div v-if="value">
 
-<BattleCard :states="['ar', 'hr']" g="1/2" time="2022-12-14 03:00:00" />
+<BattleCard :states="['ar', 'hr']" :goals="['33@梅西(点球),38@阿尔瓦雷斯,68@阿尔瓦雷斯', '']" :scores="[3, 0]" g="1/2" time="2022-12-14 03:00:00" />
 
 ---
 
-<BattleCard :states="['fr', 'ma']" g="1/2" time="2022-12-15 03:00:00" />
+<BattleCard :states="['fr', 'ma']" :goals="['4@埃尔南德斯,78@穆阿尼', '']" :scores="[2, 0]" g="1/2" time="2022-12-15 03:00:00" />
 
 </div>
 
@@ -230,20 +230,20 @@ A组第一与B组第二, B组第一与A组第二进行1/8决赛, 以此类推. �
 
 ---
 
-<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
+<ScopeToggle v-slot="{ toggle, value }">
 <ColTitle @click="toggle">决赛</ColTitle>
 
 <div v-if="value">
 
 #### 季军赛 
 
-<BattleCard :states="['', '']" g="*" time="2022-12-17 23:00:00" />
+<BattleCard :states="['hr', 'ma']" :goals="['6@格瓦迪奥尔,41@奥尔西奇', '8@达里']" :scores="[2, 1]" g="*" time="2022-12-17 23:00:00" />
 
 ---
 
 #### 决赛
 
-<BattleCard :states="['', '']" g="*" time="2022-12-18 23:00:00" />
+<BattleCard :states="['ar', 'fr']" :goals="['22@梅西(点球),35@迪玛利亚,107@梅西,120@梅西(点球),120@迪巴拉(点球),120@帕雷德斯(点球),120@蒙蒂尔(点球)', '79@姆巴佩(点球),80@姆巴佩,117@姆巴佩(点球),120@姆巴佩(点球),120@穆阿尼(点球)']" :scores="[3, 3]" :win="0" g="*" time="2022-12-18 23:00:00" />
 
 </div>
 

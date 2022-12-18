@@ -1,8 +1,3 @@
-<route lang="yaml">
-meta:
-  layout: empty
-</route>
-
 [[toc]]
 
 <details>

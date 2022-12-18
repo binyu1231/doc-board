@@ -4,37 +4,37 @@ title: 射手榜
 
 ### 射手榜
 
-<GoalRank rank="1" name="姆巴佩" state="fr" goals="5" />
+<GoalRank rank="1" name="姆巴佩" state="fr" goals="8" />
+<GoalRank rank="1" name="梅西" state="ar" goals="7" />
 
-<GoalRank rank="2" name="梅西" state="ar" goals="4" />
-<GoalRank rank="2" name="吉鲁" state="fr" goals="4" />
+<GoalRank rank="3" name="吉鲁" state="fr" goals="4" />
+<GoalRank rank="3" name="阿尔瓦雷斯" state="ar" goals="4" />
 
-<GoalRank rank="4" name="瓦伦西亚" state="ec" goals="3" />
-<GoalRank rank="4" name="加克波" state="nl" goals="3" />
-<GoalRank rank="4" name="拉什福德" state="gb-eng" goals="3" />
-<GoalRank rank="4" name="莫拉塔" state="es" goals="3" />
-<GoalRank rank="4" name="萨卡" state="gb-eng" goals="3" />
-<GoalRank rank="4" name="理查利森" state="br" goals="3" />
-<GoalRank rank="4" name="拉莫斯" state="pt" goals="3" />
+<GoalRank rank="5" name="瓦伦西亚" state="ec" goals="3" />
+<GoalRank rank="5" name="加克波" state="nl" goals="3" />
+<GoalRank rank="5" name="拉什福德" state="gb-eng" goals="3" />
+<GoalRank rank="5" name="莫拉塔" state="es" goals="3" />
+<GoalRank rank="5" name="萨卡" state="gb-eng" goals="3" />
+<GoalRank rank="5" name="理查利森" state="br" goals="3" />
+<GoalRank rank="5" name="拉莫斯" state="pt" goals="3" />
 
-<GoalRank rank="11" name="塔雷米" state="ir" goals="2" />
-<GoalRank rank="11" name="托雷斯" state="es" goals="2" />
-<GoalRank rank="11" name="克拉马里奇" state="hr" goals="2" />
-<GoalRank rank="11" name="库杜斯" state="gh" goals="2" />
-<GoalRank rank="11" name="曹圭成" state="kr" goals="2" />
-<GoalRank rank="11" name="费尔南德斯" state="pt" goals="2" />
-<GoalRank rank="11" name="多萨里" state="sa" goals="2" />
-<GoalRank rank="11" name="堂安律" state="jp" goals="2" />
-<GoalRank rank="11" name="哈弗茨" state="de" goals="2" />
-<GoalRank rank="11" name="菲尔克鲁格" state="de" goals="2" />
-<GoalRank rank="11" name="德阿拉斯凯塔" state="uy" goals="2" />
-<GoalRank rank="11" name="米特罗维奇" state="rs" goals="2" />
-<GoalRank rank="11" name="恩博洛" state="ch" goals="2" />
-<GoalRank rank="11" name="阿尔瓦雷斯" state="ar" goals="2" />
-<GoalRank rank="11" name="莱万多夫斯基" state="pl" goals="2" />
-<GoalRank rank="11" name="内马尔" state="br" goals="2" />
-<GoalRank rank="11" name="维格霍斯特" state="nl" goals="2" />
-<GoalRank rank="11" name="凯恩" state="gb-eng" goals="2" />
+<GoalRank rank="12" name="塔雷米" state="ir" goals="2" />
+<GoalRank rank="12" name="托雷斯" state="es" goals="2" />
+<GoalRank rank="12" name="克拉马里奇" state="hr" goals="2" />
+<GoalRank rank="12" name="库杜斯" state="gh" goals="2" />
+<GoalRank rank="12" name="曹圭成" state="kr" goals="2" />
+<GoalRank rank="12" name="费尔南德斯" state="pt" goals="2" />
+<GoalRank rank="12" name="多萨里" state="sa" goals="2" />
+<GoalRank rank="12" name="堂安律" state="jp" goals="2" />
+<GoalRank rank="12" name="哈弗茨" state="de" goals="2" />
+<GoalRank rank="12" name="菲尔克鲁格" state="de" goals="2" />
+<GoalRank rank="12" name="德阿拉斯凯塔" state="uy" goals="2" />
+<GoalRank rank="12" name="米特罗维奇" state="rs" goals="2" />
+<GoalRank rank="12" name="恩博洛" state="ch" goals="2" />
+<GoalRank rank="12" name="莱万多夫斯基" state="pl" goals="2" />
+<GoalRank rank="12" name="内马尔" state="br" goals="2" />
+<GoalRank rank="12" name="维格霍斯特" state="nl" goals="2" />
+<GoalRank rank="12" name="凯恩" state="gb-eng" goals="2" />
 
 <GoalRank rank="29" name="贝林厄姆" state="gb-eng" goals="1" />
 <GoalRank rank="29" name="斯特林" state="gb-eng" goals="1" />
@@ -120,4 +120,10 @@ title: 射手榜
 <GoalRank rank="29" name="佩特科维奇" state="hr" goals="1" />
 <GoalRank rank="29" name="莫利纳" state="ar" goals="1" />
 <GoalRank rank="29" name="琼阿梅尼" state="fr" goals="1" />
+<GoalRank rank="29" name="埃尔南德斯" state="fr" goals="1" />
+<GoalRank rank="29" name="穆阿尼" state="fr" goals="1" />
+<GoalRank rank="29" name="格瓦迪奥尔" state="hr" goals="1" />
+<GoalRank rank="29" name="奥尔西奇" state="hr" goals="1" />
+<GoalRank rank="29" name="达里" state="ma" goals="1" />
+<GoalRank rank="29" name="迪玛利亚" state="ar" goals="1" />
 

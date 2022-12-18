@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const props = withDefaults(
   defineProps<{
@@ -13,6 +13,10 @@ const expanded = ref(props.activeCondition)
 const handleClick = () => {
   expanded.value = !expanded.value
 }
+
+watch(() => props.activeCondition, () => {
+  expanded.value = props.activeCondition
+})
 </script>
 <template>
   <li class="sidebar-link-group">

@@ -1,7 +1,8 @@
 <script lang="ts">
 // ts-ignore
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useEventListener } from '@vueuse/core'
 
 import SidebarLinkGroup from './SidebarLinkGroup.vue'
 import SidebarLinkSubgroup from './SidebarLinkSubgroup.vue'
@@ -17,8 +18,7 @@ export default {
 
     const sidebar = ref(null)
 
-    const router = useRouter()
-    const currentRoute = router.currentRoute.value
+    const route = useRoute()
 
     // close on click outside
     const clickHandler = ({ target }: any) => {
@@ -34,28 +34,29 @@ export default {
     const keyHandler = ({ keyCode }: any) => {
       if (!props.sidebarOpen || keyCode !== 27) return
       emit('close-sidebar')
-    } 
+    }
 
-    onMounted(() => {
-      document.addEventListener('click', clickHandler)
-      document.addEventListener('keydown', keyHandler)
-    })
+    useEventListener(document, 'click', clickHandler)
+    useEventListener(document, 'keydown', keyHandler)
 
-    onUnmounted(() => {
-      document.removeEventListener('click', clickHandler)
-      document.removeEventListener('keydown', keyHandler)
-    })
-    
     function handleNavigate(navigate: any) {
       navigate()
       // nextTick(() => {
       //   emit('close-sidebar')
       // })
     }
+    const currCond = computed(() => {
+      return route.fullPath
+        .replace(/^\/[a-z]+\/(\d+-)?/, '')
+        .replace(/\/[\w-_]+$/, '')
+        .replace(/-/g, ' ')
+        .replace(/(^\w)|(\s\w)/g, (a) => a.toUpperCase())
+    })
     return {
-      currentRoute,
+      route,
       sidebar,
       handleNavigate,
+      currCond
     }
   },  
 }
@@ -96,67 +97,70 @@ export default {
             <!-- Docs nav -->
             <nav class="lg:block">
               <ul class="text-sm">
-                  
                 <!-- 1st level -->
-                <SidebarLinkGroup 
+                <Scope
                   v-for="(nav, i) in navs"
                   :key="i"
-                  v-slot="parentLink" 
-                  :activeCondition="i === 0 || currentRoute.fullPath.startsWith(nav.value)">
-                  <a
-                    class="sidebar-root-link"
-                    :class="{ 'before:hidden': !currentRoute.fullPath.startsWith(nav.value) }"
-                    href="#0"
-                    @click.prevent="parentLink.handleClick()"
-                  >
-                    <svg class="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path class="fill-purple-400" d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z" />
-                      <path class="fill-purple-200 dark:fill-slate-800" d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z" />
-                      <path class="fill-purple-600" d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z" />
-                    </svg>
-                    
-                    <span>{{ nav.name }}</span>
-                  </a>
-                  <ul class="mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800" :class="{ 'hidden': !parentLink.expanded }">                    
-                    <template
-                        v-for="(navChild, j) in nav.children" 
-                        :key="j" 
-                      >
+                  :variables="{ activeCond: currCond === nav.name }"
+                  v-slot="{ activeCond }"
+                >
+                  <SidebarLinkGroup 
+                    v-slot="parentLink" 
+                    :activeCondition="activeCond">
+                    <a
+                      class="sidebar-root-link"
+                      :class="{ 'before:hidden': !activeCond }"
+                      href="#0"
+                      @click.prevent="parentLink.handleClick()"
+                    >
+                      <svg class="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path class="fill-purple-400" d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z" />
+                        <path class="fill-purple-200 dark:fill-slate-800" d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z" />
+                        <path class="fill-purple-600" d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z" />
+                      </svg>
                       
-                      <SidebarLinkSubgroup 
-                        v-if="navChild.children"
-                        :title="navChild.name" 
-                        :default-open="currentRoute.fullPath.includes('alternative-scheme')"
-                      >
-                        <li class="mt-3" v-for="(navSon, k) in navChild.children" :key="k">
+                      <span>{{ nav.name }}</span>
+                    </a>
+                    <ul class="mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800" :class="{ 'hidden': !parentLink.expanded }">                    
+                      <template
+                          v-for="(navChild, j) in nav.children" 
+                          :key="j" 
+                        >
+                        <SidebarLinkSubgroup 
+                          v-if="navChild.children"
+                          :title="navChild.name" 
+                          :default-open="route.fullPath.includes('alternative-scheme')"
+                        >
+                          <li class="mt-3" v-for="(navSon, k) in navChild.children" :key="k">
+                            <router-link
+                              :to="'/' + navSon.value"
+                              custom
+                              v-slot="{ href, navigate, isExactActive }"
+                            >
+                              <a
+                                class="sidebar-son-link"
+                                :class="{ active: isExactActive }"
+                                :href="href"
+                                @click="navigate"
+                              >{{ navSon.name }}</a>
+                            </router-link>
+                          </li>
+                        </SidebarLinkSubgroup>
+                        <li v-else class="mt-3">
                           <router-link
-                            :to="'/' + navSon.value"
-                            custom
-                            v-slot="{ href, navigate, isExactActive }"
-                          >
-                            <a
-                              class="sidebar-son-link"
-                              :class="{ active: isExactActive }"
-                              :href="href"
-                              @click="navigate"
-                            >{{ navSon.name }}</a>
+                            :to="'/' + navChild.value" 
+                            custom v-slot="{ href, navigate, isExactActive }">
+                            <a 
+                              class="flex items-center space-x-3 font-medium" 
+                              :class="isExactActive ? 'text-violet-600' : 'text-slate-800 dark:text-slate-200'" 
+                              :href="href" 
+                              @click="navigate">{{ navChild.name }}</a>
                           </router-link>
                         </li>
-                      </SidebarLinkSubgroup>
-                      <li v-else class="mt-3">
-                        <router-link
-                          :to="'/' + navChild.value" 
-                          custom v-slot="{ href, navigate, isExactActive }">
-                          <a 
-                            class="flex items-center space-x-3 font-medium" 
-                            :class="isExactActive ? 'text-violet-600' : 'text-slate-800 dark:text-slate-200'" 
-                            :href="href" 
-                            @click="navigate">{{ navChild.name }}</a>
-                        </router-link>
-                      </li>
-                    </template>
-                  </ul>
-                </SidebarLinkGroup>
+                      </template>
+                    </ul>
+                  </SidebarLinkGroup>
+                </Scope>
               </ul>
             </nav>
           </div>

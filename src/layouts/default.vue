@@ -1,13 +1,29 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import metadata from '@/meta/short.json'
 const sidebarOpen = ref(false)
 const navs = ref(metadata[0].children)
+const route = useRoute()
+const router = useRouter()
 
 function handleChange(key: string, i: number) {
   navs.value = metadata[i].children
   sidebarOpen.value = true
+  const defaultPath = navs.value?.[0]?.children?.[0]?.value
+  if (defaultPath) {
+    router.push('/' + defaultPath)
+  }
+  console.log(defaultPath)
 }
+
+watch(() => route.fullPath, () => {
+  metadata.some((m, i) => {
+    let matched = route.fullPath.indexOf(m.id) === 1
+    if (matched) navs.value = metadata[i].children
+    return matched
+  })
+})
 
 function openSidebar(e: Event) {
   e.stopPropagation()
