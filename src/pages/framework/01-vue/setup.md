@@ -68,9 +68,9 @@ const props = defineProps({
 </script>
 ```
 
-``` html
+``` ts
+// <script setup lang="ts">
 
-<script setup lang="ts">
 const props = defineProps<{ disabled?: boolean }>()
 
 // with default value
