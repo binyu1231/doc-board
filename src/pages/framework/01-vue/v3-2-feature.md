@@ -64,7 +64,7 @@ p { color: v-bind('theme.color'); }
 </style>
 ```
 
-render
+rendered
 
 ``` html
 <p style="--d4948df9-theme_color:red;">hello</p>

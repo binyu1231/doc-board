@@ -10,8 +10,10 @@ const props = defineProps<{
 const configs = computed(() => {
   return props.units.split(',').map((pair) => {
     const [name, rate] = pair.split('@')
+    const [ch, en] = (name || '').split('^')
     return {
-      name,
+      ch,
+      en,
       rate: Number(rate)
     }
   })
@@ -25,14 +27,35 @@ function handleChange(val: string, rate: number) {
 </script>
 <template>
 <div class="unit-group">
-  <label v-for="(conf, i) in configs" :key="i">
-    <span>{{ conf.name }}</span>
-    <input :value="(value * conf.rate)" @input="(e: any) => handleChange(e.target.value, conf.rate)" type="text">
+  <label
+    class="unit-group-item"
+    v-for="(conf, i) in configs"
+    :key="i">
+    <span class="ch">{{ conf.ch }}</span>
+    <span v-if="conf.en" chass="en">({{ conf.en }})</span>
+
+    <input
+      :value="(value * conf.rate)"
+      @input="(e: any) => handleChange(e.target.value, conf.rate)"
+      type="text"
+    />
   </label>
 </div>
 </template>
 <style lang="postcss">
 .unit-group {
-  @apply;
+  @apply grid md:grid-cols-2 2xl:grid-cols-3;
+}
+
+.unit-group-item {
+  @apply border-l-4 border-indigo-500 pl-2;
+
+  & .ch {
+    @apply font-semibold text-lg;
+  }
+
+  & input {
+    @apply border-b;
+  }
 }
 </style>

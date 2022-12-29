@@ -24,6 +24,7 @@ watch(key, () => {
 })
 
 watch(() => route.fullPath, () => {
+  if(route.fullPath === '/') return
   const kind = route.fullPath.match(/^\/(\w+)/)![1].replace(/^(\w)/, (s) => s.toUpperCase())
   if (key.value !== kind) key.value = kind
 }, { immediate: true })
