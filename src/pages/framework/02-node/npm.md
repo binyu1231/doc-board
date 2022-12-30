@@ -94,3 +94,19 @@ $ npm i -g n
 ```
 
 
+## 版本号的含义
+
+`(Decoration)Major.Minor.Patch(Suffix)`
+
+- Major: 重大版本升级，破坏性更新（不兼容）
+- Minor: 添加了新特性（向下兼容）
+- Patch: 补丁更新，bug修复（向下兼容）
+- Decoration:
+    - `~M.m.P`: 只能升级Patch版本
+    - `^M.m.P`: 可升级Patch, Minor 版本
+    - `M.m.P` or `@M.m.P`: 不可升级，锁定特定版本
+    - `*`: 可升级 Major, Minor, Patch 版本
+- Suffix: 重要模块为了保证稳定，会在放出正式版本之前提供先行版本
+    - `M.m.P-alpha.n`: 内部测试版，主要给开发和测试找bug用
+    - `M.m.P-beta.n`: 公开测版本，主要用于给用户提前体验一些功能
+    - `M.m.P-rc.n`: `Release candidate` 正式版本的候选版本，可以理解为预览版，不会再增加新功能，再改一些小bug，就会到正式的版本了

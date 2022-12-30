@@ -57,7 +57,8 @@ function genStruct(kind) {
     children: dirs.map(dir => {
       const colPath = path.join(__dirname, root, `/${kind}/${dir}`)
       // const stat = fs.statSync(colPath)
-      const files = fs.readdirSync(colPath).filter(fPath => fPath.match(/(\.vue)|(\.md)$/))
+      const files = fs.readdirSync(colPath)
+        .filter(fPath => !fPath.startsWith('_') && fPath.match(/(\.vue)|(\.md)$/))
       const children = files.map(fPath => {
         const title = fPath.replace(/\.\w+$/, '')
         return {
@@ -74,6 +75,7 @@ function genStruct(kind) {
         children
       }
     })
+    .filter(dir => dir.children.length > 0)
   }
 }
 
