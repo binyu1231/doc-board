@@ -14,7 +14,6 @@ function handleChange(key: string, i: number) {
   if (defaultPath) {
     router.push('/' + defaultPath)
   }
-  console.log(defaultPath)
 }
 
 watch(() => route.fullPath, () => {

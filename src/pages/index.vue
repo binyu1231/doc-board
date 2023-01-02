@@ -13,11 +13,11 @@ import shortcut from '@/meta/short.json'
 
     <div class="home-dir-container">
       <div v-for="dir in kind.children" :key="dir.name">
-        <a 
+        <router-link
           class="home-default-link"
-          :href="'/' + dir.children[0].value">
+          :to="'/' + dir.children[0].value">
           {{ dir.name }}
-        </a>
+        </router-link>
       </div>
     </div>
   </div>

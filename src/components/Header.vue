@@ -20,11 +20,17 @@ const toggleDark = useToggle(isDark)
 const key = ref(props.metadata.length > 0 ? props.metadata[0].name : '')
 
 watch(key, () => {
-  emit('change', key.value, props.metadata.findIndex(opt => opt.name === key.value))
+  // emit('change', key.value, props.metadata.findIndex(opt => opt.name === key.value))
 })
 
+function handleChange(e: Event) {
+  const val = (e.target as any).value
+  emit('change', val, props.metadata.findIndex(opt => opt.name === val))
+  console.log()
+}
+
 watch(() => route.fullPath, () => {
-  if(route.fullPath === '/') return
+  if (route.fullPath === '/') return
   const kind = route.fullPath.match(/^\/(\w+)/)![1].replace(/^(\w)/, (s) => s.toUpperCase())
   if (key.value !== kind) key.value = kind
 }, { immediate: true })
@@ -47,7 +53,7 @@ onMounted(() => {
           <Logo width="50" height="50" />
         </router-link>
         <div class="header-select" @click.stop>
-          <select v-model="key">
+          <select :value="key" @input="handleChange">
             <option :key="opt.name" v-for="opt in metadata" :value="opt.name">{{ opt.name }}</option>
           </select>
           <i-akar-icons-triangle-down />
