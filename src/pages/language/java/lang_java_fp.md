@@ -43,7 +43,8 @@ int count = allArtists.stream()
 
 两种迭代的对比
 
-```
+
+``` bash
 应用代码         集合代码     应用代码         集合代码
 |                  |          |              |
 | iter             |          |              | iter

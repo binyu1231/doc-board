@@ -48,7 +48,7 @@ function handleChange(val: string, rate: number) {
 }
 
 .unit-group-item {
-  @apply border-l-4 border-indigo-500 pl-2;
+  @apply border-l-4 border-violet-400 dark:border-violet-700 pl-2;
 
   & .ch {
     @apply font-semibold text-lg;
