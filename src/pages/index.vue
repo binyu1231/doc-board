@@ -4,28 +4,31 @@ import shortcut from '@/meta/short.json'
 <template>
 <div class="home mk">
 
-  <div 
-    v-for="kind in shortcut"
-    :key="kind.id"
-    class="home-kind-card"
-  >
-    <h2>{{ kind.name }}</h2>
+  <YearProgress />
+  <div class="home-container">
+    <div 
+      v-for="kind in shortcut"
+      :key="kind.id"
+      class="home-kind-card"
+    >
+      <h2>{{ kind.name }}</h2>
 
-    <div class="home-dir-container">
-      <div v-for="dir in kind.children" :key="dir.name">
-        <router-link
-          class="home-default-link"
-          :to="'/' + dir.children[0].value">
-          {{ dir.name }}
-        </router-link>
+      <div class="home-dir-container">
+        <div v-for="dir in kind.children" :key="dir.name">
+          <router-link
+            class="home-default-link"
+            :to="'/' + dir.children[0].value">
+            {{ dir.name }}
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
 </div>
 </template>
 <style lang="postcss">
-.home {
-  @apply grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4;
+.home-container {
+  @apply grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 pt-4;
 }
 
 .home-kind-card {

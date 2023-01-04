@@ -624,7 +624,7 @@
           },
           {
             "name": "ECMA Features",
-            "value": "language/01-javascript/ecma",
+            "value": "language/01-javascript/ecma-features",
             "title": "ECMA Features",
             "date": ""
           },
