@@ -623,9 +623,9 @@
             "date": ""
           },
           {
-            "name": "ECMA Features",
-            "value": "language/01-javascript/ecma-features",
-            "title": "ECMA Features",
+            "name": "ECMAScript Features",
+            "value": "language/01-javascript/ecmascript-features",
+            "title": "ECMAScript Features",
             "date": ""
           },
           {
