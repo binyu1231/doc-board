@@ -9,15 +9,64 @@ index: Language.JavaScript.Snytax
 
 ### 语句和表达式
 
+表达式（expression）是语句（statement）的组成部分，区分语句和表达式
+
+``` ts
+const a = 3 * 6 
+const b = a
+b
+```
+
+- 第一行 `3*6`, 第二行 `a`, 第三行 `b` 都是表达式
+- `const a = 3 * 6`, `const b = a` 称为“声明语句”（declaration statement）
+- 如果去掉 `const` 则称为“复制表达式”
+- 第三行表达式单独成为语句，称为“表达式语句”（expression statement）没有实用意义
+
+
+#### 语句的结果值
+
+每条语句都有结果值（statement completion value）包含undefind
+
+例如：
+
+``` ts
+a = 42 // 42
+var a = 42 // undefined 标准规定 var const let 的结果值是 undefined
+
+if (true) {
+    b = 4 + 38;
+} // 42  // 代码块的结果值是其内部最后一个语句或表达式的结果
+```
+
+截止目前无法捕获语句的结果值
+
+``` ts
+{ 42 } // 42
+var b = { 42 } // SyntaxError
+var b = var a = 42 // SyntaxError
+var b = if (true) { // SyntaxError
+    a = 4 + 38;
+} 
+```
+
+
 #### 表达式的副作用
 
 **=**
 
+表达式的结果值，作为新的值
+
 ``` js
+// 1.
+let a, b, c
+a = b = c = 42
+
+// 2.
 function vowels(str) {
     var matches;
 
     // 提取所有元音字母
+    
     if (str && (matches = str.match( /[aeiou]/g ))) {
         return matches;
     }

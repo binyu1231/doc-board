@@ -232,17 +232,17 @@ var a = Array.apply( null, { length: 3 } )
 var a = Array.from({ length: 3 })
 ```
 
-### Object
+#### Object
 
 `var a = new Object()`
 
 一般不会使用，无法像文字形式那样一次设定多个属性，而必须逐一设定
 
-### Function 
+#### Function 
 
 动态函数体是很危险的，不要把它当做 eval 的替代品
 
-### RegExp
+#### RegExp
 
 在动态定义正则表达式时十分有用
 
@@ -253,13 +253,13 @@ var namePattern = new RegExp( "\\b(?:" + name + ")+\\b", "ig" );
 var matches = someText.match( namePattern );
 ```
 
-### Date
+#### Date
 
 - `new Date()` 返回日期对象
 - `Date()` 返回日期字符串，形式不固定（慎用）
 
 
-### Error
+#### Error
 
 ``` js
 function foo(x) {
@@ -270,7 +270,7 @@ function foo(x) {
 }
 ```
 
-### Symbol
+#### Symbol
 
 - 不能使用 `new` 创建
 - 符号可以用作属性名，但无论是在代码还是开发控制台中都无法查看和访问它的值，只会显示为诸如 Symbol(Symbol.create) 这样的值。
@@ -306,11 +306,10 @@ Object.getOwnPropertySymbols(a)
 - 显式类型转换 `String(12)`
 
 
-::: info
 从最佳实践来看
 - 永远不要使用 `==`. 否则你就要记住很多东西
 - JavaScript 引擎会针对变量类型进行优化，所以尽量不要修改变量类型
-:::
+
 
 ``` js
 "0" == null;           // false
