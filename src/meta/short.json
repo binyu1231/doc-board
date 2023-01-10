@@ -7,27 +7,9 @@
         "name": "Unit",
         "children": [
           {
-            "name": "面积单位",
-            "value": "project/01-unit/area",
-            "title": "面积单位",
-            "date": ""
-          },
-          {
             "name": "长度单位",
             "value": "project/01-unit/length",
             "title": "长度单位",
-            "date": ""
-          },
-          {
-            "name": "速度单位",
-            "value": "project/01-unit/speed",
-            "title": "速度单位",
-            "date": ""
-          },
-          {
-            "name": "重量单位",
-            "value": "project/01-unit/weight",
-            "title": "重量单位",
             "date": ""
           }
         ]
@@ -213,7 +195,7 @@
           },
           {
             "name": "Rust 交叉编译",
-            "value": "framework/03-raspberry/Rust",
+            "value": "framework/03-raspberry/rust-cross-compile",
             "title": "Rust 交叉编译",
             "index": "Framework.Raspberry.Practice",
             "date": ""
@@ -623,9 +605,9 @@
             "date": ""
           },
           {
-            "name": "ECMA Features",
-            "value": "language/01-javascript/ecma",
-            "title": "ECMA Features",
+            "name": "ECMAScript Features",
+            "value": "language/01-javascript/ecmascript-features",
+            "title": "ECMAScript Features",
             "date": ""
           },
           {
