@@ -1,5 +1,5 @@
 ---
-title: Background
+title: CSS Background
 index: Language.CSS.Syntax
 ---
 
