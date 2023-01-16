@@ -1003,44 +1003,39 @@
         "children": [
           {
             "name": "CSS Background",
-            "value": "language/04-css/css-background",
+            "value": "language/04-css/01-css-background",
             "title": "CSS Background",
             "index": "Language.CSS.Syntax",
             "date": ""
           },
           {
             "name": "CSS Flex",
-            "value": "language/04-css/css-flex",
+            "value": "language/04-css/02-css-flex",
             "title": "CSS Flex",
             "date": ""
           },
           {
+            "name": "Practice Flex",
+            "value": "language/04-css/100-practice-css-flex",
+            "title": "Practice Flex",
+            "date": "2016-01-04",
+            "tag": [
+              "css"
+            ]
+          },
+          {
             "name": "Reset",
-            "value": "language/04-css/css-helper-reset",
+            "value": "language/04-css/99-css-helper-reset",
             "title": "Reset",
             "index": "Language.CSS.Practice",
             "date": ""
           },
           {
             "name": "Tips",
-            "value": "language/04-css/css-helper-tip",
+            "value": "language/04-css/99-css-helper-tip",
             "title": "Tips",
             "index": "Language.CSS.Practice",
             "date": ""
-          },
-          {
-            "name": "Index",
-            "value": "language/04-css",
-            "date": ""
-          },
-          {
-            "name": "Practice Flex",
-            "value": "language/04-css/practice-css-flex",
-            "title": "Practice Flex",
-            "date": "2016-01-04",
-            "tag": [
-              "css"
-            ]
           }
         ]
       },

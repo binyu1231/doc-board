@@ -322,7 +322,7 @@ str.match(/abc/g)
 // ['abc', 'abc', 'abc']
 
 str.matchAll(/abc/)
-// ErrorS tring.prototype.matchAll called with a non-global RegExp argument
+// Error String.prototype.matchAll called with a non-global RegExp argument
 
 str.matchAll(/abc/g)
 // RegExpStringIterator {}
@@ -614,7 +614,7 @@ myTag`That ${ 'Mike' } is a ${ 28 }.`;
 
 ### `s` (dotAll) flag for regular expressions
 
-正则新增flag `s` 允许字符串中包换换行符 
+正则新增flag `s` 允许 `.` 匹配字符串中的换行符 
 
 ``` ts
 /hello.world/.test('hello\nworld') // false

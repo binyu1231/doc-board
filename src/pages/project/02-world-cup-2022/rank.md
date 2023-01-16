@@ -5,7 +5,7 @@ title: 射手榜
 ### 射手榜
 
 <GoalRank rank="1" name="姆巴佩" state="fr" goals="8" />
-<GoalRank rank="1" name="梅西" state="ar" goals="7" />
+<GoalRank rank="2" name="梅西" state="ar" goals="7" />
 
 <GoalRank rank="3" name="吉鲁" state="fr" goals="4" />
 <GoalRank rank="3" name="阿尔瓦雷斯" state="ar" goals="4" />
