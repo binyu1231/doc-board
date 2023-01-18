@@ -6,7 +6,8 @@ const markdownItMeta = require('markdown-it-meta')
 
 const kinds = ['project', 'framework', 'language', 'knowledge']
 const root = '../src/pages/'
-
+const lastFiles = new Map()
+const newDistance = 7 * 24 * 3600000
 function toDouble(n) {
   return n < 10 ? `0${n}` : `${n}`
 }
@@ -51,32 +52,60 @@ function genStruct(kind) {
 
   const dirs = fs.readdirSync(kindPath)
   
-  return {
+  const kindStruct = {
     name: upperHead(kind),
     id: kind,
-    children: dirs.map(dir => {
-      const colPath = path.join(__dirname, root, `/${kind}/${dir}`)
-      // const stat = fs.statSync(colPath)
-      const files = fs.readdirSync(colPath)
-        .filter(fPath => !fPath.startsWith('_') && fPath.match(/(\.vue)|(\.md)$/))
-      const children = files.map(fPath => {
-        const title = fPath.replace(/\.\w+$/, '')
-        return {
-          name: upperHead(title),
-          value: `${kind}/${dir}/${title}`.replace(/(\/index)$/, ''),
-          ...genMetaInfo(path.join(colPath, fPath))
-        } 
-      })
+    hasNew: false,
+    children: null
+  }
+
+  kindStruct.children = dirs.map(dir => {
+
+    const dirStruct = {
+      name: upperHead(dir.replace(/^\d+-/g, '')),
+      children: null
+    }
+    const colPath = path.join(__dirname, root, `/${kind}/${dir}`)
+    // const stat = fs.statSync(colPath)
+    const files = fs.readdirSync(colPath)
+      .filter(fPath => !fPath.startsWith('_') && fPath.match(/(\.vue)|(\.md)$/))
+      dirStruct.children = files.map(fPath => {
+      const uniPath = `/${kind}/${dir}/${fPath}`
+      let hasNew = false
+      const lastFileMutDate = lastFiles.get(uniPath)
+      const fileMTime = new Date(fs.statSync(path.join(__dirname, root, uniPath)).mtime).getTime()
+      if (lastFileMutDate) {
+        if (fileMTime <= lastFileMutDate) {
+          // noop
+        }
+        else {
+          hasNew = dirStruct.hasNew = true
+          lastFiles.set(uniPath, fileMTime);
+        }
+      }
+      else {
+        hasNew = dirStruct.hasNew = true
+        lastFiles.set(uniPath, fileMTime)
+      }
       
-      children.sort((a, b) => new Date(b.date) - new Date(a.date))
+
+      const title = fPath.replace(/\.\w+$/, '')
 
       return {
-        name: upperHead(dir.replace(/^\d+-/g, '')),
-        children
-      }
+        name: upperHead(title),
+        value: `${kind}/${dir}/${title}`.replace(/(\/index)$/, ''),
+        hasNew,
+        ...genMetaInfo(path.join(colPath, fPath))
+      } 
     })
-    .filter(dir => dir.children.length > 0)
-  }
+    
+    dirStruct.children.sort((a, b) => new Date(b.date) - new Date(a.date))
+
+    return dirStruct
+  })
+  .filter(dir => dir.children.length > 0)
+
+  return kindStruct
 }
 
 function writeMetafile(content, filename) {
@@ -84,8 +113,24 @@ function writeMetafile(content, filename) {
 }
 
 (function gen() {
+  const lastFilesStr = fs.readFileSync(path.resolve(__dirname, './lastfiles'), 'utf-8')
+  lastFilesStr.split('\n').forEach(row => {
+    const [date, name] = row.split('|')
+    lastFiles.set(name, Number(date))
+  })
+  console.log(lastFiles)
   const info = kinds.map(genStruct)
+
+  console.log(lastFilesStr)
+
+  const thisfileStr = Array.from(lastFiles.keys()).reduce((content, key) => {
+    const row = lastFiles.get(key) + '|' + key
+    return content + '\n' + row
+  }, '')
+
+  fs.writeFileSync(path.resolve(__dirname, `./lastfiles`), thisfileStr, 'utf-8')
+
   writeMetafile(info, 'short.json')
-  console.log(JSON.stringify(info, null, 2))
+  return 
 })()
 

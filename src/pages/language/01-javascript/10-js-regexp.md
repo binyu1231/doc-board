@@ -23,15 +23,15 @@ index: Language.JavaScript.Snytax
 
 ### 含义
 
-||||
-|:---|:---|:---|
-|`/foo/i`|ignore case|忽略匹配模式的字母大小写|
-|`/foo/g`|global search|全局匹配|
-|`/foo/m`|multiline|转换为多行，分别进行匹配|
-|`/foo/u`|unicode|使用 unicode 码的模式进行匹配|
-|`/foo/y`|sticky|执行“粘性 (sticky)”搜索，匹配从目标字符串的当前位置开始。|
-|`/foo/s`|single line ES2018|允许 `.` 匹配换行符|
-|`/foo/d`|indices ES2022|标志表示正则表达式匹配的结果应该包含每个捕获组子字符串开始和结束的索引。|
+|||||
+|:---|:---|:---|:---|
+|`/foo/i`|`reg.ignoreCase`|ignore case|忽略匹配模式的字母大小写|
+|`/foo/g`|`reg.global`|global search|全局匹配|
+|`/foo/m`|`reg.multiline`|multiline|转换为多行，分别进行匹配|
+|`/foo/u`|`reg.unicode`|unicode|使用 unicode 码的模式进行匹配|
+|`/foo/y`|`reg.sticky`|sticky|执行“粘性 (sticky)”搜索，匹配从目标字符串的当前位置开始。|
+|`/foo/s`|`reg.dotall`|single line ES2018|允许 `.` 匹配换行符|
+|`/foo/d`|`reg.hasIndices`|indices ES2022|标志表示正则表达式匹配的结果应该包含每个捕获组子字符串开始和结束的索引。|
 
 <br>
 <br>
@@ -319,7 +319,7 @@ eg: `/<h(\d)>.*<\/h\1>/` 匹配一个闭合标签，`\1`代表前面的群组 `(
 'user=jack&id=233&city=beijing'.split('&')
 // => ['user=jack', 'id=233', 'city=beijing']
 
-'1w2Y3s4E5'.split(/[a-z]/i)
+'1x2Y3s4E5'.split(/[a-z]/i)
 // => ['1', '2', '3', '4', '5']
 
 '1w2Y3s4E5x'.split(/[a-z]/i)
@@ -377,6 +377,21 @@ const pattern = new RegExp("foo$")
   pattern.lastIndex    // 0
   pattern.exec('1234') // ["1", index: 0, input: "1234"]
   ```
+- `[string] regexp.source`
+  ```ts
+  /\d+(?=px)/g.source // '\\d+(?=px)'
+  ```
+- `[string] regexp.flag`
+  ``` ts
+  /\d+/mgid.flags // 'dgim'
+  ```
+- `[boolean] regexp.sticky`: 存在flag `y` 
+- `[boolean] regexp.unicode`: 存在flag `u` 
+- `[boolean] regexp.multiline`: 存在flag `m` 
+- `[boolean] regexp.dotall`: 存在flag `s` 
+- `[boolean] regexp.global`: 存在flag `g` 
+- `[boolean] regexp.hasIndices`: 存在flag `d` 
+- `[boolean] regexp.ignoreCase`: 存在flag `i` 
 
 ### 实例方法
 
@@ -406,3 +421,4 @@ const pattern = new RegExp("foo$")
 - [宁浩网-正则表达式](http://ninghao.net/course/4020)
 - [MDN JavaScript String.prototype.replace](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
 - [MDN JavaScript String.prototype.split](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/split)
+- [MDN 正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)

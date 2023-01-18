@@ -120,6 +120,8 @@ export default {
                       </svg>
                       
                       <span>{{ nav.name }}</span>
+
+                      <div v-if="nav.hasNew" class="sidebar-root-tag"></div>
                     </a>
                     <ul class="mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800" :class="{ 'hidden': !parentLink.expanded }">                    
                       <template
@@ -143,18 +145,22 @@ export default {
                                 :href="href"
                                 @click="navigate"
                               >{{ navSon.name }}</a>
+                              <div v-if="navSon.hasNew" class="sidebar-son-tag">1</div>
                             </router-link>
                           </li>
                         </SidebarLinkSubgroup>
                         <li v-else class="mt-3">
                           <router-link
-                            :to="'/' + navChild.value" 
-                            custom v-slot="{ href, navigate, isExactActive }">
-                            <a 
-                              class="flex items-center space-x-3 font-medium" 
-                              :class="isExactActive ? 'text-violet-600' : 'text-slate-800 dark:text-slate-200'" 
-                              :href="href" 
-                              @click="navigate">{{ navChild.name }}</a>
+                          :to="'/' + navChild.value" 
+                          custom v-slot="{ href, navigate, isExactActive }">
+                          <a 
+                          class="flex items-center space-x-3 font-medium relative" 
+                          :class="isExactActive ? 'text-violet-600' : 'text-slate-800 dark:text-slate-200'" 
+                          :href="href" 
+                          @click="navigate">
+                            {{ navChild.name }}
+                            <div v-if="navChild.hasNew" class="sidebar-son-tag"></div>
+                          </a>
                           </router-link>
                         </li>
                       </template>
@@ -193,12 +199,20 @@ export default {
 
 .sidebar-root-link {
   font-family: lobster;
-  @apply relative flex items-center text-xl text-slate-800 p-1 
+  @apply relative flex items-center text-xl text-slate-800 p-1
   before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200;
 
   &::before {
     content: "";
   }
+}
+
+.sidebar-root-tag {
+  @apply absolute right-2 top-3 rounded-full bg-violet-600 dark:bg-violet-700 h-2 w-2 text-xs text-white;
+}
+
+.sidebar-son-tag {
+  @apply absolute right-2 top-1 rounded-full bg-violet-600 dark:bg-violet-700 h-1.5 w-1.5 text-xs text-white;
 }
 
 .sidebar-son-link {

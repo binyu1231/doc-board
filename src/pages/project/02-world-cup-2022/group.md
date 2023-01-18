@@ -8,6 +8,7 @@ title: 分组
 
 ### Group A
 
+
 <CardGroup>
   <StateCard state="qa">
     <template #rank>No.50</template>

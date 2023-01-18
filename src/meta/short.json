@@ -2,6 +2,7 @@
   {
     "name": "Project",
     "id": "project",
+    "hasNew": false,
     "children": [
       {
         "name": "Unit",
@@ -9,6 +10,7 @@
           {
             "name": "长度单位",
             "value": "project/01-unit/length",
+            "hasNew": false,
             "title": "长度单位",
             "date": ""
           }
@@ -20,24 +22,28 @@
           {
             "name": "赛程日历",
             "value": "project/02-world-cup-2022/calendar",
+            "hasNew": false,
             "title": "赛程日历",
             "date": ""
           },
           {
             "name": "分组",
             "value": "project/02-world-cup-2022/group",
+            "hasNew": false,
             "title": "分组",
             "date": ""
           },
           {
             "name": "赛程",
             "value": "project/02-world-cup-2022",
+            "hasNew": false,
             "title": "赛程",
             "date": ""
           },
           {
             "name": "射手榜",
             "value": "project/02-world-cup-2022/rank",
+            "hasNew": false,
             "title": "射手榜",
             "date": ""
           }
@@ -48,6 +54,7 @@
   {
     "name": "Framework",
     "id": "framework",
+    "hasNew": false,
     "children": [
       {
         "name": "Vue",
@@ -55,26 +62,31 @@
           {
             "name": "Composition",
             "value": "framework/01-vue/composition",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Directive",
             "value": "framework/01-vue/directive",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Mixin",
             "value": "framework/01-vue/mixin",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Plugin",
             "value": "framework/01-vue/plugin",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Scope",
             "value": "framework/01-vue/scope",
+            "hasNew": false,
             "title": "Scope",
             "index": "Framework.Vue.Syntax",
             "date": ""
@@ -82,6 +94,7 @@
           {
             "name": "Setup",
             "value": "framework/01-vue/setup",
+            "hasNew": false,
             "title": "Setup",
             "index": "Framework.Vue.Syntax",
             "date": ""
@@ -89,6 +102,7 @@
           {
             "name": "Slot",
             "value": "framework/01-vue/slot",
+            "hasNew": false,
             "title": "Slot",
             "index": "Framework.Vue.Practice",
             "date": ""
@@ -96,6 +110,7 @@
           {
             "name": "Taro Vue3 Startup",
             "value": "framework/01-vue/taro-startup",
+            "hasNew": false,
             "title": "Taro Vue3 Startup",
             "index": "Framework.Vue.Practice",
             "date": ""
@@ -103,6 +118,7 @@
           {
             "name": "Tips",
             "value": "framework/01-vue/tips",
+            "hasNew": false,
             "title": "Tips",
             "index": "Framework.Vue.Practice",
             "date": ""
@@ -110,6 +126,7 @@
           {
             "name": "Transition",
             "value": "framework/01-vue/transition",
+            "hasNew": false,
             "title": "Transition",
             "index": "Framework.Vue.Practice",
             "date": ""
@@ -117,6 +134,7 @@
           {
             "name": "TypeScript in Vue3",
             "value": "framework/01-vue/ts-in-vue3",
+            "hasNew": false,
             "title": "TypeScript in Vue3",
             "index": "Framework.Vue.Practice",
             "date": ""
@@ -124,6 +142,7 @@
           {
             "name": "Vue2 项目配置",
             "value": "framework/01-vue/v2-configure",
+            "hasNew": false,
             "title": "Vue2 项目配置",
             "index": "Framework.Vue.Practice",
             "date": ""
@@ -131,6 +150,7 @@
           {
             "name": "Vue2 配置 Element UI",
             "value": "framework/01-vue/v2-element-ui",
+            "hasNew": false,
             "title": "Vue2 配置 Element UI",
             "index": "Framework.Vue.Practice",
             "date": ""
@@ -138,6 +158,7 @@
           {
             "name": "Vue 3.2",
             "value": "framework/01-vue/v3-2-feature",
+            "hasNew": false,
             "title": "Vue 3.2",
             "index": "Framework.Vue.Syntax",
             "date": ""
@@ -150,26 +171,31 @@
           {
             "name": "Api",
             "value": "framework/02-node/api",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Express",
             "value": "framework/02-node/express",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Koa",
             "value": "framework/02-node/koa",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Mongoose",
             "value": "framework/02-node/mongoose",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "npm",
             "value": "framework/02-node/npm",
+            "hasNew": false,
             "title": "npm",
             "index": "Framework.Node.Syntax",
             "date": ""
@@ -182,6 +208,7 @@
           {
             "name": "烧录系统",
             "value": "framework/03-raspberry/boot",
+            "hasNew": false,
             "title": "烧录系统",
             "index": "Framework.Raspberry.Practice",
             "date": ""
@@ -189,6 +216,7 @@
           {
             "name": "命令行调试 GPIO",
             "value": "framework/03-raspberry/debug-gpio",
+            "hasNew": false,
             "title": "命令行调试 GPIO",
             "index": "Framework.Raspberry.Practice",
             "date": ""
@@ -196,6 +224,7 @@
           {
             "name": "Rust 交叉编译",
             "value": "framework/03-raspberry/rust-cross-compile",
+            "hasNew": false,
             "title": "Rust 交叉编译",
             "index": "Framework.Raspberry.Practice",
             "date": ""
@@ -208,6 +237,7 @@
           {
             "name": "[译]创建一个简单的 Chrome 扩展插件",
             "value": "framework/99-other/chrome-extension-base",
+            "hasNew": false,
             "title": "[译]创建一个简单的 Chrome 扩展插件",
             "date": "2018-10-17",
             "tag": [
@@ -217,6 +247,7 @@
           {
             "name": "Cocos2D Creator Tips",
             "value": "framework/99-other/client_cocoscreator_tip",
+            "hasNew": false,
             "title": "Cocos2D Creator Tips",
             "date": "2017-11-30",
             "tag": [
@@ -231,6 +262,7 @@
           {
             "name": "快捷键",
             "value": "framework/blender/basic",
+            "hasNew": false,
             "title": "快捷键",
             "index": "Framework.Blender.Syntax",
             "date": ""
@@ -238,6 +270,7 @@
           {
             "name": "Tips",
             "value": "framework/blender/tips",
+            "hasNew": false,
             "title": "Tips",
             "index": "Framework.Blender.Practice",
             "date": ""
@@ -250,6 +283,7 @@
           {
             "name": "Command",
             "value": "framework/docker/command",
+            "hasNew": false,
             "title": "Command",
             "index": "Framework.Docker.Syntax",
             "date": ""
@@ -257,6 +291,7 @@
           {
             "name": "Docker Compose",
             "value": "framework/docker/compose",
+            "hasNew": false,
             "title": "Docker Compose",
             "index": "Framework.Docker.Practice",
             "date": ""
@@ -264,16 +299,19 @@
           {
             "name": "Dockerfile",
             "value": "framework/docker/dockerfile",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Index",
             "value": "framework/docker",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Kubernetes",
             "value": "framework/docker/kubernetes",
+            "hasNew": false,
             "date": ""
           }
         ]
@@ -284,6 +322,7 @@
           {
             "name": "微信小程序 tips",
             "value": "framework/dumpster/wechat-miniprogram",
+            "hasNew": false,
             "title": "微信小程序 tips",
             "index": "Framework.Dumpster.Practice",
             "date": ""
@@ -296,6 +335,7 @@
           {
             "name": "Flutter 布局与样式",
             "value": "framework/flutter/client_flutter_layout",
+            "hasNew": false,
             "title": "Flutter 布局与样式",
             "date": "2018-08-21",
             "tag": [
@@ -305,6 +345,7 @@
           {
             "name": "Flutter Tips",
             "value": "framework/flutter/client_flutter_tip",
+            "hasNew": false,
             "title": "Flutter Tips",
             "date": "2018-08-12",
             "tag": [
@@ -314,6 +355,7 @@
           {
             "name": "flutter 起步",
             "value": "framework/flutter/client_flutter_startup",
+            "hasNew": false,
             "title": "flutter 起步",
             "date": "2018-08-05",
             "tag": [
@@ -323,6 +365,7 @@
           {
             "name": "Index",
             "value": "framework/flutter",
+            "hasNew": false,
             "date": ""
           }
         ]
@@ -333,6 +376,7 @@
           {
             "name": "Commit Message",
             "value": "framework/git/commit-message",
+            "hasNew": false,
             "title": "Commit Message",
             "index": "Framework.Git.Practice",
             "date": ""
@@ -340,6 +384,7 @@
           {
             "name": "Git Learning 1",
             "value": "framework/git/part1-base",
+            "hasNew": false,
             "title": "Git Learning 1",
             "date": "2017-06-21",
             "tag": [
@@ -349,6 +394,7 @@
           {
             "name": "Git Learning 2",
             "value": "framework/git/part2-branch",
+            "hasNew": false,
             "title": "Git Learning 2",
             "date": "2017-06-21",
             "tag": [
@@ -358,6 +404,7 @@
           {
             "name": "Git Learning 3",
             "value": "framework/git/part3-remote",
+            "hasNew": false,
             "title": "Git Learning 3",
             "date": "2017-06-21",
             "tag": [
@@ -367,6 +414,7 @@
           {
             "name": "Tips",
             "value": "framework/git/tips",
+            "hasNew": false,
             "title": "Tips",
             "index": "Framework.Git.Practice",
             "date": ""
@@ -379,11 +427,13 @@
           {
             "name": "Practice",
             "value": "framework/linux/practice",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "SSH",
             "value": "framework/linux/ssh",
+            "hasNew": false,
             "title": "SSH",
             "index": "Framework.Linux.Command",
             "date": ""
@@ -396,6 +446,7 @@
           {
             "name": "Tips",
             "value": "framework/nginx/tips",
+            "hasNew": false,
             "title": "Tips",
             "index": "Framework.Nginx.Practice",
             "date": ""
@@ -408,6 +459,7 @@
           {
             "name": "获取数据源",
             "value": "framework/opencv/read-source",
+            "hasNew": false,
             "title": "获取数据源",
             "date": ""
           }
@@ -419,6 +471,7 @@
           {
             "name": "React Antd tips",
             "value": "framework/react/antd",
+            "hasNew": false,
             "title": "React Antd tips",
             "index": "Framework.React.Practice",
             "date": ""
@@ -426,16 +479,19 @@
           {
             "name": "Hook",
             "value": "framework/react/hook",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "README",
             "value": "framework/react/README",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Tips",
             "value": "framework/react/tips",
+            "hasNew": false,
             "date": ""
           }
         ]
@@ -446,6 +502,7 @@
           {
             "name": "图片字体",
             "value": "framework/unity/bitfont",
+            "hasNew": false,
             "title": "图片字体",
             "index": "Framework.Unity.Practice",
             "date": ""
@@ -453,6 +510,7 @@
           {
             "name": "与 Android 通信",
             "value": "framework/unity/connect-android",
+            "hasNew": false,
             "title": "与 Android 通信",
             "index": "Framework.Unity.Practice",
             "date": ""
@@ -460,11 +518,13 @@
           {
             "name": "README",
             "value": "framework/unity/README",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "[译] ReactiveX 与 Unity3D <一>",
             "value": "framework/unity/rx-part1",
+            "hasNew": false,
             "title": "[译] ReactiveX 与 Unity3D <一>",
             "index": "Framework.Unity.Extend",
             "date": ""
@@ -472,6 +532,7 @@
           {
             "name": "[译] ReactiveX 与 Unity3D <二.1>",
             "value": "framework/unity/rx-part2-1",
+            "hasNew": false,
             "title": "[译] ReactiveX 与 Unity3D <二.1>",
             "index": "Framework.Unity.Extend",
             "date": ""
@@ -479,6 +540,7 @@
           {
             "name": "[译] ReactiveX 与 Unity3D <二.2>",
             "value": "framework/unity/rx-part2-2",
+            "hasNew": false,
             "title": "[译] ReactiveX 与 Unity3D <二.2>",
             "index": "Framework.Unity.Extend",
             "date": ""
@@ -486,6 +548,7 @@
           {
             "name": "[译] ReactiveX 与 Unity3D <三>",
             "value": "framework/unity/rx-part3",
+            "hasNew": false,
             "title": "[译] ReactiveX 与 Unity3D <三>",
             "index": "Framework.Unity.Extend",
             "date": ""
@@ -493,6 +556,7 @@
           {
             "name": "导入 Spine 动画",
             "value": "framework/unity/spine",
+            "hasNew": false,
             "title": "导入 Spine 动画",
             "index": "Framework.Unity.Practice",
             "date": ""
@@ -500,6 +564,7 @@
           {
             "name": "广播消息",
             "value": "framework/unity/unity-message",
+            "hasNew": false,
             "title": "广播消息",
             "index": "Framework.Unity.Practice",
             "date": ""
@@ -507,6 +572,7 @@
           {
             "name": "Unity Tips",
             "value": "framework/unity/unity-tips",
+            "hasNew": false,
             "title": "Unity Tips",
             "index": "Framework.Unity.Practice",
             "date": ""
@@ -514,6 +580,7 @@
           {
             "name": "Visual Studio Code 配合 Unity3D",
             "value": "framework/unity/vscode",
+            "hasNew": false,
             "title": "Visual Studio Code 配合 Unity3D",
             "date": "2017-02-07",
             "updated": true,
@@ -530,6 +597,7 @@
           {
             "name": "Index",
             "value": "framework/vscode",
+            "hasNew": false,
             "date": ""
           }
         ]
@@ -540,26 +608,31 @@
           {
             "name": "Amap",
             "value": "framework/web/amap",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "ImageHandler",
             "value": "framework/web/imageHandler",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Index",
             "value": "framework/web",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Mock",
             "value": "framework/web/mock",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Rxjs",
             "value": "framework/web/rxjs",
+            "hasNew": false,
             "date": ""
           }
         ]
@@ -569,50 +642,38 @@
   {
     "name": "Language",
     "id": "language",
+    "hasNew": false,
     "children": [
       {
         "name": "Javascript",
         "children": [
           {
+            "name": "ECMAScript Features",
+            "value": "language/01-javascript/01-js-ecmascript-features",
+            "hasNew": true,
+            "title": "ECMAScript Features",
+            "date": ""
+          },
+          {
+            "name": "正则表达式",
+            "value": "language/01-javascript/10-js-regexp",
+            "hasNew": true,
+            "title": "正则表达式",
+            "index": "Language.JavaScript.Snytax",
+            "date": ""
+          },
+          {
             "name": "Awesome",
             "value": "language/01-javascript/awesome",
+            "hasNew": false,
             "title": "Awesome",
             "index": "Language.JavaScript.Practice",
             "date": ""
           },
           {
-            "name": "Class",
-            "value": "language/01-javascript/class",
-            "layout": "post",
-            "title": "Class",
-            "date": "2016-04-10",
-            "tag": [
-              "javascript"
-            ]
-          },
-          {
-            "name": "DOM 操作",
-            "value": "language/01-javascript/dom",
-            "title": "DOM 操作",
-            "index": "Language.JavaScript.Practice",
-            "date": ""
-          },
-          {
-            "name": "使用 Dreamjs 生成 JSON 数据",
-            "value": "language/01-javascript/dreamjs",
-            "title": "使用 Dreamjs 生成 JSON 数据",
-            "index": "Language.JavaScript.Practice",
-            "date": ""
-          },
-          {
-            "name": "ECMAScript Features",
-            "value": "language/01-javascript/ecmascript-features",
-            "title": "ECMAScript Features",
-            "date": ""
-          },
-          {
             "name": "lodash",
             "value": "language/01-javascript/lodash",
+            "hasNew": false,
             "title": "lodash",
             "date": "2018-08-03",
             "tag": [
@@ -623,6 +684,7 @@
           {
             "name": "Webpack 以及前端项目初始化",
             "value": "language/01-javascript/projectInit",
+            "hasNew": false,
             "title": "Webpack 以及前端项目初始化",
             "date": "2018-07-16",
             "tag": [
@@ -632,6 +694,7 @@
           {
             "name": "概念",
             "value": "language/01-javascript/lang_js_note",
+            "hasNew": false,
             "title": "概念",
             "date": "2018-06-23",
             "tag": [
@@ -640,8 +703,36 @@
             "writing": true
           },
           {
+            "name": "Class",
+            "value": "language/01-javascript/class",
+            "hasNew": false,
+            "layout": "post",
+            "title": "Class",
+            "date": "2016-04-10",
+            "tag": [
+              "javascript"
+            ]
+          },
+          {
+            "name": "DOM 操作",
+            "value": "language/01-javascript/dom",
+            "hasNew": false,
+            "title": "DOM 操作",
+            "index": "Language.JavaScript.Practice",
+            "date": ""
+          },
+          {
+            "name": "使用 Dreamjs 生成 JSON 数据",
+            "value": "language/01-javascript/dreamjs",
+            "hasNew": false,
+            "title": "使用 Dreamjs 生成 JSON 数据",
+            "index": "Language.JavaScript.Practice",
+            "date": ""
+          },
+          {
             "name": "概念",
             "value": "language/01-javascript/learning",
+            "hasNew": false,
             "title": "概念",
             "date": "2018-06-23",
             "tag": [
@@ -652,6 +743,7 @@
           {
             "name": "javascript 精要",
             "value": "language/01-javascript/intro",
+            "hasNew": false,
             "title": "javascript 精要",
             "date": "2018-02-02",
             "tag": [
@@ -661,6 +753,7 @@
           {
             "name": "ES2015 系列之三 - Promise",
             "value": "language/01-javascript/fe-es2015Promise",
+            "hasNew": false,
             "layout": "post",
             "title": "ES2015 系列之三 - Promise",
             "date": "2016-04-20",
@@ -676,6 +769,7 @@
           {
             "name": "Promise",
             "value": "language/01-javascript/promise",
+            "hasNew": false,
             "layout": "post",
             "title": "Promise",
             "date": "2016-04-20",
@@ -686,6 +780,7 @@
           {
             "name": "ES2015 系列之二 - Class",
             "value": "language/01-javascript/fe-es2015Class",
+            "hasNew": false,
             "layout": "post",
             "title": "ES2015 系列之二 - Class",
             "date": "2016-04-10",
@@ -701,6 +796,7 @@
           {
             "name": "ES2015 系列之一 Module",
             "value": "language/01-javascript/fe-es2015Module",
+            "hasNew": false,
             "layout": "post",
             "title": "ES2015 系列之一 Module",
             "date": "2016-01-27",
@@ -716,17 +812,20 @@
           {
             "name": "Index",
             "value": "language/01-javascript",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "JSON Schema",
             "value": "language/01-javascript/jsonSchema",
+            "hasNew": false,
             "title": "JSON Schema",
             "date": ""
           },
           {
             "name": "Module",
             "value": "language/01-javascript/module",
+            "hasNew": false,
             "layout": "post",
             "title": "Module",
             "date": "2016-01-27",
@@ -737,26 +836,22 @@
           {
             "name": "Regexp Tips",
             "value": "language/01-javascript/regexp-tips",
+            "hasNew": false,
             "title": "Regexp Tips",
             "index": "Language.JavaScript.Practice",
             "date": ""
           },
           {
-            "name": "正则表达式",
-            "value": "language/01-javascript/regexp",
-            "title": "正则表达式",
-            "index": "Language.JavaScript.Snytax",
-            "date": ""
-          },
-          {
             "name": "js tips",
             "value": "language/01-javascript/tips",
+            "hasNew": false,
             "title": "js tips",
             "date": ""
           },
           {
             "name": "《你不知道的JavaScript》01 作用域与闭包",
             "value": "language/01-javascript/you-dont-know-javascript-01",
+            "hasNew": false,
             "title": "《你不知道的JavaScript》01 作用域与闭包",
             "index": "Language.JavaScript.Snytax",
             "date": ""
@@ -764,6 +859,7 @@
           {
             "name": "《你不知道的JavaScript》02 this",
             "value": "language/01-javascript/you-dont-know-javascript-02",
+            "hasNew": false,
             "title": "《你不知道的JavaScript》02 this",
             "index": "Language.JavaScript.Snytax",
             "date": ""
@@ -771,6 +867,7 @@
           {
             "name": "《你不知道的JavaScript》03 对象与原型",
             "value": "language/01-javascript/you-dont-know-javascript-03",
+            "hasNew": false,
             "title": "《你不知道的JavaScript》03 对象与原型",
             "index": "Language.JavaScript.Snytax",
             "date": ""
@@ -778,6 +875,7 @@
           {
             "name": "《你不知道的JavaScript》04 类型",
             "value": "language/01-javascript/you-dont-know-javascript-04",
+            "hasNew": false,
             "title": "《你不知道的JavaScript》04 类型",
             "index": "Language.JavaScript.Snytax",
             "date": ""
@@ -785,6 +883,7 @@
           {
             "name": "《你不知道的JavaScript》05 语法",
             "value": "language/01-javascript/you-dont-know-javascript-05",
+            "hasNew": false,
             "title": "《你不知道的JavaScript》05 语法",
             "index": "Language.JavaScript.Snytax",
             "date": ""
@@ -792,6 +891,7 @@
           {
             "name": "《你不知道的JavaScript》06 异步",
             "value": "language/01-javascript/you-dont-know-javascript-06",
+            "hasNew": false,
             "title": "《你不知道的JavaScript》06 异步",
             "index": "Language.JavaScript.Snytax",
             "date": ""
@@ -799,6 +899,7 @@
           {
             "name": "《你不知道的JavaScript》07 性能",
             "value": "language/01-javascript/you-dont-know-javascript-07",
+            "hasNew": false,
             "title": "《你不知道的JavaScript》07 性能",
             "index": "Language.JavaScript.Snytax",
             "date": ""
@@ -806,11 +907,13 @@
           {
             "name": "《你不知道的JavaScript》08 现在与未来",
             "value": "language/01-javascript/you-dont-know-javascript-08",
+            "hasNew": false,
             "title": "《你不知道的JavaScript》08 现在与未来",
             "index": "Language.JavaScript.Snytax",
             "date": ""
           }
-        ]
+        ],
+        "hasNew": true
       },
       {
         "name": "Typescript",
@@ -818,23 +921,27 @@
           {
             "name": "Lang Ts Config",
             "value": "language/02-typescript/lang_ts_config",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Typescript Syntax",
             "value": "language/02-typescript/lang_ts_syntax",
+            "hasNew": false,
             "title": "Typescript Syntax",
             "date": ""
           },
           {
             "name": "Typescript Type",
             "value": "language/02-typescript/lang_ts_type",
+            "hasNew": false,
             "title": "Typescript Type",
             "date": ""
           },
           {
             "name": "TypeScript 类型挑战 (一) Easy",
             "value": "language/02-typescript/type-challenges-01-easy",
+            "hasNew": false,
             "title": "TypeScript 类型挑战 (一) Easy",
             "index": "Language.TypeScript.Practice",
             "date": ""
@@ -842,6 +949,7 @@
           {
             "name": "TypeScript 类型挑战 (二) Medium",
             "value": "language/02-typescript/type-challenges-02-medium",
+            "hasNew": false,
             "title": "TypeScript 类型挑战 (二) Medium",
             "index": "Language.TypeScript.Practice",
             "date": ""
@@ -849,6 +957,7 @@
           {
             "name": "TypeScript 类型挑战 (三) Hard",
             "value": "language/02-typescript/type-challenges-03-hard",
+            "hasNew": false,
             "title": "TypeScript 类型挑战 (三) Hard",
             "index": "Language.TypeScript.Practice",
             "date": ""
@@ -861,6 +970,7 @@
           {
             "name": "Cargo (Rust 包管理)",
             "value": "language/03-rust/cargo",
+            "hasNew": false,
             "title": "Cargo (Rust 包管理)",
             "index": "Language.Rust.Practice",
             "date": ""
@@ -868,6 +978,7 @@
           {
             "name": "Collection",
             "value": "language/03-rust/collection",
+            "hasNew": false,
             "title": "Collection",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -875,6 +986,7 @@
           {
             "name": "并发编程 concurrent",
             "value": "language/03-rust/concurrent",
+            "hasNew": false,
             "title": "并发编程 concurrent",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -882,6 +994,7 @@
           {
             "name": "数据类型 data type",
             "value": "language/03-rust/datatype",
+            "hasNew": false,
             "title": "数据类型 data type",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -889,6 +1002,7 @@
           {
             "name": "枚举 enum",
             "value": "language/03-rust/enum",
+            "hasNew": false,
             "title": "枚举 enum",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -896,6 +1010,7 @@
           {
             "name": "错误处理",
             "value": "language/03-rust/err-handle",
+            "hasNew": false,
             "title": "错误处理",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -903,11 +1018,13 @@
           {
             "name": "Func And Closure",
             "value": "language/03-rust/func-and-closure",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "泛型 Generic, 生命周期 Lifetime",
             "value": "language/03-rust/generic-lifetime",
+            "hasNew": false,
             "title": "泛型 Generic, 生命周期 Lifetime",
             "index": "Langugage.Rust.Syntax",
             "date": ""
@@ -915,6 +1032,7 @@
           {
             "name": "迭代器 iterator",
             "value": "language/03-rust/iterator",
+            "hasNew": false,
             "title": "迭代器 iterator",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -922,6 +1040,7 @@
           {
             "name": "宏 Macro",
             "value": "language/03-rust/macro",
+            "hasNew": false,
             "title": "宏 Macro",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -929,6 +1048,7 @@
           {
             "name": "代码组织与模块",
             "value": "language/03-rust/module",
+            "hasNew": false,
             "title": "代码组织与模块",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -936,6 +1056,7 @@
           {
             "name": "OOP",
             "value": "language/03-rust/oop",
+            "hasNew": false,
             "title": "OOP",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -943,6 +1064,7 @@
           {
             "name": "所有权 ownership",
             "value": "language/03-rust/ownership",
+            "hasNew": false,
             "title": "所有权 ownership",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -950,6 +1072,7 @@
           {
             "name": "智能指针 smart pointer",
             "value": "language/03-rust/pointer",
+            "hasNew": false,
             "title": "智能指针 smart pointer",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -957,6 +1080,7 @@
           {
             "name": "Rust",
             "value": "language/03-rust/README",
+            "hasNew": false,
             "title": "Rust",
             "index": "Language.Rust.Links",
             "date": ""
@@ -964,6 +1088,7 @@
           {
             "name": "结构体 struct",
             "value": "language/03-rust/struct",
+            "hasNew": false,
             "title": "结构体 struct",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -971,6 +1096,7 @@
           {
             "name": "Syntax",
             "value": "language/03-rust/syntax",
+            "hasNew": false,
             "title": "Syntax",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -978,6 +1104,7 @@
           {
             "name": "测试",
             "value": "language/03-rust/test",
+            "hasNew": false,
             "title": "测试",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -985,6 +1112,7 @@
           {
             "name": "注解 Trait",
             "value": "language/03-rust/trait",
+            "hasNew": false,
             "title": "注解 Trait",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -992,6 +1120,7 @@
           {
             "name": "不安全的 Rust",
             "value": "language/03-rust/unsafe",
+            "hasNew": false,
             "title": "不安全的 Rust",
             "index": "Language.Rust.Syntax",
             "date": ""
@@ -1004,6 +1133,7 @@
           {
             "name": "CSS Background",
             "value": "language/04-css/01-css-background",
+            "hasNew": false,
             "title": "CSS Background",
             "index": "Language.CSS.Syntax",
             "date": ""
@@ -1011,12 +1141,14 @@
           {
             "name": "CSS Flex",
             "value": "language/04-css/02-css-flex",
+            "hasNew": false,
             "title": "CSS Flex",
             "date": ""
           },
           {
             "name": "Practice Flex",
             "value": "language/04-css/100-practice-css-flex",
+            "hasNew": false,
             "title": "Practice Flex",
             "date": "2016-01-04",
             "tag": [
@@ -1026,6 +1158,7 @@
           {
             "name": "Reset",
             "value": "language/04-css/99-css-helper-reset",
+            "hasNew": false,
             "title": "Reset",
             "index": "Language.CSS.Practice",
             "date": ""
@@ -1033,6 +1166,7 @@
           {
             "name": "Tips",
             "value": "language/04-css/99-css-helper-tip",
+            "hasNew": false,
             "title": "Tips",
             "index": "Language.CSS.Practice",
             "date": ""
@@ -1045,31 +1179,37 @@
           {
             "name": "Builtins",
             "value": "language/05-python/builtins",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Function",
             "value": "language/05-python/function",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "ImageHandler",
             "value": "language/05-python/imageHandler",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Index",
             "value": "language/05-python",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Lang Py Lib Pandas",
             "value": "language/05-python/lang_py_lib_pandas",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "API Module",
             "value": "language/05-python/py-api-module",
+            "hasNew": false,
             "title": "API Module",
             "index": "Language.Python.Snytax",
             "date": ""
@@ -1077,6 +1217,7 @@
           {
             "name": "Data Model",
             "value": "language/05-python/py-data-model",
+            "hasNew": false,
             "title": "Data Model",
             "index": "Language.Python.Snytax",
             "date": ""
@@ -1084,6 +1225,7 @@
           {
             "name": "Matplotlib",
             "value": "language/05-python/py-lib-matplotlib",
+            "hasNew": false,
             "title": "Matplotlib",
             "index": "Language.Python.Library",
             "date": ""
@@ -1091,6 +1233,7 @@
           {
             "name": "NumPy",
             "value": "language/05-python/py-lib-numpy",
+            "hasNew": false,
             "title": "NumPy",
             "index": "Language.Python.Library",
             "date": ""
@@ -1098,6 +1241,7 @@
           {
             "name": "Pillow",
             "value": "language/05-python/py-lib-pillow",
+            "hasNew": false,
             "title": "Pillow",
             "index": "Language.Python.Library",
             "date": ""
@@ -1105,6 +1249,7 @@
           {
             "name": "OO",
             "value": "language/05-python/py-oo",
+            "hasNew": false,
             "title": "OO",
             "index": "Language.Python.Snytax",
             "date": ""
@@ -1112,6 +1257,7 @@
           {
             "name": "Flask",
             "value": "language/05-python/py-project-flask",
+            "hasNew": false,
             "title": "Flask",
             "index": "Language.Python.Library",
             "date": ""
@@ -1119,6 +1265,7 @@
           {
             "name": "pip",
             "value": "language/05-python/py-project-pip",
+            "hasNew": false,
             "title": "pip",
             "index": "Language.Python.Practice",
             "date": ""
@@ -1126,6 +1273,7 @@
           {
             "name": "Syntax",
             "value": "language/05-python/py-syntax",
+            "hasNew": false,
             "title": "Syntax",
             "index": "Language.Python.Syntax",
             "date": ""
@@ -1138,6 +1286,7 @@
           {
             "name": "LINQ",
             "value": "language/06-csharp/csharp-linq",
+            "hasNew": false,
             "title": "LINQ",
             "index": "Language.CSharp.Syntax",
             "date": ""
@@ -1145,6 +1294,7 @@
           {
             "name": "Nutshell",
             "value": "language/06-csharp/csharp-nutshell",
+            "hasNew": false,
             "title": "Nutshell",
             "index": "Language.CSharp.Syntax",
             "date": ""
@@ -1152,6 +1302,7 @@
           {
             "name": "Tips",
             "value": "language/06-csharp/csharp-tips",
+            "hasNew": false,
             "title": "Tips",
             "index": "Language.CSharp.Practice",
             "date": ""
@@ -1159,6 +1310,7 @@
           {
             "name": "LitJson",
             "value": "language/06-csharp/litjson",
+            "hasNew": false,
             "title": "LitJson",
             "index": "Language.CSharp.Practice",
             "date": ""
@@ -1171,17 +1323,20 @@
           {
             "name": "01 Index",
             "value": "language/99-japanese/01-index",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "助词",
             "value": "language/99-japanese/aux",
+            "hasNew": false,
             "title": "助词",
             "date": ""
           },
           {
             "name": "Song",
             "value": "language/99-japanese/song",
+            "hasNew": false,
             "date": ""
           }
         ]
@@ -1192,6 +1347,7 @@
           {
             "name": "Syntax",
             "value": "language/cpp",
+            "hasNew": false,
             "title": "Syntax",
             "index": "language.CPP.Syntax",
             "date": ""
@@ -1204,6 +1360,7 @@
           {
             "name": "Dart FP",
             "value": "language/dart/lang_dart_fp",
+            "hasNew": false,
             "title": "Dart FP",
             "date": "2018-08-24",
             "tag": [
@@ -1214,6 +1371,7 @@
           {
             "name": "Dart OO",
             "value": "language/dart/lang_dart_oo",
+            "hasNew": false,
             "title": "Dart OO",
             "date": "2018-08-24",
             "tag": [
@@ -1224,6 +1382,7 @@
           {
             "name": "Dart VSCode 代码片段",
             "value": "language/dart/lang_dart_snippet",
+            "hasNew": false,
             "title": "Dart VSCode 代码片段",
             "date": "2018-08-12",
             "tag": [
@@ -1234,6 +1393,7 @@
           {
             "name": "Dart 句法",
             "value": "language/dart/lang_dart_syntax",
+            "hasNew": false,
             "title": "Dart 句法",
             "date": "2018-08-05",
             "tag": [
@@ -1244,6 +1404,7 @@
           {
             "name": "Dart 类型",
             "value": "language/dart/lang_dart_type",
+            "hasNew": false,
             "title": "Dart 类型",
             "date": "2018-08-05",
             "tag": [
@@ -1259,6 +1420,7 @@
           {
             "name": "SVG",
             "value": "language/html/svg",
+            "hasNew": false,
             "title": "SVG",
             "date": "2018-06-26",
             "tag": [
@@ -1273,11 +1435,13 @@
           {
             "name": "Index",
             "value": "language/java",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Java8 函数式编程",
             "value": "language/java/lang_java_fp",
+            "hasNew": false,
             "title": "Java8 函数式编程",
             "date": "2018-06-27",
             "tag": [
@@ -1292,11 +1456,13 @@
           {
             "name": "Index",
             "value": "language/lua",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Lua VSCode 代码片段",
             "value": "language/lua/lang_lua_snippet",
+            "hasNew": false,
             "title": "Lua VSCode 代码片段",
             "date": "2018-08-12",
             "tag": [
@@ -1306,6 +1472,7 @@
           {
             "name": "Lua 快速笔记(三) OO",
             "value": "language/lua/lang_lua_oo",
+            "hasNew": false,
             "title": "Lua 快速笔记(三) OO",
             "date": "2017-07-19",
             "tag": [
@@ -1315,6 +1482,7 @@
           {
             "name": "Lua 快速笔记(二) syntax",
             "value": "language/lua/lang_lua_syntax",
+            "hasNew": false,
             "title": "Lua 快速笔记(二) syntax",
             "date": "2017-07-19",
             "tag": [
@@ -1324,6 +1492,7 @@
           {
             "name": "Lua 快速笔记(一) type",
             "value": "language/lua/lang_lua_type",
+            "hasNew": false,
             "title": "Lua 快速笔记(一) type",
             "date": "2017-07-19",
             "tag": [
@@ -1338,11 +1507,13 @@
           {
             "name": "Index",
             "value": "language/markdown",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Snippets",
             "value": "language/markdown/snippets",
+            "hasNew": false,
             "date": ""
           }
         ]
@@ -1353,6 +1524,7 @@
           {
             "name": "查询",
             "value": "language/sql/01-read",
+            "hasNew": false,
             "title": "查询",
             "index": "Language.SQL.Syntax",
             "date": ""
@@ -1360,6 +1532,7 @@
           {
             "name": "排序",
             "value": "language/sql/02-sort",
+            "hasNew": false,
             "title": "排序",
             "index": "Language.SQL.Syntax",
             "date": ""
@@ -1367,6 +1540,7 @@
           {
             "name": "插入、更新和删除",
             "value": "language/sql/04-CUD",
+            "hasNew": false,
             "title": "插入、更新和删除",
             "index": "Language.SQL.Syntax",
             "date": ""
@@ -1374,6 +1548,7 @@
           {
             "name": "数值处理",
             "value": "language/sql/07-value",
+            "hasNew": false,
             "title": "数值处理",
             "index": "Language.SQL.Syntax",
             "date": ""
@@ -1381,6 +1556,7 @@
           {
             "name": "GraphQL",
             "value": "language/sql/graphql",
+            "hasNew": false,
             "title": "GraphQL",
             "index": "Language.SQL.Library",
             "date": ""
@@ -1388,6 +1564,7 @@
           {
             "name": "SQLite",
             "value": "language/sql/sqlite",
+            "hasNew": false,
             "title": "SQLite",
             "index": "Language.SQL.Library",
             "date": ""
@@ -1399,6 +1576,7 @@
   {
     "name": "Knowledge",
     "id": "knowledge",
+    "hasNew": false,
     "children": [
       {
         "name": "Data Structure",
@@ -1406,6 +1584,7 @@
           {
             "name": "数据结构的 JavaScript 实现",
             "value": "knowledge/data-structure",
+            "hasNew": false,
             "title": "数据结构的 JavaScript 实现",
             "index2": "Thought.Data Structure.Practice",
             "date": ""
@@ -1418,6 +1597,7 @@
           {
             "name": "设计原则",
             "value": "knowledge/design-pattern/01-index",
+            "hasNew": false,
             "title": "设计原则",
             "index": "Thought.Design Pattern.Practice",
             "date": ""
@@ -1425,6 +1605,7 @@
           {
             "name": "创建型",
             "value": "knowledge/design-pattern/02-creational",
+            "hasNew": false,
             "title": "创建型",
             "index": "Thought.Design Pattern.Practice",
             "date": ""
@@ -1432,6 +1613,7 @@
           {
             "name": "结构型",
             "value": "knowledge/design-pattern/03-structural",
+            "hasNew": false,
             "title": "结构型",
             "index": "Thought.Design Pattern.Practice",
             "date": ""
@@ -1439,6 +1621,7 @@
           {
             "name": "行为型",
             "value": "knowledge/design-pattern/04-behavioral",
+            "hasNew": false,
             "title": "行为型",
             "index": "Thought.Design Pattern.Practice",
             "date": ""
@@ -1446,6 +1629,7 @@
           {
             "name": "其他模式",
             "value": "knowledge/design-pattern/05-other",
+            "hasNew": false,
             "title": "其他模式",
             "index": "Thought.Design Pattern.Practice",
             "date": ""
@@ -1458,26 +1642,31 @@
           {
             "name": "Index",
             "value": "knowledge/machine-learning",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Ml Conception",
             "value": "knowledge/machine-learning/ml_conception",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Ml Conception Network",
             "value": "knowledge/machine-learning/ml_conception_network",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "Ml Conception Note",
             "value": "knowledge/machine-learning/ml_conception_note",
+            "hasNew": false,
             "date": ""
           },
           {
             "name": "课程笔记",
             "value": "knowledge/machine-learning/ml_conception_uda",
+            "hasNew": false,
             "title": "课程笔记",
             "date": "2018-11-14",
             "tag": [
@@ -1488,6 +1677,7 @@
           {
             "name": "感知机 perceptron",
             "value": "knowledge/machine-learning/ml_conception_perceptron",
+            "hasNew": false,
             "title": "感知机 perceptron",
             "date": "2018-08-18",
             "tag": [
@@ -1497,6 +1687,7 @@
           {
             "name": "Ml Project Data",
             "value": "knowledge/machine-learning/ml_project_data",
+            "hasNew": false,
             "date": ""
           }
         ]

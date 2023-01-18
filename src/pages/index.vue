@@ -19,6 +19,7 @@ import shortcut from '@/meta/short.json'
             class="home-default-link"
             :to="'/' + dir.children[0].value">
             {{ dir.name }}
+            <div v-if="dir.hasNew" class="home-new-tag">New</div>
           </router-link>
         </div>
       </div>
@@ -44,12 +45,16 @@ import shortcut from '@/meta/short.json'
 }
 
 .home-default-link {
-  @apply block  px-2 py-1 rounded-1;
+  @apply block  px-2 py-1 rounded-1 flex justify-between items-center;
 
   &:hover {
     @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-slate-100;
   }
 }
 
+
+.home-new-tag {
+  @apply text-xs bg-violet-500 dark:bg-violet-700 px-1 text-gray-100 rounded h-4;
+}
 
 </style>
