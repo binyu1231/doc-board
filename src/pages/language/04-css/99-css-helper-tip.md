@@ -4,7 +4,7 @@ index: Language.CSS.Practice
 ---
 
 
-20. `::first-line` 与 `::first-letter` 伪类都被视为行内块，背景绘制不会充满一行（就算是块级元素包裹也不会）
+20. `::first-line` 与 `::first-letter` 伪类都被视为行内块(inline-block)，背景绘制不会充满一行（就算是块级元素包裹也不会）
 
 19. 如果 `<html>` 没有指定颜色，则会用 `<body>` 的背景色填充页面
 
