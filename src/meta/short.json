@@ -48,6 +48,18 @@
             "date": ""
           }
         ]
+      },
+      {
+        "name": "Formart",
+        "children": [
+          {
+            "name": "Text",
+            "value": "project/formart/text",
+            "hasNew": true,
+            "date": ""
+          }
+        ],
+        "hasNew": true
       }
     ]
   },
@@ -459,11 +471,12 @@
           {
             "name": "获取数据源",
             "value": "framework/opencv/read-source",
-            "hasNew": false,
+            "hasNew": true,
             "title": "获取数据源",
             "date": ""
           }
-        ]
+        ],
+        "hasNew": true
       },
       {
         "name": "React",
@@ -650,14 +663,14 @@
           {
             "name": "ECMAScript Features",
             "value": "language/01-javascript/01-js-ecmascript-features",
-            "hasNew": true,
+            "hasNew": false,
             "title": "ECMAScript Features",
             "date": ""
           },
           {
             "name": "正则表达式",
             "value": "language/01-javascript/10-js-regexp",
-            "hasNew": true,
+            "hasNew": false,
             "title": "正则表达式",
             "index": "Language.JavaScript.Snytax",
             "date": ""
@@ -912,8 +925,7 @@
             "index": "Language.JavaScript.Snytax",
             "date": ""
           }
-        ],
-        "hasNew": true
+        ]
       },
       {
         "name": "Typescript",
@@ -1141,7 +1153,7 @@
           {
             "name": "CSS Flex",
             "value": "language/04-css/02-css-flex",
-            "hasNew": false,
+            "hasNew": true,
             "title": "CSS Flex",
             "date": ""
           },
@@ -1166,12 +1178,13 @@
           {
             "name": "Tips",
             "value": "language/04-css/99-css-helper-tip",
-            "hasNew": false,
+            "hasNew": true,
             "title": "Tips",
             "index": "Language.CSS.Practice",
             "date": ""
           }
-        ]
+        ],
+        "hasNew": true
       },
       {
         "name": "Python",
@@ -1334,12 +1347,27 @@
             "date": ""
           },
           {
+            "name": "量词",
+            "value": "language/99-japanese/classifier",
+            "hasNew": true,
+            "title": "量词",
+            "date": ""
+          },
+          {
             "name": "Song",
             "value": "language/99-japanese/song",
-            "hasNew": false,
+            "hasNew": true,
+            "date": ""
+          },
+          {
+            "name": "动词",
+            "value": "language/99-japanese/verb",
+            "hasNew": true,
+            "title": "动词",
             "date": ""
           }
-        ]
+        ],
+        "hasNew": true
       },
       {
         "name": "Cpp",
@@ -1562,6 +1590,13 @@
             "date": ""
           },
           {
+            "name": "Redis",
+            "value": "language/sql/redis",
+            "hasNew": true,
+            "title": "Redis",
+            "date": ""
+          },
+          {
             "name": "SQLite",
             "value": "language/sql/sqlite",
             "hasNew": false,
@@ -1569,7 +1604,8 @@
             "index": "Language.SQL.Library",
             "date": ""
           }
-        ]
+        ],
+        "hasNew": true
       }
     ]
   },
