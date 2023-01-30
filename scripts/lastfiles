@@ -50,7 +50,7 @@
 1670375029039|/framework/linux/practice.md
 1670375029039|/framework/linux/ssh.md
 1670375029039|/framework/nginx/tips.md
-1672708667983|/framework/opencv/read-source.md
+1674964122517|/framework/opencv/read-source.md
 1670375029039|/framework/react/antd.md
 1670375029039|/framework/react/hook.md
 1670375029039|/framework/react/README.md
@@ -127,10 +127,10 @@
 1670375029078|/language/03-rust/trait.md
 1670375029078|/language/03-rust/unsafe.md
 1673595854922|/language/04-css/01-css-background.md
-1673596061533|/language/04-css/02-css-flex.md
+1674892481224|/language/04-css/02-css-flex.md
 1673595928727|/language/04-css/100-practice-css-flex.md
 1670375029078|/language/04-css/99-css-helper-reset.md
-1670375029078|/language/04-css/99-css-helper-tip.md
+1674892481224|/language/04-css/99-css-helper-tip.md
 1670375029078|/language/05-python/builtins.md
 1670375029078|/language/05-python/function.md
 1670375029078|/language/05-python/imageHandler.md
@@ -151,7 +151,7 @@
 1670375029078|/language/06-csharp/litjson.md
 1670375029078|/language/99-japanese/01-index.md
 1672968067548|/language/99-japanese/aux.md
-1672708667985|/language/99-japanese/song.md
+1674892475712|/language/99-japanese/song.md
 1670375029078|/language/cpp/index.md
 1670375029078|/language/dart/lang_dart_fp.md
 1670375029078|/language/dart/lang_dart_oo.md
@@ -189,3 +189,7 @@
 1670375029057|/knowledge/machine-learning/ml_project_data.md
 1673862640396|/language/01-javascript/01-js-ecmascript-features.md
 1673936271520|/language/01-javascript/10-js-regexp.md
+1675062241695|/project/formart/text.md
+1674892475712|/language/99-japanese/classifier.md
+1674892475712|/language/99-japanese/verb.md
+1675062508377|/language/sql/redis.md
