@@ -13,6 +13,7 @@ defineProps<{
 </template>
 <style lang="postcss">
 .col-title {
-  @apply flex justify-between;
+  @apply flex justify-between items-center cursor-pointer p-1 rounded-sm hover:bg-violet-100 hover:dark:bg-violet-900
+    transition;
 }
 </style>
