@@ -113,15 +113,20 @@ function writeMetafile(content, filename) {
 }
 
 (function gen() {
-  const lastFilesStr = fs.readFileSync(path.resolve(__dirname, './lastfiles'), 'utf-8')
-  lastFilesStr.split('\n').forEach(row => {
-    const [date, name] = row.split('|')
-    lastFiles.set(name, Number(date))
-  })
+  try {
+    const lastfilesUri = path.resolve(__dirname, './lastfiles')
+    const lastFilesStr = fs.readFileSync(lastfilesUri, 'utf-8')
+    lastFilesStr.split('\n').forEach(row => {
+      const [date, name] = row.split('|')
+      lastFiles.set(name, Number(date))
+    })
+  }
+  catch {
+
+  }
   console.log(lastFiles)
   const info = kinds.map(genStruct)
 
-  console.log(lastFilesStr)
 
   const thisfileStr = Array.from(lastFiles.keys()).reduce((content, key) => {
     const row = lastFiles.get(key) + '|' + key
