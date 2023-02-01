@@ -9,7 +9,7 @@ title: ECMAScript Features
 
 ## ES2023 ✅
 
-###  Array find from last 
+<ToggleContent title="Array find from last">
 
 数组添加了两个从尾部索引的方法
 
@@ -24,8 +24,11 @@ foo.findLastIndex((item) => item.value === 2) // 3
 
 ```
 
+</ToggleContent>
 
-### Hashbang Grammar
+
+<ToggleContent title="Hashbang Grammar">
+
 
 支持命令行文件 SheBang/Hashbang 语法
 
@@ -43,10 +46,14 @@ export {};
 console.log(1);
 ```
 
+</ToggleContent>
+
+---
 
 ## ES2022 ✅
 
-### Class Fields
+
+<ToggleContent title="Class Fields">
 
 设置私有属性的方式是在变量前面加一个修饰符 #:
 
@@ -69,7 +76,10 @@ class ClassWithPrivateProperty {
 }
 ```
 
-### RegExp Match Indices
+</ToggleContent>
+
+
+<ToggleContent title="RegExp Match Indices">
 
 正则表达式新增 `d` flag, 同时增加了 `hasIndices` 属性来判断是否使用了 `d` flag
 
@@ -103,9 +113,10 @@ regex2.hasIndices // false
 regex2.exec(str1).indices // undefined
 ```
 
+</ToggleContent>
 
 
-### Top Level `await`
+<ToggleContent title="Top Level `await`">
 
 支持在顶层(没有前置 `async`)使用 `await`
 
@@ -118,7 +129,10 @@ try {
 }
 ```
 
-### Ergonomic brand checks for Private Fields
+</ToggleContent>
+
+<ToggleContent title="Ergonomic brand checks for Private Fields">
+
 
 支持了使用 in 去判断私有属性在对象里面存不存在。
 
@@ -136,7 +150,10 @@ class C {
 }
 ```
 
-### Array.prototype.at
+</ToggleContent>
+
+
+<ToggleContent title="Array.prototype.at">
 
 为数组添加用索引读取元素的方法，支持负数索引
 
@@ -148,7 +165,11 @@ a.at(1) // 1
 a.at(-1) // 3
 ```
 
-### Accessible Object.prototype.hasOwnProperty
+</ToggleContent>
+
+
+<ToggleContent title="Accessible Object.prototype.hasOwnProperty">
+
 
 Object 新增静态方法来简化 `hasOwnProperty` 的使用
 
@@ -160,8 +181,11 @@ Object.prototype.hasOwnProperty.call(obj, 'foo')
 
 obj 如果是没有原型的对象，直接调用 hasOwnProperty 会报错
 
+</ToggleContent>
 
-### Class Static Block
+
+<ToggleContent title="Class Static Block">
+
 
 现在，我们可以在类内部开辟一个专门为静态成员初始化的作用域
 
@@ -201,26 +225,30 @@ class Translator {
 
 ```
 
-### Error Cause
+</ToggleContent>
 
-Error 类第二个参数，新增一个 `cause` 字段用来传入自定义信息。
+<ToggleContent title="Error Cause">
 
-``` ts
-try {
-  throw new RangeError('error-message', { cause: { foo: 'bar' } })
-}
-catch(e) {
-  console.log(e.cause) // {foo: 'bar'} 
-  console.log(e.message) // 'error-message' 
-  console.log(e.name) // 'RangeError'
-}
-```
+  Error 类第二个参数，新增一个 `cause` 字段用来传入自定义信息。
+
+  ``` ts
+  try {
+    throw new RangeError('error-message', { cause: { foo: 'bar' } })
+  }
+  catch(e) {
+    console.log(e.cause) // {foo: 'bar'} 
+    console.log(e.message) // 'error-message' 
+    console.log(e.name) // 'RangeError'
+  }
+  ```
+
+</ToggleContent>
 
 ---
 
 ## ES2021 ✅
 
-### String.prototype.replaceAll
+<ToggleContent title="String.prototype.replaceAll">
 
 为字符串添加一个可以全局替换特定字符串的方法
 
@@ -241,7 +269,10 @@ const withSpaces = queryString.replaceAll('+', ' ')
 // 'abca'
 ```
 
-### Promise.any
+</ToggleContent>
+
+<ToggleContent title="Promise.any">
+
 
 为 Promise 增加了在任意一个 promise 达到 `fulfilled` 之后触发的静态函数
 
@@ -275,13 +306,21 @@ Promise.any([error2Promise, errorPromise])
 })
 ```
 
-### WeakRefs
+</ToggleContent>
+
+
+
+<ToggleContent title="WeakRefs">
+
 
 WeakRef 对象允许您保留对另一个对象的弱引用，而不会阻止被弱引用对象被 GC 回收
 
 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/WeakRef)
 
-### Logical Assignment Operators
+</ToggleContent>
+
+<ToggleContent title="Logical Assignment Operators">
+
 
 为逻辑语句添加简写语法
 
@@ -293,7 +332,9 @@ x ||= y  // 相当于 x || (x = y)
 x ??= y  // 相当于 x ?? (x = y)
 ```
 
-### Numeric separators
+</ToggleContent>
+
+<ToggleContent title="Numeric separators">
 
 数字间可以添加分隔，方便阅读
 
@@ -302,11 +343,14 @@ const a = 10_000 // 10000
 const b = 1_0000_0000 // 100000000
 ```
 
+</ToggleContent>
+
 ---
 
 ## ES2020 ✅
 
-### String.prototype.matchAll
+
+<ToggleContent title="String.prototype.matchAll">
 
 为字符串类型添加一个根据正则表达式返回全部匹配信息的方法
 
@@ -336,7 +380,11 @@ str.matchAll(/abc/g)
 
 ```
 
-### import()
+</ToggleContent>
+
+
+<ToggleContent title="import()">
+
 
 添加全局函数 `import`, 用来动态引入 JavaScript
 
@@ -351,7 +399,12 @@ import('./foo.js').then(module => {
 })
 ```
 
-### BigInt
+</ToggleContent>
+
+
+
+<ToggleContent title="BigInt">
+
 
 用来表示过大的整数。它不能和普通Number进行混合运算
 
@@ -367,7 +420,10 @@ const previousMaxSafe = BigInt(Number.MAX_SAFE_INTEGER);
 const maxPlusOne = previousMaxSafe + 1n;
 ```
 
-### Promise.allSettled
+</ToggleContent>
+
+
+<ToggleContent title="Promise.allSettled">
 
 为 Promise 添加一个在所有promise都处理完后触发的函数 
 
@@ -399,7 +455,12 @@ Promise.allSettled([successPromise, errorPromise])
 })
 ```
 
-### globalThis
+</ToggleContent>
+
+
+
+<ToggleContent title="globalThis">
+
 
 在各种环境中统一全局标量的名称
 
@@ -407,12 +468,19 @@ Promise.allSettled([successPromise, errorPromise])
 globalThis === window || globalThis === global || globalThis === self
 ```
 
+</ToggleContent>
 
-### for-in mechanics
+
+<ToggleContent title="for-in mechanics">
+
 
 统一 for-in 枚举顺序
 
-### Optional Chaining(?.)
+</ToggleContent>
+
+
+<ToggleContent title="Optional Chaining(?.)">
+
 
 添加可选的链式语法调用。是一种短路语法
 
@@ -420,7 +488,11 @@ globalThis === window || globalThis === global || globalThis === self
 const foo = myForm.querySelector('input[name=foo]')?.value
 ```
 
-### Nullish coalescing Operator(??)
+</ToggleContent>
+
+
+<ToggleContent title="Nullish coalescing Operator(??)">
+
 
 为未定义的值(`null`, `undefined`)设置默认值
 
@@ -433,7 +505,11 @@ false ?? 'hi' // false
 NaN ?? 'hi' // NaN
 ```
 
-### import.meta
+</ToggleContent>
+
+
+<ToggleContent title="import.meta">
+
 
 暴露当前JavaScript模块上下文的元数据属性的对象
 
@@ -445,11 +521,14 @@ import './foo.mjs?a=5&b=12'
 new URL(import.meta.url).searchParams.get('a') // '5'
 ```
 
+</ToggleContent>
+
+
 ---
 
 ## ES2019 ✅
 
-### Optional `catch` binding
+<ToggleContent title="Optional `catch` binding">
 
 可选择是否使用 catch 的参数
 
@@ -470,7 +549,10 @@ try {
 
 ```
 
-### JSON superset
+</ToggleContent>
+
+
+<ToggleContent title="JSON superset">
 
 将JavaScript 的语法拓展为 JSON 的超集
 
@@ -484,7 +566,9 @@ JSON.parse('"\u2028"');  // SyntaxError
 JSON.parse('"\u2028"');  // ''
 ``` 
 
-### Symbol.prototype.description
+</ToggleContent>
+
+<ToggleContent title="Symbol.prototype.description">
 
 `symbol` 类型增加 `description` 属性
 
@@ -495,8 +579,11 @@ const s1 = Symbol()
 s1.description // undefined
 ```
 
+</ToggleContent>
 
-### Function.prototype.toString revision
+</ToggleContent> 
+
+<ToggleContent title="Function.prototype.toString revision">
 
 统一标准，要求返回函数的源代码
 
@@ -508,7 +595,9 @@ function foo() {
 foo.toString() // "function foo() {\n    console.log('hi')\n}"
 ```
 
-### Object.fromEntries
+</ToggleContent> 
+
+<ToggleContent title="Object.fromEntries">
 
 `Object` 新增一个静态方法
 
@@ -520,7 +609,9 @@ Object.entries({1: 2, 3: 4}) // [['1', 2], ['3', 4]]
 ```
 
 
-### Well-formed JSON.stringify
+</ToggleContent> 
+
+<ToggleContent title="Well-formed JSON.stringify">
 
 防止JSON.stringify返回格式错误的Unicode字符串, 保证多个 unicode 组合能够正确转义
 
@@ -543,7 +634,9 @@ JSON.stringify('\uDEAD')
 ``` 
 
 
-### String.prototype.{trimStart,trimEnd}
+</ToggleContent> 
+
+<ToggleContent title="String.prototype.{trimStart,trimEnd}">
 
 字符串类型增加了两个用于删除字符串前后的空格。匹配 `padStart`, `padEnd` 的名字。功能与 `trimLeft`, `trimRight` 相同
 
@@ -557,7 +650,9 @@ str.trimEnd() // "    Hello World"
 ```
 
 
-### Array.prototype.{flat, flatMap}
+</ToggleContent> 
+
+<ToggleContent title="Array.prototype.{flat, flatMap}">
 
 数组类型新增两个用于展平数组的方法
 
@@ -577,13 +672,15 @@ str.trimEnd() // "    Hello World"
 [1, 2, 3, 4].map(x => [x * 2]).flat() // [2, 4, 6, 8]
 ```
 
+</ToggleContent> 
+
 
 --- 
 
 ## ES2018 ✅
 
 
-### Lifting template literal restriction
+<ToggleContent title="Lifting template literal restriction">
 
 增强字符串的能力，提供了标签函数
 
@@ -612,7 +709,9 @@ myTag`That ${ 'Mike' } is a ${ 28 }.`;
 // 'That Mike is a youngster.'
 ```
 
-### `s` (dotAll) flag for regular expressions
+</ToggleContent> 
+
+<ToggleContent title="`s` (dotAll) flag for regular expressions">
 
 正则新增flag `s` 允许 `.` 匹配字符串中的换行符 
 
@@ -621,7 +720,9 @@ myTag`That ${ 'Mike' } is a ${ 28 }.`;
 /hello.world/s.test('hello\nworld') // true
 ```
 
-### RegExp named capture groups
+</ToggleContent> 
+
+<ToggleContent title="RegExp named capture groups">
 
 正则增加命名捕获，捕获的组将会放入 `groups` 的对应字段中
 
@@ -636,7 +737,9 @@ const match = regDate.exec('2018-04-30')
 const [ _, year, month, date ] = match
 ```
 
-### Rest/Spread Properties 
+</ToggleContent> 
+
+<ToggleContent title="Rest/Spread Properties ">
 
 为对象增加了 `...` 拓展功能
 
@@ -658,7 +761,9 @@ foo({ a: 1, ...rest }) // {a: 1, b: 2, c: 3 }
 
 
 
-### RegExp Lookbehind Assertions
+</ToggleContent> 
+
+<ToggleContent title="RegExp Lookbehind Assertions">
 
 为正则增加反向断言功能
 
@@ -679,7 +784,9 @@ const match = reLookbehind.exec('$123.89')
 match[0] // 23.89
 ```
 
-### RegExp Unicode Property Escapes
+</ToggleContent> 
+
+<ToggleContent title="RegExp Unicode Property Escapes">
 
 正则表达式 支持根据 Unicode 属性进行匹配
 
@@ -697,7 +804,9 @@ sentence.match(/\p{Emoji_Presentation}/gu)
 // ['👌']
 ```
 
-### Promise.prototype.finally
+</ToggleContent> 
+
+<ToggleContent title="Promise.prototype.finally">
 
 为 `Promise` 类型增加 `finally` 方法。它将在 fulfilled 或 rejected 执行
 
@@ -717,7 +826,9 @@ fooPromise()
 })
 ```
 
-### Asynchronous Iteration
+</ToggleContent> 
+
+<ToggleContent title="Asynchronous Iteration">
 
 await 循环
 
@@ -731,11 +842,14 @@ async function process(array) {
 }
 ```
 
+</ToggleContent> 
+
 ---
 
 ## ES2017 ✅
 
-### Object.values/Object.entries
+
+<ToggleContent title="Object.values/Object.entries">
 
 `Object` 新增两个静态方法
 
@@ -751,7 +865,9 @@ Object.values(foo) // [5, 12]
 Object.entries(foo) // [['x', 5], ['y', 12]]
 ```
 
-### String padding
+</ToggleContent> 
+
+<ToggleContent title="String padding">
 
 字符串类型增加了两个用于填充字符串的方法。一个在前面填充，一个在后面填充
 
@@ -766,7 +882,9 @@ Object.entries(foo) // [['x', 5], ['y', 12]]
 'foo'.padEnd(4, '12') // 'foo1'
 ```
 
-### Object.getOwnPropertyDescriptors
+</ToggleContent> 
+
+<ToggleContent title="Object.getOwnPropertyDescriptors">
 
 用来获取一个对象的所有自身属性的描述符。
 
@@ -782,7 +900,9 @@ Object.getOwnPropertyDescriptors(foo, 'z')
 ```
 
 
-### Trailing commas in function parameter lists and calls
+</ToggleContent> 
+
+<ToggleContent title="Trailing commas in function parameter lists and calls">
 
 函数的参数支持尾逗号, 不会影响 `function.length`
 
@@ -798,7 +918,9 @@ clownPuppiesEverywhere(
 );
 ```
 
-### Async functions
+</ToggleContent> 
+
+<ToggleContent title="Async functions">
 
 语言层面实现 `async` 与 `await`
 
@@ -817,7 +939,9 @@ function foo() {
 })()
 ```
 
-### Shared memory and atomics
+</ToggleContent> 
+
+<ToggleContent title="Shared memory and atomics">
 
 - [Atomics MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Atomics)
 
@@ -832,11 +956,14 @@ new SharedArrayBuffer(length)
 - [MDN Atomics](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Atomics)
 
 
+</ToggleContent> 
+
 --- 
 
 ## ES2016 ✅
 
-### TypedArray.prototype.includes
+
+<ToggleContent title="TypedArray.prototype.includes">
 
 可迭代类型添加了判定存在的方法
 
@@ -852,7 +979,9 @@ new SharedArrayBuffer(length)
 ```
 
 
-### Exponentiation operator
+</ToggleContent> 
+
+<ToggleContent title="Exponentiation operator">
 
 数字类型支持乘方操作符
 

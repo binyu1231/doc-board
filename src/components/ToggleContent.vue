@@ -4,7 +4,7 @@ defineProps<{
 }>()
 </script>
 <template>
-<ScopeToggle v-slot="{ toggle, value }" :default-value="true">
+<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
 <ColTitle @click="toggle" :expand="value">{{ title }}</ColTitle>
 
 <div v-if="value">

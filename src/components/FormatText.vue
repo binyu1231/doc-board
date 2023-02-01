@@ -76,24 +76,25 @@ watchEffect(() => {
 <div class="format-text">
     <div class="format-text-row" v-for="(matchText, i) in matchList" :key="i">
         <div class="flex flex-1">
-            <div class="border-1 rounded-sm cursor-pointer w-6 text-center mr-1" @click="togglePattern(i)">
+            <div class="ft-border-color cursor-pointer w-6 text-center mr-1" @click="togglePattern(i)">
                 {{ matchText.mode === FormatPattern.regexp ? '正' : 'S' }}
             </div>
             <input type="text" placeholder="输入匹配内容" v-model="matchText.value" />
         </div>
         <div class="flex flex-1">
             <input type="text" placeholder="输入替换文字" v-model="matchText.replace" />
-            <div class="border-1 rounded-sm cursor-pointer w-6 text-center ml-2" @click="addMatch(i)">
-                +
+            <div class="cursor-pointer w-6 text-center ml-2 ft-border-color flex items-center justify-center" @click="addMatch(i)">
+                <i-akar-icons-plus />
             </div>
-            <div class="border-1 rounded-sm cursor-pointer w-6 text-center ml-1" @click="removeMatch(i)" v-if="i !== 0">
-                -
+            <div class="ft-border-color cursor-pointer w-6 text-center ml-1 ft-border-color flex items-center justify-center" @click="removeMatch(i)" v-if="i !== 0">
+                <i-akar-icons-minus />
+                
             </div>
         </div>
     </div>
     <div class="format-text-row">
-        <textarea v-model="inputText" placeholder="粘贴文字" class="border-1 rounded flex-1 p-2"></textarea>
-        <div class="border-1 rounded flex-1 p-2 relative">
+        <textarea v-model="inputText" placeholder="粘贴文字" class="flex-1 p-2 ft-border-color"></textarea>
+        <div class="flex-1 p-2 relative ft-border-color">
             {{ outputText }}
             <div class="absolute right-2 bottom-2 text-sm cursor-pointer text-violet-500" @click="copyContent">{{ copyText }}</div>
         </div>
@@ -101,9 +102,12 @@ watchEffect(() => {
 </div>
 </template>
 <style lang="postcss">
+.ft-border-color {
+    @apply border-gray-400 dark:border-gray-500 border-1 rounded-sm text-gray-500 dark:text-gray-400;
+}
 .format-text {
     & input {
-        @apply border-b flex-1;
+        @apply border-b flex-1 border-gray-400 dark:border-gray-500;
     }
 }
 
