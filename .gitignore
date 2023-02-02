@@ -28,5 +28,4 @@ coverage
 *.sw?
 
 components.d.ts
-lastfiles
 short.json
