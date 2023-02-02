@@ -48,6 +48,99 @@ redisContext(async function (client) {
 |`zset`|字符串成员（member）与浮点数分值（score）之间的有序映射，元素的排列顺序由分值的大小决定|添加、获取、删除单个元素；根据分值范围（range）或者成员来获取元素|
 
 
+## str
+
+### 基本使用 
+
+``` ts
+redisContext(async (client) => {
+    const key = 'str_test:1'
+    await client.set(key, 'baz', 'EX', 20000) 
+    await client.set(key, 'foo', 'KEEPTTL', 'XX', 'GET')
+    // baz
+    
+    await client.get(key)
+    // foo
+})
+```
+
+### api
+
+|command|args|desc|
+|:---|:---|:---|
+| `set` | `set key str [EX s/PX ms/KEEPTTL] [NX/XX] [GET] -> 'OK'/oldstr/null` | 设置字符串的值，可代替 `setex` `psetex` `getset` `setnx` 等<br> - `EX`: 过期时间(秒) <br> - `PX`: 过期时间(毫秒) <br> - `KEEPTTL`: 保留设置前的过期时间<br> - `NX`: key 不存在时才可设置 <br> - `XX` key存在时才可设置<br> - `GET`: 返回设置前的值, 不与 `NX` 一起使用|
+| `mset` | `mset key str [key str ...] -> 'OK'` | **同时**设置多个字符串|
+| `msetnx` | `msetnx key str [key str ...] -> 1/0` | 当且仅当所有给定键都不存在时， 为所有给定键设置值。|
+| `setrange` | `setrange key offset str -> len` | 从指定位开始用新字符串覆盖旧字符串 |
+| `append` | `append key str -> oldstrstr/str` | 追加字符串，如果没有则set |
+| `get` | `get key -> str`| 获取key对应的字符串|
+| `getset` | `getset key str -> oldstr` | 设置key，并返回设置前的字符串值|
+| `getrange` | `getrange key start_index end_index -> substr` | 获取key对应字符串的子字符串|
+| `mget` | `mget key [key ...] -> [key, ...]` | 获取多个key对应的字符串，空值由 null 占位|
+| `strlen` | `strlen key -> len` | 获取key对应字符串长度，不存在则返回0|
+| `incr` | `incr key -> int` | 将 key 中储存的数字值+1, 修改非数字字符串会报错，如果为空则设置为'1'|
+| `incrby` | `incrby key int -> int` | 将 key 中储存的数字值+int , 修改非数字字符串会报错，如果为空则设置为int。 int可以为负数|
+| `decr` | `decr key -> int` | 将 key 中储存的数字值-1, 修改非数字字符串会报错，如果为空则设置为'-1'|
+| `decrby` | `decrby key int -> int` | 将 key 中储存的数字值-int , 修改非数字字符串会报错，如果为空则设置为-int。 int可以为负数|
+| `incrbyfloat` | `incrbyfloat key float -> float` |将 key 中储存的数字值+float , 修改非数字字符串会报错，如果为空则设置为float。 float可以为负数|
+| `setbit` | `setbit key offset 1/0 => 1/0` | 设置字符串指定偏移位上的 bit 值, 返回值为修改之前的值 |
+| `getbit` | `getbit key offset -> 1/0` | 获取字符串指定偏移位上的 bit 值 |
+| `bitcount` | `bitcount key [start_index, end_index] - offset` | 获取字符串的bit值数量。一般配合bitset 统计登录次数，阅读次数等。|
+| `bitop` | `bitop AND/OR/NOT/XOR destkey key [key ...] -> dest_str_length` | 将多个字符串进行逻辑运算，并将结果保存到目标字符串中 | 
+| `bitpos` | `bitpos key 1/0 [start, end]` -> position_number | 查找字符串中第一个被设置为1/0的bit位  |
+| `bitfield*` | `bitfield` | 将字符串作为二进制位数组进行操作|
+| `stralgo*` | `stralgo` | 用来实现基于字符串的复杂算法|
+
+## list 
+
+### 基本使用 
+
+``` ts
+redisContext(async (client) => {
+
+    const genKey = () => `list_test:${Date.now()}`
+
+    const key1 = genKey()
+
+    await client.lpush(key1, 'red', 'blue') // 2
+    // ['blue', 'red']
+    await client.lpush(key1, 'orange', 'pink') // 4
+    // ['pink', 'orange', 'blue', 'red']
+    
+    await client.rpush(key1, 'yellow', 'black') // 6
+    // ['pink', 'orange', 'blue', 'red', 'yellow', 'black']
+
+    await client.lrange(key1, 1, -2) // ['orange', 'blue', 'red', 'yellow']
+
+    await client.del(key1)
+})
+```
+
+
+### api
+
+|command|args|desc|
+|:---|:---|:---|
+|`lpush`|`lpush key member [member, ...] -> length`|从头部添加元素|
+|`lpushx`|`lpushx key member [member, ...] -> length`|当key存在并为 list 时，从头部添加元素|
+|`rpush`|`rpush key member [member, ...] -> length`|length 从尾部添加元素|
+|`rpushx`|`rpushx key member [member, ...] -> length`|length 当key存在并为 list 时，从尾部添加元素|
+|`lpop`|`lpop key -> member`|从头部删除并返回元素|
+|`rpop`|`rpop key -> member`|从尾部删除并返回元素|
+|`lmove`|`lmove source desination sfrom[LEFT/RIGHT] dto[LEFT/RIGHT] -> member`|从原始列表向目标列表移动元素。只能从头尾进行移动|
+|`blpop`|`blpop key [key, ...] timeout`|是 lpop 的阻塞版本，timeout 最长等待时间|
+|`brpop`|`brpop key [key, ...] timeout`|是 rpop 的阻塞版本，timeout 最长等待时间|
+|`blmove`|lmove arguments `timeout`|是 lmove 的阻塞版本，timeout 最长等待时间|
+|`lindex`|`lindex key member_index -> member`|使用数字索引查找成员|
+|`llen`|`llen key -> length` | 查询列表长度|
+|`lrange`|`lrange key start_index end_index -> member_list` | 指定区间内的成员|
+|`lrem`|`lrem key count member -> rem_member_length` | 删除count个名称为 member 的成员。count = 0 全部成员，count>0 从头部删除， count<0 从尾部删除|
+|`lset`|`lset key index member -> member` | 设置指定位置的成员值。索引越界时会报错|
+|`ltrim`|`ltrim key start_index end_index -> 'OK'`|  修剪列表长度|
+|`lpos`|`key member [RANK member_no] [COUNT member_count] [MAXLEN max_member_count] ->` `member_index / null / member_list`|查询成员位置|
+
+
+
 <ToggleContent title="set">
 
 ``` ts
@@ -214,3 +307,8 @@ redisContext(async (client) => {
 ```
 
 </ToggleContent> 
+
+
+
+
+## 事务
