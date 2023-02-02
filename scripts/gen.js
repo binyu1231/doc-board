@@ -137,7 +137,7 @@ function writeMetafile(content, filename) {
     return content + '\n' + row
   }, '')
 
-  fs.writeFileSync(path.resolve(__dirname, `./lastfiles`), thisfileStr, 'utf-8')
+  // fs.writeFileSync(path.resolve(__dirname, `./lastfiles`), thisfileStr, 'utf-8')
 
   writeMetafile(info, 'short.json')
   return 
