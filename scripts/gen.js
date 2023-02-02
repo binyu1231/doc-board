@@ -109,6 +109,10 @@ function genStruct(kind) {
 }
 
 function writeMetafile(content, filename) {
+  const metaDir = path.resolve(__dirname, `../src/meta`)
+  if (!fs.existsSync(metaDir)) {
+    fs.mkdirSync(metaDir)
+  }
   fs.writeFileSync(path.resolve(__dirname, `../src/meta/${filename}`), JSON.stringify(content, null, 2), 'utf-8')
 }
 
