@@ -2,6 +2,10 @@
 title: Redis
 ---
 
+[[toc]]
+
+- [Redis 文档](http://www.redis.cn/)
+- [npm:ioredis 教程](http://www.npmdoc.org/iorediszhongwenwendangioredis-jszhongwenjiaochengjiexi.html)
 
 
 
@@ -48,9 +52,9 @@ redisContext(async function (client) {
 |`zset`|字符串成员（member）与浮点数分值（score）之间的有序映射，元素的排列顺序由分值的大小决定|添加、获取、删除单个元素；根据分值范围（range）或者成员来获取元素|
 
 
-## str
+### str
 
-### 基本使用 
+#### 基本使用 
 
 ``` ts
 redisContext(async (client) => {
@@ -58,13 +62,13 @@ redisContext(async (client) => {
     await client.set(key, 'baz', 'EX', 20000) 
     await client.set(key, 'foo', 'KEEPTTL', 'XX', 'GET')
     // baz
-    
+
     await client.get(key)
     // foo
 })
 ```
 
-### api
+#### api
 
 |command|args|desc|
 |:---|:---|:---|
@@ -91,9 +95,9 @@ redisContext(async (client) => {
 | `bitfield*` | `bitfield` | 将字符串作为二进制位数组进行操作|
 | `stralgo*` | `stralgo` | 用来实现基于字符串的复杂算法|
 
-## list 
+### list 
 
-### 基本使用 
+#### 基本使用 
 
 ``` ts
 redisContext(async (client) => {
@@ -117,7 +121,7 @@ redisContext(async (client) => {
 ```
 
 
-### api
+#### api
 
 |command|args|desc|
 |:---|:---|:---|
@@ -308,7 +312,41 @@ redisContext(async (client) => {
 
 </ToggleContent> 
 
+### zset
 
+
+#### api
+
+|command|args|desc|
+|:---|:---|:---|
+| zadd | `zadd key [NX/XX] [GT/LT] [CH] [INCR] score member [score memeber ...]` | 
+| zcard | `zcard key -> member_count` | 返回成员个数 |
+| zcount | `zcount key min_score max_score -> count` | 返回score在区间值范围内成员的个数 |
+| zlexcount | `zlexcount key [front_member/- [behand_member/+ -> count`| 计算范围内的成员数量, 这些成员的score需要相同|
+| zincrby | `zincrby key n_score member -> new_score` | 增加member的score值，如果不存在key或member则创建，如果key不为zset则报错，n_score 可以为负值和浮点值|
+| zscore | `zscore key member -> score/null`| 返回key中成员的分数，没有则返回null|
+| zmscore | `zmascore key member [member ...] -> ['null'/score ...]` | 返回多个成员的分数，没有则用 `null` 占位|
+| zpopmax | `zpopmax key [count] -> [member, score, ...]` | 删除1个或多个评分最高的成员|
+| zpopmin | `zpopmin key [count] -> [member, score, ...]` | 删除1个或多个评分最低的成员|
+| bzpopmax | `bzpopmax key [key ...] timeout` | `zpopmax` 的阻塞版，可以同时删除多个zset|
+| bzpopmin | `bzpopmin key [key ...] timeout` | `zpopmin` 的阻塞版，可以同时删除多个zset|
+| zrem | `zrem key member [member] -> deleted_count` | 删除成员，不存在则会忽略。删除不存在的元素deleted_count 不会计数 |
+| zremrangebylex | `zremrangebylex key [front_member/- [behand_member/+ -> deleted_count` | 根据成员范围删除成员。成员的score必须相同, 这些成员的score需要相同 |
+| zremrangebyrank | `zremrangebyrank key order_start order_stop -> deleted_count` | 根据成员排名删除成员，下标从0开始|
+| zremrangebyscore | `zremrangebyscore key min_score max_score -> deleted_count` | 删除score在 `min_score` 和 `max_score` 之间(包含)的成员|
+| zrank | `zrank key member -> order_index/null` | 返回成员排名，下标从0开始|
+| zrevrank | `zrank key member -> order_index/null` | 返回成员排名，下标从0开始, score 值从大到小|
+| zrange | `zrange key order_start order_end [WITHSCORES] -> [member [score] ...]` | 根据排序返回成员。指定 `WITHSCORES`可返回 score |
+| zrevrange | `zrevrange key order_start order_end [WITHSCORE] -> [member [score] ...]` | 根据排序参数倒序返回成员。指定 `WITHSCORES`可返回 score|
+| zrangebylex | `zrangebylex key [front_member/- [behand_member/+ -> [member ...]` | 根据成员范围返回成员。成员的score必须相同|
+| zrevrangebylex | `zrevrangebylex key [front_member/- [behand_member/+ -> [member ...]` | 根据成员范围返回成员，按字典倒序。成员的score必须相同 |
+| zrangebyscore |`zrangebyscore key min_score max_score [WITHSCORES] [LIMIT offset count] -> ``[member [score] ...]`|根据score返回成员，|
+| zrevrangebyscore |`zrevrangebyscore key min_score max_score [WITHSCORES] [LIMIT offset count] -> ``[member [score] ...]`|根据score从大到小返回成员，|
+| zscan | `zscan key cursor [MATCH pattern] [COUNT count]`| 同 `scan` |
+| zinterstore | `zinterstore` | 计算两个集合的交集 |
+| zuniionstore | `zuniionstore` | 计算两个集合的并集 | 
 
 
 ## 事务
+
+redis 事务不能回滚，只能用来保证操作的原子性
