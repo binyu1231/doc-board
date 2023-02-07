@@ -5,9 +5,9 @@ index: Language.Python.Library
 
 [[toc]]
 
-NumPy 是 Python 科学计算的基础包之一。它的功能包括多维数组、高级数学函数（比如线性代数运算和傅里叶变换），以及伪随机数生成器。
+NumPy(Numerical Python) 是 Python 科学计算的基础包之一。它的功能包括多维数组、高级数学函数（比如线性代数运算和傅里叶变换），以及伪随机数生成器。
 
-NumPy 中，主要的处理也都是通过 C 或 C++ 实现的
+NumPy 中，主要的处理也都是通过 C 或 C++ 实现的。
 
 ## 安装与引用
 
@@ -78,6 +78,8 @@ X[[1, 2]]    # [[14, 19], [0, 4]] numpy
 X[1:3]       # [[14, 19], [0, 4]] python
 X[2][X[2]>0] # [4] python,numpy
 X[2, X[2]>0] # [4] numpy, numpy
+
+np.info(X) 
 ```
 
 ## 生成数据函数
