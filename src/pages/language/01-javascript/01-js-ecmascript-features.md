@@ -9,6 +9,41 @@ title: ECMAScript Features
 
 ## ES2023 ✅
 
+<ToggleContent title="Change Array by Copy">
+
+为数组新增额外的方法，返回数组的新的复制。不会修改原来的数组
+
+数组新增方法
+
+- `Array.prototype.toReversed() -> Array`
+- `Array.prototype.toSorted(compareFn) -> Array`
+- `Array.prototype.toSpliced(start, deleteCount, ...items) -> Array`
+- `Array.prototype.with(index, value) -> Array`
+
+类型数组新增方法
+
+- `TypedArray.prototype.toReversed() -> TypedArray`
+- `TypedArray.prototype.toSorted(compareFn) -> TypedArray`
+- `TypedArray.prototype.with(index, value) -> TypedArray`
+
+</ToggleContent>
+
+<ToggleContent title="Symbols as WeakMap keys">
+
+symbols 类型可以作为 WeakMap 的键
+
+``` ts
+const weak = new WeakMap();
+
+// Pun not intended: being a symbol makes it become a more symbolic key
+const key = Symbol('my ref');
+const someObject = { /* data data data */ };
+
+weak.set(key, someObject);
+```
+
+</ToggleContent>
+
 <ToggleContent title="Array find from last">
 
 数组添加了两个从尾部索引的方法

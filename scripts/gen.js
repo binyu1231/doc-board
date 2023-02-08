@@ -71,7 +71,7 @@ function genStruct(kind) {
       .filter(fPath => !fPath.startsWith('_') && fPath.match(/(\.vue)|(\.md)$/))
       dirStruct.children = files.map(fPath => {
       const uniPath = `/${kind}/${dir}/${fPath}`
-      let hasNew = false
+      // let hasNew = false
       const lastFileMutDate = lastFiles.get(uniPath)
       const fileMTime = new Date(fs.statSync(path.join(__dirname, root, uniPath)).mtime).getTime()
       if (lastFileMutDate) {
@@ -79,12 +79,12 @@ function genStruct(kind) {
           // noop
         }
         else {
-          hasNew = dirStruct.hasNew = true
+          // hasNew = dirStruct.hasNew = true
           lastFiles.set(uniPath, fileMTime);
         }
       }
       else {
-        hasNew = dirStruct.hasNew = true
+        // hasNew = dirStruct.hasNew = true
         lastFiles.set(uniPath, fileMTime)
       }
       
@@ -94,7 +94,7 @@ function genStruct(kind) {
       return {
         name: upperHead(title),
         value: `${kind}/${dir}/${title}`.replace(/(\/index)$/, ''),
-        hasNew,
+        // hasNew,
         ...genMetaInfo(path.join(colPath, fPath))
       } 
     })
@@ -117,25 +117,25 @@ function writeMetafile(content, filename) {
 }
 
 (function gen() {
-  try {
-    const lastfilesUri = path.resolve(__dirname, './lastfiles')
-    const lastFilesStr = fs.readFileSync(lastfilesUri, 'utf-8')
-    lastFilesStr.split('\n').forEach(row => {
-      const [date, name] = row.split('|')
-      lastFiles.set(name, Number(date))
-    })
-  }
-  catch {
+  // try {
+  //   const lastfilesUri = path.resolve(__dirname, './lastfiles')
+  //   const lastFilesStr = fs.readFileSync(lastfilesUri, 'utf-8')
+  //   lastFilesStr.split('\n').forEach(row => {
+  //     const [date, name] = row.split('|')
+  //     lastFiles.set(name, Number(date))
+  //   })
+  // }
+  // catch {
 
-  }
-  console.log(lastFiles)
+  // }
+  // console.log(lastFiles)
   const info = kinds.map(genStruct)
 
 
-  const thisfileStr = Array.from(lastFiles.keys()).reduce((content, key) => {
-    const row = lastFiles.get(key) + '|' + key
-    return content + '\n' + row
-  }, '')
+  // const thisfileStr = Array.from(lastFiles.keys()).reduce((content, key) => {
+  //   const row = lastFiles.get(key) + '|' + key
+  //   return content + '\n' + row
+  // }, '')
 
   // fs.writeFileSync(path.resolve(__dirname, `./lastfiles`), thisfileStr, 'utf-8')
 

@@ -15,3 +15,5 @@ let e: number[] = [1, 2, 3]
 let e_ex: Array<number> = [5, 6, 7]
 let f: [string, number, string?] = ['Alice', 12] // tuple
 ```
+
+- 装饰器 <https://zhuanlan.zhihu.com/p/42217208>

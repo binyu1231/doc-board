@@ -1,22 +1,3 @@
-## 语法
-
-- [Syntax](/language/python/py-syntax)
-- [OO](/language/python/py-oo)
-- [API module](/language/python/py-api-module)
-- [data model](/language/python/py-data-model)
-
-## 工程
-
-- [pip](/language/python/py-project-pip)
-- [flask](/language/python/py-project-flask)
-- [Github:python-flask-boilerplate](https://github.com/114000/python-flask-boilerplate)
-
-## Library
-
-- [Numpy](/language/python/py-lib-numpy)
-- [Matplotlib](/language/python/py-lib-matplotlib)
-- [Pillow](/language/python/py-lib-pillow)
-
 
 <!--
 ## eBook
