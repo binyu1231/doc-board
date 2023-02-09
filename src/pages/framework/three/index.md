@@ -29,6 +29,45 @@ camera.lookAt(scene.position)
 renderer.render(scene, camera)
 ```
 
+
+## three 应用体系
+
+``` bash
+three
+|- scene
+|   |- * props
+|   |   |- children:mesh[], 
+|   |   
+|   |- mesh(object)
+|   |   |- * props
+|   |   |   |- position: Vector3
+|   |   |   |- rotation{x, y, z}
+|   |   |
+|   |   |- geometry
+|   |   |   |-* props
+|   |   |       |- vertice:Vector3[]
+|   |   |       |- face:Face3[]
+|   |   |     
+|   |   |- meterial
+|   |       |- * props
+|   |       |   |- color:Color
+|   |       |- shader
+|   |       |- texture
+|   |   
+|   |- light
+|   
+|- camera
+|   |- * props
+|       |- position:Vector3
+|       |- lookAt(Vector3)
+|   
+|- renderer
+    |- * props
+        |- render(scene, camera)
+```
+
+## 核心功能的单例实现
+
 ``` ts
 export class Util {
     static fullWidth = globalThis.innerWidth
@@ -36,6 +75,8 @@ export class Util {
     static screenRatio = Util.fullWidth / Util.fullHeight
 }
 ```
+
+### 场景
 
 ```ts
 import { Scene } from 'three'
@@ -52,6 +93,8 @@ export class MainScene extends Scene {
 }
 ```
 
+### 透视相机
+
 ``` ts
 import { PerspectiveCamera } from 'three'
 
@@ -67,6 +110,7 @@ export class MainCamera extends PerspectiveCamera {
 }
 ```
 
+### 渲染器
 
 ``` ts
 import { WebGLRenderer } from 'three'
