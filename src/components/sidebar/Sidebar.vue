@@ -121,7 +121,7 @@ export default {
                       
                       <span>{{ nav.name }}</span>
 
-                      <div v-if="nav.hasNew" class="sidebar-root-tag"></div>
+                      <!-- <div v-if="nav.hasNew" class="sidebar-root-tag"></div> -->
                     </a>
                     <ul class="mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800" :class="{ 'hidden': !parentLink.expanded }">                    
                       <template
@@ -145,7 +145,7 @@ export default {
                                 :href="href"
                                 @click="navigate"
                               >{{ navSon.name }}</a>
-                              <div v-if="navSon.hasNew" class="sidebar-son-tag">1</div>
+                              <!-- <div v-if="navSon.hasNew" class="sidebar-son-tag">1</div> -->
                             </router-link>
                           </li>
                         </SidebarLinkSubgroup>
@@ -159,7 +159,7 @@ export default {
                           :href="href" 
                           @click="navigate">
                             {{ navChild.name }}
-                            <div v-if="navChild.hasNew" class="sidebar-son-tag"></div>
+                            <!-- <div v-if="navChild.hasNew" class="sidebar-son-tag"></div> -->
                           </a>
                           </router-link>
                         </li>

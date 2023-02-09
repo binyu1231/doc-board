@@ -19,7 +19,7 @@ import shortcut from '@/meta/short.json'
             class="home-default-link"
             :to="'/' + dir.children[0].value">
             {{ dir.name }}
-            <div v-if="dir.hasNew" class="home-new-tag">New</div>
+            <!-- <div v-if="dir.hasNew" class="home-new-tag">New</div> -->
           </router-link>
         </div>
       </div>
