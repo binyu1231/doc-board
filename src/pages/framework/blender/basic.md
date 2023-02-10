@@ -77,3 +77,8 @@ G + Z, Ctrl + 滑动鼠标
 
 Ctrl + 左键：分块
 Ctrl + 滚轮 + 左键: 多级分块
+
+
+## ref
+
+- Blender 资源收集 <https://blender.stackexchange.com/questions/15355/resources-for-blender>

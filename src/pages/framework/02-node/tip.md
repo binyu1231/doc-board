@@ -6,24 +6,26 @@ index: Framework.Node.Practice
 
 ## 使用 es module
 
+`esno` 已经迁移至 `tsx`
+
 ### 1. 全局使用
 
 ``` bash
-$ npm i esno -g
-$ esno main.ts
+$ npm i tsx -g
+$ tsx main.ts
 ```
 
 ### 2. 脚本使用
 
 ``` bash
-$ npm i esno -D
+$ npm i tsx -D
 ```
 
 ``` ts
 // package.json
 {
     "scripts": {
-        "start": "esno main.ts"
+        "start": "tsx main.ts"
     }
 }
 ```
