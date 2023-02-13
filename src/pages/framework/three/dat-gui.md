@@ -11,7 +11,7 @@ $ npm i dat.gui
 $ npm i @types/dat.gui -D
 ```
 
-## useage
+## usage
 
 ``` ts
 import { GUI } from 'dat.gui'

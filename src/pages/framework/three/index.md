@@ -32,6 +32,8 @@ renderer.render(scene, camera)
 
 ## three 应用体系
 
+拥有 `几何形状(geometry)` 和 `材质(meterial)` 的 `网格(mesh)` 才能正确显示。还需要在场景中添加环境光
+
 ``` bash
 three
 |- scene
