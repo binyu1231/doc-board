@@ -7,8 +7,6 @@ index: Framework.Blender.Syntax
 
 ---
 
-
-
 |feature|shortcut|
 |:---|:---|
 | 视图旋转 | `middle` , `2 figers` |

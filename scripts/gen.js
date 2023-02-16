@@ -4,6 +4,8 @@ const fs = require('fs')
 const markdownIt = require('markdown-it')
 const markdownItMeta = require('markdown-it-meta')
 
+require('./formatwords')
+
 const kinds = ['project', 'framework', 'language', 'knowledge']
 const root = '../src/pages/'
 const lastFiles = new Map()
@@ -51,7 +53,7 @@ function genStruct(kind) {
   const kindPath = path.join(__dirname, root, kind)
 
   const dirs = fs.readdirSync(kindPath)
-  
+
   const kindStruct = {
     name: upperHead(kind),
     id: kind,
@@ -69,7 +71,7 @@ function genStruct(kind) {
     // const stat = fs.statSync(colPath)
     const files = fs.readdirSync(colPath)
       .filter(fPath => !fPath.startsWith('_') && fPath.match(/(\.vue)|(\.md)$/))
-      dirStruct.children = files.map(fPath => {
+    dirStruct.children = files.map(fPath => {
       const uniPath = `/${kind}/${dir}/${fPath}`
       // let hasNew = false
       const lastFileMutDate = lastFiles.get(uniPath)
@@ -87,7 +89,7 @@ function genStruct(kind) {
         // hasNew = dirStruct.hasNew = true
         lastFiles.set(uniPath, fileMTime)
       }
-      
+
 
       const title = fPath.replace(/\.\w+$/, '')
 
@@ -96,14 +98,14 @@ function genStruct(kind) {
         value: `${kind}/${dir}/${title}`.replace(/(\/index)$/, ''),
         // hasNew,
         ...genMetaInfo(path.join(colPath, fPath))
-      } 
+      }
     })
-    
+
     dirStruct.children.sort((a, b) => new Date(b.date) - new Date(a.date))
 
     return dirStruct
   })
-  .filter(dir => dir.children.length > 0)
+    .filter(dir => dir.children.length > 0)
 
   return kindStruct
 }
@@ -113,7 +115,7 @@ function writeMetafile(content, filename) {
   if (!fs.existsSync(metaDir)) {
     fs.mkdirSync(metaDir)
   }
-  fs.writeFileSync(path.resolve(__dirname, `../src/meta/${filename}`), JSON.stringify(content, null, 2), 'utf-8')
+  fs.writeFileSync(path.resolve(__dirname, `../src/meta/${filename}`), JSON.stringify(content), 'utf-8')
 }
 
 (function gen() {
@@ -139,7 +141,7 @@ function writeMetafile(content, filename) {
 
   // fs.writeFileSync(path.resolve(__dirname, `./lastfiles`), thisfileStr, 'utf-8')
 
-  writeMetafile(info, 'short.json')
-  return 
+  writeMetafile(info, 'meta-short.json')
+  return
 })()
 

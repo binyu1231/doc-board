@@ -83,10 +83,12 @@ windows 如果双击文件不打开 vscode，尝试勾选掉 Unity Preferences/V
   "workbench.iconTheme": "vs-seti"
 }
 
+
+```
+
 ## 异常问题
 
 1. 编辑器启动报错：OmniSharp.MSBuild.ProjectFile.ProjectFileInfo The reference assemblies for framework ".NETFramework,Version=v2.0" were not found.
 电脑中包含多个版本的 mono
 解决方案：`brew unlink mono; brew link mono`，
 惨嚎链接：https://github.com/OmniSharp/omnisharp-vscode/issues/1004
-```
