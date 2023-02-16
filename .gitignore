@@ -28,4 +28,4 @@ coverage
 *.sw?
 
 components.d.ts
-short.json
+meta-*.json

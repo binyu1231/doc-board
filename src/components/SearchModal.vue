@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, nextTick, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import metadata from '@/meta/short.json'
+import metadata from '@/meta/meta-short.json'
 import { useEventListener } from '@vueuse/core';
 
 const props = defineProps<{

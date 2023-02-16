@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import shortcut from '@/meta/short.json'
+import shortcut from '@/meta/meta-short.json'
 </script>
 <template>
 <div class="home mk">

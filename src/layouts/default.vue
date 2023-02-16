@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import metadata from '@/meta/short.json'
+import metadata from '@/meta/meta-short.json'
 const sidebarOpen = ref(false)
 const navs = ref(metadata[0].children)
 const route = useRoute()
