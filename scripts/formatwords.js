@@ -6,7 +6,7 @@ fs.readFile(path.resolve(__dirname, './words'), 'utf-8')
 .then(content => {
     console.log()
 
-    const wordRows = content.split('\r\n').filter(r => !r.startsWith('-'))
+    const wordRows = content.split('\n').filter(r => !r.startsWith('-'))
     const oldLength = wordRows.length
     const duplicateCount = new Set(wordRows).size - oldLength
     console.log('重复单词数量', duplicateCount)
@@ -14,7 +14,7 @@ fs.readFile(path.resolve(__dirname, './words'), 'utf-8')
     const wordConfigs = wordRows.map(r => {
         const [ tanngo, kana ]　= r.split('#')
         return {
-            t: tanngo, k: kana
+            t: tanngo.trim(), k: kana.trim()
         }
     })
 
