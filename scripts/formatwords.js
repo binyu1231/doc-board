@@ -6,9 +6,10 @@ fs.readFile(path.resolve(__dirname, './words'), 'utf-8')
 .then(content => {
     console.log()
 
-    const wordRows = content.split('\n').filter(r => !r.startsWith('-'))
+    const wordRows = content.split('\n').filter(r => r.trim() && !r.startsWith('-'))
+    wordRows.sort()
     const oldLength = wordRows.length
-    const duplicateCount = new Set(wordRows).size - oldLength
+    const duplicateCount = oldLength - new Set(wordRows).size
     console.log('重复单词数量', duplicateCount)
 
     const wordConfigs = wordRows.map(r => {

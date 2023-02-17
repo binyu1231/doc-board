@@ -16,3 +16,23 @@ const innerModel = computed({
 
 // v-model="modelValue" => v-model="innerModel"
 ```
+
+3. 在 `.ts` 文件中引入 `.vue` 文件错误 
+
+```ts
+// /env.d.ts
+
+declare module '*.vue' {
+    import { ComponentOptions } from 'vue'
+    const componentOptions: ComponentOptions
+    export default componentOptions
+}
+
+// tsconfig.json
+{
+    "include": [
+        //...
+        "env.d.ts"
+    ]
+}
+```

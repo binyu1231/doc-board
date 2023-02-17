@@ -30,6 +30,12 @@ const simple = reactive({
 })
 const simplePress = useMagicKeys()
 
+const hard = reactive({
+  inputs: ['', '', '', ''],
+  focusIndex: 0,
+})
+
+
 function reset() {
   restIndex.value = shuffle(Array.from({ length: wordLen }).map((_, i) => i))
   passedCount.value = 0
@@ -73,7 +79,7 @@ function restart() {
   pick(pickLength)
 }
 
-watchEffect(() => {
+watch(simple, function checkSimpleAnswer() {
   if (simple.leftIndex !== -1 && simple.leftIndex === simple.rightIndex) {
     simple.goodIndex.push(simple.leftIndex)
     simple.leftIndex = -1
@@ -86,12 +92,12 @@ watchEffect(() => {
   }
 })
 
-const watchList = Array.from({ length: pickLength }).map((_, i) => {
+const simplePressWatchList = Array.from({ length: pickLength }).map((_, i) => {
   const key = `digit${i + 1}`
   return simplePress[key]
 })
 
-watch(watchList, (watchResult) => {
+watch(simplePressWatchList, function listenSimplePress(watchResult) {
   const i = watchResult.indexOf(true)
   if (i === -1) return
   if (simple.leftIndex === -1) {
@@ -101,6 +107,12 @@ watch(watchList, (watchResult) => {
     else {
       simpleClick('rightIndex', simple.randomOrders.indexOf(i))
     }
+})
+
+watch(hard, function checkHardAnswer() {
+
+  const currentAnswer = hard.inputs[hard.focusIndex]
+
 })
 
 onMounted(restart)
@@ -125,20 +137,25 @@ onMounted(restart)
     <div v-if="passedCount === wordLen">
       終わりました，<span class="jp-link-btn" @click="restart">つづく</span>
     </div>
-    <div v-else-if="currentWords.length === 0">
-      ボタンをください
-    </div>
     <div v-else-if="currentMode === ModeType.simple" class="jp-word-content">
       <div class="jp-word-col">
-        <div class="jp-word-btn" v-for="(wordIndex, i) in currentWords" :key="i" :class="{
-          visited: simple.leftIndex === i,
-          passed: simple.goodIndex.includes(i),
-        }" @click="simpleClick('leftIndex', i)">
+        <div
+          class="jp-word-btn"
+          v-for="(wordIndex, i) in currentWords"
+          :key="i" 
+          :class="{
+            visited: simple.leftIndex === i,
+            passed: simple.goodIndex.includes(i),
+          }" 
+          @click="simpleClick('leftIndex', i)">
           {{ words[wordIndex].t }}
         </div>
       </div>
       <div class="jp-word-col">
-        <div class="jp-word-btn" v-for="(wordIndex, i) in currentWords" :key="i"
+        <div
+          class="jp-word-btn"
+          v-for="(wordIndex, i) in currentWords"
+          :key="i"
           :style="{ order: simple.randomOrders[i], }" :class="{
             visited: simple.rightIndex === i,
             passed: simple.goodIndex.includes(i),
@@ -148,7 +165,17 @@ onMounted(restart)
       </div>
     </div>
     <div v-else-if="currentMode === ModeType.hard">
-      DOING
+      <div class="jp-word-col">
+        <div class="jp-word-btn" v-for="(wordIndex, i) in currentWords" :key="i" :class="{
+          visited: simple.leftIndex === i,
+          passed: simple.goodIndex.includes(i),
+        }">
+          <div>{{ words[wordIndex].t }}</div>
+          <div>
+            <input type="text" v-model="hard.inputs[i]" @focus="hard.focusIndex = i">
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- <div class="jp-word-btn text-center" @click="pick(pickLength)">GO</div> -->

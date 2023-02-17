@@ -18,7 +18,7 @@ $ taro init taro-practice
 ? 请选择 CSS 预处理器（Sass/Less/Stylus） Less
 ? 请选择模板源 Github（最新）
 √ 拉取远程模板仓库成功！
-? 请选择模板 vue3-NutUI（使用 NutUI3.0 的模板）
+? 请选择模板 vue3-NutUI4.0（使用 NutUI4.0 的模板）
 
 $ cd taro-practice
 <taro-practice>$ npm run dev:weapp
@@ -36,9 +36,9 @@ Taro v3.4.2
     System:
       OS: Windows 10
     Binaries:
-      Node: 14.15.0 - D:\software\node\node.EXE
-      Yarn: 1.22.11 - ~\AppData\Roaming\npm\yarn.CMD
-      npm: 7.21.1 - D:\software\node\npm.CMD
+      Node: 14.15.0 - ~
+      Yarn: 1.22.11 - ~
+      npm: 7.21.1 - ~
 ```
 
 ## Code
@@ -55,29 +55,15 @@ Taro v3.4.2
 <nut-button @click="goUsers">前往用户列表</nut-button>
 ...
 </template>
-<script>
+<script setup lang="ts">
 // ...
 import { navigateTo } from '@tarojs/taro'
 // ...
 
-export default {
-  // ...
-  setup () {
-    // ...
-    function goUsers() {
-      console.log(router)
-      navigateTo({
-        url: '/pages/users/index'
-      })
-    }
-    // ...
-    
-    return {
-      // ...
-      goUsers
-    }
-  }
-
+function goUsers() {
+  navigateTo({
+    url: '/pages/way/index'
+  })
 }
 </script>
 ```
@@ -113,7 +99,6 @@ export default definePageConfig({
 <script setup lang="ts">
 import { useReady, request, navigateTo } from '@tarojs/taro'
 import { ref } from 'vue'
-import { Cell, Avatar } from '@nutui/nutui-taro'
 
 export type UserDto = { id: number, username: string, email: string }
 const users = ref<UserDto[]>([])
@@ -137,15 +122,15 @@ function goDetail (u: UserDto) {
 </script>
 <template>
 <view class="user-list">
-  <Cell v-for="(u, i) in users" :key="'user-list' + i" @click="goDetail(u)">
+  <nut-cell v-for="(u, i) in users" :key="'user-list' + i" @click="goDetail(u)">
     <view class="ul-avatar">
-      <Avatar shape="round" v-text="u.username[0]"></Avatar>
+      <nut-avatar shape="round" v-text="u.username[0]"></nut-avatar>
       <view class="ul-avatar-content">
         <view class="ul-avatar-name" v-text="u.username"></view>
         <view class="ul-avatar-desc" v-text="u.email"></view>
       </view>
     </view>
-  </Cell>
+  </nut-cell>
 </view>
 </template>
 <style lang="scss">

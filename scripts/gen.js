@@ -9,7 +9,6 @@ require('./formatwords')
 const kinds = ['project', 'framework', 'language', 'knowledge']
 const root = '../src/pages/'
 const lastFiles = new Map()
-const newDistance = 7 * 24 * 3600000
 function toDouble(n) {
   return n < 10 ? `0${n}` : `${n}`
 }
