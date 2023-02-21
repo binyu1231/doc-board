@@ -156,14 +156,18 @@ watch(simplePressWatchList, function listenSimplePress(watchResult) {
 watch(hard, function checkHardAnswer() {
   if (
     hard.focusIndex >= 0
-    && words[currentWords.value[hard.focusIndex]].k.split('').length === hard.focusOrder.length
-    && hard.focusOrder.every((order, i) => i === hard.focusOrder.length - 1 || order < hard.focusOrder[i + 1])
   ) {
-    hard.goodIndex.push(hard.focusIndex)
-    hard.focusIndex = -1
-    hard.focusOrder = []
-    passedCount.value++
-    console.log('hard.goodIndex.length', hard.goodIndex.length)
+    const word = words[currentWords.value[hard.focusIndex]].k
+    if (
+      word.split('').length === hard.focusOrder.length
+      && hard.focusOrder.map((o) => word[o]).join('') === word
+    ) {
+      hard.goodIndex.push(hard.focusIndex)
+      hard.focusIndex = -1
+      hard.focusOrder = []
+      passedCount.value++
+      console.log('hard.goodIndex.length', hard.goodIndex.length)
+    }
   }
 
   if (hard.goodIndex.length === pickLength) {
@@ -245,11 +249,6 @@ onMounted(restart)
           </div>
         </div>
       </div>
-      
-      <div class="pt-4 text-sm">
-        单词中重复的假名会影响顺序判断，请跳过。还要开发
-      </div>
-
     </div>
 
     <!-- <div class="jp-word-btn text-center" @click="pick(pickLength)">GO</div> -->
