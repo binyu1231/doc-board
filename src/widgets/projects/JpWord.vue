@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import wordsJSON from '@/meta/meta-word.json'
-import { onMounted, reactive, ref, watchEffect, watch } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
 import { shuffle } from '@/shared'
 import { useMagicKeys } from '@vueuse/core'
 
@@ -31,8 +31,10 @@ const simple = reactive({
 const simplePress = useMagicKeys()
 
 const hard = reactive({
-  inputs: ['', '', '', ''],
-  focusIndex: 0,
+  randomOrders: [] as number[][],
+  focusIndex: -1,
+  focusOrder: [] as number[],
+  goodIndex: [] as number[],
 })
 
 
@@ -52,11 +54,21 @@ function pick(count: number) {
   const newWords = restIndex.value.splice(0, count)
   currentWords.value = newWords
 
-  simple.randomOrders = shuffle(Array.from({ length: count }).map((_, i) => i))
-  simple.leftIndex = -1
-  simple.rightIndex = -1
-  simple.goodIndex = []
-  // console.log(restIndex.value)
+  if (currentMode.value === ModeType.simple) {
+    simple.randomOrders = shuffle(Array.from({ length: count }).map((_, i) => i))
+    simple.leftIndex = -1
+    simple.rightIndex = -1
+    simple.goodIndex = []
+  }
+  else if (currentMode.value === ModeType.hard) {
+    hard.focusIndex = -1
+    hard.focusOrder = []
+    hard.goodIndex = []
+    hard.randomOrders = newWords.map((wordIndex, i) => {
+      const wordLength = words[wordIndex].k.split('').length
+      return shuffle(Array.from({ length: wordLength }).map((_, i) => i))
+    })
+  }
 }
 
 function simpleClick(key: 'leftIndex' | 'rightIndex', index: number) {
@@ -74,6 +86,38 @@ function simpleClick(key: 'leftIndex' | 'rightIndex', index: number) {
   simple[key] = index
 }
 
+
+function hardFocusClick(index: number) {
+  if (hard.goodIndex.includes(index)) return
+  hard.focusIndex = index
+  hard.focusOrder = []
+}
+
+function hardOrderClick(rowIndex: number, index: number) {
+  if (hard.goodIndex.includes(rowIndex)) return
+  if (hard.focusIndex !== rowIndex) {
+    hard.focusIndex = rowIndex
+    hard.focusOrder = []
+  }
+
+  const currOrderIndex = hard.focusOrder.indexOf(index)
+  if (currOrderIndex < 0) {
+    hard.focusOrder.push(index)
+  }
+  else {
+    hard.focusOrder.splice(currOrderIndex, 1)
+  }
+}
+
+function hardSkipClick(i: number) {
+  if (hard.goodIndex.indexOf(i) < 0) hard.goodIndex.push(i)
+}
+
+function changeMode(mode: ModeType) {
+  currentMode.value = mode
+  restart()
+}
+
 function restart() {
   reset()
   pick(pickLength)
@@ -88,7 +132,7 @@ watch(simple, function checkSimpleAnswer() {
   }
 
   if (simple.goodIndex.length === pickLength) {
-    pick(pickLength)
+    setTimeout(() => pick(pickLength), 500)
   }
 })
 
@@ -101,17 +145,32 @@ watch(simplePressWatchList, function listenSimplePress(watchResult) {
   const i = watchResult.indexOf(true)
   if (i === -1) return
   if (simple.leftIndex === -1) {
-      // if (simple.goodIndex.includes(simple.randomOrders.indexOf(i))) return pressed
-      simpleClick('leftIndex', i)
-    }
-    else {
-      simpleClick('rightIndex', simple.randomOrders.indexOf(i))
-    }
+    // if (simple.goodIndex.includes(simple.randomOrders.indexOf(i))) return pressed
+    simpleClick('leftIndex', i)
+  }
+  else {
+    simpleClick('rightIndex', simple.randomOrders.indexOf(i))
+  }
 })
 
 watch(hard, function checkHardAnswer() {
+  if (
+    hard.focusIndex >= 0
+    && words[currentWords.value[hard.focusIndex]].k.split('').length === hard.focusOrder.length
+    && hard.focusOrder.every((order, i) => i === hard.focusOrder.length - 1 || order < hard.focusOrder[i + 1])
+  ) {
+    hard.goodIndex.push(hard.focusIndex)
+    hard.focusIndex = -1
+    hard.focusOrder = []
+    passedCount.value++
+    console.log('hard.goodIndex.length', hard.goodIndex.length)
+  }
 
-  const currentAnswer = hard.inputs[hard.focusIndex]
+  if (hard.goodIndex.length === pickLength) {
+
+
+    setTimeout(() => pick(pickLength), 500)
+  }
 
 })
 
@@ -123,13 +182,9 @@ onMounted(restart)
   <div class="jp-word">
     <!-- -->
     <div class="jp-word-mode jp-word-content mb-4">
-      <div
-        class="jp-word-btn"
-        @click="currentMode = opt.value"
-        :class="{ visited: opt.value === currentMode }"
-        v-for="opt in modeTypeOption"
-        :key="opt.value">{{ opt.name }}
-      </div>
+      <SimpleButton @click="changeMode(opt.value)" :class="{ active: opt.value === currentMode }"
+        v-for="opt in modeTypeOption" :key="opt.value">{{ opt.name }}
+      </SimpleButton>
       <div class="self-center flex-1 text-right">
         {{ passedCount }} / {{ wordLen }}
       </div>
@@ -139,43 +194,62 @@ onMounted(restart)
     </div>
     <div v-else-if="currentMode === ModeType.simple" class="jp-word-content">
       <div class="jp-word-col">
-        <div
-          class="jp-word-btn"
-          v-for="(wordIndex, i) in currentWords"
-          :key="i" 
-          :class="{
-            visited: simple.leftIndex === i,
-            passed: simple.goodIndex.includes(i),
-          }" 
-          @click="simpleClick('leftIndex', i)">
+        <SimpleButton v-for="(wordIndex, i) in currentWords" :key="i" :class="{
+          active: simple.leftIndex === i,
+          passed: simple.goodIndex.includes(i),
+        }" @click="simpleClick('leftIndex', i)">
           {{ words[wordIndex].t }}
-        </div>
+        </SimpleButton>
       </div>
       <div class="jp-word-col">
-        <div
-          class="jp-word-btn"
-          v-for="(wordIndex, i) in currentWords"
-          :key="i"
-          :style="{ order: simple.randomOrders[i], }" :class="{
-            visited: simple.rightIndex === i,
-            passed: simple.goodIndex.includes(i),
-          }" @click="simpleClick('rightIndex', i)">
+        <SimpleButton v-for="(wordIndex, i) in currentWords" :key="i" :style="{ order: simple.randomOrders[i], }" :class="{
+          active: simple.rightIndex === i,
+          passed: simple.goodIndex.includes(i),
+        }" @click="simpleClick('rightIndex', i)">
           {{ words[wordIndex].k }}
-        </div>
+        </SimpleButton>
       </div>
     </div>
     <div v-else-if="currentMode === ModeType.hard">
-      <div class="jp-word-col">
-        <div class="jp-word-btn" v-for="(wordIndex, i) in currentWords" :key="i" :class="{
-          visited: simple.leftIndex === i,
-          passed: simple.goodIndex.includes(i),
-        }">
-          <div>{{ words[wordIndex].t }}</div>
-          <div>
-            <input type="text" v-model="hard.inputs[i]" @focus="hard.focusIndex = i">
+
+
+      <div class="jp-word-content">
+        <div class="jp-word-col">
+          <SimpleButton v-for="(wordIndex, i) in currentWords" :key="i" :class="{
+            active: hard.focusIndex === i,
+            passed: hard.goodIndex.includes(i),
+          }" @click="hardFocusClick(i)">
+            <div>{{ words[wordIndex].t }}</div>
+          </SimpleButton>
+        </div>
+        <div class="jp-word-col relative" style="flex: 2;">
+          <div v-for="(wordIndex, i) in currentWords" :key="i">
+            <SimpleButton class="passed" v-if="hard.goodIndex.includes(i)">{{ words[wordIndex].k }}</SimpleButton>
+            <div class="flex gap-2" v-else>
+              <SimpleButton v-for="(text, j) in words[wordIndex].k.split('')" :style="{
+                order: hard.randomOrders[i][j]
+              }" :class="{
+  active: hard.focusIndex === i && hard.focusOrder.includes(j),
+  passed: hard.goodIndex.includes(i),
+}" @click="hardOrderClick(i, j)" :key="j">
+                {{ text }}
+
+                <span class="jp-word-tip" v-if="hard.focusIndex === i && hard.focusOrder.includes(j)">
+                  {{ hard.focusOrder.indexOf(j) + 1 }}
+                </span>
+              </SimpleButton>
+              <SimpleButton class="skip" @click="hardSkipClick(i)">
+                skip
+              </SimpleButton>
+            </div>
           </div>
         </div>
       </div>
+      
+      <div class="pt-4 text-sm">
+        单词中重复的假名会影响顺序判断，请跳过。还要开发
+      </div>
+
     </div>
 
     <!-- <div class="jp-word-btn text-center" @click="pick(pickLength)">GO</div> -->
@@ -195,19 +269,23 @@ onMounted(restart)
   @apply flex-1 flex flex-col gap-2;
 }
 
-.jp-word-btn {
-  @apply cursor-pointer hover:bg-violet-100 border-gray border-1 rounded px-4 py-2;
-
-  &.visited {
-    @apply border-violet-500 bg-violet-100;
-  }
+.jp-word .simple-button {
+  @apply relative;
 
   &.passed {
-    @apply bg-gray-100;
+    @apply border-violet-500 bg-violet-100 dark:bg-gray-800;
+  }
+
+  &.skip {
+    @apply absolute right-0
   }
 }
 
+.jp-word-tip {
+  @apply absolute w-4 h-4 -top-2 border-1 rounded-full bg-violet-100 dark:bg-violet-900 flex items-center justify-center;
+}
+
 .jp-link-btn {
-  @apply underline hover:text-violet cursor-pointer;
+  @apply underline hover: text-violet cursor-pointer;
 }
 </style>

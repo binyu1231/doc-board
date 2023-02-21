@@ -9,8 +9,6 @@ index: Framework.Vue.Practice
 
 <ToggleContent title="路由参数">
 
-  Error 类第二个参数，新增一个 `cause` 字段用来传入自定义信息。
-
 ``` ts
 // users.vue
 import { navigateTo } from '@tarojs/taro'
