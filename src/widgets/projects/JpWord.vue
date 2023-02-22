@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import wordsJSON from '@/meta/meta-word.json'
-import { onMounted, reactive, ref, watch } from 'vue'
+import wordsJSON from '@/meta/n5.json'
+import { onMounted, reactive, ref, watch, computed } from 'vue'
 import { shuffle } from '@/shared'
 import { useMagicKeys } from '@vueuse/core'
 
@@ -8,12 +8,21 @@ enum ModeType {
   simple, hard
 }
 
+const levelOptions = [
+  { name: 'N5', value: '5' },
+  { name: 'N1', value: '1' },
+]
+
+const level = ref(levelOptions[0].value)
 const pickLength = 4
-const words = wordsJSON // .slice(0, 8)
-const wordLen = words.length
+const words = ref<{ t: string, k: string}[]>(wordsJSON) // .slice(0, 8)
+const wordLen = computed(() => words.value.length)
 
 const restIndex = ref<number[]>([])
 const passedCount = ref(0)
+const timeCount = ref(0)
+let timeCountTimer: ReturnType<typeof setInterval> = 0
+
 
 const modeTypeOption = [
   { name: '簡単', value: ModeType.simple },
@@ -39,7 +48,7 @@ const hard = reactive({
 
 
 function reset() {
-  restIndex.value = shuffle(Array.from({ length: wordLen }).map((_, i) => i))
+  restIndex.value = shuffle(Array.from({ length: wordLen.value }).map((_, i) => i))
   passedCount.value = 0
   currentWords.value = []
 
@@ -65,7 +74,7 @@ function pick(count: number) {
     hard.focusOrder = []
     hard.goodIndex = []
     hard.randomOrders = newWords.map((wordIndex, i) => {
-      const wordLength = words[wordIndex].k.split('').length
+      const wordLength = words.value[wordIndex].k.split('').length
       return shuffle(Array.from({ length: wordLength }).map((_, i) => i))
     })
   }
@@ -119,6 +128,7 @@ function changeMode(mode: ModeType) {
 }
 
 function restart() {
+  timeCount.value = 0
   reset()
   pick(pickLength)
 }
@@ -157,7 +167,7 @@ watch(hard, function checkHardAnswer() {
   if (
     hard.focusIndex >= 0
   ) {
-    const word = words[currentWords.value[hard.focusIndex]].k
+    const word = words.value[currentWords.value[hard.focusIndex]].k
     if (
       word.split('').length === hard.focusOrder.length
       && hard.focusOrder.map((o) => word[o]).join('') === word
@@ -166,7 +176,6 @@ watch(hard, function checkHardAnswer() {
       hard.focusIndex = -1
       hard.focusOrder = []
       passedCount.value++
-      console.log('hard.goodIndex.length', hard.goodIndex.length)
     }
   }
 
@@ -178,6 +187,21 @@ watch(hard, function checkHardAnswer() {
 
 })
 
+watch(passedCount, (passed) => {
+  if (passed === 0) {
+    clearInterval(timeCountTimer)
+
+  }
+  else if (timeCountTimer === 0) {
+    const space = 1
+    timeCountTimer = setInterval(() => {
+      timeCount.value += space
+    }, space * 1000)
+  }
+})
+
+
+
 onMounted(restart)
 
 </script>
@@ -186,8 +210,16 @@ onMounted(restart)
   <div class="jp-word">
     <!-- -->
     <div class="jp-word-mode jp-word-content mb-4">
-      <SimpleButton @click="changeMode(opt.value)" :class="{ active: opt.value === currentMode }"
-        v-for="opt in modeTypeOption" :key="opt.value">{{ opt.name }}
+      <!-- <SimpleSelect v-model="level">
+        <option v-for="opt in levelOptions" :key="opt.value">{{ opt.name }}</option>
+      </SimpleSelect> -->
+      <SimpleButton
+        @click="changeMode(opt.value)"
+        :class="{ active: opt.value === currentMode }"
+        v-for="opt in modeTypeOption"
+        :key="opt.value"
+      >
+        {{ opt.name }}
       </SimpleButton>
       <div class="self-center flex-1 text-right">
         {{ passedCount }} / {{ wordLen }}
@@ -196,49 +228,76 @@ onMounted(restart)
     <div v-if="passedCount === wordLen">
       終わりました，<span class="jp-link-btn" @click="restart">つづく</span>
     </div>
-    <div v-else-if="currentMode === ModeType.simple" class="jp-word-content">
+    <div 
+      v-else-if="currentMode === ModeType.simple"
+      class="jp-word-content"
+    >
       <div class="jp-word-col">
-        <SimpleButton v-for="(wordIndex, i) in currentWords" :key="i" :class="{
-          active: simple.leftIndex === i,
-          passed: simple.goodIndex.includes(i),
-        }" @click="simpleClick('leftIndex', i)">
+        <SimpleButton 
+          v-for="(wordIndex, i) in currentWords"
+          :key="i" :class="{
+            active: simple.leftIndex === i,
+            passed: simple.goodIndex.includes(i),
+          }"
+          @click="simpleClick('leftIndex', i)"
+        >
           {{ words[wordIndex].t }}
         </SimpleButton>
       </div>
       <div class="jp-word-col">
-        <SimpleButton v-for="(wordIndex, i) in currentWords" :key="i" :style="{ order: simple.randomOrders[i], }" :class="{
-          active: simple.rightIndex === i,
-          passed: simple.goodIndex.includes(i),
-        }" @click="simpleClick('rightIndex', i)">
+        <SimpleButton
+          v-for="(wordIndex, i) in currentWords"
+          :key="i"
+          :style="{ order: simple.randomOrders[i] }"
+          :class="{
+            active: simple.rightIndex === i,
+            passed: simple.goodIndex.includes(i),
+          }"
+          @click="simpleClick('rightIndex', i)"
+        >
           {{ words[wordIndex].k }}
         </SimpleButton>
       </div>
     </div>
     <div v-else-if="currentMode === ModeType.hard">
-
-
       <div class="jp-word-content">
         <div class="jp-word-col">
-          <SimpleButton v-for="(wordIndex, i) in currentWords" :key="i" :class="{
-            active: hard.focusIndex === i,
-            passed: hard.goodIndex.includes(i),
-          }" @click="hardFocusClick(i)">
+          <SimpleButton
+            v-for="(wordIndex, i) in currentWords"
+            :key="i"
+            :class="{
+              active: hard.focusIndex === i,
+              passed: hard.goodIndex.includes(i),
+            }" 
+            @click="hardFocusClick(i)"
+          >
             <div>{{ words[wordIndex].t }}</div>
           </SimpleButton>
         </div>
         <div class="jp-word-col relative" style="flex: 2;">
-          <div v-for="(wordIndex, i) in currentWords" :key="i">
-            <SimpleButton class="passed" v-if="hard.goodIndex.includes(i)">{{ words[wordIndex].k }}</SimpleButton>
+          <div 
+            v-for="(wordIndex, i) in currentWords" 
+            :key="i"
+          >
+            <SimpleButton
+              class="passed"
+              v-if="hard.goodIndex.includes(i)"
+            >{{ words[wordIndex].k }}</SimpleButton>
+            
             <div class="flex gap-2" v-else>
-              <SimpleButton v-for="(text, j) in words[wordIndex].k.split('')" :style="{
-                order: hard.randomOrders[i][j]
-              }" :class="{
-  active: hard.focusIndex === i && hard.focusOrder.includes(j),
-  passed: hard.goodIndex.includes(i),
-}" @click="hardOrderClick(i, j)" :key="j">
+              <SimpleButton
+                v-for="(text, j) in words[wordIndex].k.split('')"
+                :style="{ order: hard.randomOrders[i][j] }" 
+                :class="{
+                  active: hard.focusIndex === i && hard.focusOrder.includes(j),
+                  passed: hard.goodIndex.includes(i),
+                }" 
+                @click="hardOrderClick(i, j)"
+                :key="j">
                 {{ text }}
-
-                <span class="jp-word-tip" v-if="hard.focusIndex === i && hard.focusOrder.includes(j)">
+                <span 
+                  class="jp-word-tip"
+                  v-if="hard.focusIndex === i && hard.focusOrder.includes(j)">
                   {{ hard.focusOrder.indexOf(j) + 1 }}
                 </span>
               </SimpleButton>
@@ -252,6 +311,10 @@ onMounted(restart)
     </div>
 
     <!-- <div class="jp-word-btn text-center" @click="pick(pickLength)">GO</div> -->
+
+    <div>
+      已用时：{{ timeCount }}s
+    </div>
   </div>
 </template>
 

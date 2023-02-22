@@ -9,3 +9,7 @@ export function shuffle(collection: any[]) {
 
     return newColl
 }
+
+export function toDbl(n: any) {
+    return Number(n) > 9 ? `${n}` : `0${n}`
+}

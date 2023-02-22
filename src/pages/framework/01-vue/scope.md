@@ -56,6 +56,34 @@ export default defineComponent({
 ```
 
 
+``` html
+<!-- Scope.vue -->
+<script lang="ts" setup>
+withDefaults(
+  defineProps<{
+    variables?: any
+  }>(),
+  {
+    variables: () => ({})
+  }
+)
+</script>
+<template>
+<slot v-bind="variables"></slot>
+</template>
+```
+
+``` html
+<Scope
+    :variables="{
+        isOnline: item.status === SwitchType.on
+    }"
+    v-slot="{ isOnline }"
+    >
+</Scope>
+
+```
+
 ## 防止 composition scope 冲突
 
 ### `effectScope()`

@@ -4,7 +4,7 @@ withDefaults(
     variables?: any
   }>(),
   {
-    variables: () => ({})
+    variables: () => ({}),
   }
 )
 </script>
