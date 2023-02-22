@@ -77,7 +77,7 @@ function calcWork(date: string) {
       <table>
         <thead>
           <tr>
-            <th>月曜日</th><th>火曜日</th><th>水曜日</th><th>木曜日</th><th>金曜日</th><th>土曜日</th><th>日曜日</th>
+            <th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
           </tr>
         </thead>
         <tbody>
@@ -132,15 +132,18 @@ function calcWork(date: string) {
 .zoo-sheep-monitor {
   @apply pt-4;
 
-  & table tbody tr td:first-of-type {
-    @apply pr-2;
+  & table tbody tr td {
+    &:last-of-type,
+    &:first-of-type {
+      @apply pr-2 border-l;
+    }
   }
 
   & th {
     @apply text-center h-10 box-border;
   }
   & .cal-cell {
-    @apply h-20 border-l p-2 border-box relative;
+    @apply h-20 border-r p-2 border-box relative;
 
     &.active {
       @apply bg-violet-300 dark:bg-violet-800;

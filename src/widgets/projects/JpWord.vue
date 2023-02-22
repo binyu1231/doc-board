@@ -21,7 +21,7 @@ const wordLen = computed(() => words.value.length)
 const restIndex = ref<number[]>([])
 const passedCount = ref(0)
 const timeCount = ref(0)
-let timeCountTimer: ReturnType<typeof setInterval> = 0
+let timeCountTimer: ReturnType<typeof setInterval> = 0 as any
 
 
 const modeTypeOption = [
@@ -192,7 +192,7 @@ watch(passedCount, (passed) => {
     clearInterval(timeCountTimer)
 
   }
-  else if (timeCountTimer === 0) {
+  else if (timeCountTimer === 0 as any) {
     const space = 1
     timeCountTimer = setInterval(() => {
       timeCount.value += space

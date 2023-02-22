@@ -14,19 +14,28 @@ function genWordJson(fileName) {
 
         const wordRows = content.split('\n').filter(r => r.trim() && !r.startsWith('-'))
         wordRows.sort()
-        const oldLength = wordRows.length
-        const duplicateCount = oldLength - new Set(wordRows).size
-        console.log('重复单词数量', duplicateCount)
+        const countMap = wordRows.reduce((cache, row) => {
+            if (!cache.hasOwnProperty(row)) {
+                cache[row] = 0
+            }
+            cache[row]++
+            return cache
+        }, {})
+
+        const duplicateCount = Object.keys(countMap).filter(key => countMap[key] !== 1)
+
+
+        console.log(fileName, '重复单词数量', duplicateCount)
 
         const wordConfigs = wordRows.map(r => {
-            const [ tanngo, kana ]　= r.split('#')
+            const [ kana, tanngo ]　= r.split('#')
             return {
                 t: tanngo.trim(), k: kana.trim()
             }
         })
 
         fs.writeFile(path.resolve(__dirname, `../src/meta/${fileName}.json`), JSON.stringify(wordConfigs))
-        console.log(wordConfigs)
+        // console.log(wordConfigs)
     })
 }
 
