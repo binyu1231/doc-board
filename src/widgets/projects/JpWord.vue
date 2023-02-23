@@ -139,11 +139,13 @@ watch(simple, function checkSimpleAnswer() {
     simple.leftIndex = -1
     simple.rightIndex = -1
     passedCount.value++
+
+    if (simple.goodIndex.length === pickLength) {
+      console.log(1)
+      setTimeout(() => pick(pickLength), 500)
+    }
   }
 
-  if (simple.goodIndex.length === pickLength) {
-    setTimeout(() => pick(pickLength), 500)
-  }
 })
 
 const simplePressWatchList = Array.from({ length: pickLength }).map((_, i) => {
@@ -176,14 +178,13 @@ watch(hard, function checkHardAnswer() {
       hard.focusIndex = -1
       hard.focusOrder = []
       passedCount.value++
+
+      if (hard.goodIndex.length === pickLength) {
+        setTimeout(() => pick(pickLength), 500)
+      }
     }
   }
 
-  if (hard.goodIndex.length === pickLength) {
-
-
-    setTimeout(() => pick(pickLength), 500)
-  }
 
 })
 
@@ -228,6 +229,7 @@ onMounted(restart)
     <div v-if="passedCount === wordLen">
       終わりました，<span class="jp-link-btn" @click="restart">つづく</span>
     </div>
+    
     <div 
       v-else-if="currentMode === ModeType.simple"
       class="jp-word-content"

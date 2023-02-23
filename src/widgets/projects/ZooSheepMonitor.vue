@@ -146,7 +146,7 @@ function calcWork(date: string) {
     @apply h-20 border-r p-2 border-box relative;
 
     &.active {
-      @apply bg-violet-300 dark:bg-violet-800;
+      @apply;
       & .date-count {
         @apply text-lg font-700 text-violet-600 dark:text-violet-200;
       }

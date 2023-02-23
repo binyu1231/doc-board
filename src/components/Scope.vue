@@ -11,8 +11,3 @@ withDefaults(
 <template>
 <slot v-bind="variables"></slot>
 </template>
-<style lang="postcss">
-.scope {
-  @apply;
-}
-</style>
