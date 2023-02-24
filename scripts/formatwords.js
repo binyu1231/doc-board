@@ -34,7 +34,7 @@ function genWordJson(fileName) {
             }
         })
 
-        fs.writeFile(path.resolve(__dirname, `../src/meta/${fileName}.json`), JSON.stringify(wordConfigs))
+        fs.writeFile(path.resolve(__dirname, `../src/meta/meta-${fileName}.json`), JSON.stringify(wordConfigs))
         // console.log(wordConfigs)
     })
 }

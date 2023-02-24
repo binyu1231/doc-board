@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import wordsJSON from '@/meta/n5.json'
+import wordsJSON from '@/meta/meta-n5.json'
 import { onMounted, reactive, ref, watch, computed } from 'vue'
 import { shuffle } from '@/shared'
 import { useMagicKeys } from '@vueuse/core'
@@ -262,11 +262,9 @@ onMounted(restart)
       </div>
     </div>
     <div v-else-if="currentMode === ModeType.hard">
-      <div class="jp-word-content">
-        <div class="jp-word-col">
+      <div v-for="(wordIndex, i) in currentWords" :key="i" class="block md:flex gap-4">
+        <div class="flex-1 mb-4">
           <SimpleButton
-            v-for="(wordIndex, i) in currentWords"
-            :key="i"
             :class="{
               active: hard.focusIndex === i,
               passed: hard.goodIndex.includes(i),
@@ -276,17 +274,15 @@ onMounted(restart)
             <div>{{ words[wordIndex].t }}</div>
           </SimpleButton>
         </div>
-        <div class="jp-word-col relative" style="flex: 2;">
-          <div 
-            v-for="(wordIndex, i) in currentWords" 
-            :key="i"
-          >
-            <SimpleButton
-              class="passed"
-              v-if="hard.goodIndex.includes(i)"
-            >{{ words[wordIndex].k }}</SimpleButton>
-            
-            <div class="flex gap-2" v-else>
+
+        <div class="flex-1 mb-4">
+          <SimpleButton
+            class="passed"
+            v-if="hard.goodIndex.includes(i)"
+          >{{ words[wordIndex].k }}</SimpleButton>
+          
+          <div class="flex gap-2" v-else>
+            <div class="flex flex-1 gap-1">
               <SimpleButton
                 v-for="(text, j) in words[wordIndex].k.split('')"
                 :style="{ order: hard.randomOrders[i][j] }" 
@@ -303,13 +299,14 @@ onMounted(restart)
                   {{ hard.focusOrder.indexOf(j) + 1 }}
                 </span>
               </SimpleButton>
-              <SimpleButton class="skip" @click="hardSkipClick(i)">
-                skip
-              </SimpleButton>
             </div>
+            <SimpleButton @click="hardSkipClick(i)">
+              skip
+            </SimpleButton>
           </div>
         </div>
       </div>
+
     </div>
 
     <!-- <div class="jp-word-btn text-center" @click="pick(pickLength)">GO</div> -->
@@ -327,6 +324,10 @@ onMounted(restart)
 
 .jp-word-content {
   @apply flex gap-4;
+
+  &.wrap {
+    @apply block md:flex mb-4;
+  }
 }
 
 .jp-word-col {
