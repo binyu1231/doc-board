@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import wordsJSON from '@/meta/n5.json'
+import wordsJSON from '@/meta/meta-n5.json'
 import { onMounted, reactive, ref, watch, computed } from 'vue'
 import { shuffle } from '@/shared'
 import { useMagicKeys } from '@vueuse/core'
