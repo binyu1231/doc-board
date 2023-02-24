@@ -77,7 +77,7 @@ function calcWork(date: string) {
       <table>
         <thead>
           <tr>
-            <th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
+            <th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th>
           </tr>
         </thead>
         <tbody>

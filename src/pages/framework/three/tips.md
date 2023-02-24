@@ -61,3 +61,72 @@ loader.loadAsync('your/model/path.gltf')
     renderer.render(scene, camera)
 })
 ```
+
+## 播放模型骨骼动画
+
+``` ts
+import { AnimationMixer } from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+
+const loader = new GLTFLoader()
+let mixer: AnimationMixer | null = null
+loader.loadAsync('/robot.gltf')
+.then(model => {
+    model.scene.scale.set(5, 5, 5)
+    model.scene.position.set(0, 0, 0)
+    model.scene.rotateY(Math.PI / -4)
+    scene.add(model.scene)
+
+    
+    mixer = new AnimationMixer(model.scene)
+
+    // 将模型动画添加到动画混合器中
+    model.animations.forEach((animation, i) => {
+        mixer!.clipAction(animation).play()
+    })
+})
+
+
+const clock = new Clock()
+
+function render() {
+    
+    if (mixer) {
+        const delta = clock.getDelta()
+        mixer.update(delta)
+    }
+
+    requestAnimationFrame(render)
+    renderer.render(scene, camera)
+}
+```
+
+## 使用 tween.js 制作简单动画
+
+``` ts
+import { Tween, update } from '@tweenjs/tween.js'
+
+const tween = new Tween({ index: 0 })
+    .to({ index: Math.PI * 2 }, 5000)
+    .onUpdate((t) => {
+        const direction = Math.cos(t.index) > 0 ? -1 : 1
+
+        model.scene.position.set(Math.sin(t.index) * -15, 0, 0)
+        model.scene.rotation.set(0, Math.PI / 2 * direction, 0)
+    })
+    .repeat(Infinity)
+
+    tween.start()
+
+
+function render() {
+    
+    update()
+   
+
+    requestAnimationFrame(render)
+    renderer.render(scene, camera)
+}
+
+render()
+```
