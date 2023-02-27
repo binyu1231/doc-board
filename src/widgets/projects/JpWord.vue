@@ -13,7 +13,7 @@ const storageKey = 'jp-word'
 
 const levelOptions = [
   { name: 'N5', value: '5' },
-  { name: 'N1', value: '1' },
+  { name: 'N4', value: '4' },
 ]
 
 
