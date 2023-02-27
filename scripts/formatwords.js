@@ -6,11 +6,11 @@ const files = [
     'n1', 'n5'
 ]
 
+const check = false
 
 function genWordJson(fileName) {
     fs.readFile(path.resolve(__dirname, './' + fileName), 'utf-8')
     .then(content => {
-        console.log()
 
         const wordRows = content.split('\n').filter(r => r.trim() && !r.startsWith('-'))
         wordRows.sort()
@@ -24,17 +24,19 @@ function genWordJson(fileName) {
 
         const duplicateCount = Object.keys(countMap).filter(key => countMap[key] !== 1)
 
-
-        console.log(fileName, '重复单词数量', duplicateCount)
+        if (check) console.log(fileName, '重复单词数量', duplicateCount)
 
         const wordConfigs = wordRows.map(r => {
             const [ kana, tanngo ]　= r.split('#')
+
+            if (check && kana.trim() === tanngo.trim()) console.log(kana)
+
             return {
                 t: tanngo.trim(), k: kana.trim()
             }
         })
 
-        fs.writeFile(path.resolve(__dirname, `../src/meta/meta-${fileName}.json`), JSON.stringify(wordConfigs))
+        fs.writeFile(path.resolve(__dirname, `../public/meta-${fileName}.json`), JSON.stringify(wordConfigs))
         // console.log(wordConfigs)
     })
 }

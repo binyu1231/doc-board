@@ -1,36 +1,46 @@
 <script lang="ts" setup>
-import wordsJSON from '@/meta/meta-n5.json'
 import { onMounted, reactive, ref, watch, computed } from 'vue'
-import { shuffle } from '@/shared'
-import { useMagicKeys } from '@vueuse/core'
+import { shuffle, loadPublicJson } from '@/shared'
+import { useMagicKeys, useStorage } from '@vueuse/core'
 
 enum ModeType {
   simple, hard
 }
+
+const storageKey = 'jp-word'
+
+
 
 const levelOptions = [
   { name: 'N5', value: '5' },
   { name: 'N1', value: '1' },
 ]
 
-const level = ref(levelOptions[0].value)
+
+
+
+const state = useStorage(storageKey, {
+  level: levelOptions[0].value,
+  restIndex: [] as number[],
+  timeCount: 0,
+  passedCount: 0,
+  currentMode: ModeType.simple,
+  currentWords: [] as number[]
+}, localStorage)
+
+
 const pickLength = 4
-const words = ref<{ t: string, k: string}[]>(wordsJSON) // .slice(0, 8)
+const words = ref<{ t: string, k: string}[]>([]) 
 const wordLen = computed(() => words.value.length)
 
-const restIndex = ref<number[]>([])
-const passedCount = ref(0)
-const timeCount = ref(0)
 let timeCountTimer: ReturnType<typeof setInterval> = 0 as any
 
 
 const modeTypeOption = [
-  { name: '簡単', value: ModeType.simple },
-  { name: '修羅', value: ModeType.hard },
+  { name: '\u7c21\u5358', value: ModeType.simple },
+  { name: '\u4fee\u7f85', value: ModeType.hard },
 ]
 
-const currentMode = ref(ModeType.simple)
-const currentWords = ref<any[]>([])
 const simple = reactive({
   randomOrders: [] as number[],
   leftIndex: -1,
@@ -47,37 +57,55 @@ const hard = reactive({
 })
 
 
-function reset() {
-  restIndex.value = shuffle(Array.from({ length: wordLen.value }).map((_, i) => i))
-  passedCount.value = 0
-  currentWords.value = []
-
-  if (currentMode.value === ModeType.simple) {
+function init() {
+  if (state.value.currentMode === ModeType.simple) {
     simple.randomOrders = []
     simple.leftIndex = simple.rightIndex = -1
     simple.goodIndex = []
   }
-}
-
-function pick(count: number) {
-  const newWords = restIndex.value.splice(0, count)
-  currentWords.value = newWords
-
-  if (currentMode.value === ModeType.simple) {
-    simple.randomOrders = shuffle(Array.from({ length: count }).map((_, i) => i))
-    simple.leftIndex = -1
-    simple.rightIndex = -1
-    simple.goodIndex = []
-  }
-  else if (currentMode.value === ModeType.hard) {
+  else if (state.value.currentMode === ModeType.hard) {
+    hard.randomOrders = []
     hard.focusIndex = -1
     hard.focusOrder = []
     hard.goodIndex = []
-    hard.randomOrders = newWords.map((wordIndex, i) => {
+  }
+}
+
+
+function reset() {
+  state.value.timeCount = 0
+  state.value.restIndex = shuffle(Array.from({ length: wordLen.value }).map((_, i) => i))
+  state.value.passedCount = 0
+}
+
+function genOrders() {
+  if (state.value.currentMode === ModeType.simple) {
+    simple.randomOrders = shuffle(Array.from({ length: state.value.currentWords.length }).map((_, i) => i))
+  }
+  else if (state.value.currentMode === ModeType.hard) {
+    hard.randomOrders = state.value.currentWords.map((wordIndex) => {
       const wordLength = words.value[wordIndex].k.split('').length
       return shuffle(Array.from({ length: wordLength }).map((_, i) => i))
     })
   }
+}
+
+function pick(count: number) {
+  const newWords = state.value.restIndex.splice(0, count)
+  state.value.currentWords = newWords
+
+  if (state.value.currentMode === ModeType.simple) {
+    simple.leftIndex = -1
+    simple.rightIndex = -1
+    simple.goodIndex = []
+  }
+  else if (state.value.currentMode === ModeType.hard) {
+    hard.focusIndex = -1
+    hard.focusOrder = []
+    hard.goodIndex = []
+  }
+
+  genOrders()
 }
 
 function simpleClick(key: 'leftIndex' | 'rightIndex', index: number) {
@@ -119,16 +147,37 @@ function hardOrderClick(rowIndex: number, index: number) {
 }
 
 function hardSkipClick(i: number) {
-  if (hard.goodIndex.indexOf(i) < 0) hard.goodIndex.push(i)
+  if (hard.goodIndex.indexOf(i) < 0) {
+
+    
+    const word = words.value[state.value.currentWords[i]].k
+
+    hard.focusOrder = Array.from({ length: word.length}).map((_, i) => i)
+    hard.focusIndex = i
+  }
 }
 
 function changeMode(mode: ModeType) {
-  currentMode.value = mode
+  const yes = confirm('修改模式会清空进度')
+  if (!yes) return
+  state.value.currentMode = mode
   restart()
 }
 
+function handleLevelChange(level: string) {
+  console.log(state.value.level, level)
+  const yes = confirm('修改等级会丢失进度')
+  if (!yes) return
+
+  state.value.level = level
+  loadWords(level)
+  .then(restart)
+
+}
+
 function restart() {
-  timeCount.value = 0
+  
+  init()
   reset()
   pick(pickLength)
 }
@@ -138,10 +187,9 @@ watch(simple, function checkSimpleAnswer() {
     simple.goodIndex.push(simple.leftIndex)
     simple.leftIndex = -1
     simple.rightIndex = -1
-    passedCount.value++
+    state.value.passedCount++
 
     if (simple.goodIndex.length === pickLength) {
-      console.log(1)
       setTimeout(() => pick(pickLength), 500)
     }
   }
@@ -169,7 +217,7 @@ watch(hard, function checkHardAnswer() {
   if (
     hard.focusIndex >= 0
   ) {
-    const word = words.value[currentWords.value[hard.focusIndex]].k
+    const word = words.value[state.value.currentWords[hard.focusIndex]].k
     if (
       word.split('').length === hard.focusOrder.length
       && hard.focusOrder.map((o) => word[o]).join('') === word
@@ -177,7 +225,7 @@ watch(hard, function checkHardAnswer() {
       hard.goodIndex.push(hard.focusIndex)
       hard.focusIndex = -1
       hard.focusOrder = []
-      passedCount.value++
+      state.value.passedCount++
 
       if (hard.goodIndex.length === pickLength) {
         setTimeout(() => pick(pickLength), 500)
@@ -188,22 +236,45 @@ watch(hard, function checkHardAnswer() {
 
 })
 
-watch(passedCount, (passed) => {
-  if (passed === 0) {
+watch(() => state.value.passedCount, (passed) => {
+  if (passed === 0 || passed === wordLen.value) {
     clearInterval(timeCountTimer)
 
   }
   else if (timeCountTimer === 0 as any) {
     const space = 1
     timeCountTimer = setInterval(() => {
-      timeCount.value += space
+      state.value.timeCount += space
     }, space * 1000)
   }
 })
 
+function loadWords(level: string) {
+  return loadPublicJson(`/meta-n${level}.json`)
+  .then((wordsJSON: any[]) => {
+    words.value = wordsJSON
+  })
+  
+ 
+}
 
-
-onMounted(restart)
+onMounted(() => {
+  loadWords(state.value.level)
+  // restart()
+  .then(() => {
+    init()
+    if (state.value.restIndex.length === 0) {
+      reset()
+    }
+    if (state.value.currentWords.length === 0) {
+      pick(pickLength)
+    }
+    else {
+      genOrders()
+    }
+  })
+  
+})
 
 </script>
 
@@ -211,44 +282,47 @@ onMounted(restart)
   <div class="jp-word">
     <!-- -->
     <div class="jp-word-mode jp-word-content mb-4">
-      <!-- <SimpleSelect v-model="level">
-        <option v-for="opt in levelOptions" :key="opt.value">{{ opt.name }}</option>
-      </SimpleSelect> -->
+      <SimpleSelect :modelValue="state.level" @change="handleLevelChange">
+        <option
+          v-for="opt in levelOptions"
+          :key="opt.value"
+          :value="opt.value">{{ opt.name }}</option>
+      </SimpleSelect>
       <SimpleButton
         @click="changeMode(opt.value)"
-        :class="{ active: opt.value === currentMode }"
+        :class="{ active: opt.value === state.currentMode }"
         v-for="opt in modeTypeOption"
         :key="opt.value"
       >
         {{ opt.name }}
       </SimpleButton>
       <div class="self-center flex-1 text-right">
-        {{ passedCount }} / {{ wordLen }}
+        {{ state.passedCount }} / {{ wordLen }}
       </div>
     </div>
-    <div v-if="passedCount === wordLen">
-      終わりました，<span class="jp-link-btn" @click="restart">つづく</span>
+    <div v-if="state.passedCount === wordLen">
+      {{ '\u7d42\u308f\u308a\u307e\u3057\u305f' }}。 <span class="jp-link-btn" @click="restart">{{ '\u3064\u3065\u304f' }}</span>
     </div>
     
     <div 
-      v-else-if="currentMode === ModeType.simple"
+      v-else-if="state.currentMode === ModeType.simple"
       class="jp-word-content"
     >
       <div class="jp-word-col">
         <SimpleButton 
-          v-for="(wordIndex, i) in currentWords"
+          v-for="(wordIndex, i) in state.currentWords"
           :key="i" :class="{
             active: simple.leftIndex === i,
             passed: simple.goodIndex.includes(i),
           }"
           @click="simpleClick('leftIndex', i)"
         >
-          {{ words[wordIndex].t }}
+          {{ words[wordIndex]?.t }}
         </SimpleButton>
       </div>
       <div class="jp-word-col">
         <SimpleButton
-          v-for="(wordIndex, i) in currentWords"
+          v-for="(wordIndex, i) in state.currentWords"
           :key="i"
           :style="{ order: simple.randomOrders[i] }"
           :class="{
@@ -257,12 +331,12 @@ onMounted(restart)
           }"
           @click="simpleClick('rightIndex', i)"
         >
-          {{ words[wordIndex].k }}
+          {{ words[wordIndex]?.k }}
         </SimpleButton>
       </div>
     </div>
-    <div v-else-if="currentMode === ModeType.hard">
-      <div v-for="(wordIndex, i) in currentWords" :key="i" class="block md:flex gap-4">
+    <div v-else-if="state.currentMode === ModeType.hard">
+      <div v-for="(wordIndex, i) in state.currentWords" :key="i" class="block md:flex gap-4">
         <div class="flex-1 mb-4">
           <SimpleButton
             :class="{
@@ -271,7 +345,7 @@ onMounted(restart)
             }" 
             @click="hardFocusClick(i)"
           >
-            <div>{{ words[wordIndex].t }}</div>
+            <div>{{ words[wordIndex]?.t }}</div>
           </SimpleButton>
         </div>
 
@@ -279,10 +353,10 @@ onMounted(restart)
           <SimpleButton
             class="passed"
             v-if="hard.goodIndex.includes(i)"
-          >{{ words[wordIndex].k }}</SimpleButton>
+          >{{ words[wordIndex]?.k }}</SimpleButton>
           
           <div class="flex gap-2" v-else>
-            <div class="flex flex-1 gap-1">
+            <div class="flex flex-1 gap-1" v-if="hard.randomOrders.length">
               <SimpleButton
                 v-for="(text, j) in words[wordIndex].k.split('')"
                 :style="{ order: hard.randomOrders[i][j] }" 
@@ -312,7 +386,7 @@ onMounted(restart)
     <!-- <div class="jp-word-btn text-center" @click="pick(pickLength)">GO</div> -->
 
     <div>
-      已用时：{{ timeCount }}s
+      {{ '\u5df2\u7528\u65f6' }}： {{ state.timeCount }}s
     </div>
   </div>
 </template>

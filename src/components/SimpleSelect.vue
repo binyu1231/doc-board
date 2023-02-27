@@ -10,20 +10,19 @@ const props = withDefaults(
 );
 
 const emits = defineEmits<{
-    (e: 'change'): void;
+    (e: 'change', value: any): void;
     (e: 'update:modelValue', value: any): void;
 }>();
 
-const innerModel = computed({
-    get: () => props.modelValue,
-    set: (val) => emits('update:modelValue', val)
-});
+
+function handleChange(e: any) {
+  emits('change', e.target.value)
+}
 </script>
 
 <template>
   <div class="simple-select">
-    {{  innerModel  }}
-    <select class="simple-select_inner" v-bind="$attrs" v-model="innerModel">
+    <select class="simple-select_inner" v-bind="$attrs" @change="handleChange" :value="modelValue">
     <!-- -->
       <slot></slot>
     </select>
@@ -33,9 +32,9 @@ const innerModel = computed({
 
 <style lang="postcss">
 .simple-select {
-  @apply border-1 rounded border-gray-400 
+  @apply border-1 rounded border-gray-400 dark:border-gray-700
       relative
-    text-gray-600;
+    text-gray-600 dark:text-gray-400;
   
   & svg {
     @apply absolute right-1 top-1/2 -mt-2 text-gray-400;
