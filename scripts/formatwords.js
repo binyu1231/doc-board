@@ -3,7 +3,7 @@ const path = require('path')
 const fs = require('fs/promises')
 
 const files = [
-    'n1', 'n5'
+    'n4', 'n5'
 ]
 
 const check = false
