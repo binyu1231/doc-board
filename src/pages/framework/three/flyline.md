@@ -71,7 +71,7 @@ render()
 </ToggleContent>
 
 
-<ToggleContent name="几何体实现">
+<ToggleContent title="几何体实现">
 
 
 ``` ts

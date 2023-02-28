@@ -26,7 +26,7 @@ $ chmod +x /usr/local/bin/docker-compose
 
 ## Uninstall
 
-```
+``` bash
 $ sudo rm rf /usr/local/bin/docker-compose
 ```
 

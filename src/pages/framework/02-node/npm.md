@@ -36,8 +36,15 @@ $ pnpm config set global-bin-dir "PATH/node/node_global"
 $ npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
 $ npm config set cypress_mirror https://npm.taobao.org/mirrors/cypress/
 
-npm config set node_sass_mirror https://npm.taobao.org/mirrors/node-sass/
+$ npm config set node_sass_mirror https://npm.taobao.org/mirrors/node-sass/
+
+$ npm config set electron_builder_binaries_mirror http://npm.taobao.org/mirrors/electron-builder-binaries/
 ```
+
+
+**NOTE**
+1. `xxx_mirror` is not a valid npm option
+    - `npm config edit` 手动修改 `xxx_mirror=https://xxx.com`
 
 ## 切换镜像源
 
@@ -102,10 +109,10 @@ $ npm i -g n
 - Minor: 添加了新特性（向下兼容）
 - Patch: 补丁更新，bug修复（向下兼容）
 - Decoration:
-    - `~M.m.P`: 只能升级Patch版本
-    - `^M.m.P`: 可升级Patch, Minor 版本
+    - `~M.m.P`: 只能升级Patch(P) 版本
+    - `^M.m.P`: 可升级Patch(P), Minor(m) 版本
     - `M.m.P` or `@M.m.P`: 不可升级，锁定特定版本
-    - `*`: 可升级 Major, Minor, Patch 版本
+    - `*`: 可升级 Major(M), Minor(m), Patch(P) 版本
 - Suffix: 重要模块为了保证稳定，会在放出正式版本之前提供先行版本
     - `M.m.P-alpha.n`: 内部测试版，主要给开发和测试找bug用
     - `M.m.P-beta.n`: 公开测版本，主要用于给用户提前体验一些功能
