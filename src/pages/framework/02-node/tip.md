@@ -24,9 +24,9 @@ $ npm i tsx -D
 ``` ts
 // package.json
 {
-    "scripts": {
-        "start": "tsx main.ts"
-    }
+  "scripts": {
+    "start": "tsx main.ts"
+  }
 }
 ```
 
