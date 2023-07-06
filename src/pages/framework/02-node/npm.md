@@ -10,8 +10,6 @@ index: Framework.Node.Syntax
 - 删除配置: `npm config delete electron_mirror`
 - 查看全局安装地址: `npm root -g`
 
-``` 
-```
 
 ## 修改全局安装路径和缓存路径
 
@@ -28,7 +26,6 @@ $ pnpm config set global-bin-dir "PATH/node/node_global"
 
 ```
 
-
 ## 修改个别项目的下载路径
 
 
@@ -37,7 +34,6 @@ $ npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
 $ npm config set cypress_mirror https://npm.taobao.org/mirrors/cypress/
 
 $ npm config set node_sass_mirror https://npm.taobao.org/mirrors/node-sass/
-
 $ npm config set electron_builder_binaries_mirror http://npm.taobao.org/mirrors/electron-builder-binaries/
 ```
 
@@ -46,12 +42,18 @@ $ npm config set electron_builder_binaries_mirror http://npm.taobao.org/mirrors/
 1. `xxx_mirror` is not a valid npm option
     - `npm config edit` 手动修改 `xxx_mirror=https://xxx.com`
 
+    ```
+    sharp_binary_host = "https://npmmirror.com/mirrors/sharp/"
+    sharp_libvips_binary_host = "https://npmmirror.com/mirrors/sharp-libvips/"
+    ```
+
 ## 切换镜像源
 
 ``` bash
 $ npm i -g nrm
 
 $ nrm ls
+
 # npm ---------- https://registry.npmjs.org/
 # yarn --------- https://registry.yarnpkg.com/
 # tencent ------ https://mirrors.cloud.tencent.com/npm/

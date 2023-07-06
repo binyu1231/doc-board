@@ -5,9 +5,19 @@ index: Framework.Git.Practice
 
 [[toc]]
 
+约定式提交: <https://www.conventionalcommits.org/zh-hans/v1.0.0/>
+
 ### commit 规范
 
-> type(scope):subject
+``` 
+<type>[optional scope][!]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+> type(scope):description
 
 - `type`: 用于说明commit的类别，规定为如下几种
   - `feat`: 新增功能
@@ -22,4 +32,6 @@ index: Framework.Git.Practice
   - `ci`: 自动化流程配置修改
   - `revert`: 回滚到上一个版本
 - `scope`(可选): 用于说明commit的影响范围
-- `subject`: commit的简要说明，尽量简短
+- `description`: commit的简要说明，尽量简短
+
+

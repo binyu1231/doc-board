@@ -16,8 +16,6 @@ const monthStartDate = new Date(`${y}-${toDbl(m)}-01 00:00:00`)
 const monthEndDate = new Date(`${m === 12 ? y + 1 : y}-${toDbl(m === 12 ? 1: m + 1)}-01 00:00:00`)
 
 
-
-
 const monthStartWeekday = monthStartDate.getDay()
 const monthDays = (monthEndDate.getTime() - monthStartDate.getTime()) / dayMilliseconds
 
@@ -38,18 +36,13 @@ const todayDateCellIndex = [
 ]
 
 
-
-
-
 function calcWorkSign(date: string) {
   if (!date) return ''
 
-    const currentDateStart = new Date(`${y}-${toDbl(m)}-${toDbl(date)} 00:00:00`)
-    const dayDistance = (currentDateStart.getTime() - yangSignDate.getTime()) / dayMilliseconds
-    return (dayDistance % 8 + 8) % 8
+  const currentDateStart = new Date(`${y}-${toDbl(m)}-${toDbl(date)} 00:00:00`)
+  const dayDistance = (currentDateStart.getTime() - yangSignDate.getTime()) / dayMilliseconds
+  return (dayDistance % 8 + 8) % 8
 }
-
-
 
 function calcWork(date: string) {
     if (!date) return ''
@@ -105,7 +98,7 @@ function calcWork(date: string) {
         :style="{ 
           width: 3 / 7 * 100 + '%',
           left: (todayDateCellIndex[0] - 1) / 7 * 100 + '%', 
-          top: todayDateCellIndex[1] * 5 + 2.5 + 'rem' 
+          top: todayDateCellIndex[1] * 5 + 2.5 + 'rem'
         }"
       >
         <div class="work-range-line" :style="{ left: divOffset * 100 + '%'}"></div>
