@@ -5,6 +5,14 @@ index: Framework.Linux.Command
 
 [[toc]]
 
+### SSH 
+
+``` bash
+$ ssh-keygen -t rsa
+```
+
+> C:/Users/Administrator/.ssh
+
 ### SSH 免密登录
 
 ``` bash
