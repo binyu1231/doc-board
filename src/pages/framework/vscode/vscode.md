@@ -12,14 +12,14 @@
 ## 配置项
   
 
-window.nativeFullScreen: [1.29.1](https://code.visualstudio.com/updates/v1_29#_macos-full-screen-support) macOS 全屏特性
-workbench.editor.highlightModifiedTabs [1.29.1](https://code.visualstudio.com/updates/v1_29#_highlight-modified-tabs)  true 新增的修改区域的左侧会出现边框
+- window.nativeFullScreen: [1.29.1](https://code.visualstudio.com/updates/v1_29#_macos-full-screen-support) macOS 全屏特性
+- workbench.editor.highlightModifiedTabs [1.29.1](https://code.visualstudio.com/updates/v1_29#_highlight-modified-tabs)  true 新增的修改区域的左侧会出现边框
 
-breadcrumbs.symbolSortOrder [1.29.1](https://code.visualstudio.com/updates/v1_29#_symbol-order-in-breadcrumbs) 控制“导航路径”大纲视图中符号的排序方式。
+- breadcrumbs.symbolSortOrder [1.29.1](https://code.visualstudio.com/updates/v1_29#_symbol-order-in-breadcrumbs) 控制“导航路径”大纲视图中符号的排序方式。
   - position - 文件位置 (default)
   - name - 字母顺序
   - type - 符号类型
-
+- "files.autoSave": "onFocusChange" 自动保存
 
 
 **Note:**不能打开文件夹

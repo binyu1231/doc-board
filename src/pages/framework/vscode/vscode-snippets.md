@@ -6,11 +6,25 @@ title: 常用 snippets
 
 ``` json
 {
-    "converse default export": {
-    "prefix": "$export_default",
-    "body": [
-        "export { default as $1 } from './$1$2';",
-    ],
+	"converse default export": {
+	"prefix": "$export_default",
+	"body": [
+			"export { default as $1 } from './$1$2';",
+	],
+	
+	"type vue props": {
+		"prefix": "$props",
+		"body": [
+			"const props = withDefaults(",
+			"  defineProps<{",
+			"    $1",
+			"  }>(),",
+			"  {",
+			"    $2",
+			"  }",
+		],
+		"description": "type vue props"
+	}
 }
 ```
 
@@ -18,7 +32,7 @@ title: 常用 snippets
 
 ``` json
 {
-    "insert vue sfc": {
+	"insert vue sfc": {
 		"prefix": "$sfc",
 		"body": [
 			"<script lang=\"ts\" setup>",
