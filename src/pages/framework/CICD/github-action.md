@@ -14,7 +14,7 @@ title: Github Action
 - step
 - action
 
-> .github/workflow/demo.yml
+> .github/workflows/demo.yml
 
 
 ```
@@ -47,6 +47,8 @@ actions/setup-node@master  # 指向一个分支
 - 触发工作流的事件: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 
 
+
+### 定时任务
 
 ```ts
 on:
@@ -84,6 +86,28 @@ NOTE:
 - Github Action 的任务一般集中设置在整点, 所以可以适当调节分钟错开使用高峰
 
 
+### 获取时间
+
+``` yaml
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+      # ...
+      # prev steps
+      # ...
+      - name: 'Get Date'
+        run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
+      - name: 'Gen Report'
+        uses: someaction
+        with: 
+          subject: Report (${{env.REPORT_DATE}})
+```
+
+
+
+### 复用工作流
+
 当你想复用某些工作流, 并在其中添加一些条件分支时
 
 ``` yml
@@ -114,7 +138,7 @@ action 提供了虚拟环境的写权限秘钥,只要在env中声明即可
 ```
 
 其他自定义秘钥, 比如高德地图的token, 可以前往项目的 settings/Security/Secrets and variables/Actions 添加. 使用则如 GITHUB_TOKEN 一致
-
+不需要加密的内容可以声明为 variable. 用 `vars.<variable_name>` 来使用 
 
 ``` yml
 # 声明为环境变量
@@ -127,13 +151,13 @@ action 提供了虚拟环境的写权限秘钥,只要在env中声明即可
     with: 
       server_address: smtp.qq.com
       server_port: 465
-      username: ${{ secrets.MAIL_USERNAME }}
+      username: ${{ vars.MAIL_USERNAME }}
       password: ${{ secrets.MAIL_PASSWORD }}
 ```
 
 
 
-### release 
+### 在 release 中发布 
 
 关于[声明式提交](/framework/git/commit-message)
 
@@ -238,3 +262,28 @@ jobs:
           release/*.exe
           release/*.dmg
 ```
+
+
+### 用 Google 邮箱发送邮件
+
+send-mail action: <https://github.com/marketplace/actions/send-email>
+
+qq mail 不让用了，还没检查是什么原因
+
+1. 去 Google 账号开启`两步验证`目的是为了添加应用密码
+  - <https://support.google.com/accounts/answer/185839?hl=en&co=GENIE.Platform%3DAndroid>
+  - 打开您的谷歌帐户。
+  - 在导航面板中，选择“安全性”。
+  - 在“登录 Google”下方，选择两步验证开始使用 然后 。
+  - 按照屏幕上的步骤操作。
+
+2. 开启专用密码，action邮箱登录需要专用密码
+  - <https://support.google.com/accounts/answer/185833?hl=en>
+  - 转到您的谷歌帐号。
+  - 选择“安全性”。
+  - 在“登录 Google”下方，选择两步验证。
+  - 在页面底部，选择“应用密码”。
+  - 输入一个名称，以帮助你记住应用密码的使用位置。
+  - 选择“生成”。
+  - 要输入应用密码，请按照屏幕上的说明操作。应用密码是在设备上生成的 16 个字符的代码。
+  - 选择“完成”。
