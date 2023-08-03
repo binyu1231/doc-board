@@ -1,3 +1,7 @@
+---
+title: FileReader
+---
+
 ``` html
 <template>
   <div>
@@ -14,9 +18,9 @@ export default {
     }
   },
   methods: {
-    handleChange () {
+    handleChange (_e) {
       const file = this.$refs.input.files[0]
-      console.log(file)
+      const file = e.target.files[0]
 
       if (!file) return
 
