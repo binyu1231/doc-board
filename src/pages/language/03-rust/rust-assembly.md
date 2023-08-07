@@ -33,6 +33,7 @@ https://rustwasm.github.io/wasm-pack/book/quickstart.html
 
 ## vite 集成
 
+### 自己开发
 
 vite-plugin-wasm-pack: <https://www.npmjs.com/package/vite-plugin-wasm-pack>
 
@@ -64,6 +65,37 @@ import init, { greet } from '<crate-name>'
 
 init().then(greet)
 ```
+
+### 使用 npm package
+
+vite-plugin-wasm: <https://www.npmjs.com/package/vite-plugin-wasm>
+
+
+``` bash
+$ npm i vite-plugin-wasm vite-plugin-top-level-await -D
+```
+
+
+``` ts
+import { defineConfig } from 'vite'
+import wasm from 'vite-plugin-wasm'
+import topLevelAwait from 'vite-plugin-top-level-await'
+
+export default defineConfig({
+  plugins: [wasm(), topLevelAwait()]
+})
+```
+
+
+``` ts
+const photon = await import('@silvia-odwyer/photon')
+
+let newImage = photon.open_image(canvasRef.value, ctx)
+
+photon.filter(newImage, 'radio')
+photon.putImageData(canvasRef.value, ctx, newImage)
+```
+
 
 ## Note
 
