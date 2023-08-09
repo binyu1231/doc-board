@@ -1,7 +1,7 @@
 ---
-title: startup
+title: Rust Startup
+index: Language.Rust.Practice
 ---
-
 
 ## 安装 Rust
 
@@ -25,3 +25,9 @@ $ rustup default stable
 $ rustc --version
 # rustc 1.71.0 (8ede3aae2 2023-07-12)
 ```
+
+
+### 环境
+
+- 在 WebAssembly 中使用参考 `Rust WebAssembly`
+- 树莓派交叉编译 `Rust cross compile`

@@ -1,10 +1,9 @@
 ---
-title: WebAssembly
+title: Rust WebAssembly
+index: Language.Rust.Practice
 ---
 
 Rust 一大应用就是编译成 WebAssembly 代码供 JavaScript 使用来提高后者的性能。
-
-
 
 
 
