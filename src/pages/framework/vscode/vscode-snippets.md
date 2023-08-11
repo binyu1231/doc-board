@@ -22,6 +22,7 @@ title: 常用 snippets
 			"  {",
 			"    $2",
 			"  }",
+			")"
 		],
 		"description": "type vue props"
 	}

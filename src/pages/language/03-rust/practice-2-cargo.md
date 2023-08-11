@@ -3,7 +3,8 @@ title: Cargo (Rust 包管理)
 index: Language.Rust.Practice
 ---
 
-- 随rust安装
+cargo 作为 rust 的内置安装包随 rust 一起安装。就像 npm 之于 node.
+
 
 ## cli 
 

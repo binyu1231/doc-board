@@ -36,6 +36,14 @@ Crate 的形式
 
 ## Module
 
+原则 
+    - `create::`: `/`
+    - `super::`: `../`
+    - `::`: `/`
+    - `use`: `import`
+    - `pub`: `export` 
+
+
 - 声明模块， 声明 `mod garden` 后的查找顺序
     1. 内联，在 `mod garden` 的大括号中
     2. `src/garden.rs`

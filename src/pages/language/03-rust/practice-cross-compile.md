@@ -1,6 +1,6 @@
 ---
-title: Rust 交叉编译
-index: Framework.Raspberry.Practice
+title: Rust cross compile
+index: Language.Rust.Practice
 ---
 
 1. 查看树莓派的内核版本

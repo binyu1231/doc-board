@@ -37,6 +37,8 @@ fn build_user(email: String, username: String) -> User {
     }
 }
 
+// 更新语法
+
 let user_bao = User {
     email: String::from("bao@bar.com"),
     username: String::from("bao"),
