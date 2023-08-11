@@ -4,9 +4,6 @@ index: Language.SQL.Library
 
 ---
 
-
-## SQLite
-
 ### startup
 
 ``` bash
