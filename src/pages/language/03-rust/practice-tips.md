@@ -7,7 +7,7 @@ index: Language.Rust.Practice
 
 ### 字符串转数字
 
-``` rs
+``` rust
 let mut guess = String::new();
 
 io::stdin().read_line(&mut guess).expect("Cannot read.");

@@ -3,7 +3,7 @@ title: string
 
 ---
 
-``` rs
+``` rust
 let mut s = String::from("Hello");
 
 s.push_str(", World");
@@ -14,13 +14,13 @@ s += "!";
 ```
 
 
-``` rs
+``` rust
 let s1 = String::from("hi~");
 let s2 = s1.clone();
 ```
 
 
-``` rs
+``` rust
 let s = String::from("Hello World");
 s.clear();
 ```
@@ -32,7 +32,7 @@ s.clear();
 - 字符串字面量即为字符串切片
 - 字符串字面量也为不可变引用
 
-``` rs
+``` rust
 let s = String::from("Hello World");
 
 let hello = &s[0..5]; // &s[..5]

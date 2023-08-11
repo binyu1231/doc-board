@@ -6,7 +6,7 @@ title: std
 ### Ordering
 
 
-``` rs
+``` rust
 use std::cmp::Ordering;
 
 let mut guess = String::new();

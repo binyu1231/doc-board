@@ -5,14 +5,14 @@ title: tuple
 
 ### 声明
 
-```rs
+``` rust
 let tup: (i32, f64, u8) = (500, 6.4, 1);
 ```
 
 
 ### 解构
 
-``` rs
+``` rust
 let tup: (i32, f64, u8) = (500, 6.4, 1);
 
 let (x, y, z) = tup;

@@ -5,7 +5,7 @@ title: vector
 
 ### 声明
 
-```rs
+``` rust
 let v: Vec<i32> = Vec::new();
 let mut mutV: vec![1, 2, 3];
 
@@ -28,7 +28,7 @@ let row = vec![
 ### 访问 
 
 
-``` rs
+``` rust
 let third: &i32 = &v[2]; // panic!
 
 match v.get(2) {
@@ -42,7 +42,7 @@ match v.get(2) {
 ### 修改
 
 
-``` rs
+``` rust
 for i in &mut mutV {
   *i *= 50
   println!("{}", i);
