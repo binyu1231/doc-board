@@ -1,5 +1,5 @@
 ---
-title: 错误处理
+title: 错误处理 error
 index: Language.Rust.Syntax
 ---
 
@@ -35,7 +35,7 @@ fn main() {
 $ RUST_BACKTRACE=1 cargo run
 ```
 
-## 用 Rresult 处理可恢复的错误
+## 用 Result 处理可恢复的错误
 
 ``` rust
 use std::fs::File;
