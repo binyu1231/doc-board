@@ -96,6 +96,26 @@ photon.putImageData(canvasRef.value, ctx, newImage)
 ```
 
 
-## Note
+### Rust 中调用 JS 函数 
 
-WebAssembly 功能之后在 JavaScript / WebAssembly 中更新
+
+``` rust
+#[wasm_bindgen]
+extern "C" {
+    // js_namespace 设置命名空间
+    #[wasm_bindgen(js_namespace = console)]
+    fn log(message: String);
+
+    // js_name 设置别名
+    #[wasm_bindgen(js_namespace = console, js_name = info)]
+    fn info_2(message: String);
+}
+
+#[wasm_bindgen]
+pub fn greet(name: &str) {
+  log(format!("Hello, {}!", name));
+  info_2(format!("Hello, {}!", name));
+}
+```
+
+
