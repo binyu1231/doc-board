@@ -43,6 +43,15 @@ $ cargo new --lib <library_name>
 <project_name>$ cargo --list
 ```
 
+## 依赖管理 
+
+
+``` bash
+$ cargo add image
+
+$ cargo remove image
+```
+
 ## 测试
 
 ``` bash
