@@ -3,7 +3,7 @@ title: HashMap
 index: Language.Rust.Syntax
 ---
 
-``` rs
+``` rust
 use std::collections:HashMap;
 ```
 
@@ -12,7 +12,7 @@ use std::collections:HashMap;
 ### Create
 
 
-``` rs
+``` rust
 // 1.
 let mut scores<String, i32> = HashMap::new();
 
@@ -34,7 +34,7 @@ let mut scores: HashMap<_, _> =
 ### Update
 
 
-``` rs
+``` rust
 // 覆盖更新
 scores.insert(String::from("Blue"), 10);
 scores.insert(String::from("Blue"), 25);
@@ -43,7 +43,7 @@ scores.insert(String::from("Blue"), 25);
 scores.entry(String::from("Yellow")).or_insert(50);
 ```
 
-``` rs
+``` rust
 let text = "hello world wonderful world";
 let mut map = HashMap::new();
 
@@ -59,7 +59,7 @@ println!("{:#?}", map);
 
 ### Read
 
-```rs
+``` rust
 
 // 1
 let team_name = String::from("Blue");
