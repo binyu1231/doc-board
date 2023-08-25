@@ -12,31 +12,8 @@ index: Language.Rust.Syntax
 - 布尔类型
 - 字符类型
 
-### 整型
 
-i8, i16, i32, i64, i128, isise 以及对应的无符号整型 u8 ..
 
-字面量表示
-
-```rust
-const DECIMAL: u32 = 89_222; // 自定义下划线位置方便读数
-const HEX: u8 = 0xff;
-const OCTAL: u8 = 0o77;
-const BINARY: u8 = 0b1111_0000;
-const BYTE = u8 = b'A'; // 仅限 u8
-
-```
-
-Note: 整型溢出时与 % 运算结果相同(即 256 => 0), 如果需要这种功能最好使用标准库 Wrapping 显式调用
-
-### 浮点型
-
-f32, f64 现代浏览器中速度几乎一样，默认为f64
-
-``` rust
-let x = 2.0;
-let y: f32: 3.0;
-```
 
 ### 布尔类型
 
