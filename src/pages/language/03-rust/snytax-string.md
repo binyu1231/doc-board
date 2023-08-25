@@ -11,7 +11,7 @@ Rust 中的字符串是一个对象（一个Vector`<u8>`的封装），我们通
 
 ### 创建
 
-``` rs
+``` rust
 // str => String
 
 let mut s = String::from("Hello");
@@ -28,7 +28,7 @@ def
 
 ### 修改
 
-``` rs
+``` rust
 
 // 追加字符串
 s.push_str(", World"); // 
@@ -62,7 +62,7 @@ let s3 = s1 + &s2;
 
 ### 复制
 
-``` rs
+``` rust
 let s2 = s1.clone();
 let s2 = &s1[..] 
 // &s1[0..s1.len()]
@@ -72,7 +72,7 @@ let s2 = &s1[..]
 
 ### 删除
 
-``` rs
+``` rust
 let s = String::from("Hello World");
 s.clear();
 ```
@@ -85,7 +85,7 @@ s.clear();
 - 标量值 Scalar Values
 - 字形簇 Grapheme Clusters
 
-```  rs
+``` rust
 let w = "नमस्ते";
 
 for b in w.bytes() {
@@ -104,11 +104,11 @@ let length = "नमस्ते".chars().count(); // 6 O(n) 注意count 会转�
 let length = "नमस्ते".bytes().count(); // 18 O(n)
 ```
 
-``` rs
+``` rust
 
 ```
 
-``` rs
+``` rust
 let s = String::from("Hello World");
 
 let hello = &s[0..5]; // &s[..5]

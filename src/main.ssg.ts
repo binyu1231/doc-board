@@ -4,7 +4,7 @@ import App from './App.vue'
 import { 
   // router, 
   routes 
-} from './router'
+} from './router.ssg'
 import './style'
 import { ViteSSG } from 'vite-ssg'
 
