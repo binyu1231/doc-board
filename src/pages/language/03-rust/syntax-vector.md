@@ -9,7 +9,7 @@ index: Language.Rust.Syntax
 
 ### CREATE
 
-``` rs
+``` rust
 let v: Vec<i32> = Vec::new();
 
 // 宏创建
@@ -18,7 +18,7 @@ let v = vec![1, 2, 3];
 
 ### READ
 
-``` rs
+``` rust
 // 索引读取 返回的是引用. 适用于严重错误 使程序崩溃 panic
 let third: &i32 = &v[2];
 
@@ -37,7 +37,7 @@ for i in &v {
 
 ### UPDATE
 
-```rs
+``` rust
 
 let mut v = vec![100, 32, 57];
 for i in &mut v {
