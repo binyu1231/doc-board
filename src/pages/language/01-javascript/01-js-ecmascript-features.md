@@ -7,6 +7,30 @@ title: ECMAScript Features
 
 [ECMA finished proposals](https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md)
 
+
+## ES2024
+
+
+<ToggleContent title="Well-Formed Unicode Strings">
+
+
+
+</ToggleContent>
+
+<ToggleContent title="`Atomics.waitAsync`">
+
+
+
+</ToggleContent>
+
+<ToggleContent title="RegExp v flag with set notation + properties of strings">
+
+
+
+</ToggleContent>
+
+
+
 ## ES2023 ✅
 
 <ToggleContent title="Change Array by Copy">

@@ -3,8 +3,7 @@ title: SQLite
 index: Language.SQL.Library
 
 ---
-
-### startup
+c
 
 ``` bash
 $ sqlite3
@@ -29,6 +28,21 @@ $ sqlite3
 > .open db.sqlite
 > delete from <tablename>;
 ```
+
+
+## 安装 
+
+- homepage: <https://www.sqlite.org/index.html>
+
+### windows
+
+- download page <https://www.sqlite.org/download.html>
+
+下载 `sqlite-dll-win-x64-xx.zip` 和 `sqlite-tools-win-x64-xx.zip` 并解压到同一个目录。
+并把该目录添加到环境变量。
+
+
+
 
 
 ### Sql

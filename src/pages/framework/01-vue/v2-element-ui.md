@@ -124,6 +124,76 @@ import './component-config'
 - [element-admin](https://github.com/umi-soft/element-admin)
 
 
+### Element UI 可复制表格字段组件
+
+```html
+<template>
+  <el-table-column
+    v-bind="$attrs" 
+    :show-overflow-tooltip="false">
+    <template slot-scope="scope">
+      <div class="column-copy-cell">
+        <el-tooltip 
+          :disabled="!showOverflowTooltip" 
+          :content="scope.row[$attrs.prop]"
+          placement="top">
+          <span 
+            class="column-copy-content"
+            :class="{ short: showOverflowTooltip }">
+            {{ scope.row[$attrs.prop] }}
+          </span>
+        </el-tooltip>
+        <el-button type="text" @click="copy(scope.row[$attrs.prop])">
+          <i class="el-icon-document-copy"></i>
+        </el-button>
+      </div>
+    </template>
+  </el-table-column>
+</template>
+
+<script>
+import { copyToClipBoard } from '@/utils/copyToClipBoard'
+export default {
+  name: 'TableCopyColumn',
+  props: {
+    showOverflowTooltip: Boolean
+  },
+  data() {
+    return {}
+  },
+ 
+  methods: {
+    copy (content) {
+      copyToClipBoard(content).then(() => {
+        this.$message({
+          message: '已复制到剪切板',
+          type: 'success'
+        });
+      })
+    },
+  
+  }
+}
+</script>
+
+<style scoped>
+
+.column-copy-cell {
+  display: flex; align-items: center; gap: 2px;
+  
+}
+
+.column-copy-content {
+}
+
+.column-copy-content.short {
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+</style>
+
+```
+
+
 
 
 
