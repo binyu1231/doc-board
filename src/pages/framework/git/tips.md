@@ -90,3 +90,28 @@ $ git remote add origin git@xx.xxx.xx.xx:~/xxx.git
 ``` bash
 $ git config --global core.protectNTFS false
 ```
+
+
+### 推送报错 `ssh: connect to host github.com port 22: Connection timed out`
+
+新建文件
+
+``` bash
+$ touch ~/.ssh/config
+```
+
+编辑文件
+
+```
+Host github.com
+Hostname ssh.github.com
+Port 443
+```
+
+测试
+
+```
+$ ssh -T git@github.com
+```
+
+[ref](https://stackoverflow.com/questions/15589682/ssh-connect-to-host-github-com-port-22-connection-timed-out)
