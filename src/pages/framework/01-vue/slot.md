@@ -87,61 +87,73 @@ index: Framework.Vue.Practice
 </IModal>
 ```
 
+### 使用组件提供局部变量
+
+#### Implement
+
+``` ts
+import { defineComponent, reactive, ref } from 'vue'
+
+export default defineComponent({
+  name: 'ScopeToggle',
+  props: {
+    defaultValue: { type: Boolean, default: false },
+  },
+  setup(props, { slots }) {
+    const val = ref(props.defaultValue)
+
+    function toggle(nextVal) {
+      val.value = (typeof nextVal === 'boolean') ? nextVal : !val.value
+    }
+
+    const data = reactive({
+      value: val,
+      toggle,
+    })
+
+    // 防止在最外层产生 DOM 节点
+    return () => slots.default && slots.default(data)
+  }
+})
+```
+
+#### Use
+
+``` html
+<div class="list">
+  <scope-toggle
+    v-for="n in 4"
+    :key="n"
+    :defaultValue="false"
+    v-slot="{ toggle, value }"
+  >
+    <div>
+      <div class="item-panel" :expand="value">{{ value }}</div>
+      <button @click="toggle">toggle</button>
+      <button @click="toggle(false)">close</button>
+    </div>
+  </scope-toggle>
+</div>
+```
 
 
 
-
-### 传递组件的所有slots（Vue 3）
+### 传递组件的所有slots给子组件（Vue3）
 
 ``` html
 <!--  -->
 <template>
-    <el-drawer modal-class="detail-drawer" size="60%" v-bind="$attrs">
-        <template
-            v-for="(_, key, index) in $slots"
-            :key="index"
-            v-slot:[key]="scope"> <!-- el-drawer 传给template 的参数 -->
-            <slot :name="key" v-bind="scope"></slot> <!-- 再将参数向下传递 -->
-        </template>
-    </el-drawer>
+  <el-drawer modal-class="detail-drawer" size="60%" v-bind="$attrs">
+    <template
+      v-for="(_, key, index) in $slots"
+      :key="index"
+      v-slot:[key]="scope"> <!-- el-drawer 传给template 的参数 -->
+      <slot :name="key" v-bind="scope"></slot> <!-- 再将参数向下传递 -->
+    </template>
+  </el-drawer>
 </template>
 ```
 
-### 利用 slot 透传变量（Vue 3）
+### 利用 slot 透传变量（Vue3）
 
-声明
-
-``` html
-<!-- Shell.vue -->
-<script lang="ts" setup>
-withDefaults(
-    defineProps<{
-        variables?: Record<string, any>
-    }>(),
-    {
-        variables: () => ({})
-    }
-);
-</script>
-<template>
-  <slot v-bind="variables"></slot>
-</template>
-```
-
-使用
-
-``` html
-<List>
-  <ListItem
-    v-for="item in list"
-    :key="item.id"
-  >
-    <Shell
-      :variable="{ isOnline: item.status === SwitchType.on }"
-      :v-slot="{ isOnline }">
-      {{ item.name }} {{ isOnline ? '售卖中' : '已下架' }}
-      <DeleteButton :disabled="isOnline">
-    </Shell>
-  </ListItem>
-</List>
-```
+[Shell](/framework/01-vue/practice-component#Shell)

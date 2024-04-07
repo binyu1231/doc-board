@@ -277,7 +277,7 @@ export class FlyTextureLine extends FlyBase {
 <ToggleContent title="着色器实现">
 
 ``` ts
-import { Tween, update } from '@tweenjs/tween.js';
+import { Tween, update } from '@tweenjs/tween.js'
 import { BufferGeometry, CatmullRomCurve3, Color, Float32BufferAttribute, Group, Points, Scene, ShaderMaterial, Vector3 } from 'three'
 import { FlyBase, FlyLineBegin2End, LineOption } from './base'
 

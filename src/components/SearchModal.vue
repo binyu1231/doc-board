@@ -3,6 +3,7 @@ import { ref, nextTick, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import metadata from '@/meta/meta-short.json'
 import { useEventListener } from '@vueuse/core';
+import { useNavStore } from '@/composables';
 
 const props = defineProps<{
   id?: string
@@ -15,6 +16,7 @@ const emit = defineEmits<{
   (e: 'open-modal'): void
 }>();
 
+const { changeNav } = useNavStore()
 const router = useRouter()
 const modalContent = ref<HTMLDivElement>()
 const searchInput = ref<HTMLInputElement>()
@@ -44,9 +46,7 @@ const keyHandler = (event: KeyboardEvent) => {
       event.preventDefault()
       const targetLink = filterMetadata.value[selectIndex.value]
       if (!targetLink) return
-      router.push(`/${targetLink.value}`)
-      emit('close-modal')
-      clear()
+      handleJump(targetLink)
     }
   }
 
@@ -56,18 +56,37 @@ const keyHandler = (event: KeyboardEvent) => {
   }
 }
 
+
+function handleJump(link: any) {
+  console.log(link.cIndex, link.gIndex, link.index)
+  changeNav(link.cIndex, link.gIndex, link.index)
+  emit('close-modal')
+  clear()
+}
+
+function clear() {
+  setTimeout(() => {
+    search.value = ''
+    filterMetadata.value = []
+    selectIndex.value = 0
+  }, 200)
+}
+
 useEventListener(document, 'click', clickHandler)
 useEventListener(document, 'keydown', keyHandler)
 
 onMounted(() => {
-  meta.value = metadata.reduce((acc: any[], kind: any) => {
-    const links = kind.children.reduce((acclinks: any[], col: any) => {
-      const subLinks = col.children.map((l: any) => {
+  meta.value = metadata.reduce((acc: any[], category: any, cIndex: number) => {
+    const links = category.children.reduce((acclinks: any[], group: any, gIndex: number) => {
+      const subLinks = group.children.map((item: any, index: number) => {
         return {
-          ...l,
-          search: (kind.name + col.name + l.name).toLowerCase(),
-          kind: kind.name,
-          col: col.name
+          ...item,
+          search: (category.name + group.name + item.name).toLowerCase(),
+          category: category.name,
+          group: group.name,
+          cIndex,
+          gIndex,
+          index
         }
       })
       return acclinks.concat(subLinks)
@@ -77,13 +96,7 @@ onMounted(() => {
   }, [] as any[])
 })
 
-function clear() {
-  setTimeout(() => {
-    search.value = ''
-    filterMetadata.value = []
-    selectIndex.value = 0
-  }, 200)
-}
+
 
 watch(() => props.modalOpen, (open) => {
   if (open) {
@@ -142,20 +155,22 @@ watch(search, (s) => {
             <div class="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Page</div>
             <ul v-if="(filterMetadata.length > 0)">
               <li>
-                <router-link 
+                <div
                   :key="i"
+                  @click="handleJump(link)"
                   :to="'/' + link.value"
                   v-for="(link, i) in filterMetadata"
                   :class="{'bg-slate-100 dark:bg-slate-700': i === selectIndex }"
-                  class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700" @click="$emit('close-modal')">
+                  class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700" 
+                >
                   <svg class="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
                   </svg>
                   <div class="flex justify-between flex-1">
                     <span>{{ link.name }}</span>
-                    <span class="text-indigo-400 text-xs px-1 py-[2px] rounded-sm">{{ link.kind }}.{{ link.col }}</span>
+                    <span class="text-indigo-400 text-xs px-1 py-[2px] rounded-sm">{{ link.category }}.{{ link.group }}</span>
                   </div>
-                </router-link>
+                </div>
               </li>
             </ul>
             <div v-else class="text-sm font-medium text-slate-400 px-2 mb-2 dark:text-slate-500 uppercase">

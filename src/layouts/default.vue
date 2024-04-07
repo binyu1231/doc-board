@@ -1,28 +1,19 @@
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import metadata from '@/meta/meta-short.json'
+import { useNavStore } from '@/composables'
+import { onBeforeMount, ref, watch } from 'vue'
+import { useRoute, onBeforeRouteUpdate } from 'vue-router'
+
+
 const sidebarOpen = ref(false)
-const navs = ref(metadata[0].children)
 const route = useRoute()
-const router = useRouter()
+const { formatNav } = useNavStore()
 
-function handleChange(key: string, i: number) {
-  navs.value = metadata[i].children
-  sidebarOpen.value = true
-  const defaultPath = navs.value?.[0]?.children?.[0]?.value
-  if (defaultPath) {
-    router.push('/' + defaultPath)
-  }
-}
 
-watch(() => route.fullPath, () => {
-  metadata.some((m, i) => {
-    let matched = route.fullPath.indexOf(m.id) === 1
-    if (matched) navs.value = metadata[i].children
-    return matched
-  })
-})
+watch(() => route.path, (path) => {
+  formatNav(path)
+}, { immediate: true })
+
+
 
 function openSidebar(e: Event) {
   e.stopPropagation()
@@ -34,15 +25,11 @@ function openSidebar(e: Event) {
   <img src="@/assets/hero-illustration.svg" alt="">
 </div>
 <div class="doc">
-  <Header 
-    :metadata="metadata" 
-    @change="handleChange" 
-  ></Header>
+  <Header></Header>
   <div class="doc-container">
     <Sidebar 
       :sidebarOpen="sidebarOpen"
       @close-sidebar="sidebarOpen = false" 
-      :navs="navs"
     />
     <div class="sidebar-flat-btn" @click="openSidebar">
       <i-akar-icons:book />

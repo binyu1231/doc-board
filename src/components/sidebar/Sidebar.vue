@@ -1,65 +1,47 @@
-<script lang="ts">
+<script lang="ts" setup>
 // ts-ignore
-import { ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, computed, defineOptions } from 'vue'
 import { useEventListener } from '@vueuse/core'
 
 import SidebarLinkGroup from './SidebarLinkGroup.vue'
-import SidebarLinkSubgroup from './SidebarLinkSubgroup.vue'
+// import SidebarLinkSubgroup from './SidebarLinkSubgroup.vue'
+import { useNavStore } from '@/composables'
 
-export default {
-  name: 'Sidebar',
-  props: ['sidebarOpen', 'navs'],
-  components: {
-    SidebarLinkGroup,
-    SidebarLinkSubgroup,
-  },
-  setup(props: any, { emit }: any) {
+defineOptions({
+  name: 'Sidebar'
+})
 
-    const sidebar = ref(null)
+const props = defineProps<{
+  sidebarOpen: boolean
+}>()
 
-    const route = useRoute()
+const emit = defineEmits<{
+  'close-sidebar': [],
+}>()
 
-    // close on click outside
-    const clickHandler = ({ target }: any) => {
-      if (!sidebar.value) return
-      if (
-        !props.sidebarOpen ||
-        (sidebar.value as any).contains(target)
-      ) return
-      emit('close-sidebar')
-    }
 
-    // close if the esc key is pressed
-    const keyHandler = ({ keyCode }: any) => {
-      if (!props.sidebarOpen || keyCode !== 27) return
-      emit('close-sidebar')
-    }
+const { navs, navActive, changeNav } = useNavStore()
+const navGroups = computed(() => navs[navActive.value.category].children || [])
+const sidebar = ref(null)
 
-    useEventListener(document, 'click', clickHandler)
-    useEventListener(document, 'keydown', keyHandler)
-
-    function handleNavigate(navigate: any) {
-      navigate()
-      // nextTick(() => {
-      //   emit('close-sidebar')
-      // })
-    }
-    const currCond = computed(() => {
-      return route.fullPath
-        .replace(/^\/[a-z]+\/(\d+-)?/, '')
-        .replace(/\/[\w-_]+$/, '')
-        .replace(/-/g, ' ')
-        .replace(/(^\w)|(\s\w)/g, (a) => a.toUpperCase())
-    })
-    return {
-      route,
-      sidebar,
-      handleNavigate,
-      currCond
-    }
-  },  
+// close on click outside
+const clickHandler = ({ target }: any) => {
+  if (!sidebar.value) return
+  if (
+    !props.sidebarOpen ||
+    (sidebar.value as any).contains(target)
+  ) return
+  emit('close-sidebar')
 }
+
+// close if the esc key is pressed
+const keyHandler = ({ keyCode }: any) => {
+  if (!props.sidebarOpen || keyCode !== 27) return
+  emit('close-sidebar')
+}
+
+useEventListener(document, 'click', clickHandler)
+useEventListener(document, 'keydown', keyHandler)
 </script>
 <template>
   <div>
@@ -99,9 +81,9 @@ export default {
               <ul class="text-sm">
                 <!-- 1st level -->
                 <Scope
-                  v-for="(nav, i) in navs"
+                  v-for="(nav, i) in navGroups"
                   :key="i"
-                  :variables="{ activeCond: currCond === nav.name }"
+                  :variables="{ activeCond: navActive.group === i }"
                   v-slot="{ activeCond }"
                 >
                   <SidebarLinkGroup 
@@ -128,7 +110,7 @@ export default {
                           v-for="(navChild, j) in nav.children" 
                           :key="j" 
                         >
-                        <SidebarLinkSubgroup 
+                        <!-- <SidebarLinkSubgroup 
                           v-if="navChild.children"
                           :title="navChild.name" 
                           :default-open="route.fullPath.includes('alternative-scheme')"
@@ -145,23 +127,25 @@ export default {
                                 :href="href"
                                 @click="navigate"
                               >{{ navSon.name }}</a>
-                              <!-- <div v-if="navSon.hasNew" class="sidebar-son-tag">1</div> -->
+                              <div v-if="navSon.hasNew" class="sidebar-son-tag">1</div>
                             </router-link>
                           </li>
-                        </SidebarLinkSubgroup>
-                        <li v-else class="mt-3">
-                          <router-link
+                        </SidebarLinkSubgroup> -->
+                        <!-- v-else -->
+                        <li 
+                          class="mt-3">
+                          <!-- <router-link
                           :to="'/' + navChild.value" 
-                          custom v-slot="{ href, navigate, isExactActive }">
+                          custom v-slot="{ href, navigate, isExactActive }"> -->
                           <a 
-                          class="flex items-center space-x-3 font-medium relative" 
-                          :class="isExactActive ? 'text-violet-600' : 'text-slate-800 dark:text-slate-200'" 
-                          :href="href" 
-                          @click="navigate">
+                          class="flex items-center space-x-3 font-medium relative cursor-pointer" 
+                          :class="navActive.group === i && navActive.item === j ? 'text-violet-600' : 'text-slate-800 dark:text-slate-200'" 
+                          
+                          @click="changeNav(navActive.category, i, j)">
                             {{ navChild.name }}
                             <!-- <div v-if="navChild.hasNew" class="sidebar-son-tag"></div> -->
                           </a>
-                          </router-link>
+                          <!-- </router-link> -->
                         </li>
                       </template>
                     </ul>

@@ -1,6 +1,6 @@
 ---
 title: 设计原则
-index: Thought.Design Pattern.Practice
+index: Knowledege.Design Pattern.Practice
 ---
 
 

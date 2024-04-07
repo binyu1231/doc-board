@@ -130,3 +130,39 @@ function render() {
 
 render()
 ```
+
+## 修改模型材质透明度
+
+``` ts
+const h = 20
+const geometry = new CylinderGeometry(15, 15, 20, 32)
+// 中心在底部
+geometry.translate(0, h/2, 0)
+
+const material = new MeshBasicMaterial({ color: 0xFFFFFF*Math.random() })
+// 设置透明
+material.transparent = true
+material.opacity = 0.5
+
+const cylinder = new Mesh(geometry, material)
+```
+
+## 修改模型高度
+
+``` ts
+const h = 20
+const geometry = new CylinderGeometry(15, 15, h, 32)
+// 中心在底部
+geometry.translate(0, h/2, 0)
+
+const material = new MeshBasicMaterial({ color: 0xFF0000 })
+
+const cylinder = new Mesh(geometry, material)
+
+const newGeometry = new CylinderGeometry(15, 15, h + 20, 32)
+// 中心在底部
+newGeometry.translate(0, (h + 20)/2, 0)
+
+// 替换
+cylinder.geometry = newGeometry
+```

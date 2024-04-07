@@ -68,7 +68,7 @@ blockquote {
         bg-gray-100 dark:bg-gray-800
         ;
     & > p {
-        @apply m-0;
+        @apply m-0!;
     }
 }
 
@@ -102,6 +102,9 @@ table {
 }
 
 .mk {
+    & a {
+        @apply underline hover:text-purple-500;
+    }
     & p {
         @apply mb-4;
     }

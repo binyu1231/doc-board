@@ -5,7 +5,9 @@ index: Framework.Vue.Syntax
 
 [[toc]]
 
-## Start Up
+记录一些 setup 的语法
+
+## Basic
 
 1. setup option
 
@@ -35,9 +37,11 @@ function handleClick () {}
 </script>
 ```
 
-## use props
+## Props
 
-1. setup option
+### 定义
+
+1. setup 选项写法
 
 ```js
 export default defineComponent({
@@ -54,10 +58,12 @@ export default defineComponent({
 })
 ```
 
-2. setup flag  
+2. setup 标记写法
 
 ``` html
+<!-- 简写 -->
 <script setup>
+// without default value
 const props = defineProps(['disabled'])
 
 // with default value
@@ -68,26 +74,37 @@ const props = defineProps({
 </script>
 ```
 
-``` ts
-// <script setup lang="ts">
+3. setup 标记写法 & typescript
 
+``` html
+<!-- 推荐 -->
+<script setup lang="ts">
+
+// without default value
 const props = defineProps<{ disabled?: boolean }>()
 
-// with default value
+// with default value.01 推荐
 const props = withDefaults(
   // Note: 
-  // disabled? === required: false
-  // disabled === required: true
+  // disabled? mean not required
+  // disabled mean required
   defineProps<{ disabled?: boolean }>(),
   { disabled: true },
 )
 
-// 2
-import { PropType } from 'vue'
 
+// with default value.02
 const props = defineProps({
   disabled: { type: Boolean as PropType<boolean>, default: false },
 })
+</script>
+```
+
+### 使用
+
+``` html
+<script setup lang="ts">
+const props = //... 
 
 // use
 watch(
@@ -97,18 +114,27 @@ watch(
 )
 ```
 
-## use emits
+### 暴露给外部使用 defineExpose
 
-1. setup option
+``` html
+<script setup>
+import { ref } from 'vue'
+
+const a = 1
+const b = ref(2)
+
+defineExpose({ a, b })
+</script>
+```
+
+
+## Emits
+
+### 定义
+
+1. setup 选项
 
 ``` ts
-// vue2
-export default defineComponent({
-  setup(_props, context) {
-    context.emit('change'/*,  */)
-  }
-})
-
 export default defineComponent({
   emit: ['change'],
   // or
@@ -118,25 +144,42 @@ export default defineComponent({
       // TODO: what is payload
       // TODO: how to check?
     }
+  },
+  setup(_props, context) {
+    context.emit('change'/*,  */)
   }
 })
 ```
 
-2. setup flag 
+2. setup 标记
 
-``` ts
-// <script setup>
+``` html
+<script setup>
 const emits = defineEmits(['close', 'increase'])
+</script>
 
-// <script setup lang="ts">
+<!-- before v3.4 --> 
+<script setup lang="ts">
 const emits = defineEmits<{
   (e: 'close') :void,
   (e: 'increase', num: number) : void
 }>()
-// TODO: how to check??
+</script>
+
+<!-- after v3.4 推荐 --> 
+<script setup lang="ts">
+const emits = defineEmits<{
+  close: [],
+  increase: [num: number]
+}>()
+</script>
+
+```
 
 
-// use
+### 使用
+
+``` ts
 function handleClose () {
 	// ... codes
 	emits('close')
@@ -149,10 +192,21 @@ function handleAdd (n: number) {
 ```
 
 
-## define name
+## define component name
 
-``` html
-<script setup name="i-button">
+
+setup flag。值不能设置为非常量
+
+``` ts
+// after 3.3
+import { defineOptions } from 'vue'
+defineOptions({
+  name: 'OneBar',
+  inheritAttrs: false,
+  customOptions: {
+    /* ... */
+  }
+})
 ```
 
 ## use context

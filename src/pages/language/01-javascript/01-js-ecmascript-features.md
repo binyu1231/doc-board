@@ -1,5 +1,6 @@
 ---
 title: ECMAScript Features
+index: Language.JavaScript.Snytax
 ---
 
 

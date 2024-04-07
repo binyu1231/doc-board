@@ -101,14 +101,14 @@ while True:
 
 ``` py
 ''' normal '''
-def add (a, b):
+def add(a, b):
   return a + b
 
 add(5, 7) # => 12
 
 
 ''' optional '''
-def addUser (name, ip = None, address = ''):
+def addUser(name, ip = None, address = ''):
   return {
     'name': name, 
     'ip': ip,
@@ -121,19 +121,19 @@ def addUser (name, ip = None, address = ''):
 
 from functools import reduce
 
-def add_ (*args):
+def add_(*args):
   return reduce(lambda a, b: a + b, args)
   # return sum(args)
 
 add_(1, 2, 3) # => 6 args: (1, 2, 3)
 
 
-def addUser_ (**kwargs):
+def addUser_(**kwargs):
   return kwargs
 
 addUser_(name = 'Joe', address = '') # => { 'name': 'Joe', 'address': '' }
 
-def addUser__ (name, **kwargs):
+def addUser__(name, **kwargs):
   kwargs['name'] = name
   return addUser_(**kwargs)
 

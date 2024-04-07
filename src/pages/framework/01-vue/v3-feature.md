@@ -1,5 +1,5 @@
 ---
-title: Vue 3 Feature
+title: Vue3 Feature
 index: Framework.Vue.Syntax
 ---
 

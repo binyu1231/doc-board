@@ -1,8 +1,13 @@
+---
+title: 实用组合式api(composition api)
+index: Framework.Vue.Practice
+---
+
 [[toc]]
 
-### usePulldown
+<ToggleContent title="usePulldown">
 
-依赖 vueuse 的插值 composition. `useTransition`
+移动端下拉刷新。依赖 vueuse 的插值 composition. `useTransition`
 
 ``` ts
 import { ref, watch } from 'vue'
@@ -113,3 +118,6 @@ export function usePulldown (
   }
 }
 ```
+
+</ToggleContent>
+

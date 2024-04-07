@@ -1,48 +1,17 @@
 <script lang="ts" setup>
-import { onMounted, ref, watch } from 'vue';
-import { useDark, useToggle } from '@vueuse/core';
-import { useRoute } from 'vue-router';
+import { onMounted, ref, watch } from 'vue'
+import { useDark, useToggle } from '@vueuse/core'
+import { useRoute } from 'vue-router'
+import { useNavStore } from '@/composables'
 
-const props = withDefaults(
-  defineProps<{ metadata: any[] }>(),
-  {
-    metadata: () => []
-  }
-)
-
-const emit = defineEmits<{
-  (e: 'change', key: string, i: number): void
-}>()
-
-const route = useRoute()
+const { navs, changeNav, navActive } = useNavStore()
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-const key = ref(props.metadata.length > 0 ? props.metadata[0].name : '')
-
-watch(key, () => {
-  // emit('change', key.value, props.metadata.findIndex(opt => opt.name === key.value))
-})
 
 function handleChange(e: Event) {
-  const val = (e.target as any).value
-  emit('change', val, props.metadata.findIndex(opt => opt.name === val))
-  console.log()
+  const categoryIndex = Number((e.target as any).value)
+  changeNav(categoryIndex)
 }
-
-watch(() => route.fullPath, () => {
-  if (route.fullPath === '/') return
-  const kind = route.fullPath.match(/^\/(\w+)/)![1].replace(/^(\w)/, (s) => s.toUpperCase())
-  if (key.value !== kind) key.value = kind
-}, { immediate: true })
-
-
-onMounted(() => {
-  props.metadata.some((meta) => {
-    const active = route.path.startsWith('/' + meta.name.toLowerCase())
-    if (active) key.value = meta.name
-    return active
-  })
-})
 
 </script>
 <template>
@@ -53,8 +22,11 @@ onMounted(() => {
           <Logo width="50" height="50" />
         </router-link>
         <div class="header-select" @click.stop>
-          <select :value="key" @input="handleChange">
-            <option :key="opt.name" v-for="opt in metadata" :value="opt.name">{{ opt.name }}</option>
+          <select :value="navActive.category" @input="handleChange">
+            <option 
+              :key="i" 
+              v-for="(opt, i) in navs" 
+              :value="i">{{ opt.name }}</option>
           </select>
           <i-akar-icons-triangle-down />
         </div>

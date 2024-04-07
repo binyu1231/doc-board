@@ -1,3 +1,8 @@
+---
+title: Minxin(Deprecated)
+index: Framework.Vue.Syntax
+---
+
 
 ``` js
 const actionName = 'setPageTransitionName'

@@ -48,7 +48,7 @@ img.crop((100, 100, 400, 400))
 
 ``` py
 from PIL import Image
-from numpy import *
+from numpy import array
 
 im = array(Image.open('empire.jpg').convert('L'))
 
@@ -75,12 +75,15 @@ def histeq(im,nbr_bins=256):
   """ 对一幅灰度图像进行直方图均衡化"""
 
   # 计算图像的直方图
-  imhist,bins = histogram(im.flatten(),nbr_bins,normed=True)
-  cdf = imhist.cumsum() # 累积分布函数
-  cdf = 255 * cdf / cdf[-1] # 归一化
+  imhist, bins = histogram(im.flatten(), nbr_bins, normed = True)
+
+  # 累积分布函数
+  cdf = imhist.cumsum() 
+  # 归一化
+  cdf = 255 * cdf / cdf[-1] 
 
   # 使用累积分布函数的线性插值，计算新的像素值
-  im2 = interp(im.flatten(),bins[:-1],cdf)
+  im2 = interp(im.flatten(), bins[:-1], cdf)
 
   return im2.reshape(im.shape), cdf
 ```
@@ -125,22 +128,35 @@ def pca(X):
   mean_X = X.mean(axis=0)
   X = X - mean_X
 
-if dim>num_data:
-  # PCA- 使用紧致技巧
-  M = dot(X,X.T) # 协方差矩阵
-  e,EV = linalg.eigh(M) # 特征值和特征向量
-  tmp = dot(X.T,EV).T # 这就是紧致技巧
-  V = tmp[::-1] # 由于最后的特征向量是我们所需要的，所以需要将其逆转
-  S = sqrt(e)[::-1] # 由于特征值是按照递增顺序排列的，所以需要将其逆转
-  for i in range(V.shape[1]):
-    V[:,i] /= S
-else:
-  # PCA- 使用SVD 方法
-  U,S,V = linalg.svd(X)
-  V = V[:num_data] # 仅仅返回前nun_data 维的数据才合理
+  if dim > num_data:
+    # PCA- 使用紧致技巧
+    # 协方差矩阵
+    M = dot(X, X.T) 
+    
+    # 特征值和特征向量
+    e, EV = linalg.eigh(M) 
+    
+    # 这就是紧致技巧
+    tmp = dot(X.T, EV).T 
+    
+    # 由于最后的特征向量是我们所需要的，所以需要将其逆转
+    V = tmp[::-1] 
+    
+    # 由于特征值是按照递增顺序排列的，所以需要将其逆转
+    S = sqrt(e)[::-1] 
 
-# 返回投影矩阵、方差和均值
-return V,S,mean_X
+    for i in range(V.shape[1]):
+      V[:, i] /= S
+
+  else:
+    # PCA- 使用SVD 方法
+    U, S, V = linalg.svd(X)
+
+    # 仅仅返回前nun_data 维的数据才合理
+    V = V[:num_data] 
+
+  # 返回投影矩阵、方差和均值
+  return V, S, mean_X
 ```
 
 
@@ -153,4 +169,39 @@ from scipy.ndimage import filters
 
 im = array(Image.open('empire.jpg').convert('L'))
 im2 = filters.gaussian_filter(im,5)
+```
+
+
+
+### other
+
+``` py
+from PIL import Image
+
+im = Image.open('./test-image.jpg')
+
+# width, height = im.size
+size = (600, 400)
+nearestIm = im.resize(size)
+nearestIm.save('test-image.pillow.nearest.jpg')
+
+samples = [
+  Image.NEAREST, 
+  Image.BILINEAR, 
+  Image.BICUBIC, 
+  Image.LANCZOS, 
+  Image.BOX, 
+  Image.HAMMING
+]
+
+for sample in samples:
+  im = Image.open('./test-image.jpg')
+  newIm = im.resize(size, resample=sample)
+  newIm.save('test-image.pillow.' + str(sample) + '.jpg')
+
+
+print(im.size)
+
+# im.thumbnail(600, 400)
+
 ```

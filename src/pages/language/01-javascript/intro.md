@@ -108,7 +108,9 @@ isNaN(NaN) => true
 ###  原型链 Prototype `__proto__`
 
 每一个实例对象都包含一个 prototype 对象，指向它的原型，并最终指向 Object
-``` 
+
+
+``` bash
   Object -----  Array ----- extandArray
   _proto_ --- _proto_ ----- _proto_
                                |---------------- .myExtandMethod
@@ -117,8 +119,8 @@ isNaN(NaN) => true
 ```
 
 ### 条件
-
-```
+ 
+``` js
 if (SYNAX) {}
 else if (SYNAX) {}
 else {}
@@ -135,7 +137,7 @@ switch (age) {
 
 ### 表达式
 
-```
+``` js
 const a = 12
 a === 6 ? '是6' : '不是6'
 timer && clearTimeout(timer) // if (timer) clearTimeout(timer)

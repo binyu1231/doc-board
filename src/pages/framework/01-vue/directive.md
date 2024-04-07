@@ -1,4 +1,11 @@
+---
+title: directive 指令
+index: Framework.Vue.Syntax
+---
 
+[[toc]]
+
+## 声明
 
 ``` ts
 function formatSize (el) {

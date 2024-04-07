@@ -48,7 +48,10 @@ import shortcut from '@/meta/meta-short.json'
   @apply block  px-2 py-1 rounded-1 flex justify-between items-center;
 
   &:hover {
-    @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-slate-100;
+    @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-slate-100! no-underline;
+    
+
+    
   }
 }
 

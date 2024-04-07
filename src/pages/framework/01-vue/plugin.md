@@ -1,3 +1,8 @@
+---
+title: Plugin 插件
+index: Framework.Vue.Practice
+---
+
 [[toc]]
 
 ### 注册插件
