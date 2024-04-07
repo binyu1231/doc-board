@@ -75,3 +75,30 @@ ln -s /usr/local/src/git/bin/git /usr/bin/git
 
 bash: git-upload-pack: command not found
 `git clone git@xx.xx.xx.xx:/home/git/test.git --upload-pack "/usr/local/src/git/bin/git-upload-pack"`
+
+
+
+## 系统管理
+
+### 内存管理
+
+- 查看内存: `$ free -m`
+- 清理内存: `$ echo 1 > /proc/sys/vm/drop_caches`
+
+
+### 进程管理
+
+- ps 查看所有进程：`$ps aux`
+  - `a`: 显示当前终端下的所有进程信息，包括其他用户的进程。
+  - `u`: 使用以用户为主的格式输出进程信息。
+  - `x`: 显示当前用户在所有终端下的进程。
+  - `-e`：显示系统内的所有进程信息。
+  - `-l`：使用长（long）格式显示进程信息。
+  - `-f`：使用完整的（full）格式显示进程信息。 
+
+- lsof(list open files): 列出当前系统打开文件
+  - `lsof -i:端口号`
+
+- netstat
+  - `netstat -tunlp` 用于显示 tcp，udp 的端口和进程等相关情况
+    - `netstat -tunlp | grep 端口号`

@@ -102,7 +102,7 @@ $ touch ~/.ssh/config
 
 编辑文件
 
-```
+``` bash
 Host github.com
 Hostname ssh.github.com
 Port 443
@@ -110,7 +110,7 @@ Port 443
 
 测试
 
-```
+``` bash
 $ ssh -T git@github.com
 ```
 
