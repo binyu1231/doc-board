@@ -14,6 +14,8 @@ index2: Thought.Data Structure.Practice
 
 ## Array
 
+
+
 ``` ts
 class MyArray<T = any> {
 	array: T[] = []

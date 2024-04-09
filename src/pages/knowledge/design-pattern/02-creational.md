@@ -5,9 +5,9 @@ index: Thought.Design Pattern.Practice
 
 [[toc]]
 
-## 创建型
 
-### (1)单例 Singleton
+
+<ToggleContent title="✅ (1)单例 Singleton">
 
 > 确保一个类只有一个实例，并提供一个全局访问点
 
@@ -17,8 +17,7 @@ index: Thought.Design Pattern.Practice
   - 私有化构造器，使外部无法实例化
 * Scenes: 当需要一个“协调者”的时候去使用单例。数据库连接，线程池，对话框，缓存，偏好设置，日志，设备驱动。
 * Implements: 利用静态变量记录实例，每次调用时检查实例
-  <details>
-  <summary>Java</summary>
+  - Java
 
     ``` java
     public class Singleton {
@@ -41,9 +40,9 @@ index: Thought.Design Pattern.Practice
     }
     ```
 
-  </details>
-  <details>
-  <summary>JavaScript</summary>
+
+ 
+  - JavaScript
 
     ``` javascript
     export class Singleton {
@@ -57,15 +56,16 @@ index: Thought.Design Pattern.Practice
     }
     ```
 
-  </details>
-
 
 * Note
   - 非OO语言可以使用命名空间实现（闭包可以理解为隔离出全局的命名空间）
   - 可以通过与**工厂模式**的结合，提供该单例的子类化拓展
   - 当单例模式出现时，往往表明系统中的模块可能耦合性比较高，或者逻辑过度分散在代码库。使得单例测试更加困难
 
-### (2)工厂方法 Factory Method
+</ToggleContent>
+
+
+<ToggleContent title="✅ (2)工厂方法 Factory Method">
 
 简单工厂和静态工厂不算是设计模式，而更像是编程习惯
 
@@ -75,8 +75,7 @@ index: Thought.Design Pattern.Practice
 
 * Implements:
 
-  <details>
-    <summary>Java</summary>
+  - Java
 
     ``` java
     public class SimplePizzaFactory {
@@ -97,10 +96,7 @@ index: Thought.Design Pattern.Practice
     }
     ```
 
-  </details>
-
-  <details>
-    <summary>JavaScript</summary>
+  - JavaScript
 
     ``` javascript
     class SimplePizzaFactory {
@@ -118,9 +114,6 @@ index: Thought.Design Pattern.Practice
     const veggiePizza = pizzaFactory.createPizza('veggie')
     ```
 
-  </details>
-
-
 * Note: 
   - 创建单一对象
   - 创建的类的变化需要修改工厂函数
@@ -133,8 +126,7 @@ index: Thought.Design Pattern.Practice
 
 * Implements:
 
-  <details>
-    <summary>JavaScript</summary>
+  - JavaScript
 
     ``` javascript
     class StaticPizzaFactory {
@@ -149,8 +141,6 @@ index: Thought.Design Pattern.Practice
     // 不用实例化，但也无法继承
     const veggiePizza = StaticPizzaFactory.createPizza('veggie')
     ```
-
-  </details>
 
 * Notes:
   - 不需要使用创建对象的方法来实例化对象
@@ -170,80 +160,80 @@ index: Thought.Design Pattern.Practice
   - 编译时不知道具体类型时
 
 * Implement: 具体实现时分成两种类别，一是创建者（Creator）PizzaStore及其子类，另一种是产品 Pizza及其子类
-
+  - Java
   ``` java
-  // 创建者
-  public abstract class PizzaStore {
-    
-    public Pizza orderPizza(String type) {
-      Pizza pizza;
-
-      pizza = createPizza(type);
+    // 创建者
+    public abstract class PizzaStore {
       
-      pizza.prepare();
-      pizza.bake();
-      // ...
-      return pizza;
-    }
-    // 具体的工厂方法由子类实现
-    protected abstract Pizza createPizza (String type);
-  }
+      public Pizza orderPizza(String type) {
+        Pizza pizza;
 
-  public class NewYorkPizzaStore extends PizzaStore {
-    public Pizza createPizza (String type) {
-      if (type == "cheese") 
-        return new NYStyleCheesePizza();
-      else if 
+        pizza = createPizza(type);
+        
+        pizza.prepare();
+        pizza.bake();
         // ...
+        return pizza;
+      }
+      // 具体的工厂方法由子类实现
+      protected abstract Pizza createPizza (String type);
     }
-  }
 
-  //  产品
-  public abstract class Pizza {
-    // 属性
-    // 方法
-    void prepare { /* ... */ }
-    void bake { /* ... */ }
-  }
-
-  public class NYStyleCheesePizza extends Pizza {
-    // ...
-  }
-  ```
-
-  ``` javascript
-  class PizzaFactory {
-    // 约定创建过程
-    orderPizza (type) {
-      cosnt pizza = this.createPizza(type)
-      pizza.prepare()
-      pizza.bake()
-      
-      return pizza 	
+    public class NewYorkPizzaStore extends PizzaStore {
+      public Pizza createPizza (String type) {
+        if (type == "cheese") 
+          return new NYStyleCheesePizza();
+        else if 
+          // ...
+      }
     }
-    // 但具体的工厂方法由子类实现
-    createPizza () {
-      return new Pizza()
+
+    //  产品
+    public abstract class Pizza {
+      // 属性
+      // 方法
+      void prepare { /* ... */ }
+      void bake { /* ... */ }
     }
-  }
 
-  class Pizza {
-    prepare () {}
-    bake () {}
-  }
-
-  // 推迟到子类进行实例化
-  class NewYorkPizzaFactory extends PizzaFactory {
-    createPizza (type) {
-      if (type === 'cheese') return new NYStyleCheesePizza()
-      if (type === 'pepperoni') return new NYStylePepperoinPizza()
-      if (type === 'veggie') return new NYStyleVeggiePizza()
+    public class NYStyleCheesePizza extends Pizza {
+      // ...
     }
-  }
+    ```
+  - JavaScript
+    ``` javascript
+    class PizzaFactory {
+      // 约定创建过程
+      orderPizza (type) {
+        cosnt pizza = this.createPizza(type)
+        pizza.prepare()
+        pizza.bake()
+        
+        return pizza 	
+      }
+      // 但具体的工厂方法由子类实现
+      createPizza () {
+        return new Pizza()
+      }
+    }
 
-  const centerParkPizzaFactory = new NewYorkPizzaFactory()
-  const cheesePizza = centerParkPizzaFactory.createPizza('cheese')
-  ```
+    class Pizza {
+      prepare () {}
+      bake () {}
+    }
+
+    // 推迟到子类进行实例化
+    class NewYorkPizzaFactory extends PizzaFactory {
+      createPizza (type) {
+        if (type === 'cheese') return new NYStyleCheesePizza()
+        if (type === 'pepperoni') return new NYStylePepperoinPizza()
+        if (type === 'veggie') return new NYStyleVeggiePizza()
+      }
+    }
+
+    const centerParkPizzaFactory = new NewYorkPizzaFactory()
+    const cheesePizza = centerParkPizzaFactory.createPizza('cheese')
+    ```
 
 * Note:
   - 创建者并非总是抽象的，可以是具体的
@@ -253,38 +243,42 @@ index: Thought.Design Pattern.Practice
   - 工厂方法将客户代码从需要实例化的具体类中解耦。即使只有一个需要创建的对象，工厂方法依然很有用，因为它帮助我们将产品的“实现”从“使用”中解耦，所以即使**增加产品或改变产品的实现**抽象创建者也不会受到影响。
   - 增加了创建对象的复杂度，也可能对单元测试带来问题
 
-### (3)抽象工厂 Abstract Factory
+</ToggleContent>
+
+
+<ToggleContent title="✅ (3)抽象工厂 Abstract Factory">
+
 
 > 提供一个接口，用于创建相关或依赖对象的家族，而不明确指定具体类。产品家族集合了相关产品。
 
 * Implements:
-
-  ``` java
-  // defind
-  public abstract class AbstractDuckFactory {
-    public abstract Quackable createMallardDuck();
-    public abstract Quackable createRedheadDuck();
-  }
-
-  public class Example {
-    foo (AbstractDuckFactory duckFactory) {
-      Quackable mallardDuck = duckFactory.createMallardDuck();
-      Quackable redheadDuck = duckFactory.createRedheadDuck();
+  - Java
+    ``` java
+    // defind
+    public abstract class AbstractDuckFactory {
+      public abstract Quackable createMallardDuck();
+      public abstract Quackable createRedheadDuck();
     }
-  }
-  ```
 
-  ``` javascript
-  class PizzaFactoryProducer {
-    static getFatory (fType) {
-      if (fType === 'NewYork') return new NewYorkPizzaFactory()
-      if (fType === 'Roma') return new RomaPizzaFactory()
+    public class Example {
+      foo (AbstractDuckFactory duckFactory) {
+        Quackable mallardDuck = duckFactory.createMallardDuck();
+        Quackable redheadDuck = duckFactory.createRedheadDuck();
+      }
     }
-  }
+    ```
+  - JavaScript
+    ``` javascript
+    class PizzaFactoryProducer {
+      static getFatory (fType) {
+        if (fType === 'NewYork') return new NewYorkPizzaFactory()
+        if (fType === 'Roma') return new RomaPizzaFactory()
+      }
+    }
 
-  const pizzaFactory = PizzaFactoryProducer.getFactory('NewYork')
-  const cheesePizza = pizzaFactory.orderPizza('cheese')
-  ```
+    const pizzaFactory = PizzaFactoryProducer.getFactory('NewYork')
+    const cheesePizza = pizzaFactory.orderPizza('cheese')
+    ```
 
 * Note:
   - 这样子类可以容易被分类，它是对工厂的抽象。工厂的工厂，得到的结果是一个工厂方法
@@ -306,66 +300,78 @@ index: Thought.Design Pattern.Practice
   - 工厂方法将客户代码从需要实例化的具体类中解耦。即使只有一个需要创建的对象，工厂方法依然很有用，因为它帮助我们将产品的“实现”从“使用”中解耦，所以即使**增加产品或改变产品的实现**抽象创建者也不会受到影响。
   - 增加了创建对象的复杂度，也可能对单元测试带来问题
 
-### (4)原型 Prototype
+
+</ToggleContent>
+
+
+<ToggleContent title="✅ (4)原型 Prototype">
 
 > 将返回一个现有对象的克隆，而不是创建新的对象。
 
 * Keyword: Prototype, Clone
 * Scene: 创建一个新对象的成本是昂贵和资源密集型
 * Implement: 
-
-  ``` javascript
-  class Clonable {
-    clone (options) {
-      return Object.create(this, options)
+  - JavaScript
+    ``` javascript
+    class Clonable {
+      clone (options) {
+        return Object.create(this, options)
+      }
     }
-  }
 
-  class BananaPizza extends Clonable {}
+    class BananaPizza extends Clonable {}
 
-  const bananaPizza = new BananaPizza()
-  const anotherBananaPizza = bananaPizza.clone()
+    const bananaPizza = new BananaPizza()
+    const anotherBananaPizza = bananaPizza.clone()
 
-  // for simple js
+    // for simple js
 
-  ```
+    ```
 
-### (5)生成器 Builder
+</ToggleContent>
+
+
+<ToggleContent title="✅ (5)生成器 Builder">
+
+
 
 > 生成器模式用于使用简单对象创建复杂对象。它从小而简单的对象逐步创建更大的对象
 
 * Keywords: Builder, Clone
 * Implement:
-
-  ``` javascript
-  class Box {
-    pizza = null
-  }
-  class Pizza {
-    filling = null
-    crust = null
-  }
-
-  class StaticFillingFactory {}
-  class CrustFactory {}
-
-  class TakeOffBuilder {
-    crustFactory
-    static create () {
-      const box = new Box()
-      const pizza = new Pizza()
-      const filling = StaticFillingFactory.createFilling('banana')
-      this.crustFactory = this.crustFactory || new CrustFactory()
-      const crust = this.crustFactory.createCrust('cheese')
-      filling.handleSome()
-      pizza.filling = filling
-      pizza.crust = crust
-      pizza.bake()
-      box.pizza = pizza
-      
-      return box
+  - JavaScript
+    ``` javascript
+    class Box {
+      pizza = null
     }
-  }
+    class Pizza {
+      filling = null
+      crust = null
+    }
 
-  const takeOffPizza = TakeOffBuilder.create()
-  ```
+    class StaticFillingFactory {}
+    class CrustFactory {}
+
+    class TakeOffBuilder {
+      crustFactory
+      static create () {
+        const box = new Box()
+        const pizza = new Pizza()
+        const filling = StaticFillingFactory.createFilling('banana')
+        this.crustFactory = this.crustFactory || new CrustFactory()
+        const crust = this.crustFactory.createCrust('cheese')
+        filling.handleSome()
+        pizza.filling = filling
+        pizza.crust = crust
+        pizza.bake()
+        box.pizza = pizza
+        
+        return box
+      }
+    }
+
+    const takeOffPizza = TakeOffBuilder.create()
+    ```
+
+</ToggleContent>
+

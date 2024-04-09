@@ -1,6 +1,6 @@
 ---
-title: 设计原则
-index: Knowledege.Design Pattern.Practice
+title: 投资原则
+index: Knowledege.Economy.Practice
 ---
 
 

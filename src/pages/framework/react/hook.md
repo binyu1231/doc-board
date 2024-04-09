@@ -107,4 +107,20 @@ export function useThrottle<T> (value: T, option: ThrottleOption = 200) {
 
   return [throttle, updater, cancel] as [T, typeof updater, typeof cancel]
 }
+
+export function useInvoke<T = any> (FunctionComponent: FC<T>, defaultProps?: T) {
+
+  const [cmpProps, setCmpProps] = useState<T | undefined>(defaultProps)
+ 
+  const invoke = useCallback((props: T, merge = true) => {
+    setCmpProps(merge ? Object.assign({}, cmpProps, props) : props)
+  }, [cmpProps])
+
+  const functionComponent = useMemo(() => {
+    if (!cmpProps) return 
+    return <FunctionComponent {...cmpProps} />
+  }, [cmpProps])
+
+  return [functionComponent, invoke] as [typeof functionComponent, typeof invoke]
+}
 ```

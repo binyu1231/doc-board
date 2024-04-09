@@ -35,3 +35,17 @@ index: Framework.Git.Practice
 - `description`: commit的简要说明，尽量简短
 
 
+
+#### demo
+
+``` bash
+fix: fix foo to enable bar
+
+This fixes the broken behavior of the component by doing xyz. 
+
+BREAKING CHANGE
+Before this fix foo wasn't enabled at all, behavior changes from <old> to <new>
+
+Closes D2IQ-12345
+```
+
