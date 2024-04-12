@@ -39,16 +39,16 @@ $ certbot certonly --nginx #手动配置
 # Which names would you like to activate HTTPS for?
 # We recommend selecting either all domains, or all domains in a VirtualHost/server block.
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# 1: admin.your-domian.com
-# 2: www.your-domian.com
+# 1: admin.your-domain.com
+# 2: www.your-domain.com
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Select the appropriate numbers separated by commas and/or spaces, or leave input
 blank to select all options shown (Enter 'c' to cancel): #### 这里没填选择全部
-# Requesting a certificate for admin.your-domian.com and www.your-domian.com
+# Requesting a certificate for admin.your-domain.com and www.your-domain.com
 
 # Successfully received certificate.
-# Certificate is saved at: /etc/letsencrypt/live/admin.your-domian.com/fullchain.pem
-# Key is saved at:         /etc/letsencrypt/live/admin.your-domian.com/privkey.pem
+# Certificate is saved at: /etc/letsencrypt/live/admin.your-domain.com/fullchain.pem
+# Key is saved at:         /etc/letsencrypt/live/admin.your-domain.com/privkey.pem
 # This certificate expires on 2024-04-08.
 # These files will be updated when the certificate renews.
 # Certbot has set up a scheduled task to automatically renew this certificate in the background.
@@ -68,9 +68,9 @@ e.g. `/etc/nginx/conf.d/default.conf`
 ``` bash
 server {
   listen 443 ssl;
-  server_name www.your-domian.com; # 刚才认证的域名1
-  ssl_certificate /etc/letsencrypt/live/admin.your-domian.com/fullchain.pem; # 填好证书路径
-  ssl_certificate_key /etc/letsencrypt/live/admin.your-domian.com/privkey.pem;  # 填好证书路径
+  server_name www.your-domain.com; # 刚才认证的域名1
+  ssl_certificate /etc/letsencrypt/live/admin.your-domain.com/fullchain.pem; # 填好证书路径
+  ssl_certificate_key /etc/letsencrypt/live/admin.your-domain.com/privkey.pem;  # 填好证书路径
   ssl_session_timeout 5m;
 
   ssl_protocols TLSv1.2 TLSv1.3;
@@ -85,9 +85,9 @@ server {
 }
 server {
   listen 443 ssl;
-  server_name admin.your-domian.com; # 刚才认证的域名2
-  ssl_certificate /etc/letsencrypt/live/admin.your-domian.com/fullchain.pem; # 填好证书路径 两个域名用同一个证书
-  ssl_certificate_key /etc/letsencrypt/live/admin.your-domian.com/privkey.pem; # 填好证书路径
+  server_name admin.your-domain.com; # 刚才认证的域名2
+  ssl_certificate /etc/letsencrypt/live/admin.your-domain.com/fullchain.pem; # 填好证书路径 两个域名用同一个证书
+  ssl_certificate_key /etc/letsencrypt/live/admin.your-domain.com/privkey.pem; # 填好证书路径
   ssl_session_timeout 5m;
 
   ssl_protocols TLSv1.2 TLSv1.3;
@@ -101,7 +101,7 @@ server {
 # http 重定向到 https
 server {
   listen 80;
-  server_name www.your-domian.com;
+  server_name www.your-domain.com;
 
   return 301 https://$host$request_uri;
 }
@@ -110,7 +110,7 @@ server {
 
 server {
   listen 80;
-  server_name admin.your-domian.com;
+  server_name admin.your-domain.com;
   
   return 301 https://$host$request_uri;
 }
