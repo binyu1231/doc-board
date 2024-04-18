@@ -121,3 +121,63 @@ closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
 ```
 
 05 image segmentation
+
+## 图像分割
+
+图像分割最简单的情况是背景减除。在视频和其他应用中，经常需要将人类与静态或移动背景隔离开来，因此我们必须使用分割方法来区分这些区域。图像分割还用于各种复杂的识别任务，例如对道路图像中的每个像素进行分类。
+
+
+1. 使用轮廓绘制图像不同部分的边界
+2. 通过某种颜色或纹理相似性度量对图像数据进行聚类
+
+
+### K-Means Clustering
+
+1. Choose k random center points
+2. assign every data point to a cluster, based on its nearest center pointer
+3. Takes the mean of all the values in each cluster
+  - these mean values become the new center points
+4. repeat steps 2 and 3 until convergence is reached
+
+> 10 K-means Implementtation video
+
+``` py
+# reshape image into a 2D array of pixels and 3 color values (RGB)
+pixel_vals = image_copy.reshape((-1, 3))
+
+# Convert to float type
+pixel_vals = np.float32(pixel_vals)
+
+# define stopping criteria
+criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
+
+k = 2 
+
+retval, labels, centers = cv2.kmeans(
+  pixel_vals,
+  k,
+  None,
+  criteria,
+  10,
+  cv2.KMEANS_RANDOM_CENTERS
+)
+
+# Convert data into 8 bit values
+centers = np.uint8(centers)
+segmented_data = centers[labels.flatten()]
+
+# Reshape data into the original image dimensions
+segmented_image = segmented_data.reshape((image_copy.shape))
+labels_reshape = labels.reshape(image_copy.shape[0], image_copy.shape[1])
+
+plt.imshow(segmented_image)
+
+plt.imshow(labels_reshape == 1, cmap = 'gray')
+
+# Mask image segment
+masked_image = np.copy(image_copy)
+
+masked_image[labels_reshape == 1] = [0, 0, 0]
+
+plt.imshow(masked_image)
+``` 
