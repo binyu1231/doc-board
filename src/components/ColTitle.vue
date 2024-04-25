@@ -2,7 +2,7 @@
 withDefaults(
   defineProps<{
     expand?: boolean,
-    level?: number
+    level?: number | string
   }>(),
   {
     level: 3

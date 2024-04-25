@@ -1,17 +1,20 @@
 <script lang="ts" setup>
-defineProps<{
+withDefaults(defineProps<{
   title?: string,
-  level?: number
-}>()
+  level?: number | string,
+  expand?: boolean
+}>(), {
+  expand: false
+})
 </script>
 <template>
-<ScopeToggle v-slot="{ toggle, value }" :default-value="false">
-<ColTitle @click="toggle" :level="level" :expand="value">{{ title }}</ColTitle>
+<ScopeToggle v-slot="{ toggle, value }" :default-value="expand">
+  <ColTitle @click="toggle" :level="level" :expand="value">{{ title }}</ColTitle>
 
-<div v-if="value">
-<slot />
+  <div v-if="value">
+    <slot />
 
-</div>
+  </div>
 
 </ScopeToggle>
 </template>

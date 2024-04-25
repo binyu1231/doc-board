@@ -28,24 +28,41 @@ $ pnpm config set global-bin-dir "PATH/node/node_global"
 
 ## 修改个别项目的下载路径
 
+1. 命令行修改全局变量
 
 ``` bash
-$ npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
-$ npm config set cypress_mirror https://npm.taobao.org/mirrors/cypress/
+$ npm config set electron_mirror https://registry.npmmirror.com/mirrors/electron/
+$ npm config set cypress_mirror https://registry.npmmirror.com/mirrors/cypress/
 
-$ npm config set node_sass_mirror https://npm.taobao.org/mirrors/node-sass/
-$ npm config set electron_builder_binaries_mirror http://npm.taobao.org/mirrors/electron-builder-binaries/
+$ npm config set node_sass_mirror https://registry.npmmirror.com/mirrors/node-sass/
+$ npm config set electron_builder_binaries_mirror https://registry.npmmirror.com/mirrors/electron-builder-binaries/
+```
+
+2. 手动修改全局变量
+
+> `xxx_mirror` is not a valid npm option
+
+- `npm config edit` 
+
+```
+sharp_binary_host = "https://npmmirror.com/mirrors/sharp/"
+sharp_libvips_binary_host = "https://npmmirror.com/mirrors/sharp-libvips/"
 ```
 
 
-**NOTE**
-1. `xxx_mirror` is not a valid npm option
-    - `npm config edit` 手动修改 `xxx_mirror=https://xxx.com`
+3. 在项目中 `.npmrc` 修改
 
-    ```
-    sharp_binary_host = "https://npmmirror.com/mirrors/sharp/"
-    sharp_libvips_binary_host = "https://npmmirror.com/mirrors/sharp-libvips/"
-    ```
+``` bash
+# For electron-builder
+# https://github.com/electron-userland/electron-builder/issues/6289#issuecomment-1042620422
+shamefully-hoist=true
+
+# For China 🇨🇳 developers
+electron_mirror=https://npmmirror.com/mirrors/electron/
+electron_builder_binaries_mirror=https://registry.npmmirror.com/mirrors/electron-builder-binaries/
+```
+
+
 
 ## 切换镜像源
 

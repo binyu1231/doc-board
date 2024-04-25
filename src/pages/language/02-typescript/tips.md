@@ -5,7 +5,7 @@ title: TypeScript Tip
 
 2. 箭头函数泛型
 
-不能再 tsx 中使用 
+不能在 tsx 文件中使用 
 
 ``` ts
 type Add = <T = any>(a: T, b: T) => T

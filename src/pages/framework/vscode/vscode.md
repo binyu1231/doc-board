@@ -48,4 +48,12 @@ $ mv ./rmate /usr/local/bin/
 
 $ touch ~/foo.txt
 $ rmate ~/foo.txt
-``
+```
+
+
+
+## Error
+
+2. 修改配置报错: Unable to write into user settings. Please open the user settings to correct errors/warnings in it and try again.
+
+随后会打开用户设置，是因为文件内有格式错误需要检查

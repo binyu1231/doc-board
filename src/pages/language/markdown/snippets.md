@@ -1,8 +1,32 @@
 [[toc]]
 
-<details>
 
-<summary><h3 class="inline">Markdown</h3></summary>
+### Markdown 开启 code snippet
+
+打开 User Setting(JSON) 后输入 `"[markdown]"` 会为你自动补全设置，每个版本的设置不太一样。
+
+``` json
+
+{
+  "[markdown]": {
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+        "comments": "on",
+        "strings": "on",
+        "other": "on"
+    }
+}
+}
+
+```
+
+
+<ToggleContent title="Markdown">
+
+
 
 ``` json
 "bold": {
@@ -47,6 +71,9 @@
 },
 ```
 
+
+
+
 ``` json
 "detail": {
   "prefix": "$detail",
@@ -60,4 +87,4 @@
 },
 ```
 
-</details>
+</ToggleContent>
