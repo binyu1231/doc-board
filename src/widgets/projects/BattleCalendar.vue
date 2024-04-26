@@ -1,60 +1,35 @@
 <script lang="ts" setup>
-const firstDate = new Date('2022-11-21 00:00:00')
+import { computed } from 'vue'
+
+
+const props = defineProps<{
+  firstDateString: string,
+  raceConfig: string[]
+}>()
+
+const firstDate = computed(() => new Date(props.firstDateString)) 
 
 function getDate(rowOffset: number) {
-  return new Date(firstDate.getTime() + rowOffset * 24 * 3600000)
+  return new Date(firstDate.value.getTime() + rowOffset * 24 * 3600000)
 }
 
 function isToday(rowOffset: number) {
   const date = getDate(rowOffset);
   let today = new Date();
-  today = today < firstDate ? firstDate : today
+  today = today < firstDate.value ? firstDate.value : today
 
   return date.getDate() === today.getDate() 
     && date.getMonth() === today.getMonth() 
     && date.getFullYear() === today.getFullYear()
 }
 
-const races = [
-  'qa0:ec2,,,gb-eng6:ir2@第1轮',
-  'sn0:nl2,us1:gb-wls1,ar1:sa2,dk0:tn0',
-  'mx0:pl0,fr4:au1,ma0:hr0,de1:jp2',
-  'es7:cr0,be1:ca0,ch1:cm0,uy0:kr0',
-  'pt3:gh2,br2:rs0,gb-wls0:ir2,qa1:sn3@第2轮', // 第二轮
-  'nl1:ec1,gb-eng0:us0,tn0:au1,pl2:sa0',
-  'fr2:dk1,ar2:mx0,jp0:cr1,be0:ma2',
-  // ---
-  'hr4:ca1,es1:de1,cm3:rs3,kr2:gh3',
-  'br1:ch0,pt2:uy0,nl2:qa0,ec1:sn2@第3轮', // 第三轮
-  'gb-wls0:gb-eng3,ir0:us1,tn0:fr1,au1:dk0',
-  'pl0:ar2,sa1:mx2,hr0:be0,ca1:ma2',
-  'jp2:es1,cr2:de4,kr2:pt1,gh0:uy2',
-  'cm1:br0,rs2:ch3,,nl3:us1@1/8决赛', // 1/8
-  ',ar2:au1,,fr3:pl1',
-  // ---
-  ',gb-eng3:sn0,,jp1:hr1',
-  ',br4:kr1,,ma0:es0',
-  ',pt6:ch1,,',
-  '',
-  ',,,hr1:br1@1/4决赛', // 1/4
-  ',nl2:ar2,,ma1:pt0',
-  ',gb-eng1:fr2,,',
-  // ---
-  '',
-  '',
-  ',ar3:hr0,,@半决赛', // 1/2
-  ',fr2:ma0,,',
-  '',
-  ',,,hr2:ma1@季军赛', // 季军赛
-  ',,,ar3:fr3@决赛', // 决赛
-  // ---
-].map((day) => {
+const races = computed(() => props.raceConfig.map((day) => {
   const [d, name] = day.split('@')
   return {
     name,
     children: d.length === 0 ? [] : d.split(',').map(race => race.length === 0 ? [] : race.split(':'))
   }
-})
+}))
 </script>
 
 <template>
@@ -92,8 +67,6 @@ const races = [
         <div class="battle-calendar-footer">
           <div class="transform -translate-y-[1px]">{{ day.name }}</div>
           <div :class="{ 'has-name': day.name }">
-            <span v-if="i === 0">Nov.</span>
-            <span v-if="i === 10">Dec.</span>
             <span class="date">{{ getDate(i).getDate() }}</span>
           </div>
         </div>
