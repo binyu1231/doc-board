@@ -117,3 +117,105 @@ withDefaults(
 ```
 
 </ToggleContent>
+
+
+### Vue2 一种动态载入组件文件的方式 
+
+
+``` html
+<!-- index.html -->
+<div id="app">
+    <button @click="tab('testCom')">com</button>
+    <button @click="tab('testFoo')">foo</button>
+    <component :is="dynamicComponent"></component>
+</div>
+<script src="./vue.min.js"></script>
+<script type="module" src="/main.js"></script>
+```
+
+``` js
+// main.js
+const app = new Vue({
+  el: '#app',
+  data() {
+    return {
+      dyCmpScript: null,
+      dynamicComponent: Vue.component('abc', {
+        template: '<div>123</div>'
+      })
+    }
+  },
+  methods: {
+    tab (url) {
+      const cmpFileUrl = './' + url + '.js'
+
+      const scriptDom = document.createElement('script')
+      scriptDom.addEventListener('load', () => {
+        // console.log(url, dynamicComponent)
+        this.dynamicComponent = dynamicComponent
+        document.body.removeChild(scriptDom)
+      })
+
+      scriptDom.src = cmpFileUrl
+
+      document.body.appendChild(scriptDom)
+    }
+  },
+  mounted() {
+    
+  }
+})
+
+```
+
+``` js
+// test-com.js
+// dynamicComponent 全局变量名称统一便于覆盖
+var dynamicComponent = Vue.component('test-com', {
+	template: `
+        <button class="m-header-wrap" @click="log">
+            aaaaaaaaaaaaaaa
+        </button>
+    `,
+    data() {
+        return {
+            msg: 'im com'
+        }
+    },
+    methods: {
+        log() {
+            console.log(this.msg)
+        }
+    },
+    created() {
+        console.log('加载了com')
+    },
+})
+
+```
+
+
+``` js
+// test-foo.js
+var dynamicComponent = Vue.component('test-foo', {
+	template: `
+        <button class="m-header-wrap" @click="log">
+            bbbbbb
+        </button>
+    `,
+    data() {
+        return {
+            msg: 'im foo'
+        }
+    },
+    methods: {
+        log() {
+            console.log(this.msg)
+        }
+    },
+    created() {
+        console.log('加载了foo')
+    },
+}
+)
+```

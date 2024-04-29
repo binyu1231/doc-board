@@ -3,6 +3,41 @@ title: Tips
 index: Language.CSharp.Practice
 ---
 
+#### 8.修饰符 sealed
+
+[msdn](https://docs.microsoft.com/zh-cn/dotnet/articles/csharp/language-reference/keywords/sealed)
+
+- 应用于某个类时，sealed 修饰符可阻止其他类继承自该类。 
+- 还可以对替代基类中的虚方法或属性的方法或属性使用 sealed 修饰符。 这使你可以允许类派生自你的类并防止它们替代特定虚方法或属性。
+
+
+#### 7.判断为空
+
+1. `??`
+
+``` csharp
+// a.
+
+if (button == null) button = GetComponent<Button>();
+
+// b.
+
+button = button ?? GetComponent<Button>();
+
+```
+
+2. `?.`
+
+``` csharp
+// a.
+
+if (button != null) button.onClick.AddListener(Foo);
+
+// b.
+
+button?.onClick.AddListener(Foo);
+```
+
 #### 6.为数组的每一项赋相同初值
 
 ``` csharp

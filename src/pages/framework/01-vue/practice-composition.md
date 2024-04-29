@@ -5,6 +5,133 @@ index: Framework.Vue.Practice
 
 [[toc]]
 
+### useNativeEventListener
+
+``` ts
+import { onMounted, onBeforeUnmount } from '@vue/composition-api'
+
+export function useNativeEventListener (target, evName, callback) {
+  onMounted(() => {
+    target.addEventListener(evName, callback, false)
+  })
+
+  onBeforeUnmount(() => {
+    target.addEventListener(evName, callback, false)
+  })
+}
+```
+
+
+### useStore
+
+``` ts
+export class Store {
+  store = null
+
+  constructor (store) {
+    this.store = reactive(store)
+  }
+
+
+  useStore = () => {
+    if (this.store === null) throw new ReferenceError('store is' + this.store)
+
+    const dispatch = (name, value) => {
+      console.log('dispatch', name, value)
+      this.store[name] = value
+    }
+
+    return { store: this.store, dispatch }
+  }
+}
+```
+
+<ToggleContent title="useQueryParams">
+
+``` ts
+import { reactive, watchEffect, onMounted, onBeforeMount } from '@vue/composition-api'
+
+export function useQueryParams (defaultParams, raw = true, delay = 16) {
+  
+  const params = reactive(defaultParams)
+  let lastSearch = ''
+  let timer = null
+  let listeners = []
+
+  watchEffect(() => {
+    
+    const search = Object.keys(params).reduce((s, key, i) => {
+      return s + (i === 0 ? '?' : '&') + `${key}=${params[key]}`
+    }, '')
+
+    if (lastSearch === search) return
+
+    window.history.pushState('', null, search)
+    listeners.forEach(l => l(params, window.location))
+    lastSearch = search
+  })
+
+  onMounted(() => {
+    
+    function loop () {
+      
+      if (lastSearch !== window.location.search) {
+        window.location.search
+          .replace(/^\?/, '')
+          .split('&')
+          .map(str => str.split('='))
+          .forEach((pair) => {
+            params[pair[0]] = raw ? JSON.parse(pair[1]) : pair[1]
+            
+          })
+        
+        lastSearch = window.location.search
+      }
+
+      setTimeout(loop, delay)
+    }
+
+    timer = setTimeout(loop, delay)
+  })
+
+  onBeforeMount(() => {
+    clearTimeout(timer)
+    listeners = []
+  })
+
+  return { params }
+}
+```
+
+``` ts
+// use 
+import { watchEffect } from '@vue/composition-api'
+import { useQueryParams } from '../composition'
+export default {
+  setup () {
+    const { params } = useQueryParams({
+      search: '123456',
+      page: 1
+    }, false)
+
+    watchEffect(() => {
+      const variables = {
+        search: params.search,
+        page: Number(params.page)
+      }
+      console.log('fetch', variables)
+    }, { deep: true })
+
+
+    return {
+      params
+    }
+  }
+```
+
+</ToggleContent>
+
+
 <ToggleContent title="usePulldown">
 
 移动端下拉刷新。依赖 vueuse 的插值 composition. `useTransition`

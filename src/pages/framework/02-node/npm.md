@@ -9,6 +9,10 @@ index: Framework.Node.Syntax
 - 查看配置: `npm config get`
 - 删除配置: `npm config delete electron_mirror`
 - 查看全局安装地址: `npm root -g`
+- 初始化项目: `npm init -y`
+- 安装项目依赖
+    - `--save` or `-S` 保存到 `package.json` 的 `dependencies` 字段中
+    - `--save-dev` or `-D` 保存到 `package.json` 的 `devDependencies` 字段中
 
 
 ## 修改全局安装路径和缓存路径

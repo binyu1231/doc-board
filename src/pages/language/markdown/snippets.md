@@ -26,7 +26,18 @@
 
 <ToggleContent title="Markdown">
 
-
+``` json
+"article title": {
+		"prefix": "---title",
+		"body": [
+			"---",
+			"title: $1",
+			"date:",
+			"tag:",
+			"---"
+		]
+	}
+```
 
 ``` json
 "bold": {
