@@ -3,6 +3,22 @@ title: Tips
 index: Framework.Vue.Practice
 ---
 
+3. 动态组件
+
+``` html
+<script setup>
+import { h } from 'vue'
+
+function render() {
+    return h('div', {}, 'hello!~')
+}
+</script>
+<template>
+    <render />
+</template>
+```
+
+
 2. `v3` modelValue 无法直接绑定到内部组件的 v-model 中，打包后会报错 `modelValue is not defined`
 
 ``` ts

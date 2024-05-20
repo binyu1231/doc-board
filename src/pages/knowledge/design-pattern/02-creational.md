@@ -5,7 +5,7 @@ index: Thought.Design Pattern.Practice
 
 [[toc]]
 
-
+## 创建型
 
 <ToggleContent title="✅ (1)单例 Singleton">
 

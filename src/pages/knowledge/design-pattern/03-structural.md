@@ -7,11 +7,12 @@ index: Thought.Design Pattern.Practice
 
 ## 结构型
 
-### (6)装饰器 Decorator 
+<ToggleContent title="✅ (6)装饰器 Decorator">
+
 
 > 动态地(运行时)将责任附加到对象上，而不需要修改对象本身
 
-* Keywords: Component, Decorator, Wrapped
+* Keywords: `Component`, `Decorator`, `Wrapped`
 
 - Features:
   - 装饰器在拓展功能方面比继承更有弹性.
@@ -72,11 +73,14 @@ index: Thought.Design Pattern.Practice
   }
   ```
 
-### (7)适配器 Adapter
+</ToggleContent>
+
+<ToggleContent title="✅ (7)适配器 Adapter">
+
 
 > 将一个类的接口，转换成客户去往的另一个接口。适配器让原本接口不兼容的类可以合作无间
 
-* Keywords: Adapter
+* Keywords: `Adapter`
 * Scenes: 适配参数，接口调用，数据
 
 - Features
@@ -109,11 +113,14 @@ index: Thought.Design Pattern.Practice
   }
   ```
 
-### (8)外观 Facade
+</ToggleContent>
+
+<ToggleContent title="✅ (8)外观 Facade">
+
 
 > 提供一个统一的接口，用来访问子系统中的一群接口。外观定义了一个高层接口，让子系统变得更容易被使用
 
-* Keywords: Facade
+* Keywords: `Facade`
 * Scenes: API的兼容，代码重构里中间层
 
 
@@ -165,11 +172,14 @@ index: Thought.Design Pattern.Practice
 
   ```
 
-### (9)代理 Proxy
+</ToggleContent>
+
+<ToggleContent title="(9)代理 Proxy">
+
 
 > 代理模式为另一个对象提供一个替身或占位符以控制对这个对象的访问
 
-- Keywords: Proxy
+- Keywords: `Proxy`
 - Scenes: 
   - *远程代理*: 你的客户对象所做的就像是在做远程方法调用，但其实只是调用本地堆中的“代理”对象上的方法，再由代理处理所有网络通信的底层细节。
   - *虚拟代理(Virtual Proxy)*: 控制访问开销大的资源,例如请求网络图像时，先显示加载中，等待loaded，绘制图像 （可配合状态模式）
@@ -191,11 +201,13 @@ index: Thought.Design Pattern.Practice
   - 可以配合工厂模式，让客户无感知地使用代理模式
   - 声明 isProxyClass() 来区分是不是代理类
 
-### (10)组合 Composite
+</ToggleContent>
+
+<ToggleContent title="✅ (10)组合 Composite">
 
 > 允许你将对象组合成树形结构来表现“整体/部分”层次结构。组合能让客户以一致的方式处理个别对象以及对象组合。
 
-- keywords: composite, node, leaf
+- keywords: `Composite`, `Node`, `Leaf`
 
 - Features:
   - 能用树形方式创建对象的结构，梳理面包含了组合以及个别对象
@@ -225,9 +237,14 @@ index: Thought.Design Pattern.Practice
   }
   ```
 
-### (11)享元 Flyweight
+</ToggleContent>
 
-### (12)桥接 Bridge 
+<ToggleContent title="(11)享元 Flyweight">
+
+</ToggleContent>
+
+<ToggleContent title="(12)桥接 Bridge ">
+
 
 通过将实现和抽象放在两个不同的类层次中而使他们可以独立改变
 

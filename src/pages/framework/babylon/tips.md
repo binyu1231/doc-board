@@ -299,6 +299,46 @@ sphere.material
 ```
 
 
+<ToggleContent title="拾取坐标点" level="3">
+
+``` ts
+import { PickingInfo, Scene } from '@babylonjs/core'
+
+export function onClickPick (
+  scene: Scene, 
+  targetName: string, 
+  cb: (pickingInfo: PickingInfo) => void
+) {
+  function handlePick(e: MouseEvent) {
+    const pickInfo = scene.pick(e.clientX, e.clientY, (mesh) => {
+      return mesh.name === targetName
+    })
+
+    cb(pickInfo)    
+  }
+
+  window.addEventListener('click', handlePick)
+
+
+  return function () {
+    window.removeEventListener('click', handlePick)
+  }
+}
+```
+
+``` ts
+onClickPick(scene, 'ground', (info) => {
+  const p = info.pickedPoint
+  if (!p) return
+
+  console.log(`Vector(${p.x}, ${p.y}, ${p.z})`)
+  carMesh.position = p
+})
+
+```
+
+</ToggleContent>
+
 
 </ToggleContent>
 

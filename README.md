@@ -1,47 +1,61 @@
-# v-page-template-2023
+###
 
-click `fork` or `use this template`
+new vision
 
-## Project Setup
 
-```sh
-pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+- Language
+    - JavaScript
+        - regexp
+    - Python
+    - rust
+    - csharp
+    - typescript
+    - cpp
+    - dart
+    - sql
+    - lua
+    - Java
 
-```sh
-pnpm dev
+- environment
+    - Vscode
+    - Blender
+    - Node
+    - bun
+    - Linux
+    - raspberry
+    - browser
+        - html
+        - css
+
+    - windows
+- TOol
+    - git
+    - docker
+    -  github action
+- develop
+    - Vue
+    - React
+    - electron
+    - babylon
+    - flutter
+    - nginx
+    - opencv
+    - python
+    - three
+    - unity
+    - sqlite
+- abstract
+    - math
+    - design-pattern
+
+
+
+
+    
+
+Note
+    - math
+    - 
 ```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-pnpm test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```
-
-### Refs
-
-see in `vite.config.ts`
-
-- Nprogress
-- Aoc
-- Markdown Page
-- unocss
-- iconify
-- layout template
-- postcss
-    - autoprefixer
-    - postcssNesting

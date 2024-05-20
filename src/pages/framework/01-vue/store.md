@@ -9,6 +9,7 @@ index: Framework.Vue.Practice
 
 ### Pinia
 
+pinia in ts: <https://runthatline.com/pinia-typescript-type-state-actions-getters/>
 
 ### Vue vanilla
 

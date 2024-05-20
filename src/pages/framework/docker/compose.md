@@ -50,3 +50,58 @@ $ docker-compose ps
 # 查看日志
 $ docker-compose -f production.yml logs [IMAME_NAME]
 ```
+
+
+#### demo
+
+
+``` yaml
+# ports:
+#  - 外部端口:内部端口 
+version: "3.7"
+
+services:
+
+  saas-service:
+    build: ./server
+    container_name: saas-service
+    restart: always
+    networks:
+      - saas-network
+    environment:
+      - APP_NAME=saas-serivce
+      - DEV=False
+      - DEBUG=False
+      
+      # use container inner port
+      # https://stackoverflow.com/questions/55523273/why-container-cant-request-to-another
+      - MEDIA_SERVICE_RESTFUL_API_URL=http://media-service:80/index/api
+    ports:
+      - 5678:5678
+  media-service:
+    image: panjjo/zlmediakit
+    container_name: media-service
+    restart: always
+    ports:
+      - 1935:1935 
+      - 8080:80 
+      - 8554:554 
+      - 10000:10000 
+      - 10000:10000/udp
+    networks:
+      - saas-network
+  saas-website:
+    build: ./client
+    container_name: saas-website
+    ports:
+      - 80:80
+    networks:
+      - saas-network
+  # db:
+  #   image: postgres
+  #   networks:
+  #     - saas-network
+
+networks:
+  saas-network:
+```

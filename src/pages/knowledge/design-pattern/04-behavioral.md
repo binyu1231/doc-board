@@ -6,13 +6,14 @@ index: Thought.Design Pattern.Practice
 
 [[toc]]
 
-### 行为型
+## 行为型
 
-#### (13)命令 Command
+
+<ToggleContent title="✅ (13)命令 Command">
 
 > 将“请求”封装成对象，以便使用不同的请求、队列或者日志来参数化其他对象。命令模式支持可撤销的操作
 
-- Keywords: Receiver, Command, Invoker
+- Keywords: `Receiver`, `Command`, `Invoker`
 - Features:
   - 命令请求者和命令执行者解耦
   - 通过命令的组合实现宏命令
@@ -64,11 +65,12 @@ index: Thought.Design Pattern.Practice
   }
   ```
 
-#### (14)策略 Strategy
+</ToggleContent>
+<ToggleContent title="✅ (14)策略 Strategy">
 
 > 定义了算法族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化独立于适用算法的客户
 
-- Keywords: Strategy, Behavior
+- Keywords: `Strategy`, `Behavior`
 
 - Features：
   - 代码独立，耦合性低，复用程度高
@@ -122,13 +124,14 @@ index: Thought.Design Pattern.Practice
   }
   ```
 
+</ToggleContent>
+<ToggleContent title="✅ (15)模板方法 Template Method">
 
-
-#### (15)模板方法 Template Method
+#### 
 
 > 定义了一个算法步骤，并允许子类为一个或多个步骤提供实现
 
-- Keywords: Template
+- Keywords: `Template`
 - Features:
   - 子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤
   - 提供子类可复用的代码
@@ -166,9 +169,11 @@ index: Thought.Design Pattern.Practice
   }
   ```
 
-#### (16)观察者 Observer
 
-- Keywords: Subject, Observer, Notify
+</ToggleContent>
+<ToggleContent title="✅ (16)观察者 Observer">
+
+- Keywords: `Subject`, `Observer`, `Notify`
 - Features: 
   - 解决模块间通信问题
   - 降低耦合
@@ -231,12 +236,12 @@ index: Thought.Design Pattern.Practice
   }
   ```
 
-
-#### (17)状态 State
+</ToggleContent>
+<ToggleContent title="✅ (17)状态 State">
 
 > 允许对象在内部状态改变时改变它的行为，对象看起来好像修改了它的类
 
-keywords: **state**, **context**, **handler**
+keywords: `State`, `Context`, `Handler`
 
 - Features: 
   - 我们把状态模式想象成是不用在 context 中放置许多条件判断的替代方案。通过将行为包装进状态对象中，你可以通过在 context 内简单地改变**状态对象**来改变context的行为
@@ -300,11 +305,13 @@ keywords: **state**, **context**, **handler**
   }
   ```
 
-#### (18)迭代器 Iterator
+</ToggleContent>
+<ToggleContent title="✅ (18)迭代器 Iterator">
+
 
 > 提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露其内部的表示
 
-- Keywords: iterrator, next, previous
+- Keywords: `Iterator`, `Next`, `Previous`
 - Features:
   - 把遍历的任务放在迭代器上而不是聚合上，这样简化了聚合的接口和实现，也让责任各得其所
 - Implements:
@@ -316,12 +323,21 @@ keywords: **state**, **context**, **handler**
   }
   ```
 
-#### (19)解释器 Interpreter
+</ToggleContent>
+<ToggleContent title="(19)解释器 Interpreter">
 
-#### (20)备忘录 Memento
+</ToggleContent>
+<ToggleContent title="(20)备忘录 Memento">
 
-#### (21)中介者 Mediator
 
-#### (22)访问者 Visuitor
+</ToggleContent>
+<ToggleContent title="(21)中介者 Mediator">
 
-#### (23)责任链 Chain if Responsibility
+</ToggleContent>
+<ToggleContent title="(22)访问者 Visuitor">
+
+
+</ToggleContent>
+
+<ToggleContent title="(23)责任链 Chain if Responsibility">
+</ToggleContent>
