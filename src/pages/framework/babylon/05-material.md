@@ -1,3 +1,8 @@
+---
+title: Babylon Material 材质
+date: 2024-05-21
+---
+
 - Diffuse - 漫反射，材料在光源下缩展示的基本纹理或材质。
 - Specular - 镜面反射，材料的高光表现。
 - Emissive - 材料的自发光表现。
@@ -11,6 +16,6 @@ albedoTexture - 又名漫反射纹理
 #### 设置响应灯光数量
 
 ``` ts
-var material = new BABYLON.StandardMaterial("mat", scene);
+var material = new BABYLON.StandardMaterial('mat', scene);
 material.maxSimultaneousLights = 6;//设置最大响应6个灯光
 ```

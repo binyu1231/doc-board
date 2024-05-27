@@ -1,13 +1,14 @@
 ---
-title: Babylon.js startup
+title: Babylon startup
 ---
 
-## 用编辑器创建新项目
+### 用编辑器创建新项目
  
 可以用编辑器创建，编辑器默认使用webpack构建应用。 
 
+WIP
 
-## 在web项目中开发
+### 在web项目中开发
  
 ``` bash
 $ npm create vite@latest babylon-demo -- --template vanilla-ts
@@ -46,7 +47,7 @@ const sphere = Babylon.MeshBuilder.CreateSphere(
   scene
 )
 
-// 半期光，防止暗部太黑 
+// 半球光，防止暗部太黑 
 const envLight = new Babylon.HemisphericLight(
   'env-light', // env light
   new Babylon.Vector3(1, 1, 0), 
@@ -70,7 +71,7 @@ window.addEventListener('resize', () => {
 
 ### Module
 
-|||
+| package name | description |
 |:---|:---|
 |@babylonjs/core | babylon的核心库，引入它就能让程序跑起来，下面的是功能补充的库|
 |@babylonjs/materials | 集合了babylon官方提供的一组高级材质，提供更炫酷的效果|
@@ -83,13 +84,9 @@ window.addEventListener('resize', () => {
 |@babylonjs/viewer | Babylon查看器，几行代码就能让3d内容展示到网页上。|
 
 
-
-
-
-
 ### Inspector
 
-
+WIP 调试工具
 
 ### Refs
 

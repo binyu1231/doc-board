@@ -1,6 +1,45 @@
 ---
-title: 常用 snippets
+title: Vscode Tips
 ---
+
+## 用户设置
+
+- language-postcss: Li Chen
+- Dracula Official: Dracula Theme
+
+``` json
+{
+    "workbench.colorTheme": "Dracula",
+    "workbench.colorCustomizations": {
+        "[Dracula]": {
+            "editor.background": "#15161C",
+            "sideBar.background": "#191A21",
+        },
+    },
+    "editor.tabSize": 2,
+    "files.autoSave": "onFocusChange",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "git.openRepositoryInParentFolders": "never",
+    "editor.minimap.enabled": false,
+    "files.associations": {
+        "*.css": "postcss"
+    },
+    "[markdown]": {
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
+    },
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "window.zoomLevel": 1
+}
+```
+
+
+## 常用 snippets
 
 ## TypeScript
 

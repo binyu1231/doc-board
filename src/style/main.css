@@ -1,5 +1,5 @@
 body {
-    
+    --color-background: #ff00ff;
     @apply 
         font-aspekta antialiased font-[350]
         text-slate-800 dark:text-slate-200 
@@ -8,6 +8,15 @@ body {
     font-family:
         system-ui, -apple-system, /* 系统默认字体 */ 
         Segoe UI, Rototo, Emoji, Helvetica, Arial, sans-serif; /*兜底字体*/
+}
+
+
+body.dark {
+    --color-background: #0000ff;
+}
+
+div.bg {
+    background-color: var(--color-background);
 }
 
 @font-face {

@@ -1,18 +1,17 @@
---- 
-title: Babylon.js tips
-index: Framework.Babylon.Practice
+---
+title: Babylon Basic 基础内容
+date: 2024-05-21
 ---
 
 [[toc]]
 
 > 记录一些最基础的CRUD操作，高阶操作查看分项
 
-- [./camera](./camera)
-- [./material](./material)
-- [./particle](./particle)
-- WIP
-  - ./animation
-  - ./event
+- [Camera](./03-camera)
+- [Praticle](./04-particle)
+- [Material](./05-material)
+- [Event](./06-evemt)
+- [Animation](./07-animation)
 
 
 <ToggleContent title="创建" level="2" expand>

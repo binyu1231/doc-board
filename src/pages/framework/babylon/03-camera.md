@@ -1,10 +1,15 @@
 ---
-title: Babylon Camera
+title: Babylon Camera 相机
 ---
 
 
+[[toc]]
 
+### 相机游走
 
+``` ts
+camera.attachControl(canvas, true)
+```
 
 ### 相机行走控制
 
@@ -35,14 +40,11 @@ camera.keysDownward.push(67)        // C 正交于视窗向下平移
 - [MDN KeyCode](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode#value_of_keycode)
 
 
-### 自定义相机控制
 
 
-ref: <https://playground.babylonjs.com/#CTCSWQ#945>
+### 捕捉相机位置
 
-
-
-### CatchPositionCamera
+> CatchPositionCamera
 
 - 实时显示
   - 相机视角，alpha, beta, y, 
@@ -156,13 +158,13 @@ engine.runRenderLoop(() => {
 ```
 
 
-### 移动相机
+### 显示多相机
 
-``` ts
-// Animation
-function createMoveFlow() {
-  
-}
+WIP
 
 
-```
+
+### 自定义相机控制
+
+ref: <https://playground.babylonjs.com/#CTCSWQ#945>
+

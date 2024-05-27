@@ -1,5 +1,6 @@
 ---
 title: Babylon Particle 粒子系统
+date: 2024-05-21
 ---
 
 ### startup
@@ -84,7 +85,10 @@ snowSystem.start()
 
 > snowflake.png
 
+<div class="bg-indigo-400">
+
 ![snowflake.png](./i/snowflake.png)
 
+</div>
 
 </ToggleContent>
