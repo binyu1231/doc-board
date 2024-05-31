@@ -16,7 +16,6 @@ body.dark {
 }
 
 div.bg {
-    background-color: var(--color-background);
 }
 
 @font-face {

@@ -77,6 +77,7 @@ $ sudo sh get-docker.sh
 
     - 有系统界面的不能用这个方法
     - 第一次启动前在根目录创建 `wpa_supplicant.conf` 文件.
+    - 中文wifi名需要转码
       ```
       country=CN
       ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -101,6 +102,9 @@ $ sudo sh get-docker.sh
         key_mgmt=WPA-PSK
       }
       ```
+
+      e.g.
+      
 
 3. 烧录 ubuntu 系统
 

@@ -115,3 +115,13 @@ $ ssh -T git@github.com
 ```
 
 [ref](https://stackoverflow.com/questions/15589682/ssh-connect-to-host-github-com-port-22-connection-timed-out)
+
+
+### 推送报错 `fatal: unable to access 'https://github.com/a/b': Failed to connect to github.com port 443 after n ms: Couldn't connect to server`
+
+清除代理
+
+``` bash
+$ git config --global --unset https.proxy
+$ git config --global --unset http.proxy
+```

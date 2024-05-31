@@ -105,3 +105,39 @@ services:
 networks:
   saas-network:
 ```
+
+
+e.g.
+
+``` yaml
+version: '3'
+
+services: 
+  bitnami_postgres:
+    image: 'bitnami/postgresql:latest'
+    ports: 
+      - 5432:5432
+    restart: always
+    environment: 
+      POSTGRESQL_PASSWORD: '123456'
+    networks:
+      - app-tier
+    volumes: 
+      - ./volumes:/bitnami/postgresql
+  pgadmin4:
+    image: 'dpage/pgadmin4:latest'
+    restart: always
+    ports:
+      - 8080:80
+    depends_on: 
+      - bitnami_postgres
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: 'pgadmin@gmail.com'
+      PGADMIN_DEFAULT_PASSWORD: '123456'
+    networks: 
+      - app-tier
+
+networks: 
+  app-tier:
+    driver: bridge
+```

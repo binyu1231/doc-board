@@ -11,6 +11,7 @@ import { TextureLoader, MeshStandardMaterial, SphereGeometry, Mesh } from 'three
 
 const txLoader = new TextureLoader()
 
+// 加载贴图
 txLoader.loadAsync('/texture/path.jpg')
 .then(tx => {
     const mat = new MeshStandardMaterial({
