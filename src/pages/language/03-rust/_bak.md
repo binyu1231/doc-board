@@ -1,6 +1,6 @@
 
 
-``` rs
+``` rust
 use std::fs::{File};
 use std::io::{BufReader};
 use rodio::{Source, OutputStream, Decoder};
