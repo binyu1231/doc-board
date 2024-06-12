@@ -111,9 +111,29 @@ float plot(vec2 st) {
     return smoothstep(0.01, 0.0, abs(st.y - st.x));
 
     // === 
-    return smoothstep(0.01, 0.0, st.y - st.x)   // y 比 x 大 0.01 的面积
+          // 使用 smoothstep 计算 st.y - st.x 相对于 0.0 和 0.01 之间的平滑插值。
+          // smoothstep 超越edge1(右侧)为1, 超越edge0(左侧)为0，因为edge1 不一定 大于 edge0 这两个值只是用来插值的，超越的意思不一定是大于, 要根据 edge0, edge1 的相对关系决定
+
+          // 当 y - x < 0(超越edge1) ，返回 1。
+          // 当 y - x > 0.01(超越edge0)，返回 0。
+          // 当 0.01 > y - x > 0.0 时，返回插值
+    return smoothstep(0.01, 0.0, st.y - st.x)   
+          // 与上方同理
+          // x - y > 0.01 时，返回1
+          // x - y < 0，返回0
+          // 0.0 < x - y < 0.01 返回插值
          - smoothstep(0.0, 0.01, st.x - st.y);  // x 比 y 大 0.01 的面积
-    // 面积相减得到线
+    
+
+    // 还等同于 
+    // y < x 返回1
+    // y > x + 0.01 返回0
+    return smoothstep(st.x + 0.01, st.x, st.y)
+    // y < x - 0.01 返回1
+    // y > x 返回0
+         - smoothstep(st.x, st.x - 0.01, st.y) 
+
+    // 最终面积相减得到线
 }
 
 main() {

@@ -16,84 +16,84 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="A1" 
-    time="2024-06-14 20:00:00" 
+    time="2024-06-15 03:00:00" 
   />
   <BattleCard
     :states="['hu', 'ch']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="A1" 
-    time="2024-06-15 14:00:00" 
+    time="2024-06-15 21:00:00" 
   />
   <BattleCard
     :states="['es', 'hr']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="B1" 
-    time="2024-06-15 17:00:00" 
+    time="2024-06-16 00:00:00" 
   />
   <BattleCard
     :states="['it', 'al']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="B1" 
-    time="2024-06-15 20:00:00" 
+    time="2024-06-16 03:00:00" 
   />
   <BattleCard
     :states="['pl', 'nl']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="D1" 
-    time="2024-06-16 14:00:00" 
+    time="2024-06-16 21:00:00" 
   />
   <BattleCard
     :states="['si', 'dk']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="C1" 
-    time="2024-06-16 17:00:00" 
+    time="2024-06-17 00:00:00" 
   />
   <BattleCard
     :states="['rs', 'gb-eng']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="C1" 
-    time="2024-06-16 20:00:00" 
+    time="2024-06-17 03:00:00" 
   />
   <BattleCard
     :states="['ro', 'ua']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="E1" 
-    time="2024-06-17 14:00:00" 
+    time="2024-06-17 21:00:00" 
   />
   <BattleCard
     :states="['be', 'sk']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="E1" 
-    time="2024-06-17 17:00:00" 
+    time="2024-06-18 00:00:00" 
   />
   <BattleCard
     :states="['at', 'fr']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="D1" 
-    time="2024-06-17 20:00:00" 
+    time="2024-06-18 03:00:00" 
   />
   <BattleCard
     :states="['tr', 'ge']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="F1" 
-    time="2024-06-18 17:00:00" 
+    time="2024-06-19 00:00:00" 
   />
   <BattleCard
     :states="['pt', 'cz']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="F1" 
-    time="2024-06-18 20:00:00" 
+    time="2024-06-19 03:00:00" 
   />
 
 
@@ -106,21 +106,21 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="B2" 
-    time="2024-06-19 14:00:00" 
+    time="2024-06-19 21:00:00" 
   />
   <BattleCard
     :states="['de', 'hu']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="A2" 
-    time="2024-06-19 17:00:00" 
+    time="2024-06-20 00:00:00" 
   />
   <BattleCard
     :states="['gb-sct', 'ch']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="A2" 
-    time="2024-06-19 20:00:00" 
+    time="2024-06-20 03:00:00" 
   />
 
   <BattleCard
@@ -128,21 +128,21 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="C2" 
-    time="2024-06-20 14:00:00" 
+    time="2024-06-20 21:00:00" 
   />
   <BattleCard
     :states="['dk', 'gb-eng']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="C2" 
-    time="2024-06-20 17:00:00" 
+    time="2024-06-21 00:00:00" 
   />
   <BattleCard
     :states="['es', 'it']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="B2" 
-    time="2024-06-20 20:00:00" 
+    time="2024-06-21 03:00:00" 
   />
 
   <BattleCard
@@ -150,21 +150,21 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="E2" 
-    time="2024-06-21 14:00:00" 
+    time="2024-06-21 21:00:00" 
   />
   <BattleCard
     :states="['pl', 'at']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="D2" 
-    time="2024-06-21 17:00:00" 
+    time="2024-06-22 00:00:00" 
   />
   <BattleCard
     :states="['nl', 'fr']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="D2" 
-    time="2024-06-21 20:00:00" 
+    time="2024-06-22 03:00:00" 
   />
 
   <BattleCard
@@ -172,21 +172,21 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="F2" 
-    time="2024-06-22 14:00:00" 
+    time="2024-06-22 21:00:00" 
   />
   <BattleCard
     :states="['tr', 'pt']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="F2" 
-    time="2024-06-22 17:00:00" 
+    time="2024-06-23 00:00:00" 
   />
   <BattleCard
     :states="['be', 'ro']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="E2" 
-    time="2024-06-22 20:00:00" 
+    time="2024-06-23 03:00:00" 
   />
 </ToggleContent>
 
@@ -197,28 +197,28 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="A3" 
-    time="2024-06-23 20:00:00" 
+    time="2024-06-24 03:00:00" 
   />
   <BattleCard
     :states="['gb-sct', 'hu']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="A3" 
-    time="2024-06-23 20:00:00" 
+    time="2024-06-24 03:00:00" 
   />
   <BattleCard
     :states="['al', 'es']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="B3" 
-    time="2024-06-24 20:00:00" 
+    time="2024-06-25 03:00:00" 
   />
   <BattleCard
     :states="['hr', 'it']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="B3" 
-    time="2024-06-24 20:00:00" 
+    time="2024-06-25 03:00:00" 
   />
 
   <BattleCard
@@ -226,14 +226,14 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="D3" 
-    time="2024-06-25 17:00:00" 
+    time="2024-06-26 00:00:00" 
   />
   <BattleCard
     :states="['nl', 'at']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="D3" 
-    time="2024-06-25 17:00:00" 
+    time="2024-06-26 00:00:00" 
   />
 
   <BattleCard
@@ -241,14 +241,14 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="C3" 
-    time="2024-06-25 20:00:00" 
+    time="2024-06-26 03:00:00" 
   />
   <BattleCard
     :states="['gb-eng', 'si']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="C3" 
-    time="2024-06-25 20:00:00" 
+    time="2024-06-26 03:00:00" 
   />
 
   <BattleCard
@@ -256,14 +256,14 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="E3" 
-    time="2024-06-26 17:00:00" 
+    time="2024-06-27 00:00:00" 
   />
   <BattleCard
     :states="['ua', 'be']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="E3" 
-    time="2024-06-26 17:00:00" 
+    time="2024-06-27 00:00:00" 
   />
 
   <BattleCard
@@ -271,14 +271,14 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="F3" 
-    time="2024-06-26 20:00:00" 
+    time="2024-06-27 03:00:00" 
   />
   <BattleCard
     :states="['cz', 'tr']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="F3" 
-    time="2024-06-26 20:00:00" 
+    time="2024-06-27 03:00:00" 
   />
 
 </ToggleContent>
@@ -291,56 +291,56 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/8" 
-    time="2024-06-29 17:00:00" 
+    time="2024-06-30 00:00:00" 
   />
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/8" 
-    time="2024-06-29 20:00:00" 
+    time="2024-06-30 03:00:00" 
   />
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/8" 
-    time="2024-06-30 17:00:00" 
+    time="2024-07-01 00:00:00" 
   />
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/8" 
-    time="2024-06-30 20:00:00" 
+    time="2024-07-01 03:00:00" 
   />
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/8" 
-    time="2024-07-01 17:00:00" 
+    time="2024-07-02 00:00:00" 
   />
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/8" 
-    time="2024-07-01 20:00:00" 
+    time="2024-07-02 03:00:00" 
   />
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/8" 
-    time="2024-07-02 17:00:00" 
+    time="2024-07-03 00:00:00" 
   />
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/8" 
-    time="2024-07-02 20:00:00" 
+    time="2024-07-03 03:00:00" 
   />
 </ToggleContent>
 
@@ -350,28 +350,28 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/4" 
-    time="2024-07-05 17:00:00" 
+    time="2024-07-06 00:00:00" 
   />
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/4" 
-    time="2024-07-05 20:00:00" 
+    time="2024-07-06 03:00:00" 
   />
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/4" 
-    time="2024-07-06 17:00:00" 
+    time="2024-07-07 00:00:00" 
   />
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/4" 
-    time="2024-07-06 20:00:00" 
+    time="2024-07-07 03:00:00" 
   />
 </ToggleContent>
 
@@ -381,14 +381,14 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/4" 
-    time="2024-07-09 20:00:00" 
+    time="2024-07-10 03:00:00" 
   />
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/4" 
-    time="2024-07-10 20:00:00" 
+    time="2024-07-11 03:00:00" 
   />
 </ToggleContent>
 
@@ -398,7 +398,7 @@ title: 赛程
     :goals="['', '']" 
     :scores="[0, 0]" 
     g="1/4" 
-    time="2024-07-14 20:00:00" 
+    time="2024-07-15 03:00:00" 
   />
 
 </ToggleContent>
