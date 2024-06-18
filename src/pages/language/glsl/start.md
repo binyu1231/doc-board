@@ -170,8 +170,16 @@ void main() {
 
 https://thebookofshaders.com/05/?lan=ch
 
+阶跃函数
+
+``` c
+// x < 0.1 返回0, x > 0.1 返回1
+float y = step(0.1, st.x) 
+```
+
 
 Refs:
 - [The Book of Shaders](https://thebookofshaders.com?lan=ch)
 - [Shader 在线编辑器](http://editor.thebookofshaders.com/)
 - [在 Babylon编写shader](./)
+- https://graphtoy.com/

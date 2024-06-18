@@ -13,71 +13,71 @@ title: 赛程
 <ToggleContent title="小组赛第一轮" expand>
   <BattleCard
     :states="['de', 'gb-sct']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['10@维尔茨,19@穆西亚拉,45@哈弗茨(点球),68@菲尔克鲁格,90@詹', '87@吕迪格(乌龙)']" 
+    :scores="[5, 1]" 
     g="A1" 
     time="2024-06-15 03:00:00" 
   />
   <BattleCard
     :states="['hu', 'ch']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['66@瓦尔加', '12@杜阿,45@阿比切尔,90@恩博洛']" 
+    :scores="[1, 3]" 
     g="A1" 
     time="2024-06-15 21:00:00" 
   />
   <BattleCard
     :states="['es', 'hr']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['29@莫拉塔,32@鲁伊斯,45@卡瓦哈尔', '']" 
+    :scores="[3, 0]" 
     g="B1" 
     time="2024-06-16 00:00:00" 
   />
   <BattleCard
     :states="['it', 'al']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['11@巴斯托尼,16@巴雷拉', '1@巴伊拉米']" 
+    :scores="[2, 1]" 
     g="B1" 
     time="2024-06-16 03:00:00" 
   />
   <BattleCard
     :states="['pl', 'nl']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['16@布克萨', '29@加克波,83@韦霍斯特']" 
+    :scores="[1, 2]" 
     g="D1" 
     time="2024-06-16 21:00:00" 
   />
   <BattleCard
     :states="['si', 'dk']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['77@詹扎', '17@埃里克森']" 
+    :scores="[1, 1]" 
     g="C1" 
     time="2024-06-17 00:00:00" 
   />
   <BattleCard
     :states="['rs', 'gb-eng']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['', '13@贝林厄姆']" 
+    :scores="[0, 1]" 
     g="C1" 
     time="2024-06-17 03:00:00" 
   />
   <BattleCard
     :states="['ro', 'ua']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['29@斯坦丘,53@R.马林,57@德拉古斯', '']" 
+    :scores="[3, 0]" 
     g="E1" 
     time="2024-06-17 21:00:00" 
   />
   <BattleCard
     :states="['be', 'sk']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['', '7@斯克兰兹']" 
+    :scores="[0, 1]" 
     g="E1" 
     time="2024-06-18 00:00:00" 
   />
   <BattleCard
     :states="['at', 'fr']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['', '38@沃贝尔']" 
+    :scores="[0, 1]" 
     g="D1" 
     time="2024-06-18 03:00:00" 
   />
