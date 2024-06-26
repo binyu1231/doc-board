@@ -8,6 +8,40 @@ index: Language.JavaScript.Snytax
 
 [ECMA finished proposals](https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md)
 
+## ES2025
+
+<ToggleContent title="正则中可以使用重复的组名">
+
+``` ts
+let str1 = '04-2099'
+let str2 = '2024-04'
+
+const reg = /(?<year>[0-9]{4})-[0-9]{2}|[0-9]{2}-(?<year>[0-9]{4})/
+
+/// before
+str1.match(reg) // Error
+str2.match(reg) // Error
+
+/// now 
+str1.match(reg).groups.year // 2099
+str2.match(reg).groups.year // 2024
+```
+
+</ToggleContent>
+<ToggleContent title="Set 新的方法">
+
+- `Set.prototype.intersection(other)`
+- `Set.prototype.union(other)`
+- `Set.prototype.difference(other)`
+- `Set.prototype.symmetricDifference(other)`
+- `Set.prototype.isSubsetOf(other)`
+- `Set.prototype.isSupersetOf(other)`
+- `Set.prototype.isDisjointFrom(other)`
+
+
+
+</ToggleContent>
+
 
 ## ES2024
 
@@ -25,6 +59,73 @@ index: Language.JavaScript.Snytax
 </ToggleContent>
 
 <ToggleContent title="RegExp v flag with set notation + properties of strings">
+
+
+
+</ToggleContent>
+
+<ToggleContent title="Resizable and growable ArrayBuffers">
+
+
+
+</ToggleContent>
+
+<ToggleContent title="Array Grouping">
+
+
+
+</ToggleContent>
+<ToggleContent title="Promise.withResolvers">
+
+该方法提供一个实例化`Promise` 之后配置, `resolve` 与 `reject` 行为. 意味着可以少写一层嵌套, 或者设置中间变量.
+
+``` ts
+// before
+function request () {
+  return new Promise((resolve, reject) => {
+    asyncRequest(config, response => {
+      const buffer = []
+      response.on('data', data => buffer.push(data))
+      response.on('end', () => resolve(buffer))
+      response.on('error', reason => reject(reason))
+    })
+  })
+}
+
+// now
+function request() {
+  const { resolve, reject, promise } = Promise.withResolvers()
+
+  asyncRequest(config, response => {
+    const buffer = []
+    response.on('data', data => buffer.push(data))
+    response.on('end', () => resolve(buffer))
+    response.on('error', reason => reject(reason))
+  })
+
+  return promise
+}
+```
+
+
+
+``` ts
+class Promise {
+  static withResolvers() {
+    let resolve
+    let reject
+    const promise = new Promise((res, rej) => {
+      resolve = res
+      reject = rej
+    }) 
+
+    return { resolve, reject, promise }
+  }
+}
+```
+
+</ToggleContent>
+<ToggleContent title="ArrayBuffer transfer">
 
 
 
