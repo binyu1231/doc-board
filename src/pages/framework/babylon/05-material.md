@@ -114,3 +114,89 @@ box.setVerticesData(BABYLON.VertexBuffer.UVKind, uvCoordinates, true)
 const highlightLayer = new BABYLON.HighlightLayer('highlightLayer', scene)
 highlightLayer.addMesh(box, new BABYLON.Color3(0.405, 0.764, 0.968)) // 
 ```
+
+### 着色器材质
+
+
+``` ts
+import { Color3, Scene, ShaderMaterial } from '@babylonjs/core'
+
+export class FrameRippleMaterial extends ShaderMaterial {
+  static vertexShader: string = `
+precision highp float;
+      
+attribute vec3 position;
+attribute vec2 uv;
+
+uniform mat4 worldViewProjection;
+
+varying vec2 vUv;
+
+void main() {
+    vUv = uv;
+    gl_Position = worldViewProjection * vec4(position, 1.0);
+}
+  `
+
+  static fragmentShader: string = `
+precision highp float;
+      
+varying vec2 vUv;
+uniform float num;
+uniform float time;
+uniform vec3 lineColor;
+uniform vec3 bgColor;
+uniform float transparency; // 添加透明度uniform变量
+
+void main() {
+    float sinValue = sin((vUv.y + time) * num * 10.0);
+    vec3 color3 = bgColor; 
+
+    if (sinValue > 0.9) {
+        color3 = lineColor;
+    }
+
+    // 使用transparency变量设置透明度
+    gl_FragColor = vec4(color3, (1.0 - vUv.y) * transparency);
+}
+  `
+
+
+  constructor(name: string, scene: Scene) {
+    super(name, scene, {
+      vertexSource: FrameRippleMaterial.vertexShader,
+      fragmentSource: FrameRippleMaterial.fragmentShader,
+    }, {
+      attributes: ['position', 'uv'],
+      uniforms: [
+        'worldViewProjection', 
+        'time', 
+        'num', 
+        'lineColor', 
+        'bgColor', 
+        'transparency'
+      ],
+      needAlphaBlending: true,
+      
+
+    })
+    this.backFaceCulling = false
+    this.setColor3('lineColor', new Color3(0, 0, 0)) // 灰色
+    this.setColor3('bgColor', new Color3(0.18, 0.74, 1)) // 蓝色
+    this.setFloat('time', 0.0)
+    this.setFloat('num', 4.0)
+    this.setFloat('transparency', 0.5) // 设置透明度，可以调整此值
+    scene.registerBeforeRender(this.renderLoop)
+  }
+
+  renderLoop = () => {
+    this.setFloat('time', performance.now() * 0.0005)
+  }
+
+  dispose() {
+    this.getScene().unregisterBeforeRender(this.renderLoop)
+    super.dispose()
+  }
+}
+
+```

@@ -8,9 +8,9 @@ index: Language.JavaScript.Snytax
 
 [ECMA finished proposals](https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md)
 
-## ES2025
+## ES2025 ✅
 
-<ToggleContent title="正则中可以使用重复的组名">
+<ToggleContent title="正则表达式中可以使用重复的组名">
 
 ``` ts
 let str1 = '04-2099'
@@ -19,7 +19,8 @@ let str2 = '2024-04'
 const reg = /(?<year>[0-9]{4})-[0-9]{2}|[0-9]{2}-(?<year>[0-9]{4})/
 
 /// before
-str1.match(reg) // Error
+/// 因为使用了重复的组名 <year> 导致报错
+str1.match(reg) // Error 
 str2.match(reg) // Error
 
 /// now 
@@ -28,15 +29,57 @@ str2.match(reg).groups.year // 2024
 ```
 
 </ToggleContent>
-<ToggleContent title="Set 新的方法">
+<ToggleContent title="Set 新增逻辑运算方法">
 
-- `Set.prototype.intersection(other)`
-- `Set.prototype.union(other)`
-- `Set.prototype.difference(other)`
-- `Set.prototype.symmetricDifference(other)`
-- `Set.prototype.isSubsetOf(other)`
-- `Set.prototype.isSupersetOf(other)`
-- `Set.prototype.isDisjointFrom(other)`
+- 交集: `Set.prototype.intersection(Set) -> Set`
+- 并集: `Set.prototype.union(Set) -> Set`
+- 差集/补集: `Set.prototype.difference(Set) -> Set`
+- 对称差: `Set.prototype.symmetricDifference(Set) -> Set`
+- 子集: `Set.prototype.isSubsetOf(Set) -> boolean`
+- 超集: `Set.prototype.isSupersetOf(Set) -> boolean`
+- 互斥: `Set.prototype.isDisjointFrom(Set) -> boolean`
+
+``` ts
+const a = new Set([1, 2, 3])
+const b = new Set([4, 3, 2])
+
+// 交集 a * b
+b.intersection(a) // b ∩ a => Set{3, 2} 
+a.intersection(b) // a ∩ b => Set{2, 3}
+
+// 并集 a + b
+a.union(b)        // a ∪ b => Set{1, 2, 3, 4}
+b.union(a)        // b ∪ a => Set{4, 3, 2, 1}
+
+// 差集：a - b
+a.difference(b)   // a ∖ b => Set{1}
+b.difference(a)   // b ∖ a => Set{4}
+
+// 对称差：两个集合中不重复的元素
+a.symmetricDifference(b) // a Δ b => Set{1, 4}
+b.symmetricDifference(a) // b Δ a => Set{4, 1}
+
+// 是子集
+a.isSubsetOf(b) // false
+b.isSubsetOf(a) // false
+
+const c = new Set([3, 2])
+
+c.isSubsetOf(a) // true
+c.isSubsetOf(b) // true
+
+
+// 是超集
+a.isSupersetOf(c) // true
+b.isSupersetOf(a) // false
+
+// 互斥，两个集合没有共同元素
+a.isDisjointFrom(b) // false
+c.isDisjointFrom(a) // false
+
+const d = new Set([1, 4])
+d.isDisjointFrom(c) // true
+```
 
 
 
@@ -77,7 +120,7 @@ str2.match(reg).groups.year // 2024
 </ToggleContent>
 <ToggleContent title="Promise.withResolvers">
 
-该方法提供一个实例化`Promise` 之后配置, `resolve` 与 `reject` 行为. 意味着可以少写一层嵌套, 或者设置中间变量.
+该方法提供一个实例化 `Promise` 之后配置 `resolve` 与 `reject` 行为. 意味着可以少写一层嵌套, 或者设置中间变量.
 
 ``` ts
 // before
@@ -1124,34 +1167,36 @@ new SharedArrayBuffer(length)
 ## ES2016 ✅
 
 
-<ToggleContent title="TypedArray.prototype.includes">
+<ToggleContent title="数组添加 includes 方法 Array.prototype.includes">
 
-可迭代类型添加了判定存在的方法
-
-`T[].includes(searchElement: T, fromIndex?: number) => boolean`
+`Array<T>.includes(searchElement: T, fromIndex?: number) => boolean`
 
 ``` ts
 [1, 2, 3].includes(2) // true
 [1, 2, 3].includes(4) // false
 
 [1, 2, NaN].includes(NaN) // true
+[1, 2, NaN].indexOf(NaN) // -1
+
 'abc'.includes('b') // true
 'abc'.includes('b', 2) // false
 ```
 
+Note: 
+- `indexOf` 使用的是严格相等，`includes` 使用的是 `SameValueZero` 比较算法。前者的意思该元素在数组中第一次出现的索引是什么，后者强调数组是否包含某个元素
+- [`TypedArray`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) 也添加了同样的方法
 
 </ToggleContent> 
 
-<ToggleContent title="Exponentiation operator">
+<ToggleContent title="数字类型支持乘方操作符 Exponentiation operator">
 
-数字类型支持乘方操作符
 
 ``` ts
 // x ** y
 
-let squared = 2 ** 2 // same as: 2 * 2
+let squared = 2 ** 2 // same as: 2 * 2, Math.pow(2, 3)
 
-let cubed = 2 ** 3 // same as: 2 * 2 * 2
+let cubed = 2 ** 3 // same as: 2 * 2 * 2, Math.pow(2, 3)
 
 
 // x **= y

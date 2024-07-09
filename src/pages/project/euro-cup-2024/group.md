@@ -10,8 +10,8 @@ title: 分组
 
 
 <CardGroup>
-  <StateCard state="de">
-    <template #rank>No.16</template>
+  <StateCard state="de" win>
+    <template #rank >No.16</template>
   </StateCard>
   <StateCard state="gb-sct">
     <template #rank>No.39</template>
@@ -19,7 +19,7 @@ title: 分组
   <StateCard state="hu">
     <template #rank>No.26</template>
   </StateCard>
-  <StateCard state="ch">
+  <StateCard state="ch" win>
     <template #rank>No.19</template>
   </StateCard>
 </CardGroup>
@@ -29,13 +29,13 @@ title: 分组
 ### Group B
 
 <CardGroup>
-<StateCard state="es" >
+<StateCard state="es" win>
     <template #rank>No.08</template>
   </StateCard>
 <StateCard state="hr">
     <template #rank>No.10</template>
   </StateCard>
-<StateCard state="it" >
+<StateCard state="it" win>
     <template #rank>No.09</template>
   </StateCard>
 <StateCard state="al">
@@ -48,16 +48,16 @@ title: 分组
 ### Group C
 
 <CardGroup>
-<StateCard state="si">
+<StateCard state="si" win>
     <template #rank>No.57</template>
   </StateCard>
-<StateCard state="dk">
+<StateCard state="dk" win>
     <template #rank>No.21</template>
   </StateCard>
 <StateCard state="rs">
     <template #rank>No.33</template>
   </StateCard>
-<StateCard state="gb-eng" >
+<StateCard state="gb-eng"  win>
     <template #rank>No.4</template>
   </StateCard>
 </CardGroup>
@@ -70,13 +70,13 @@ title: 分组
 <StateCard state="pl" >
     <template #rank>No.28</template>
   </StateCard>
-<StateCard state="nl" >
+<StateCard state="nl" win>
     <template #rank>No.7</template>
   </StateCard>
-<StateCard state="at">
+<StateCard state="at" win>
     <template #rank>No.25</template>
   </StateCard>
-<StateCard state="fr">
+<StateCard state="fr" win>
     <template #rank>No.02</template>
   </StateCard>
 </CardGroup>
@@ -86,13 +86,13 @@ title: 分组
 ### Group E
 
 <CardGroup>
-<StateCard state="be" >
+<StateCard state="be" win>
     <template #rank>No.03</template>
   </StateCard>
-<StateCard state="sk">
+<StateCard state="sk" win>
     <template #rank>No.48</template>
   </StateCard>
-<StateCard state="ro">
+<StateCard state="ro" win>
     <template #rank>No.46</template>
   </StateCard>
 <StateCard state="ua" >
@@ -105,13 +105,13 @@ title: 分组
 ### Group F
 
 <CardGroup>
-<StateCard state="tr">
+<StateCard state="tr" win>
     <template #rank>No.40</template>
   </StateCard>
-<StateCard state="ge">
+<StateCard state="ge" win>
     <template #rank>No.75</template>
   </StateCard>
-<StateCard state="pt" >
+<StateCard state="pt" win>
     <template #rank>No.06</template>
   </StateCard>
 <StateCard state="cz" >

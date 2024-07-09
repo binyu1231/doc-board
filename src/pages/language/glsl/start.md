@@ -168,7 +168,6 @@ void main() {
 
 ```
 
-https://thebookofshaders.com/05/?lan=ch
 
 阶跃函数
 
@@ -177,9 +176,162 @@ https://thebookofshaders.com/05/?lan=ch
 float y = step(0.1, st.x) 
 ```
 
+颜色
+
+别名
+
+``` c
+vec3 red = vec3(1.0, 0.0, 0.0)
+red.x = 1.0
+red.y = 0.0
+red.z = 0.0
+
+vec4 vector;
+vector[0] = vector.r = vector.x = vector.s;
+vector[1] = vector.g = vector.y = vector.t;
+vector[2] = vector.b = vector.z = vector.p;
+vector[3] = vector.a = vector.w = vector.q;
+```
+
+
+鸡尾酒 
+
+``` c
+vec3 yellow, magenta, green;
+
+// Making Yellow
+yellow.rg = vec2(1.0);  // Assigning 1. to red and green channels
+yellow[2] = 0.0;        // Assigning 0. to blue channel
+
+// Making Magenta
+magenta = yellow.rbg;   // Assign the channels with green and blue swapped
+
+// Making Green
+green.rgb = yellow.bgb; // Assign the blue channel of Yellow (0) to red and blue channels
+```
+
+
+混合函数 mix
+
+``` c
+void main() {
+    vec3 color = vec3(0.0);
+
+    float pct = abs(sin(u_time));
+
+    // Mix uses pct (a value from 0-1) to
+    // mix the two colors  
+    color = mix(colorA, colorB, pct);
+
+    gl_FragColor = vec4(color,1.0);
+}
+```
+
+
+https://thebookofshaders.com/06/?lan=ch
+
+
+``` c
+vec3 rgb2hsb( in vec3 c ){
+  vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+  vec4 p = mix(vec4(c.bg, K.wz),
+                vec4(c.gb, K.xy),
+                step(c.b, c.g));
+  vec4 q = mix(vec4(p.xyw, c.r),
+                vec4(c.r, p.yzx),
+                step(p.x, c.r));
+  float d = q.x - min(q.w, q.y);
+  float e = 1.0e-10;
+  return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)),
+              d / (q.x + e),
+              q.x);
+}
+
+vec3 hsb2rgb( in vec3 c ){
+    vec3 rgb = clamp(abs(mod(c.x*6.0+vec3(0.0,4.0,2.0),
+                             6.0)-3.0)-1.0,
+                     0.0,
+                     1.0 );
+    rgb = rgb*rgb*(3.0-2.0*rgb);
+    return c.z * mix(vec3(1.0), rgb, c.y);
+}
+```
+
+
+常用常量 
+
+``` c
+#define TWO_PI 6.28318530718
+```
+
+
+画四个圆 
+
+``` c
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+uniform float u_time;
+float plot_circle(vec2 center) {
+  float dist = length(center);
+  float edge = sin(u_time * 3.0) * 0.05;
+  dist = smoothstep(edge + 0.1, edge + 0.15, dist);
+  return dist;
+}
+void main(){
+
+	vec2 st = gl_FragCoord.xy/u_resolution;
+  float pct = 0.0;
+
+	float pct1 = plot_circle(vec2(0.8)-st);
+  float pct2 = plot_circle(vec2(0.2)-st);
+  float pct3 = plot_circle(vec2(0.2, 0.8)-st);
+  float pct4 = plot_circle(vec2(0.8, 0.2)-st);
+  // pct = step(pct, 0.3);
+  vec3 color = vec3(pct1 * pct2 * pct3 * pct4);
+
+	gl_FragColor = vec4( color, 1.0 );
+}
+  // TODO
+  // 将坐标映射为 -1,1 可以使用 abs 简化上面的写法
+  // Remap the space to -1. to 1.
+  st = st *2.-1.;
+```
+
+
+位移，缩放，旋转
+\
+https://thebookofshaders.com/08/?lan=ch
+
 
 Refs:
 - [The Book of Shaders](https://thebookofshaders.com?lan=ch)
 - [Shader 在线编辑器](http://editor.thebookofshaders.com/)
+- [内置数学函数](https://thebookofshaders.com/glossary/)
 - [在 Babylon编写shader](./)
 - https://graphtoy.com/
+
+
+扫描效果
+
+- https://playground.babylonjs.com/#4QH8JM
+
+
+热力图 
+
+- https://nme.babylonjs.com/#LGTK15#1
+
+
+shaders
+- https://www.shadertoy.com/view/3tBGRm 气泡圆环
+- https://www.shadertoy.com/view/ltffzl 下雨玻璃
+- https://www.shadertoy.com/view/ldfyzl 涟漪
+- https://www.shadertoy.com/view/MX33Dr 隧道n.1
+- https://www.shadertoy.com/view/XX3Szr 隧道n.2
+- https://www.shadertoy.com/view/XsBfRW 网格n.1
+- https://www.shadertoy.com/view/4dBSRK 网格n.2
+
+util - page20
