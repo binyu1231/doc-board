@@ -8,17 +8,17 @@ title: 射手榜
 <GoalRank rank="1" name="加克波" state="nl" goals="3" />
 <GoalRank rank="1" name="米考塔泽" state="ge" goals="3" />
 <GoalRank rank="1" name="穆西亚拉" state="de" goals="3" />
+<GoalRank rank="1" name="奥尔莫" state="es" goals="3" />
+<GoalRank rank="1" name="凯恩" state="gb-eng" goals="3" />
 
-<GoalRank rank="5" name="菲尔克鲁格" state="de" goals="2" />
-<GoalRank rank="5" name="凯恩" state="gb-eng" goals="2" />
-<GoalRank rank="5" name="鲁伊斯" state="es" goals="2" />
-<GoalRank rank="5" name="R.马林" state="ro" goals="2" />
-<GoalRank rank="5" name="恩博洛" state="ch" goals="2" />
-<GoalRank rank="5" name="德米拉尔" state="tr" goals="2" />
-<GoalRank rank="5" name="奥尔莫" state="es" goals="2" />
-<GoalRank rank="5" name="马伦" state="at" goals="2" />
-<GoalRank rank="5" name="哈弗茨" state="de" goals="2" />
-<GoalRank rank="5" name="贝林厄姆" state="gb-eng" goals="2" />
+<GoalRank rank="7" name="菲尔克鲁格" state="de" goals="2" />
+<GoalRank rank="7" name="鲁伊斯" state="es" goals="2" />
+<GoalRank rank="7" name="R.马林" state="ro" goals="2" />
+<GoalRank rank="7" name="恩博洛" state="ch" goals="2" />
+<GoalRank rank="7" name="德米拉尔" state="tr" goals="2" />
+<GoalRank rank="7" name="马伦" state="at" goals="2" />
+<GoalRank rank="7" name="哈弗茨" state="de" goals="2" />
+<GoalRank rank="7" name="贝林厄姆" state="gb-eng" goals="2" />
 
 <GoalRank rank="15" name="维尔茨" state="de" goals="1" />
 <GoalRank rank="15" name="詹" state="de" goals="1" />
@@ -85,5 +85,9 @@ title: 射手榜
 <GoalRank rank="15" name="萨卡" state="gb-eng" goals="1" />
 <GoalRank rank="15" name="德弗里" state="nl" goals="1" />
 <GoalRank rank="15" name="阿卡丁" state="tr" goals="1" />
+<GoalRank rank="15" name="穆阿尼" state="fr" goals="1" />
+<GoalRank rank="15" name="亚马尔" state="es" goals="1" />
+<GoalRank rank="15" name="西蒙斯" state="nl" goals="1" />
+<GoalRank rank="15" name="沃特金斯" state="gb-eng" goals="1" />
 
 

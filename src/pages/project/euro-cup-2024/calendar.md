@@ -46,11 +46,11 @@ title: 赛程日历
     'gb-eng1:ch1,nl2:tr1,',
     '',
     '',
-    ',es:fr@半决赛',
-    ',nl:gb-eng',
+    ',es2:fr1@半决赛',
+    ',nl1:gb-eng2',
     '',
     '',
     '',
-    ',tbd,@决赛',
+    ',es:gb-eng,@决赛',
   ]"
 />

@@ -384,21 +384,21 @@ title: 赛程
 <ToggleContent title="半决赛" expand>
   <BattleCard
     :states="['es', 'fr']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['21@亚马尔,25@奥尔莫', '9@穆阿尼']" 
+    :scores="[2, 1]" 
     g="1/4" 
     time="2024-07-10 03:00:00" 
   />
   <BattleCard
     :states="['nl', 'gb-eng']" 
-    :goals="['', '']" 
-    :scores="[0, 0]" 
+    :goals="['7@西蒙斯', '18@凯恩,90@沃特金斯']" 
+    :scores="[1, 2]" 
     g="1/4" 
     time="2024-07-11 03:00:00" 
   />
 </ToggleContent>
 
-<ToggleContent title="决赛">
+<ToggleContent title="决赛" expand>
   <BattleCard
     :states="['', '']" 
     :goals="['', '']" 
